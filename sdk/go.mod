@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/sdk
+module github.com/a-schot/pulumi-dbtcloud/sdk
 
 go 1.17
 
