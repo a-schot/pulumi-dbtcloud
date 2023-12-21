@@ -15,9 +15,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	dbtcloud "github.com/a-schot/pulumi-dbtcloud/provider"
 	"github.com/a-schot/pulumi-dbtcloud/provider/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {

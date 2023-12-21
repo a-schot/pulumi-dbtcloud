@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 
 	"github.com/a-schot/pulumi-dbtcloud/provider/pkg/version"
-	dbtcloud "github.com/dbt-labs/terraform-provider-dbtcloud/dbtcloud/provider"
+	dbtcloud "github.com/dbt-labs/terraform-provider-dbtcloud/pkg/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -55,12 +55,12 @@ func Provider() tfbridge.ProviderInfo {
 		Name: "dbtcloud",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "dbt Cloud",
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
+		Publisher: "a-schot",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -71,17 +71,17 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing dbtcloud cloud resources.",
+		Description:       "A Pulumi package for creating and managing dbt Cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "dbtcloud", "category/cloud"},
+		Keywords:   []string{"pulumi", "dbtcloud", "category/cloud", "dbt", "cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-dbtcloud",
+		Repository: "https://github.com/a-schot/pulumi-dbtcloud",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "",
+		GitHubOrg: "dbt-labs",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -134,7 +134,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/a-schot/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
@@ -153,7 +153,6 @@ func Provider() tfbridge.ProviderInfo {
 	// For more information, please reference: https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
 	prov.MustComputeTokens(tokens.SingleModule("dbtcloud_", mainMod,
 		tokens.MakeStandard(mainPkg)))
-	prov.MustApplyAutoAliasing()
 	prov.SetAutonaming(255, "-")
 
 	return prov
