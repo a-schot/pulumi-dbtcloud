@@ -5,13 +5,14 @@
     "keywords": [
         "pulumi",
         "dbtcloud",
-        "category/cloud",
         "dbt",
-        "cloud"
+        "cloud",
+        "category/cloud",
+        "category/database"
     ],
     "homepage": "https://www.pulumi.com",
     "repository": "https://github.com/a-schot/pulumi-dbtcloud",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "scripts": {
         "build": "tsc"
     },

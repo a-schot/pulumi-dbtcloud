@@ -23,12 +23,12 @@ setup(name='aschot_pulumi_dbtcloud',
       description="A Pulumi package for creating and managing dbt Cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='pulumi dbtcloud category/cloud dbt cloud',
+      keywords='pulumi dbtcloud dbt cloud category/cloud category/database',
       url='https://www.pulumi.com',
       project_urls={
           'Repository': 'https://github.com/a-schot/pulumi-dbtcloud'
       },
-      license='Apache-2.0',
+      license='MIT',
       packages=find_packages(),
       package_data={
           'aschot_pulumi_dbtcloud': [

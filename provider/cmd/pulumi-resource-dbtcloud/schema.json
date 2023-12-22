@@ -5,14 +5,16 @@
     "keywords": [
         "pulumi",
         "dbtcloud",
-        "category/cloud",
         "dbt",
-        "cloud"
+        "cloud",
+        "category/cloud",
+        "category/database"
     ],
     "homepage": "https://www.pulumi.com",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "attribution": "This Pulumi package is based on the [`dbtcloud` Terraform Provider](https://github.com/dbt-labs/terraform-provider-dbtcloud).",
     "repository": "https://github.com/a-schot/pulumi-dbtcloud",
+    "logoUrl": "https://docs.getdbt.com/img/dbt-logo-light.svg",
     "pluginDownloadURL": "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
     "publisher": "a-schot",
     "meta": {

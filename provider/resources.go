@@ -33,11 +33,8 @@ var bridgeMetadata []byte
 
 // all of the token components used below.
 const (
-	// This variable controls the default name of the package in the package
-	// registries for nodejs and python:
 	mainPkg = "dbtcloud"
-	// modules:
-	mainMod = "index" // the dbtcloud module
+	mainMod = "index"
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -59,11 +56,11 @@ func Provider() tfbridge.ProviderInfo {
 		Name:                 "dbtcloud",
 		DisplayName:          "dbt Cloud",
 		Publisher:            "a-schot",
-		LogoURL:              "",
+		LogoURL:              "https://docs.getdbt.com/img/dbt-logo-light.svg",
 		PluginDownloadURL:    "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
 		Description:          "A Pulumi package for creating and managing dbt Cloud resources.",
-		Keywords:             []string{"pulumi", "dbtcloud", "category/cloud", "dbt", "cloud"},
-		License:              "Apache-2.0",
+		Keywords:             []string{"pulumi", "dbtcloud", "dbt", "cloud", "category/cloud", "category/database"},
+		License:              "MIT",
 		Homepage:             "https://www.pulumi.com",
 		Repository:           "https://github.com/a-schot/pulumi-dbtcloud",
 		GitHubOrg:            "dbt-labs",
@@ -72,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 
 		IgnoreMappings: []string{
-			// Ignore legacy tokens (prefix: dbt_cloud_ instead of dbtcloud_)
+			// Ignore legacy tokens (prefix: "dbt_cloud_" instead of "dbtcloud_")
 			"dbt_cloud_bigquery_connection",
 			"dbt_cloud_bigquery_credential",
 			"dbt_cloud_connection",
@@ -159,18 +156,18 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@aschot/pulumi-dbtcloud",
-			// List any npm dependencies and their versions
+
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
+				"@types/node": "^10.0.0",
 				"@types/mime": "^2.0.0",
 			},
 		},
 		Python: &tfbridge.PythonInfo{
 			PackageName: "aschot_pulumi_dbtcloud",
-			// List any Python dependencies and their version ranges
+
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
@@ -192,15 +189,11 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	// These are new API's that you may opt to use to automatically compute resource tokens,
-	// and apply auto aliasing for full backwards compatibility.
-	// For more information, please reference: https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
-
 	var strat tfbridge.Strategy = tfbridgetokens.SingleModule(
 		"dbtcloud_",
 		mainMod,
 		tfbridgetokens.MakeStandard(mainPkg),
-	).Ignore("dbt_cloud")
+	).Ignore("dbt_cloud") // this is doing nothing for now
 
 	prov.MustComputeTokens(strat)
 

@@ -9,6 +9,7 @@ Pulumi.*.yaml
 .DS_Store
 
 **/command-output/
+coverage_output/
 
 .idea/
 .vscode/
