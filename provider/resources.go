@@ -239,7 +239,7 @@ func Provider() tfbridge.ProviderInfo {
 		mainMod,
 		tfbridgetokens.MakeStandard(mainPkg),
 	))
-	// prov.MustApplyAutoAliases()
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov

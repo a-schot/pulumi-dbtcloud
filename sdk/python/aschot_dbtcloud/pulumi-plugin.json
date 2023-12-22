@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "dbtcloud",
-  "server": "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}"
-}
