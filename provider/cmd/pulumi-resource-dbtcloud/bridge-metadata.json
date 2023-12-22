@@ -1,0 +1,664 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "dbtcloud_bigquery_connection": {
+                "current": "dbtcloud:index/bigQueryConnection:BigQueryConnection"
+            },
+            "dbtcloud_bigquery_credential": {
+                "current": "dbtcloud:index/bigQueryCredential:BigQueryCredential"
+            },
+            "dbtcloud_connection": {
+                "current": "dbtcloud:index/connection:Connection"
+            },
+            "dbtcloud_databricks_credential": {
+                "current": "dbtcloud:index/databricksCredential:DatabricksCredential"
+            },
+            "dbtcloud_environment": {
+                "current": "dbtcloud:index/environment:Environment"
+            },
+            "dbtcloud_environment_variable": {
+                "current": "dbtcloud:index/environmentVariable:EnvironmentVariable"
+            },
+            "dbtcloud_environment_variable_job_override": {
+                "current": "dbtcloud:index/environmentVariableJobOverride:EnvironmentVariableJobOverride"
+            },
+            "dbtcloud_extended_attributes": {
+                "current": "dbtcloud:index/extendedAttributes:ExtendedAttributes"
+            },
+            "dbtcloud_fabric_connection": {
+                "current": "dbtcloud:index/fabricConnection:FabricConnection"
+            },
+            "dbtcloud_fabric_credential": {
+                "current": "dbtcloud:index/fabricCredential:FabricCredential"
+            },
+            "dbtcloud_group": {
+                "current": "dbtcloud:index/group:Group",
+                "fields": {
+                    "group_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "sso_mapping_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_job": {
+                "current": "dbtcloud:index/job:Job",
+                "fields": {
+                    "execute_steps": {
+                        "maxItemsOne": false
+                    },
+                    "schedule_days": {
+                        "maxItemsOne": false
+                    },
+                    "schedule_hours": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_license_map": {
+                "current": "dbtcloud:index/licenseMap:LicenseMap",
+                "fields": {
+                    "sso_license_mapping_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_notification": {
+                "current": "dbtcloud:index/notification:Notification",
+                "fields": {
+                    "on_cancel": {
+                        "maxItemsOne": false
+                    },
+                    "on_failure": {
+                        "maxItemsOne": false
+                    },
+                    "on_success": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_postgres_credential": {
+                "current": "dbtcloud:index/postgresCredential:PostgresCredential"
+            },
+            "dbtcloud_project": {
+                "current": "dbtcloud:index/project:Project"
+            },
+            "dbtcloud_project_artefacts": {
+                "current": "dbtcloud:index/projectArtefacts:ProjectArtefacts"
+            },
+            "dbtcloud_project_connection": {
+                "current": "dbtcloud:index/projectConnection:ProjectConnection"
+            },
+            "dbtcloud_project_repository": {
+                "current": "dbtcloud:index/projectRepository:ProjectRepository"
+            },
+            "dbtcloud_repository": {
+                "current": "dbtcloud:index/repository:Repository"
+            },
+            "dbtcloud_service_token": {
+                "current": "dbtcloud:index/serviceToken:ServiceToken",
+                "fields": {
+                    "service_token_permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_snowflake_credential": {
+                "current": "dbtcloud:index/snowflakeCredential:SnowflakeCredential"
+            },
+            "dbtcloud_user_groups": {
+                "current": "dbtcloud:index/userGroups:UserGroups",
+                "fields": {
+                    "group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_webhook": {
+                "current": "dbtcloud:index/webhook:Webhook",
+                "fields": {
+                    "event_types": {
+                        "maxItemsOne": false
+                    },
+                    "job_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "dbtcloud_azure_dev_ops_project": {
+                "current": "dbtcloud:index/getAzureDevOpsProject:getAzureDevOpsProject"
+            },
+            "dbtcloud_azure_dev_ops_repository": {
+                "current": "dbtcloud:index/getAzureDevOpsRepository:getAzureDevOpsRepository"
+            },
+            "dbtcloud_bigquery_connection": {
+                "current": "dbtcloud:index/getBigQueryConnection:getBigQueryConnection"
+            },
+            "dbtcloud_bigquery_credential": {
+                "current": "dbtcloud:index/getBigQueryCredential:getBigQueryCredential"
+            },
+            "dbtcloud_connection": {
+                "current": "dbtcloud:index/getConnection:getConnection"
+            },
+            "dbtcloud_databricks_credential": {
+                "current": "dbtcloud:index/getDatabricksCredential:getDatabricksCredential"
+            },
+            "dbtcloud_environment": {
+                "current": "dbtcloud:index/getEnvironment:getEnvironment"
+            },
+            "dbtcloud_environment_variable": {
+                "current": "dbtcloud:index/getEnvironmentVariable:getEnvironmentVariable"
+            },
+            "dbtcloud_extended_attributes": {
+                "current": "dbtcloud:index/getExtendedAttributes:getExtendedAttributes"
+            },
+            "dbtcloud_group": {
+                "current": "dbtcloud:index/getGroup:getGroup",
+                "fields": {
+                    "sso_mapping_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_group_users": {
+                "current": "dbtcloud:index/getGroupUsers:getGroupUsers",
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_job": {
+                "current": "dbtcloud:index/getJob:getJob"
+            },
+            "dbtcloud_notification": {
+                "current": "dbtcloud:index/getNotification:getNotification",
+                "fields": {
+                    "on_cancel": {
+                        "maxItemsOne": false
+                    },
+                    "on_failure": {
+                        "maxItemsOne": false
+                    },
+                    "on_success": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_postgres_credential": {
+                "current": "dbtcloud:index/getPostgresCredential:getPostgresCredential"
+            },
+            "dbtcloud_privatelink_endpoint": {
+                "current": "dbtcloud:index/getPrivatelinkEndpoint:getPrivatelinkEndpoint"
+            },
+            "dbtcloud_project": {
+                "current": "dbtcloud:index/getProject:getProject"
+            },
+            "dbtcloud_repository": {
+                "current": "dbtcloud:index/getRepository:getRepository"
+            },
+            "dbtcloud_service_token": {
+                "current": "dbtcloud:index/getServiceToken:getServiceToken",
+                "fields": {
+                    "service_token_permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_snowflake_credential": {
+                "current": "dbtcloud:index/getSnowflakeCredential:getSnowflakeCredential"
+            },
+            "dbtcloud_user": {
+                "current": "dbtcloud:index/getUser:getUser"
+            },
+            "dbtcloud_user_groups": {
+                "current": "dbtcloud:index/getUserGroups:getUserGroups",
+                "fields": {
+                    "group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbtcloud_webhook": {
+                "current": "dbtcloud:index/getWebhook:getWebhook",
+                "fields": {
+                    "event_types": {
+                        "maxItemsOne": false
+                    },
+                    "job_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {},
+    "renames": {
+        "resources": {
+            "dbtcloud:index/bigQueryConnection:BigQueryConnection": "dbtcloud_bigquery_connection",
+            "dbtcloud:index/bigQueryCredential:BigQueryCredential": "dbtcloud_bigquery_credential",
+            "dbtcloud:index/connection:Connection": "dbtcloud_connection",
+            "dbtcloud:index/databricksCredential:DatabricksCredential": "dbtcloud_databricks_credential",
+            "dbtcloud:index/environment:Environment": "dbtcloud_environment",
+            "dbtcloud:index/environmentVariable:EnvironmentVariable": "dbtcloud_environment_variable",
+            "dbtcloud:index/environmentVariableJobOverride:EnvironmentVariableJobOverride": "dbtcloud_environment_variable_job_override",
+            "dbtcloud:index/extendedAttributes:ExtendedAttributes": "dbtcloud_extended_attributes",
+            "dbtcloud:index/fabricConnection:FabricConnection": "dbtcloud_fabric_connection",
+            "dbtcloud:index/fabricCredential:FabricCredential": "dbtcloud_fabric_credential",
+            "dbtcloud:index/group:Group": "dbtcloud_group",
+            "dbtcloud:index/job:Job": "dbtcloud_job",
+            "dbtcloud:index/licenseMap:LicenseMap": "dbtcloud_license_map",
+            "dbtcloud:index/notification:Notification": "dbtcloud_notification",
+            "dbtcloud:index/postgresCredential:PostgresCredential": "dbtcloud_postgres_credential",
+            "dbtcloud:index/project:Project": "dbtcloud_project",
+            "dbtcloud:index/projectArtefacts:ProjectArtefacts": "dbtcloud_project_artefacts",
+            "dbtcloud:index/projectConnection:ProjectConnection": "dbtcloud_project_connection",
+            "dbtcloud:index/projectRepository:ProjectRepository": "dbtcloud_project_repository",
+            "dbtcloud:index/repository:Repository": "dbtcloud_repository",
+            "dbtcloud:index/serviceToken:ServiceToken": "dbtcloud_service_token",
+            "dbtcloud:index/snowflakeCredential:SnowflakeCredential": "dbtcloud_snowflake_credential",
+            "dbtcloud:index/userGroups:UserGroups": "dbtcloud_user_groups",
+            "dbtcloud:index/webhook:Webhook": "dbtcloud_webhook"
+        },
+        "functions": {
+            "dbtcloud:index/getAzureDevOpsProject:getAzureDevOpsProject": "dbtcloud_azure_dev_ops_project",
+            "dbtcloud:index/getAzureDevOpsRepository:getAzureDevOpsRepository": "dbtcloud_azure_dev_ops_repository",
+            "dbtcloud:index/getBigQueryConnection:getBigQueryConnection": "dbtcloud_bigquery_connection",
+            "dbtcloud:index/getBigQueryCredential:getBigQueryCredential": "dbtcloud_bigquery_credential",
+            "dbtcloud:index/getConnection:getConnection": "dbtcloud_connection",
+            "dbtcloud:index/getDatabricksCredential:getDatabricksCredential": "dbtcloud_databricks_credential",
+            "dbtcloud:index/getEnvironment:getEnvironment": "dbtcloud_environment",
+            "dbtcloud:index/getEnvironmentVariable:getEnvironmentVariable": "dbtcloud_environment_variable",
+            "dbtcloud:index/getExtendedAttributes:getExtendedAttributes": "dbtcloud_extended_attributes",
+            "dbtcloud:index/getGroup:getGroup": "dbtcloud_group",
+            "dbtcloud:index/getGroupUsers:getGroupUsers": "dbtcloud_group_users",
+            "dbtcloud:index/getJob:getJob": "dbtcloud_job",
+            "dbtcloud:index/getNotification:getNotification": "dbtcloud_notification",
+            "dbtcloud:index/getPostgresCredential:getPostgresCredential": "dbtcloud_postgres_credential",
+            "dbtcloud:index/getPrivatelinkEndpoint:getPrivatelinkEndpoint": "dbtcloud_privatelink_endpoint",
+            "dbtcloud:index/getProject:getProject": "dbtcloud_project",
+            "dbtcloud:index/getRepository:getRepository": "dbtcloud_repository",
+            "dbtcloud:index/getServiceToken:getServiceToken": "dbtcloud_service_token",
+            "dbtcloud:index/getSnowflakeCredential:getSnowflakeCredential": "dbtcloud_snowflake_credential",
+            "dbtcloud:index/getUser:getUser": "dbtcloud_user",
+            "dbtcloud:index/getUserGroups:getUserGroups": "dbtcloud_user_groups",
+            "dbtcloud:index/getWebhook:getWebhook": "dbtcloud_webhook"
+        },
+        "renamedProperties": {
+            "dbtcloud:index/GroupGroupPermission:GroupGroupPermission": {
+                "allProjects": "all_projects",
+                "permissionSet": "permission_set",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/ServiceTokenServiceTokenPermission:ServiceTokenServiceTokenPermission": {
+                "allProjects": "all_projects",
+                "permissionSet": "permission_set",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/bigQueryConnection:BigQueryConnection": {
+                "applicationId": "application_id",
+                "applicationSecret": "application_secret",
+                "authProviderX509CertUrl": "auth_provider_x509_cert_url",
+                "authUri": "auth_uri",
+                "clientEmail": "client_email",
+                "clientId": "client_id",
+                "clientX509CertUrl": "client_x509_cert_url",
+                "connectionId": "connection_id",
+                "dataprocClusterName": "dataproc_cluster_name",
+                "dataprocRegion": "dataproc_region",
+                "executionProject": "execution_project",
+                "gcpProjectId": "gcp_project_id",
+                "gcsBucket": "gcs_bucket",
+                "isActive": "is_active",
+                "isConfiguredForOauth": "is_configured_for_oauth",
+                "maximumBytesBilled": "maximum_bytes_billed",
+                "privateKey": "private_key",
+                "privateKeyId": "private_key_id",
+                "projectId": "project_id",
+                "timeoutSeconds": "timeout_seconds",
+                "tokenUri": "token_uri"
+            },
+            "dbtcloud:index/bigQueryCredential:BigQueryCredential": {
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/connection:Connection": {
+                "adapterId": "adapter_id",
+                "allowKeepAlive": "allow_keep_alive",
+                "allowSso": "allow_sso",
+                "connectionId": "connection_id",
+                "hostName": "host_name",
+                "httpPath": "http_path",
+                "isActive": "is_active",
+                "oauthClientId": "oauth_client_id",
+                "oauthClientSecret": "oauth_client_secret",
+                "privateLinkEndpointId": "private_link_endpoint_id",
+                "projectId": "project_id",
+                "tunnelEnabled": "tunnel_enabled"
+            },
+            "dbtcloud:index/databricksCredential:DatabricksCredential": {
+                "adapterId": "adapter_id",
+                "adapterType": "adapter_type",
+                "credentialId": "credential_id",
+                "projectId": "project_id",
+                "targetName": "target_name"
+            },
+            "dbtcloud:index/environment:Environment": {
+                "credentialId": "credential_id",
+                "customBranch": "custom_branch",
+                "dbtVersion": "dbt_version",
+                "deploymentType": "deployment_type",
+                "environmentId": "environment_id",
+                "extendedAttributesId": "extended_attributes_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "useCustomBranch": "use_custom_branch"
+            },
+            "dbtcloud:index/environmentVariable:EnvironmentVariable": {
+                "environmentValues": "environment_values",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/environmentVariableJobOverride:EnvironmentVariableJobOverride": {
+                "environmentVariableJobOverrideId": "environment_variable_job_override_id",
+                "jobDefinitionId": "job_definition_id",
+                "projectId": "project_id",
+                "rawValue": "raw_value"
+            },
+            "dbtcloud:index/extendedAttributes:ExtendedAttributes": {
+                "extendedAttributes": "extended_attributes",
+                "extendedAttributesId": "extended_attributes_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/fabricConnection:FabricConnection": {
+                "adapterId": "adapter_id",
+                "connectionId": "connection_id",
+                "loginTimeout": "login_timeout",
+                "projectId": "project_id",
+                "queryTimeout": "query_timeout"
+            },
+            "dbtcloud:index/fabricCredential:FabricCredential": {
+                "adapterId": "adapter_id",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "credentialId": "credential_id",
+                "projectId": "project_id",
+                "schemaAuthorization": "schema_authorization",
+                "tenantId": "tenant_id"
+            },
+            "dbtcloud:index/getAzureDevOpsRepository:getAzureDevOpsRepository": {
+                "azureDevOpsProjectId": "azure_dev_ops_project_id",
+                "defaultBranch": "default_branch",
+                "detailsUrl": "details_url",
+                "remoteUrl": "remote_url",
+                "webUrl": "web_url"
+            },
+            "dbtcloud:index/getBigQueryConnection:getBigQueryConnection": {
+                "authProviderX509CertUrl": "auth_provider_x509_cert_url",
+                "authUri": "auth_uri",
+                "clientEmail": "client_email",
+                "clientId": "client_id",
+                "clientX509CertUrl": "client_x509_cert_url",
+                "connectionId": "connection_id",
+                "dataprocClusterName": "dataproc_cluster_name",
+                "dataprocRegion": "dataproc_region",
+                "executionProject": "execution_project",
+                "gcpProjectId": "gcp_project_id",
+                "gcsBucket": "gcs_bucket",
+                "isActive": "is_active",
+                "isConfiguredForOauth": "is_configured_for_oauth",
+                "maximumBytesBilled": "maximum_bytes_billed",
+                "privateKey": "private_key",
+                "privateKeyId": "private_key_id",
+                "projectId": "project_id",
+                "timeoutSeconds": "timeout_seconds",
+                "tokenUri": "token_uri"
+            },
+            "dbtcloud:index/getBigQueryCredential:getBigQueryCredential": {
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/getConnection:getConnection": {
+                "allowKeepAlive": "allow_keep_alive",
+                "allowSso": "allow_sso",
+                "connectionId": "connection_id",
+                "isActive": "is_active",
+                "privateLinkEndpointId": "private_link_endpoint_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/getDatabricksCredential:getDatabricksCredential": {
+                "adapterId": "adapter_id",
+                "credentialId": "credential_id",
+                "numThreads": "num_threads",
+                "projectId": "project_id",
+                "targetName": "target_name"
+            },
+            "dbtcloud:index/getEnvironment:getEnvironment": {
+                "credentialId": "credential_id",
+                "customBranch": "custom_branch",
+                "dbtVersion": "dbt_version",
+                "deploymentType": "deployment_type",
+                "environmentId": "environment_id",
+                "extendedAttributesId": "extended_attributes_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "useCustomBranch": "use_custom_branch"
+            },
+            "dbtcloud:index/getEnvironmentVariable:getEnvironmentVariable": {
+                "environmentValues": "environment_values",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/getExtendedAttributes:getExtendedAttributes": {
+                "extendedAttributes": "extended_attributes",
+                "extendedAttributesId": "extended_attributes_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/getGroup:getGroup": {
+                "assignByDefault": "assign_by_default",
+                "groupId": "group_id",
+                "isActive": "is_active",
+                "ssoMappingGroups": "sso_mapping_groups"
+            },
+            "dbtcloud:index/getGroupUsers:getGroupUsers": {
+                "groupId": "group_id"
+            },
+            "dbtcloud:index/getJob:getJob": {
+                "deferringEnvironmentId": "deferring_environment_id",
+                "deferringJobId": "deferring_job_id",
+                "environmentId": "environment_id",
+                "jobId": "job_id",
+                "projectId": "project_id",
+                "selfDeferring": "self_deferring",
+                "timeoutSeconds": "timeout_seconds",
+                "triggersOnDraftPr": "triggers_on_draft_pr"
+            },
+            "dbtcloud:index/getNotification:getNotification": {
+                "externalEmail": "external_email",
+                "notificationId": "notification_id",
+                "notificationType": "notification_type",
+                "onCancels": "on_cancel",
+                "onFailures": "on_failure",
+                "onSuccesses": "on_success",
+                "userId": "user_id"
+            },
+            "dbtcloud:index/getPostgresCredential:getPostgresCredential": {
+                "credentialId": "credential_id",
+                "defaultSchema": "default_schema",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/getPrivatelinkEndpoint:getPrivatelinkEndpoint": {
+                "cidrRange": "cidr_range",
+                "privateLinkEndpointUrl": "private_link_endpoint_url"
+            },
+            "dbtcloud:index/getProject:getProject": {
+                "connectionId": "connection_id",
+                "docsJobId": "docs_job_id",
+                "freshnessJobId": "freshness_job_id",
+                "projectId": "project_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/getRepository:getRepository": {
+                "deployKey": "deploy_key",
+                "fetchDeployKey": "fetch_deploy_key",
+                "gitCloneStrategy": "git_clone_strategy",
+                "githubInstallationId": "github_installation_id",
+                "gitlabProjectId": "gitlab_project_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "remoteUrl": "remote_url",
+                "repositoryCredentialsId": "repository_credentials_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/getServiceToken:getServiceToken": {
+                "serviceTokenId": "service_token_id",
+                "serviceTokenPermissions": "service_token_permissions"
+            },
+            "dbtcloud:index/getServiceTokenServiceTokenPermission:getServiceTokenServiceTokenPermission": {
+                "allProjects": "all_projects",
+                "permissionSet": "permission_set",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/getSnowflakeCredential:getSnowflakeCredential": {
+                "authType": "auth_type",
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/getUserGroups:getUserGroups": {
+                "groupIds": "group_ids",
+                "userId": "user_id"
+            },
+            "dbtcloud:index/getWebhook:getWebhook": {
+                "accountIdentifier": "account_identifier",
+                "clientUrl": "client_url",
+                "eventTypes": "event_types",
+                "httpStatusCode": "http_status_code",
+                "jobIds": "job_ids",
+                "webhookId": "webhook_id"
+            },
+            "dbtcloud:index/group:Group": {
+                "assignByDefault": "assign_by_default",
+                "groupPermissions": "group_permissions",
+                "isActive": "is_active",
+                "ssoMappingGroups": "sso_mapping_groups"
+            },
+            "dbtcloud:index/job:Job": {
+                "dbtVersion": "dbt_version",
+                "deferringEnvironmentId": "deferring_environment_id",
+                "deferringJobId": "deferring_job_id",
+                "environmentId": "environment_id",
+                "executeSteps": "execute_steps",
+                "generateDocs": "generate_docs",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id",
+                "runGenerateSources": "run_generate_sources",
+                "scheduleCron": "schedule_cron",
+                "scheduleDays": "schedule_days",
+                "scheduleHours": "schedule_hours",
+                "scheduleInterval": "schedule_interval",
+                "scheduleType": "schedule_type",
+                "selfDeferring": "self_deferring",
+                "targetName": "target_name",
+                "timeoutSeconds": "timeout_seconds",
+                "triggersOnDraftPr": "triggers_on_draft_pr"
+            },
+            "dbtcloud:index/licenseMap:LicenseMap": {
+                "licenseType": "license_type",
+                "ssoLicenseMappingGroups": "sso_license_mapping_groups"
+            },
+            "dbtcloud:index/notification:Notification": {
+                "externalEmail": "external_email",
+                "notificationType": "notification_type",
+                "onCancels": "on_cancel",
+                "onFailures": "on_failure",
+                "onSuccesses": "on_success",
+                "slackChannelId": "slack_channel_id",
+                "slackChannelName": "slack_channel_name",
+                "userId": "user_id"
+            },
+            "dbtcloud:index/postgresCredential:PostgresCredential": {
+                "credentialId": "credential_id",
+                "defaultSchema": "default_schema",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id",
+                "targetName": "target_name"
+            },
+            "dbtcloud:index/project:Project": {
+                "dbtProjectSubdirectory": "dbt_project_subdirectory"
+            },
+            "dbtcloud:index/projectArtefacts:ProjectArtefacts": {
+                "docsJobId": "docs_job_id",
+                "freshnessJobId": "freshness_job_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/projectConnection:ProjectConnection": {
+                "connectionId": "connection_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/projectRepository:ProjectRepository": {
+                "projectId": "project_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/repository:Repository": {
+                "azureActiveDirectoryProjectId": "azure_active_directory_project_id",
+                "azureActiveDirectoryRepositoryId": "azure_active_directory_repository_id",
+                "azureBypassWebhookRegistrationFailure": "azure_bypass_webhook_registration_failure",
+                "deployKey": "deploy_key",
+                "fetchDeployKey": "fetch_deploy_key",
+                "gitCloneStrategy": "git_clone_strategy",
+                "githubInstallationId": "github_installation_id",
+                "gitlabProjectId": "gitlab_project_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "remoteUrl": "remote_url",
+                "repositoryCredentialsId": "repository_credentials_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/serviceToken:ServiceToken": {
+                "serviceTokenPermissions": "service_token_permissions",
+                "tokenString": "token_string"
+            },
+            "dbtcloud:index/snowflakeCredential:SnowflakeCredential": {
+                "authType": "auth_type",
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "privateKey": "private_key",
+                "privateKeyPassphrase": "private_key_passphrase",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/userGroups:UserGroups": {
+                "groupIds": "group_ids",
+                "userId": "user_id"
+            },
+            "dbtcloud:index/webhook:Webhook": {
+                "accountIdentifier": "account_identifier",
+                "clientUrl": "client_url",
+                "eventTypes": "event_types",
+                "hmacSecret": "hmac_secret",
+                "httpStatusCode": "http_status_code",
+                "jobIds": "job_ids",
+                "webhookId": "webhook_id"
+            },
+            "dbtcloud:index:Provider": {
+                "accountId": "account_id",
+                "hostUrl": "host_url"
+            }
+        },
+        "renamedConfigProperties": {
+            "accountId": "account_id",
+            "hostUrl": "host_url"
+        }
+    }
+}

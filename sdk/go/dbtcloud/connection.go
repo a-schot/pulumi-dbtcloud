@@ -15,7 +15,7 @@ import (
 // Create a Data Warehouse connection for your project in dbt Cloud. The connection will need to be linked to the dbt Cloud project via a `ProjectConnection` resource.
 //
 // This resource can be used for Databricks, Postgres, Redshift, Snowflake and AlloyDB connections.
-// For BigQuery, due to the list of fields being very different, you can use the `BigqueryConnection` resource.
+// For BigQuery, due to the list of fields being very different, you can use the `BigQueryConnection` resource.
 //
 // ## Example Usage
 //

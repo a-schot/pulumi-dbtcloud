@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetBigQueryCredential(ctx *pulumi.Context, args *GetBigQueryCredentialArgs, opts ...pulumi.InvokeOption) (*GetBigQueryCredentialResult, error) {
+func LookupBigQueryCredential(ctx *pulumi.Context, args *LookupBigQueryCredentialArgs, opts ...pulumi.InvokeOption) (*LookupBigQueryCredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetBigQueryCredentialResult
+	var rv LookupBigQueryCredentialResult
 	err := ctx.Invoke("dbtcloud:index/getBigQueryCredential:getBigQueryCredential", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,7 +22,7 @@ func GetBigQueryCredential(ctx *pulumi.Context, args *GetBigQueryCredentialArgs,
 }
 
 // A collection of arguments for invoking getBigQueryCredential.
-type GetBigQueryCredentialArgs struct {
+type LookupBigQueryCredentialArgs struct {
 	// Credential ID
 	CredentialId int `pulumi:"credentialId"`
 	// Project ID
@@ -30,7 +30,7 @@ type GetBigQueryCredentialArgs struct {
 }
 
 // A collection of values returned by getBigQueryCredential.
-type GetBigQueryCredentialResult struct {
+type LookupBigQueryCredentialResult struct {
 	// Credential ID
 	CredentialId int `pulumi:"credentialId"`
 	// Default dataset name
@@ -45,76 +45,76 @@ type GetBigQueryCredentialResult struct {
 	ProjectId int `pulumi:"projectId"`
 }
 
-func GetBigQueryCredentialOutput(ctx *pulumi.Context, args GetBigQueryCredentialOutputArgs, opts ...pulumi.InvokeOption) GetBigQueryCredentialResultOutput {
+func LookupBigQueryCredentialOutput(ctx *pulumi.Context, args LookupBigQueryCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupBigQueryCredentialResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBigQueryCredentialResult, error) {
-			args := v.(GetBigQueryCredentialArgs)
-			r, err := GetBigQueryCredential(ctx, &args, opts...)
-			var s GetBigQueryCredentialResult
+		ApplyT(func(v interface{}) (LookupBigQueryCredentialResult, error) {
+			args := v.(LookupBigQueryCredentialArgs)
+			r, err := LookupBigQueryCredential(ctx, &args, opts...)
+			var s LookupBigQueryCredentialResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetBigQueryCredentialResultOutput)
+		}).(LookupBigQueryCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getBigQueryCredential.
-type GetBigQueryCredentialOutputArgs struct {
+type LookupBigQueryCredentialOutputArgs struct {
 	// Credential ID
 	CredentialId pulumi.IntInput `pulumi:"credentialId"`
 	// Project ID
 	ProjectId pulumi.IntInput `pulumi:"projectId"`
 }
 
-func (GetBigQueryCredentialOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBigQueryCredentialArgs)(nil)).Elem()
+func (LookupBigQueryCredentialOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBigQueryCredentialArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getBigQueryCredential.
-type GetBigQueryCredentialResultOutput struct{ *pulumi.OutputState }
+type LookupBigQueryCredentialResultOutput struct{ *pulumi.OutputState }
 
-func (GetBigQueryCredentialResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBigQueryCredentialResult)(nil)).Elem()
+func (LookupBigQueryCredentialResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBigQueryCredentialResult)(nil)).Elem()
 }
 
-func (o GetBigQueryCredentialResultOutput) ToGetBigQueryCredentialResultOutput() GetBigQueryCredentialResultOutput {
+func (o LookupBigQueryCredentialResultOutput) ToLookupBigQueryCredentialResultOutput() LookupBigQueryCredentialResultOutput {
 	return o
 }
 
-func (o GetBigQueryCredentialResultOutput) ToGetBigQueryCredentialResultOutputWithContext(ctx context.Context) GetBigQueryCredentialResultOutput {
+func (o LookupBigQueryCredentialResultOutput) ToLookupBigQueryCredentialResultOutputWithContext(ctx context.Context) LookupBigQueryCredentialResultOutput {
 	return o
 }
 
 // Credential ID
-func (o GetBigQueryCredentialResultOutput) CredentialId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBigQueryCredentialResult) int { return v.CredentialId }).(pulumi.IntOutput)
+func (o LookupBigQueryCredentialResultOutput) CredentialId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBigQueryCredentialResult) int { return v.CredentialId }).(pulumi.IntOutput)
 }
 
 // Default dataset name
-func (o GetBigQueryCredentialResultOutput) Dataset() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBigQueryCredentialResult) string { return v.Dataset }).(pulumi.StringOutput)
+func (o LookupBigQueryCredentialResultOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBigQueryCredentialResult) string { return v.Dataset }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetBigQueryCredentialResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBigQueryCredentialResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupBigQueryCredentialResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBigQueryCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether the BigQuery credential is active
-func (o GetBigQueryCredentialResultOutput) IsActive() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetBigQueryCredentialResult) bool { return v.IsActive }).(pulumi.BoolOutput)
+func (o LookupBigQueryCredentialResultOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBigQueryCredentialResult) bool { return v.IsActive }).(pulumi.BoolOutput)
 }
 
 // Number of threads to use
-func (o GetBigQueryCredentialResultOutput) NumThreads() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBigQueryCredentialResult) int { return v.NumThreads }).(pulumi.IntOutput)
+func (o LookupBigQueryCredentialResultOutput) NumThreads() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBigQueryCredentialResult) int { return v.NumThreads }).(pulumi.IntOutput)
 }
 
 // Project ID
-func (o GetBigQueryCredentialResultOutput) ProjectId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBigQueryCredentialResult) int { return v.ProjectId }).(pulumi.IntOutput)
+func (o LookupBigQueryCredentialResultOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBigQueryCredentialResult) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetBigQueryCredentialResultOutput{})
+	pulumi.RegisterOutputType(LookupBigQueryCredentialResultOutput{})
 }

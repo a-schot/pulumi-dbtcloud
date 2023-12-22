@@ -20,18 +20,6 @@ export interface GroupGroupPermission {
     projectId?: pulumi.Input<number>;
 }
 
-export interface LegacyGroupGroupPermission {
-    allProjects: pulumi.Input<boolean>;
-    permissionSet: pulumi.Input<string>;
-    projectId?: pulumi.Input<number>;
-}
-
-export interface LegacyServiceTokenServiceTokenPermission {
-    allProjects: pulumi.Input<boolean>;
-    permissionSet: pulumi.Input<string>;
-    projectId?: pulumi.Input<number>;
-}
-
 export interface ServiceTokenServiceTokenPermission {
     /**
      * Whether or not to apply this permission to all projects for this service token
