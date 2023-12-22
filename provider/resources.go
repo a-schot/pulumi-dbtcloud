@@ -21,7 +21,7 @@ import (
 	"github.com/a-schot/pulumi-dbtcloud/provider/pkg/version"
 	dbtcloud "github.com/dbt-labs/terraform-provider-dbtcloud/pkg/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -70,7 +70,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
+		PluginDownloadURL: "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
 		Description:       "A Pulumi package for creating and managing dbt Cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -79,10 +79,8 @@ func Provider() tfbridge.ProviderInfo {
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
 		Repository: "https://github.com/a-schot/pulumi-dbtcloud",
-		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
-		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "dbt-labs",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		GitHubOrg:  "dbt-labs",
+		Config:     map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -93,7 +91,7 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -106,13 +104,95 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+			"dbtcloud_job":                               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job")},
+			"dbtcloud_project":                           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Project")},
+			"dbtcloud_project_connection":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectConnection")},
+			"dbtcloud_project_repository":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectRepository")},
+			"dbtcloud_project_artefacts":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectArtefacts")},
+			"dbtcloud_environment":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Environment")},
+			"dbtcloud_environment_variable":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariable")},
+			"dbtcloud_databricks_credential":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DatabricksCredential")},
+			"dbtcloud_snowflake_credential":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SnowflakeCredential")},
+			"dbtcloud_bigquery_credential":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigqueryCredential")},
+			"dbtcloud_postgres_credential":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PostgresCredential")},
+			"dbtcloud_connection":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connection")},
+			"dbtcloud_bigquery_connection":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigqueryConnection")},
+			"dbtcloud_repository":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Repository")},
+			"dbtcloud_group":                             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
+			"dbtcloud_service_token":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServiceToken")},
+			"dbtcloud_webhook":                           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook")},
+			"dbtcloud_notification":                      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Notification")},
+			"dbtcloud_user_groups":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserGroups")},
+			"dbtcloud_license_map":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LicenseMap")},
+			"dbtcloud_extended_attributes":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ExtendedAttributes")},
+			"dbtcloud_environment_variable_job_override": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariableJobOverride")},
+			"dbtcloud_fabric_connection":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricConnection")},
+			"dbtcloud_fabric_credential":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricCredential")},
+			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
+			"dbt_cloud_job":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyJob")},
+			"dbt_cloud_project":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProject")},
+			"dbt_cloud_project_connection":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectConnection")},
+			"dbt_cloud_project_repository":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectRepository")},
+			"dbt_cloud_project_artefacts":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectArtefacts")},
+			"dbt_cloud_environment":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironment")},
+			"dbt_cloud_environment_variable":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironmentVariable")},
+			"dbt_cloud_databricks_credential": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyDatabricksCredential")},
+			"dbt_cloud_snowflake_credential":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacySnowflakeCredential")},
+			"dbt_cloud_bigquery_credential":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryCredential")},
+			"dbt_cloud_postgres_credential":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyPostgresCredential")},
+			"dbt_cloud_connection":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyConnection")},
+			"dbt_cloud_bigquery_connection":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryConnection")},
+			"dbt_cloud_repository":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyRepository")},
+			"dbt_cloud_group":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyGroup")},
+			"dbt_cloud_service_token":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyServiceToken")},
+			"dbt_cloud_webhook":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyWebhook")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"dbtcloud_group":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup")},
+			"dbtcloud_job":                      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getJob")},
+			"dbtcloud_project":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProject")},
+			"dbtcloud_environment":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironment")},
+			"dbtcloud_environment_variable":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironmentVariable")},
+			"dbtcloud_snowflake_credential":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSnowflakeCredential")},
+			"dbtcloud_bigquery_credential":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBigQueryCredential")},
+			"dbtcloud_postgres_credential":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPostgresCredential")},
+			"dbtcloud_databricks_credential":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDatabricksCredential")},
+			"dbtcloud_connection":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnection")},
+			"dbtcloud_bigquery_connection":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBigqueryConnection")},
+			"dbtcloud_repository":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRepository")},
+			"dbtcloud_user":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
+			"dbtcloud_service_token":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServiceToken")},
+			"dbtcloud_webhook":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWebhook")},
+			"dbtcloud_privatelink_endpoint":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPrivatelinkEndpoint")},
+			"dbtcloud_notification":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotification")},
+			"dbtcloud_user_groups":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUserGroups")},
+			"dbtcloud_extended_attributes":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getExtendedAttributes")},
+			"dbtcloud_group_users":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
+			"dbtcloud_azure_dev_ops_project":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsProject")},
+			"dbtcloud_azure_dev_ops_repository": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsRepository")},
+			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
+			"dbt_cloud_group":                 {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetGroup")},
+			"dbt_cloud_job":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetJob")},
+			"dbt_cloud_project":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetProject")},
+			"dbt_cloud_environment":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironment")},
+			"dbt_cloud_environment_variable":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironmentVariable")},
+			"dbt_cloud_snowflake_credential":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetSnowflakeCredential")},
+			"dbt_cloud_bigquery_credential":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryCredential")},
+			"dbt_cloud_postgres_credential":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPostgresCredential")},
+			"dbt_cloud_databricks_credential": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetDatabricksCredential")},
+			"dbt_cloud_connection":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetConnection")},
+			"dbt_cloud_bigquery_connection":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryConnection")},
+			"dbt_cloud_repository":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetRepository")},
+			"dbt_cloud_user":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetUser")},
+			"dbt_cloud_service_token":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetServiceToken")},
+			"dbt_cloud_webhook":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetWebhook")},
+			"dbt_cloud_privatelink_endpoint":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPrivatelinkEndpoint")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName: "@aschot/pulumi-dbtcloud",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -127,6 +207,7 @@ func Provider() tfbridge.ProviderInfo {
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
+			PackageName: "aschot_pulumi_dbtcloud",
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
@@ -142,6 +223,7 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RootNamespace: "ASchot.Pulumi",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
@@ -151,8 +233,13 @@ func Provider() tfbridge.ProviderInfo {
 	// These are new API's that you may opt to use to automatically compute resource tokens,
 	// and apply auto aliasing for full backwards compatibility.
 	// For more information, please reference: https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
-	prov.MustComputeTokens(tokens.SingleModule("dbtcloud_", mainMod,
-		tokens.MakeStandard(mainPkg)))
+
+	prov.MustComputeTokens(tfbridgetokens.SingleModule(
+		"dbtcloud_",
+		mainMod,
+		tfbridgetokens.MakeStandard(mainPkg),
+	))
+	// prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
