@@ -15,7 +15,7 @@ Account identifier for your dbt Cloud implementation. Instead of setting the par
 variable `DBT_CLOUD_ACCOUNT_ID`
 """
 
-hostUrl: Optional[str]
+hostUrl: str
 """
 URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
 `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api

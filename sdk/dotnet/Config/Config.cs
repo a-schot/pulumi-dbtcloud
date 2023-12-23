@@ -32,7 +32,7 @@ namespace ASchot.Pulumi.Dbtcloud
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("dbtcloud");
 
-        private static readonly __Value<int?> _accountId = new __Value<int?>(() => __config.GetInt32("accountId"));
+        private static readonly __Value<int?> _accountId = new __Value<int?>(() => __config.GetInt32("accountId") ?? Utilities.GetEnvInt32("DBT_CLOUD_ACCOUNT_ID"));
         /// <summary>
         /// Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment
         /// variable `DBT_CLOUD_ACCOUNT_ID`
@@ -43,7 +43,7 @@ namespace ASchot.Pulumi.Dbtcloud
             set => _accountId.Set(value);
         }
 
-        private static readonly __Value<string?> _hostUrl = new __Value<string?>(() => __config.Get("hostUrl"));
+        private static readonly __Value<string?> _hostUrl = new __Value<string?>(() => __config.Get("hostUrl") ?? Utilities.GetEnv("DBT_CLOUD_HOST_URL") ?? "https://cloud.getdbt.com/api");
         /// <summary>
         /// URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
         /// `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api
@@ -54,7 +54,7 @@ namespace ASchot.Pulumi.Dbtcloud
             set => _hostUrl.Set(value);
         }
 
-        private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
+        private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token") ?? Utilities.GetEnv("DBT_CLOUD_TOKEN"));
         /// <summary>
         /// API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
         /// </summary>

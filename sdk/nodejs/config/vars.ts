@@ -14,7 +14,7 @@ const __config = new pulumi.Config("dbtcloud");
 export declare const accountId: number | undefined;
 Object.defineProperty(exports, "accountId", {
     get() {
-        return __config.getObject<number>("accountId");
+        return __config.getObject<number>("accountId") ?? utilities.getEnvNumber("DBT_CLOUD_ACCOUNT_ID");
     },
     enumerable: true,
 });
@@ -23,10 +23,10 @@ Object.defineProperty(exports, "accountId", {
  * URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
  * `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api
  */
-export declare const hostUrl: string | undefined;
+export declare const hostUrl: string;
 Object.defineProperty(exports, "hostUrl", {
     get() {
-        return __config.get("hostUrl");
+        return __config.get("hostUrl") ?? (utilities.getEnv("DBT_CLOUD_HOST_URL") || "https://cloud.getdbt.com/api");
     },
     enumerable: true,
 });
@@ -37,7 +37,7 @@ Object.defineProperty(exports, "hostUrl", {
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {
-        return __config.get("token");
+        return __config.get("token") ?? utilities.getEnv("DBT_CLOUD_TOKEN");
     },
     enumerable: true,
 });

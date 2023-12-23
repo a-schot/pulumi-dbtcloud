@@ -14,25 +14,33 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[int],
-                 token: pulumi.Input[str],
-                 host_url: Optional[pulumi.Input[str]] = None):
+                 account_id: Optional[pulumi.Input[int]] = None,
+                 host_url: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[int] account_id: Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment
                variable `DBT_CLOUD_ACCOUNT_ID`
-        :param pulumi.Input[str] token: API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
         :param pulumi.Input[str] host_url: URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
                `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api
+        :param pulumi.Input[str] token: API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "token", token)
+        if account_id is None:
+            account_id = _utilities.get_env_int('DBT_CLOUD_ACCOUNT_ID')
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if host_url is None:
+            host_url = (_utilities.get_env('DBT_CLOUD_HOST_URL') or 'https://cloud.getdbt.com/api')
         if host_url is not None:
             pulumi.set(__self__, "host_url", host_url)
+        if token is None:
+            token = _utilities.get_env('DBT_CLOUD_TOKEN')
+        if token is not None:
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[int]:
+    def account_id(self) -> Optional[pulumi.Input[int]]:
         """
         Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment
         variable `DBT_CLOUD_ACCOUNT_ID`
@@ -40,20 +48,8 @@ class ProviderArgs:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[int]):
+    def account_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter
-    def token(self) -> pulumi.Input[str]:
-        """
-        API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: pulumi.Input[str]):
-        pulumi.set(self, "token", value)
 
     @property
     @pulumi.getter(name="hostUrl")
@@ -67,6 +63,18 @@ class ProviderArgs:
     @host_url.setter
     def host_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host_url", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
 
 
 class Provider(pulumi.ProviderResource):
@@ -96,7 +104,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the dbtcloud package. By default, resources use package-wide configuration
@@ -131,12 +139,14 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
+            if account_id is None:
+                account_id = _utilities.get_env_int('DBT_CLOUD_ACCOUNT_ID')
             __props__.__dict__["account_id"] = pulumi.Output.from_input(account_id).apply(pulumi.runtime.to_json) if account_id is not None else None
+            if host_url is None:
+                host_url = (_utilities.get_env('DBT_CLOUD_HOST_URL') or 'https://cloud.getdbt.com/api')
             __props__.__dict__["host_url"] = host_url
-            if token is None and not opts.urn:
-                raise TypeError("Missing required property 'token'")
+            if token is None:
+                token = _utilities.get_env('DBT_CLOUD_TOKEN')
             __props__.__dict__["token"] = token
         super(Provider, __self__).__init__(
             'dbtcloud',
@@ -155,7 +165,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def token(self) -> pulumi.Output[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
         """

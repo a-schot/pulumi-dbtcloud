@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -23,21 +22,30 @@ type Provider struct {
 	// `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api
 	HostUrl pulumi.StringPtrOutput `pulumi:"hostUrl"`
 	// API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
-	Token pulumi.StringOutput `pulumi:"token"`
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
 	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvInt, "DBT_CLOUD_ACCOUNT_ID"); d != nil {
+			args.AccountId = pulumi.IntPtr(d.(int))
+		}
+	}
+	if args.HostUrl == nil {
+		if d := internal.GetEnvOrDefault("https://cloud.getdbt.com/api", nil, "DBT_CLOUD_HOST_URL"); d != nil {
+			args.HostUrl = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Token == nil {
-		return nil, errors.New("invalid value for required argument 'Token'")
+		if d := internal.GetEnvOrDefault(nil, nil, "DBT_CLOUD_TOKEN"); d != nil {
+			args.Token = pulumi.StringPtr(d.(string))
+		}
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
@@ -51,24 +59,24 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment
 	// variable `DBT_CLOUD_ACCOUNT_ID`
-	AccountId int `pulumi:"accountId"`
+	AccountId *int `pulumi:"accountId"`
 	// URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
 	// `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api
 	HostUrl *string `pulumi:"hostUrl"`
 	// API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
-	Token string `pulumi:"token"`
+	Token *string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment
 	// variable `DBT_CLOUD_ACCOUNT_ID`
-	AccountId pulumi.IntInput
+	AccountId pulumi.IntPtrInput
 	// URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
 	// `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api
 	HostUrl pulumi.StringPtrInput
 	// API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
-	Token pulumi.StringInput
+	Token pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -115,8 +123,8 @@ func (o ProviderOutput) HostUrl() pulumi.StringPtrOutput {
 }
 
 // API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
-func (o ProviderOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 func init() {

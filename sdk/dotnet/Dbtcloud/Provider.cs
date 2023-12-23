@@ -30,7 +30,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
         /// </summary>
         [Output("token")]
-        public Output<string> Token { get; private set; } = null!;
+        public Output<string?> Token { get; private set; } = null!;
 
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("dbtcloud", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -65,8 +65,8 @@ namespace ASchot.Pulumi.Dbtcloud
         /// Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment
         /// variable `DBT_CLOUD_ACCOUNT_ID`
         /// </summary>
-        [Input("accountId", required: true, json: true)]
-        public Input<int> AccountId { get; set; } = null!;
+        [Input("accountId", json: true)]
+        public Input<int>? AccountId { get; set; }
 
         /// <summary>
         /// URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
@@ -78,11 +78,14 @@ namespace ASchot.Pulumi.Dbtcloud
         /// <summary>
         /// API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
         /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        [Input("token")]
+        public Input<string>? Token { get; set; }
 
         public ProviderArgs()
         {
+            AccountId = Utilities.GetEnvInt32("DBT_CLOUD_ACCOUNT_ID");
+            HostUrl = Utilities.GetEnv("DBT_CLOUD_HOST_URL") ?? "https://cloud.getdbt.com/api";
+            Token = Utilities.GetEnv("DBT_CLOUD_TOKEN");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

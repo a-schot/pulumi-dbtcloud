@@ -67,9 +67,10 @@ func Provider() tfbridge.ProviderInfo {
 		TFProviderLicense:    tfbridge.SetProviderLicense(tfbridge.MITLicenseType),
 		MetadataInfo:         tfbridge.NewProviderMetadata(bridgeMetadata),
 		PreConfigureCallback: preConfigureCallback,
-
+		// Ignore legacy tokens (prefix: "dbt_cloud_" instead of "dbtcloud_")
+		// These will be removed from upstream at v0.3
 		IgnoreMappings: []string{
-			// Ignore legacy tokens (prefix: "dbt_cloud_" instead of "dbtcloud_")
+
 			"dbt_cloud_bigquery_connection",
 			"dbt_cloud_bigquery_credential",
 			"dbt_cloud_connection",
@@ -92,14 +93,18 @@ func Provider() tfbridge.ProviderInfo {
 			"dbt_cloud_privatelink_endpoint",
 		},
 		Config: map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+			"account_id": {
+				Default: &tfbridge.DefaultInfo{EnvVars: []string{"DBT_CLOUD_ACCOUNT_ID"}},
+			},
+			"token": {
+				Default: &tfbridge.DefaultInfo{EnvVars: []string{"DBT_CLOUD_TOKEN"}},
+			},
+			"host_url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"DBT_CLOUD_HOST_URL"},
+					Value:   "https://cloud.getdbt.com/api",
+				},
+			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// "dbtcloud_job":                               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job")},
@@ -193,7 +198,7 @@ func Provider() tfbridge.ProviderInfo {
 		"dbtcloud_",
 		mainMod,
 		tfbridgetokens.MakeStandard(mainPkg),
-	).Ignore("dbt_cloud") // this is doing nothing for now
+	).Ignore("dbt_cloud") // to ignore legacy resources; this is doing nothing for now
 
 	prov.MustComputeTokens(strat)
 

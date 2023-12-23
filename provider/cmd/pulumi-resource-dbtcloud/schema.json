@@ -61,15 +61,31 @@
         "variables": {
             "accountId": {
                 "type": "integer",
-                "description": "Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment\nvariable `DBT_CLOUD_ACCOUNT_ID`\n"
+                "description": "Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment\nvariable `DBT_CLOUD_ACCOUNT_ID`\n",
+                "defaultInfo": {
+                    "environment": [
+                        "DBT_CLOUD_ACCOUNT_ID"
+                    ]
+                }
             },
             "hostUrl": {
                 "type": "string",
-                "description": "URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable\n`DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api\n"
+                "description": "URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable\n`DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api\n",
+                "default": "https://cloud.getdbt.com/api",
+                "defaultInfo": {
+                    "environment": [
+                        "DBT_CLOUD_HOST_URL"
+                    ]
+                }
             },
             "token": {
                 "type": "string",
-                "description": "API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`\n"
+                "description": "API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`\n",
+                "defaultInfo": {
+                    "environment": [
+                        "DBT_CLOUD_TOKEN"
+                    ]
+                }
             }
         },
         "defaults": [
@@ -181,28 +197,36 @@
                 "description": "API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`\n"
             }
         },
-        "required": [
-            "accountId",
-            "token"
-        ],
         "inputProperties": {
             "accountId": {
                 "type": "integer",
-                "description": "Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment\nvariable `DBT_CLOUD_ACCOUNT_ID`\n"
+                "description": "Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment\nvariable `DBT_CLOUD_ACCOUNT_ID`\n",
+                "defaultInfo": {
+                    "environment": [
+                        "DBT_CLOUD_ACCOUNT_ID"
+                    ]
+                }
             },
             "hostUrl": {
                 "type": "string",
-                "description": "URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable\n`DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api\n"
+                "description": "URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable\n`DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api\n",
+                "default": "https://cloud.getdbt.com/api",
+                "defaultInfo": {
+                    "environment": [
+                        "DBT_CLOUD_HOST_URL"
+                    ]
+                }
             },
             "token": {
                 "type": "string",
-                "description": "API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`\n"
+                "description": "API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`\n",
+                "defaultInfo": {
+                    "environment": [
+                        "DBT_CLOUD_TOKEN"
+                    ]
+                }
             }
-        },
-        "requiredInputs": [
-            "accountId",
-            "token"
-        ]
+        }
     },
     "resources": {
         "dbtcloud:index/bigQueryConnection:BigQueryConnection": {

@@ -33,7 +33,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
      */
-    public readonly token!: pulumi.Output<string>;
+    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -42,19 +42,13 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
-            if ((!args || args.token === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'token'");
-            }
-            resourceInputs["accountId"] = pulumi.output(args ? args.accountId : undefined).apply(JSON.stringify);
-            resourceInputs["hostUrl"] = args ? args.hostUrl : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["accountId"] = pulumi.output((args ? args.accountId : undefined) ?? utilities.getEnvNumber("DBT_CLOUD_ACCOUNT_ID")).apply(JSON.stringify);
+            resourceInputs["hostUrl"] = (args ? args.hostUrl : undefined) ?? (utilities.getEnv("DBT_CLOUD_HOST_URL") || "https://cloud.getdbt.com/api");
+            resourceInputs["token"] = (args ? args.token : undefined) ?? utilities.getEnv("DBT_CLOUD_TOKEN");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -69,7 +63,7 @@ export interface ProviderArgs {
      * Account identifier for your dbt Cloud implementation. Instead of setting the parameter, you can set the environment
      * variable `DBT_CLOUD_ACCOUNT_ID`
      */
-    accountId: pulumi.Input<number>;
+    accountId?: pulumi.Input<number>;
     /**
      * URL for your dbt Cloud deployment. Instead of setting the parameter, you can set the environment variable
      * `DBT_CLOUD_HOST_URL` - Defaults to https://cloud.getdbt.com/api
@@ -78,5 +72,5 @@ export interface ProviderArgs {
     /**
      * API token for your dbt Cloud. Instead of setting the parameter, you can set the environment variable `DBT_CLOUD_TOKEN`
      */
-    token: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
