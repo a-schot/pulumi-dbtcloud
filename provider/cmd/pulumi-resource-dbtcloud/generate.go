@@ -19,8 +19,6 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"io/fs"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -33,7 +31,7 @@ func main() {
 		log.Fatal("version not found")
 	}
 
-	schemaContents, err := ioutil.ReadFile("./schema.json")
+	schemaContents, err := os.ReadFile("./schema.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -52,11 +50,11 @@ func main() {
 
 	// Clean up schema.go as it may be present & gitignored and tolerate an error if the file isn't present.
 	err = os.Remove("./schema.go")
-	if err != nil && !errors.Is(err, fs.ErrNotExist) {
+	if err != nil && !errors.Is(err, os.ErrNotExist) {
 		log.Fatal(err)
 	}
 
-	err = ioutil.WriteFile("./schema-embed.json", versionedContents, 0600)
+	err = os.WriteFile("./schema-embed.json", versionedContents, 0600)
 	if err != nil {
 		log.Fatal(err)
 	}

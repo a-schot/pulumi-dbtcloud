@@ -28,7 +28,7 @@ setup(name='aschot_pulumi_dbtcloud',
       project_urls={
           'Repository': 'https://github.com/a-schot/pulumi-dbtcloud'
       },
-      license='MIT',
+      license='Apache-2.0',
       packages=find_packages(),
       package_data={
           'aschot_pulumi_dbtcloud': [

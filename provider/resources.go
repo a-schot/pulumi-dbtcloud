@@ -15,7 +15,7 @@
 package dbtcloud
 
 import (
-	_ "embed"
+	_ "embed" // to embed bridge metadata
 	"fmt"
 	"path/filepath"
 
@@ -23,9 +23,7 @@ import (
 	dbtcloud "github.com/dbt-labs/terraform-provider-dbtcloud/pkg/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
 //go:embed cmd/pulumi-resource-dbtcloud/bridge-metadata.json
@@ -37,40 +35,32 @@ const (
 	mainMod = "index"
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
-// Provider returns additional overlaid schema and metadata associated with the provider..
+// Provider returns additional overlaid schema and metadata associated with the provider
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	p := shimv2.NewProvider(dbtcloud.Provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "dbtcloud",
-		DisplayName:          "dbt Cloud",
-		Publisher:            "a-schot",
-		LogoURL:              "https://docs.getdbt.com/img/dbt-logo-light.svg",
-		PluginDownloadURL:    "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
-		Description:          "A Pulumi package for creating and managing dbt Cloud resources.",
-		Keywords:             []string{"pulumi", "dbtcloud", "dbt", "cloud", "category/cloud", "category/database"},
-		License:              "MIT",
-		Homepage:             "https://www.pulumi.com",
-		Repository:           "https://github.com/a-schot/pulumi-dbtcloud",
-		GitHubOrg:            "dbt-labs",
-		TFProviderLicense:    tfbridge.SetProviderLicense(tfbridge.MITLicenseType),
-		MetadataInfo:         tfbridge.NewProviderMetadata(bridgeMetadata),
-		PreConfigureCallback: preConfigureCallback,
+		P:                 p,
+		Name:              "dbtcloud",
+		DisplayName:       "dbt Cloud",
+		Publisher:         "a-schot",
+		LogoURL:           "https://docs.getdbt.com/img/dbt-logo-light.svg",
+		PluginDownloadURL: "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
+		Description:       "A Pulumi package for creating and managing dbt Cloud resources.",
+		Keywords:          []string{"pulumi", "dbtcloud", "dbt", "cloud", "category/cloud", "category/database"},
+		License:           "Apache-2.0",
+		Homepage:          "https://www.pulumi.com",
+		Repository:        "https://github.com/a-schot/pulumi-dbtcloud",
+		GitHubOrg:         "dbt-labs",
+		TFProviderLicense: tfbridge.SetProviderLicense(tfbridge.MITLicenseType),
+		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
+		DocRules:          &tfbridge.DocRuleInfo{EditRules: editRules},
+
 		// Ignore legacy tokens (prefix: "dbt_cloud_" instead of "dbtcloud_")
 		// These will be removed from upstream at v0.3
 		IgnoreMappings: []string{
-
 			"dbt_cloud_bigquery_connection",
 			"dbt_cloud_bigquery_credential",
 			"dbt_cloud_connection",
@@ -107,57 +97,25 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			// "dbtcloud_job":                               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job")},
-			// "dbtcloud_project":                           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Project")},
-			// "dbtcloud_project_connection":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectConnection")},
-			// "dbtcloud_project_repository":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectRepository")},
-			// "dbtcloud_project_artefacts":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectArtefacts")},
-			// "dbtcloud_environment":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Environment")},
-			// "dbtcloud_environment_variable":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariable")},
-			// "dbtcloud_databricks_credential":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DatabricksCredential")},
-			// "dbtcloud_snowflake_credential":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SnowflakeCredential")},
-			"dbtcloud_bigquery_credential": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigQueryCredential")},
-			// "dbtcloud_postgres_credential":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PostgresCredential")},
-			// "dbtcloud_connection":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connection")},
-			"dbtcloud_bigquery_connection": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigQueryConnection")},
-			// "dbtcloud_repository":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Repository")},
-			// "dbtcloud_group":                             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
-			// "dbtcloud_service_token":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServiceToken")},
-			// "dbtcloud_webhook":                           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook")},
-			// "dbtcloud_notification":                      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Notification")},
-			// "dbtcloud_user_groups":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserGroups")},
-			// "dbtcloud_license_map":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LicenseMap")},
-			// "dbtcloud_environment_variable_job_override": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariableJobOverride")},
-			// "dbtcloud_fabric_connection":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricConnection")},
-			// "dbtcloud_fabric_credential":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricCredential")},
+			"dbtcloud_bigquery_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigQueryCredential"),
+			},
+			"dbtcloud_bigquery_connection": {
+				Tok:  tfbridge.MakeResource(mainPkg, mainMod, "BigQueryConnection"),
+				Docs: &tfbridge.DocInfo{Markdown: []byte(``)},
+			},
 			"dbtcloud_extended_attributes": {
 				Tok:        tfbridge.MakeResource(mainPkg, mainMod, "ExtendedAttributes"),
 				CSharpName: "NameExtendedAttributes",
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// "dbtcloud_group":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup")},
-			// "dbtcloud_job":                      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getJob")},
-			// "dbtcloud_project":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProject")},
-			// "dbtcloud_environment":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironment")},
-			// "dbtcloud_environment_variable":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironmentVariable")},
-			// "dbtcloud_snowflake_credential":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSnowflakeCredential")},
-			"dbtcloud_bigquery_credential": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBigQueryCredential")},
-			// "dbtcloud_postgres_credential":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPostgresCredential")},
-			// "dbtcloud_databricks_credential":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDatabricksCredential")},
-			// "dbtcloud_connection":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnection")},
-			"dbtcloud_bigquery_connection": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBigQueryConnection")},
-			// "dbtcloud_repository":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRepository")},
-			// "dbtcloud_user":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
-			// "dbtcloud_service_token":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServiceToken")},
-			// "dbtcloud_webhook":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWebhook")},
-			// "dbtcloud_privatelink_endpoint":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPrivatelinkEndpoint")},
-			// "dbtcloud_notification":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotification")},
-			// "dbtcloud_user_groups":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUserGroups")},
-			// "dbtcloud_extended_attributes":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getExtendedAttributes")},
-			// "dbtcloud_group_users":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
-			// "dbtcloud_azure_dev_ops_project":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsProject")},
-			// "dbtcloud_azure_dev_ops_repository": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsRepository")},
+			"dbtcloud_bigquery_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBigQueryCredential"),
+			},
+			"dbtcloud_bigquery_connection": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBigQueryConnection"),
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@aschot/pulumi-dbtcloud",
@@ -194,13 +152,13 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	var strat tfbridge.Strategy = tfbridgetokens.SingleModule(
-		"dbtcloud_",
-		mainMod,
-		tfbridgetokens.MakeStandard(mainPkg),
-	).Ignore("dbt_cloud") // to ignore legacy resources; this is doing nothing for now
-
-	prov.MustComputeTokens(strat)
+	prov.MustComputeTokens(
+		tfbridgetokens.SingleModule(
+			"dbtcloud_",
+			mainMod,
+			tfbridgetokens.MakeStandard(mainPkg),
+		).Ignore("dbt_cloud"), // to ignore legacy resources; this is doing nothing for now
+	)
 
 	prov.MustApplyAutoAliases()
 

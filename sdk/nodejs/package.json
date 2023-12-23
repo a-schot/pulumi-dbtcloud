@@ -12,7 +12,7 @@
     ],
     "homepage": "https://www.pulumi.com",
     "repository": "https://github.com/a-schot/pulumi-dbtcloud",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"
     },

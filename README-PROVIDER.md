@@ -1,6 +1,6 @@
 # dbt Cloud Resource Provider
 
-The dbt Cloud Resource Provider lets you manage [dbt Cloud](http://cloud.getdbt.com) resources.
+The dbt Cloud Resource Provider lets you manage dbt Cloud resources.
 
 ## Installing
 
@@ -48,9 +48,9 @@ dotnet add package ASchot.Pulumi.Dbtcloud
 
 The following configuration points are available for the dbt Cloud provider:
 
-- `dbtcloud:accountId` (environment: `DBT_CLOUD_ACCOUNT_ID`) - The Account ID for your dbt Cloud.
-- `dbtcloud:token` (environment: `DBT_CLOUD_TOKEN`) - The API Key for your dbt Cloud
-- `dbtcloud:hostUrl` (environment: `DBT_CLOUD_HOST_URL`) - The host URL for your dbt Cloud. Defaults to: [https://cloud.getdbt.com/api](https://cloud.getdbt.com/api)
+- (required) `dbtcloud:accountId` - The Account ID for your dbt Cloud (can be set using environment variable: `DBT_CLOUD_ACCOUNT_ID`)
+- (required) `dbtcloud:token` - The API Key for your dbt Cloud (can be set using environment variable: `DBT_CLOUD_TOKEN`)
+- (optional) `dbtcloud:hostUrl` - The host URL for your dbt Cloud (can be set using environment variable: `DBT_CLOUD_HOST_URL`). Defaults to: [https://cloud.getdbt.com/api](https://cloud.getdbt.com/api)
 
 <!-- ## Reference -->
 <!--  -->

@@ -17,11 +17,11 @@
 package main
 
 import (
-	_ "embed"
+	_ "embed" // to embed schema-embed.json
 
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	dbtcloud "github.com/a-schot/pulumi-dbtcloud/provider"
 	"github.com/a-schot/pulumi-dbtcloud/provider/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 //go:embed schema-embed.json
