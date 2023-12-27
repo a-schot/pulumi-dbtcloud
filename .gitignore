@@ -7,6 +7,8 @@
 Pulumi.*.yaml
 **/node_modules/
 .DS_Store
+__pycache__/
+venv/
 
 **/command-output/
 coverage_output/

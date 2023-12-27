@@ -106,7 +106,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"dbtcloud_extended_attributes": {
 				Tok:        tfbridge.MakeResource(mainPkg, mainMod, "ExtendedAttributes"),
-				CSharpName: "NameExtendedAttributes",
+				CSharpName: "ExtendedAttributesDetails",
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

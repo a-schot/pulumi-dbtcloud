@@ -26,7 +26,7 @@ namespace ASchot.Pulumi.Dbtcloud
     /// {
     ///     // extended_attributes can be set as a raw JSON string or encoded with Terraform's `jsonencode()` function
     ///     // we recommend using `jsonencode()` to avoid Terraform reporting changes due to whitespaces or keys ordering
-    ///     var myAttributes = new Dbtcloud.NameExtendedAttributes("myAttributes", new()
+    ///     var myAttributes = new Dbtcloud.ExtendedAttributesDetails("myAttributes", new()
     ///     {
     ///         ExtendedAttributes = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -68,7 +68,7 @@ namespace ASchot.Pulumi.Dbtcloud
     /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/extendedAttributes:ExtendedAttributes")]
-    public partial class NameExtendedAttributes : global::Pulumi.CustomResource
+    public partial class ExtendedAttributesDetails : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A JSON string listing the extended attributes mapping. The keys are the connections attributes available in the
@@ -99,18 +99,18 @@ namespace ASchot.Pulumi.Dbtcloud
 
 
         /// <summary>
-        /// Create a NameExtendedAttributes resource with the given unique name, arguments, and options.
+        /// Create a ExtendedAttributesDetails resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public NameExtendedAttributes(string name, NameExtendedAttributesArgs args, CustomResourceOptions? options = null)
-            : base("dbtcloud:index/extendedAttributes:ExtendedAttributes", name, args ?? new NameExtendedAttributesArgs(), MakeResourceOptions(options, ""))
+        public ExtendedAttributesDetails(string name, ExtendedAttributesDetailsArgs args, CustomResourceOptions? options = null)
+            : base("dbtcloud:index/extendedAttributes:ExtendedAttributes", name, args ?? new ExtendedAttributesDetailsArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private NameExtendedAttributes(string name, Input<string> id, NameExtendedAttributesState? state = null, CustomResourceOptions? options = null)
+        private ExtendedAttributesDetails(string name, Input<string> id, ExtendedAttributesDetailsState? state = null, CustomResourceOptions? options = null)
             : base("dbtcloud:index/extendedAttributes:ExtendedAttributes", name, state, MakeResourceOptions(options, id))
         {
         }
@@ -128,7 +128,7 @@ namespace ASchot.Pulumi.Dbtcloud
             return merged;
         }
         /// <summary>
-        /// Get an existing NameExtendedAttributes resource's state with the given name, ID, and optional extra
+        /// Get an existing ExtendedAttributesDetails resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -136,13 +136,13 @@ namespace ASchot.Pulumi.Dbtcloud
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static NameExtendedAttributes Get(string name, Input<string> id, NameExtendedAttributesState? state = null, CustomResourceOptions? options = null)
+        public static ExtendedAttributesDetails Get(string name, Input<string> id, ExtendedAttributesDetailsState? state = null, CustomResourceOptions? options = null)
         {
-            return new NameExtendedAttributes(name, id, state, options);
+            return new ExtendedAttributesDetails(name, id, state, options);
         }
     }
 
-    public sealed class NameExtendedAttributesArgs : global::Pulumi.ResourceArgs
+    public sealed class ExtendedAttributesDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A JSON string listing the extended attributes mapping. The keys are the connections attributes available in the
@@ -165,13 +165,13 @@ namespace ASchot.Pulumi.Dbtcloud
         [Input("state")]
         public Input<int>? State { get; set; }
 
-        public NameExtendedAttributesArgs()
+        public ExtendedAttributesDetailsArgs()
         {
         }
-        public static new NameExtendedAttributesArgs Empty => new NameExtendedAttributesArgs();
+        public static new ExtendedAttributesDetailsArgs Empty => new ExtendedAttributesDetailsArgs();
     }
 
-    public sealed class NameExtendedAttributesState : global::Pulumi.ResourceArgs
+    public sealed class ExtendedAttributesDetailsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A JSON string listing the extended attributes mapping. The keys are the connections attributes available in the
@@ -200,9 +200,9 @@ namespace ASchot.Pulumi.Dbtcloud
         [Input("state")]
         public Input<int>? State { get; set; }
 
-        public NameExtendedAttributesState()
+        public ExtendedAttributesDetailsState()
         {
         }
-        public static new NameExtendedAttributesState Empty => new NameExtendedAttributesState();
+        public static new ExtendedAttributesDetailsState Empty => new ExtendedAttributesDetailsState();
     }
 }

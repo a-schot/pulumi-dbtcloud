@@ -50,7 +50,7 @@ ENV PATH=$PATH:/usr/local/node/bin
 RUN npm install --global yarn
 
 # Install python and related items
-RUN apt-get install -y python3 && \
+RUN apt-get install -y python3-venv && \
     apt-get install -y python3-setuptools
 
 # Install .NET
