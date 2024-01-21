@@ -31,6 +31,24 @@ export interface GroupGroupPermission {
     projectId?: number;
 }
 
+export interface LegacyGetServiceTokenServiceTokenPermission {
+    allProjects: boolean;
+    permissionSet: string;
+    projectId: number;
+}
+
+export interface LegacyGroupGroupPermission {
+    allProjects: boolean;
+    permissionSet: string;
+    projectId?: number;
+}
+
+export interface LegacyServiceTokenServiceTokenPermission {
+    allProjects: boolean;
+    permissionSet: string;
+    projectId?: number;
+}
+
 export interface ServiceTokenServiceTokenPermission {
     /**
      * Whether or not to apply this permission to all projects for this service token

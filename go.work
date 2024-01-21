@@ -4,4 +4,5 @@ use (
 	./examples
 	./provider
 	./sdk
+	./examples/project/go
 )

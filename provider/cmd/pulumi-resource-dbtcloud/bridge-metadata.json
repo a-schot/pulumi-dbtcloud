@@ -1,6 +1,89 @@
 {
     "auto-aliasing": {
         "resources": {
+            "dbt_cloud_bigquery_connection": {
+                "current": "dbtcloud:index/legacyBigqueryConnection:LegacyBigqueryConnection"
+            },
+            "dbt_cloud_bigquery_credential": {
+                "current": "dbtcloud:index/legacyBigqueryCredential:LegacyBigqueryCredential"
+            },
+            "dbt_cloud_connection": {
+                "current": "dbtcloud:index/legacyConnection:LegacyConnection"
+            },
+            "dbt_cloud_databricks_credential": {
+                "current": "dbtcloud:index/legacyDatabricksCredential:LegacyDatabricksCredential"
+            },
+            "dbt_cloud_environment": {
+                "current": "dbtcloud:index/legacyEnvironment:LegacyEnvironment"
+            },
+            "dbt_cloud_environment_variable": {
+                "current": "dbtcloud:index/legacyEnvironmentVariable:LegacyEnvironmentVariable"
+            },
+            "dbt_cloud_group": {
+                "current": "dbtcloud:index/legacyGroup:LegacyGroup",
+                "fields": {
+                    "group_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "sso_mapping_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbt_cloud_job": {
+                "current": "dbtcloud:index/legacyJob:LegacyJob",
+                "fields": {
+                    "execute_steps": {
+                        "maxItemsOne": false
+                    },
+                    "schedule_days": {
+                        "maxItemsOne": false
+                    },
+                    "schedule_hours": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbt_cloud_postgres_credential": {
+                "current": "dbtcloud:index/legacyPostgresCredential:LegacyPostgresCredential"
+            },
+            "dbt_cloud_project": {
+                "current": "dbtcloud:index/legacyProject:LegacyProject"
+            },
+            "dbt_cloud_project_artefacts": {
+                "current": "dbtcloud:index/legacyProjectArtefacts:LegacyProjectArtefacts"
+            },
+            "dbt_cloud_project_connection": {
+                "current": "dbtcloud:index/legacyProjectConnection:LegacyProjectConnection"
+            },
+            "dbt_cloud_project_repository": {
+                "current": "dbtcloud:index/legacyProjectRepository:LegacyProjectRepository"
+            },
+            "dbt_cloud_repository": {
+                "current": "dbtcloud:index/legacyRepository:LegacyRepository"
+            },
+            "dbt_cloud_service_token": {
+                "current": "dbtcloud:index/legacyServiceToken:LegacyServiceToken",
+                "fields": {
+                    "service_token_permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbt_cloud_snowflake_credential": {
+                "current": "dbtcloud:index/legacySnowflakeCredential:LegacySnowflakeCredential"
+            },
+            "dbt_cloud_webhook": {
+                "current": "dbtcloud:index/legacyWebhook:LegacyWebhook",
+                "fields": {
+                    "event_types": {
+                        "maxItemsOne": false
+                    },
+                    "job_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "dbtcloud_bigquery_connection": {
                 "current": "dbtcloud:index/bigQueryConnection:BigQueryConnection"
             },
@@ -128,6 +211,72 @@
             }
         },
         "datasources": {
+            "dbt_cloud_bigquery_connection": {
+                "current": "dbtcloud:index/legacyGetBigQueryConnection:LegacyGetBigQueryConnection"
+            },
+            "dbt_cloud_bigquery_credential": {
+                "current": "dbtcloud:index/legacyGetBigqueryCredential:LegacyGetBigqueryCredential"
+            },
+            "dbt_cloud_connection": {
+                "current": "dbtcloud:index/legacyGetConnection:LegacyGetConnection"
+            },
+            "dbt_cloud_databricks_credential": {
+                "current": "dbtcloud:index/legacyGetDatabricksCredential:LegacyGetDatabricksCredential"
+            },
+            "dbt_cloud_environment": {
+                "current": "dbtcloud:index/legacyGetEnvironment:LegacyGetEnvironment"
+            },
+            "dbt_cloud_environment_variable": {
+                "current": "dbtcloud:index/legacyGetEnvironmentVariable:LegacyGetEnvironmentVariable"
+            },
+            "dbt_cloud_group": {
+                "current": "dbtcloud:index/legacyGetGroup:LegacyGetGroup",
+                "fields": {
+                    "sso_mapping_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbt_cloud_job": {
+                "current": "dbtcloud:index/legacyGetJob:LegacyGetJob"
+            },
+            "dbt_cloud_postgres_credential": {
+                "current": "dbtcloud:index/legacyGetPostgresCredential:LegacyGetPostgresCredential"
+            },
+            "dbt_cloud_privatelink_endpoint": {
+                "current": "dbtcloud:index/legacyGetPrivatelinkEndpoint:LegacyGetPrivatelinkEndpoint"
+            },
+            "dbt_cloud_project": {
+                "current": "dbtcloud:index/legacyGetProject:LegacyGetProject"
+            },
+            "dbt_cloud_repository": {
+                "current": "dbtcloud:index/legacyGetRepository:LegacyGetRepository"
+            },
+            "dbt_cloud_service_token": {
+                "current": "dbtcloud:index/legacyGetServiceToken:LegacyGetServiceToken",
+                "fields": {
+                    "service_token_permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dbt_cloud_snowflake_credential": {
+                "current": "dbtcloud:index/legacyGetSnowflakeCredential:LegacyGetSnowflakeCredential"
+            },
+            "dbt_cloud_user": {
+                "current": "dbtcloud:index/legacyGetUser:LegacyGetUser"
+            },
+            "dbt_cloud_webhook": {
+                "current": "dbtcloud:index/legacyGetWebhook:LegacyGetWebhook",
+                "fields": {
+                    "event_types": {
+                        "maxItemsOne": false
+                    },
+                    "job_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "dbtcloud_azure_dev_ops_project": {
                 "current": "dbtcloud:index/getAzureDevOpsProject:getAzureDevOpsProject"
             },
@@ -250,6 +399,23 @@
             "dbtcloud:index/fabricCredential:FabricCredential": "dbtcloud_fabric_credential",
             "dbtcloud:index/group:Group": "dbtcloud_group",
             "dbtcloud:index/job:Job": "dbtcloud_job",
+            "dbtcloud:index/legacyBigqueryConnection:LegacyBigqueryConnection": "dbt_cloud_bigquery_connection",
+            "dbtcloud:index/legacyBigqueryCredential:LegacyBigqueryCredential": "dbt_cloud_bigquery_credential",
+            "dbtcloud:index/legacyConnection:LegacyConnection": "dbt_cloud_connection",
+            "dbtcloud:index/legacyDatabricksCredential:LegacyDatabricksCredential": "dbt_cloud_databricks_credential",
+            "dbtcloud:index/legacyEnvironment:LegacyEnvironment": "dbt_cloud_environment",
+            "dbtcloud:index/legacyEnvironmentVariable:LegacyEnvironmentVariable": "dbt_cloud_environment_variable",
+            "dbtcloud:index/legacyGroup:LegacyGroup": "dbt_cloud_group",
+            "dbtcloud:index/legacyJob:LegacyJob": "dbt_cloud_job",
+            "dbtcloud:index/legacyPostgresCredential:LegacyPostgresCredential": "dbt_cloud_postgres_credential",
+            "dbtcloud:index/legacyProject:LegacyProject": "dbt_cloud_project",
+            "dbtcloud:index/legacyProjectArtefacts:LegacyProjectArtefacts": "dbt_cloud_project_artefacts",
+            "dbtcloud:index/legacyProjectConnection:LegacyProjectConnection": "dbt_cloud_project_connection",
+            "dbtcloud:index/legacyProjectRepository:LegacyProjectRepository": "dbt_cloud_project_repository",
+            "dbtcloud:index/legacyRepository:LegacyRepository": "dbt_cloud_repository",
+            "dbtcloud:index/legacyServiceToken:LegacyServiceToken": "dbt_cloud_service_token",
+            "dbtcloud:index/legacySnowflakeCredential:LegacySnowflakeCredential": "dbt_cloud_snowflake_credential",
+            "dbtcloud:index/legacyWebhook:LegacyWebhook": "dbt_cloud_webhook",
             "dbtcloud:index/licenseMap:LicenseMap": "dbtcloud_license_map",
             "dbtcloud:index/notification:Notification": "dbtcloud_notification",
             "dbtcloud:index/postgresCredential:PostgresCredential": "dbtcloud_postgres_credential",
@@ -285,10 +451,41 @@
             "dbtcloud:index/getSnowflakeCredential:getSnowflakeCredential": "dbtcloud_snowflake_credential",
             "dbtcloud:index/getUser:getUser": "dbtcloud_user",
             "dbtcloud:index/getUserGroups:getUserGroups": "dbtcloud_user_groups",
-            "dbtcloud:index/getWebhook:getWebhook": "dbtcloud_webhook"
+            "dbtcloud:index/getWebhook:getWebhook": "dbtcloud_webhook",
+            "dbtcloud:index/legacyGetBigQueryConnection:LegacyGetBigQueryConnection": "dbt_cloud_bigquery_connection",
+            "dbtcloud:index/legacyGetBigqueryCredential:LegacyGetBigqueryCredential": "dbt_cloud_bigquery_credential",
+            "dbtcloud:index/legacyGetConnection:LegacyGetConnection": "dbt_cloud_connection",
+            "dbtcloud:index/legacyGetDatabricksCredential:LegacyGetDatabricksCredential": "dbt_cloud_databricks_credential",
+            "dbtcloud:index/legacyGetEnvironment:LegacyGetEnvironment": "dbt_cloud_environment",
+            "dbtcloud:index/legacyGetEnvironmentVariable:LegacyGetEnvironmentVariable": "dbt_cloud_environment_variable",
+            "dbtcloud:index/legacyGetGroup:LegacyGetGroup": "dbt_cloud_group",
+            "dbtcloud:index/legacyGetJob:LegacyGetJob": "dbt_cloud_job",
+            "dbtcloud:index/legacyGetPostgresCredential:LegacyGetPostgresCredential": "dbt_cloud_postgres_credential",
+            "dbtcloud:index/legacyGetPrivatelinkEndpoint:LegacyGetPrivatelinkEndpoint": "dbt_cloud_privatelink_endpoint",
+            "dbtcloud:index/legacyGetProject:LegacyGetProject": "dbt_cloud_project",
+            "dbtcloud:index/legacyGetRepository:LegacyGetRepository": "dbt_cloud_repository",
+            "dbtcloud:index/legacyGetServiceToken:LegacyGetServiceToken": "dbt_cloud_service_token",
+            "dbtcloud:index/legacyGetSnowflakeCredential:LegacyGetSnowflakeCredential": "dbt_cloud_snowflake_credential",
+            "dbtcloud:index/legacyGetUser:LegacyGetUser": "dbt_cloud_user",
+            "dbtcloud:index/legacyGetWebhook:LegacyGetWebhook": "dbt_cloud_webhook"
         },
         "renamedProperties": {
             "dbtcloud:index/GroupGroupPermission:GroupGroupPermission": {
+                "allProjects": "all_projects",
+                "permissionSet": "permission_set",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/LegacyGetServiceTokenServiceTokenPermission:LegacyGetServiceTokenServiceTokenPermission": {
+                "allProjects": "all_projects",
+                "permissionSet": "permission_set",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/LegacyGroupGroupPermission:LegacyGroupGroupPermission": {
+                "allProjects": "all_projects",
+                "permissionSet": "permission_set",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/LegacyServiceTokenServiceTokenPermission:LegacyServiceTokenServiceTokenPermission": {
                 "allProjects": "all_projects",
                 "permissionSet": "permission_set",
                 "projectId": "project_id"
@@ -571,6 +768,281 @@
                 "targetName": "target_name",
                 "timeoutSeconds": "timeout_seconds",
                 "triggersOnDraftPr": "triggers_on_draft_pr"
+            },
+            "dbtcloud:index/legacyBigqueryConnection:LegacyBigqueryConnection": {
+                "applicationId": "application_id",
+                "applicationSecret": "application_secret",
+                "authProviderX509CertUrl": "auth_provider_x509_cert_url",
+                "authUri": "auth_uri",
+                "clientEmail": "client_email",
+                "clientId": "client_id",
+                "clientX509CertUrl": "client_x509_cert_url",
+                "connectionId": "connection_id",
+                "dataprocClusterName": "dataproc_cluster_name",
+                "dataprocRegion": "dataproc_region",
+                "executionProject": "execution_project",
+                "gcpProjectId": "gcp_project_id",
+                "gcsBucket": "gcs_bucket",
+                "isActive": "is_active",
+                "isConfiguredForOauth": "is_configured_for_oauth",
+                "maximumBytesBilled": "maximum_bytes_billed",
+                "privateKey": "private_key",
+                "privateKeyId": "private_key_id",
+                "projectId": "project_id",
+                "timeoutSeconds": "timeout_seconds",
+                "tokenUri": "token_uri"
+            },
+            "dbtcloud:index/legacyBigqueryCredential:LegacyBigqueryCredential": {
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyConnection:LegacyConnection": {
+                "adapterId": "adapter_id",
+                "allowKeepAlive": "allow_keep_alive",
+                "allowSso": "allow_sso",
+                "connectionId": "connection_id",
+                "hostName": "host_name",
+                "httpPath": "http_path",
+                "isActive": "is_active",
+                "oauthClientId": "oauth_client_id",
+                "oauthClientSecret": "oauth_client_secret",
+                "privateLinkEndpointId": "private_link_endpoint_id",
+                "projectId": "project_id",
+                "tunnelEnabled": "tunnel_enabled"
+            },
+            "dbtcloud:index/legacyDatabricksCredential:LegacyDatabricksCredential": {
+                "adapterId": "adapter_id",
+                "adapterType": "adapter_type",
+                "credentialId": "credential_id",
+                "projectId": "project_id",
+                "targetName": "target_name"
+            },
+            "dbtcloud:index/legacyEnvironment:LegacyEnvironment": {
+                "credentialId": "credential_id",
+                "customBranch": "custom_branch",
+                "dbtVersion": "dbt_version",
+                "deploymentType": "deployment_type",
+                "environmentId": "environment_id",
+                "extendedAttributesId": "extended_attributes_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "useCustomBranch": "use_custom_branch"
+            },
+            "dbtcloud:index/legacyEnvironmentVariable:LegacyEnvironmentVariable": {
+                "environmentValues": "environment_values",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyGetBigQueryConnection:LegacyGetBigQueryConnection": {
+                "authProviderX509CertUrl": "auth_provider_x509_cert_url",
+                "authUri": "auth_uri",
+                "clientEmail": "client_email",
+                "clientId": "client_id",
+                "clientX509CertUrl": "client_x509_cert_url",
+                "connectionId": "connection_id",
+                "dataprocClusterName": "dataproc_cluster_name",
+                "dataprocRegion": "dataproc_region",
+                "executionProject": "execution_project",
+                "gcpProjectId": "gcp_project_id",
+                "gcsBucket": "gcs_bucket",
+                "isActive": "is_active",
+                "isConfiguredForOauth": "is_configured_for_oauth",
+                "maximumBytesBilled": "maximum_bytes_billed",
+                "privateKey": "private_key",
+                "privateKeyId": "private_key_id",
+                "projectId": "project_id",
+                "timeoutSeconds": "timeout_seconds",
+                "tokenUri": "token_uri"
+            },
+            "dbtcloud:index/legacyGetBigqueryCredential:LegacyGetBigqueryCredential": {
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyGetConnection:LegacyGetConnection": {
+                "allowKeepAlive": "allow_keep_alive",
+                "allowSso": "allow_sso",
+                "connectionId": "connection_id",
+                "isActive": "is_active",
+                "privateLinkEndpointId": "private_link_endpoint_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyGetDatabricksCredential:LegacyGetDatabricksCredential": {
+                "adapterId": "adapter_id",
+                "credentialId": "credential_id",
+                "numThreads": "num_threads",
+                "projectId": "project_id",
+                "targetName": "target_name"
+            },
+            "dbtcloud:index/legacyGetEnvironment:LegacyGetEnvironment": {
+                "credentialId": "credential_id",
+                "customBranch": "custom_branch",
+                "dbtVersion": "dbt_version",
+                "deploymentType": "deployment_type",
+                "environmentId": "environment_id",
+                "extendedAttributesId": "extended_attributes_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "useCustomBranch": "use_custom_branch"
+            },
+            "dbtcloud:index/legacyGetEnvironmentVariable:LegacyGetEnvironmentVariable": {
+                "environmentValues": "environment_values",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyGetGroup:LegacyGetGroup": {
+                "assignByDefault": "assign_by_default",
+                "groupId": "group_id",
+                "isActive": "is_active",
+                "ssoMappingGroups": "sso_mapping_groups"
+            },
+            "dbtcloud:index/legacyGetJob:LegacyGetJob": {
+                "deferringEnvironmentId": "deferring_environment_id",
+                "deferringJobId": "deferring_job_id",
+                "environmentId": "environment_id",
+                "jobId": "job_id",
+                "projectId": "project_id",
+                "selfDeferring": "self_deferring",
+                "timeoutSeconds": "timeout_seconds",
+                "triggersOnDraftPr": "triggers_on_draft_pr"
+            },
+            "dbtcloud:index/legacyGetPostgresCredential:LegacyGetPostgresCredential": {
+                "credentialId": "credential_id",
+                "defaultSchema": "default_schema",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyGetPrivatelinkEndpoint:LegacyGetPrivatelinkEndpoint": {
+                "cidrRange": "cidr_range",
+                "privateLinkEndpointUrl": "private_link_endpoint_url"
+            },
+            "dbtcloud:index/legacyGetProject:LegacyGetProject": {
+                "connectionId": "connection_id",
+                "docsJobId": "docs_job_id",
+                "freshnessJobId": "freshness_job_id",
+                "projectId": "project_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/legacyGetRepository:LegacyGetRepository": {
+                "deployKey": "deploy_key",
+                "fetchDeployKey": "fetch_deploy_key",
+                "gitCloneStrategy": "git_clone_strategy",
+                "githubInstallationId": "github_installation_id",
+                "gitlabProjectId": "gitlab_project_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "remoteUrl": "remote_url",
+                "repositoryCredentialsId": "repository_credentials_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/legacyGetServiceToken:LegacyGetServiceToken": {
+                "serviceTokenId": "service_token_id",
+                "serviceTokenPermissions": "service_token_permissions"
+            },
+            "dbtcloud:index/legacyGetSnowflakeCredential:LegacyGetSnowflakeCredential": {
+                "authType": "auth_type",
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyGetWebhook:LegacyGetWebhook": {
+                "accountIdentifier": "account_identifier",
+                "clientUrl": "client_url",
+                "eventTypes": "event_types",
+                "httpStatusCode": "http_status_code",
+                "jobIds": "job_ids",
+                "webhookId": "webhook_id"
+            },
+            "dbtcloud:index/legacyGroup:LegacyGroup": {
+                "assignByDefault": "assign_by_default",
+                "groupPermissions": "group_permissions",
+                "isActive": "is_active",
+                "ssoMappingGroups": "sso_mapping_groups"
+            },
+            "dbtcloud:index/legacyJob:LegacyJob": {
+                "dbtVersion": "dbt_version",
+                "deferringEnvironmentId": "deferring_environment_id",
+                "deferringJobId": "deferring_job_id",
+                "environmentId": "environment_id",
+                "executeSteps": "execute_steps",
+                "generateDocs": "generate_docs",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id",
+                "runGenerateSources": "run_generate_sources",
+                "scheduleCron": "schedule_cron",
+                "scheduleDays": "schedule_days",
+                "scheduleHours": "schedule_hours",
+                "scheduleInterval": "schedule_interval",
+                "scheduleType": "schedule_type",
+                "selfDeferring": "self_deferring",
+                "targetName": "target_name",
+                "timeoutSeconds": "timeout_seconds",
+                "triggersOnDraftPr": "triggers_on_draft_pr"
+            },
+            "dbtcloud:index/legacyPostgresCredential:LegacyPostgresCredential": {
+                "credentialId": "credential_id",
+                "defaultSchema": "default_schema",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "projectId": "project_id",
+                "targetName": "target_name"
+            },
+            "dbtcloud:index/legacyProject:LegacyProject": {
+                "dbtProjectSubdirectory": "dbt_project_subdirectory"
+            },
+            "dbtcloud:index/legacyProjectArtefacts:LegacyProjectArtefacts": {
+                "docsJobId": "docs_job_id",
+                "freshnessJobId": "freshness_job_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyProjectConnection:LegacyProjectConnection": {
+                "connectionId": "connection_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyProjectRepository:LegacyProjectRepository": {
+                "projectId": "project_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/legacyRepository:LegacyRepository": {
+                "azureActiveDirectoryProjectId": "azure_active_directory_project_id",
+                "azureActiveDirectoryRepositoryId": "azure_active_directory_repository_id",
+                "azureBypassWebhookRegistrationFailure": "azure_bypass_webhook_registration_failure",
+                "deployKey": "deploy_key",
+                "fetchDeployKey": "fetch_deploy_key",
+                "gitCloneStrategy": "git_clone_strategy",
+                "githubInstallationId": "github_installation_id",
+                "gitlabProjectId": "gitlab_project_id",
+                "isActive": "is_active",
+                "projectId": "project_id",
+                "remoteUrl": "remote_url",
+                "repositoryCredentialsId": "repository_credentials_id",
+                "repositoryId": "repository_id"
+            },
+            "dbtcloud:index/legacyServiceToken:LegacyServiceToken": {
+                "serviceTokenPermissions": "service_token_permissions",
+                "tokenString": "token_string"
+            },
+            "dbtcloud:index/legacySnowflakeCredential:LegacySnowflakeCredential": {
+                "authType": "auth_type",
+                "credentialId": "credential_id",
+                "isActive": "is_active",
+                "numThreads": "num_threads",
+                "privateKey": "private_key",
+                "privateKeyPassphrase": "private_key_passphrase",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/legacyWebhook:LegacyWebhook": {
+                "accountIdentifier": "account_identifier",
+                "clientUrl": "client_url",
+                "eventTypes": "event_types",
+                "hmacSecret": "hmac_secret",
+                "httpStatusCode": "http_status_code",
+                "jobIds": "job_ids",
+                "webhookId": "webhook_id"
             },
             "dbtcloud:index/licenseMap:LicenseMap": {
                 "licenseType": "license_type",

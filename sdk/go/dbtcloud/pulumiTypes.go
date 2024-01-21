@@ -128,6 +128,324 @@ func (o GroupGroupPermissionArrayOutput) Index(i pulumi.IntInput) GroupGroupPerm
 	}).(GroupGroupPermissionOutput)
 }
 
+type LegacyGetServiceTokenServiceTokenPermission struct {
+	AllProjects   bool   `pulumi:"allProjects"`
+	PermissionSet string `pulumi:"permissionSet"`
+	ProjectId     int    `pulumi:"projectId"`
+}
+
+// LegacyGetServiceTokenServiceTokenPermissionInput is an input type that accepts LegacyGetServiceTokenServiceTokenPermissionArgs and LegacyGetServiceTokenServiceTokenPermissionOutput values.
+// You can construct a concrete instance of `LegacyGetServiceTokenServiceTokenPermissionInput` via:
+//
+//	LegacyGetServiceTokenServiceTokenPermissionArgs{...}
+type LegacyGetServiceTokenServiceTokenPermissionInput interface {
+	pulumi.Input
+
+	ToLegacyGetServiceTokenServiceTokenPermissionOutput() LegacyGetServiceTokenServiceTokenPermissionOutput
+	ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(context.Context) LegacyGetServiceTokenServiceTokenPermissionOutput
+}
+
+type LegacyGetServiceTokenServiceTokenPermissionArgs struct {
+	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
+	ProjectId     pulumi.IntInput    `pulumi:"projectId"`
+}
+
+func (LegacyGetServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (i LegacyGetServiceTokenServiceTokenPermissionArgs) ToLegacyGetServiceTokenServiceTokenPermissionOutput() LegacyGetServiceTokenServiceTokenPermissionOutput {
+	return i.ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(context.Background())
+}
+
+func (i LegacyGetServiceTokenServiceTokenPermissionArgs) ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetServiceTokenServiceTokenPermissionOutput)
+}
+
+// LegacyGetServiceTokenServiceTokenPermissionArrayInput is an input type that accepts LegacyGetServiceTokenServiceTokenPermissionArray and LegacyGetServiceTokenServiceTokenPermissionArrayOutput values.
+// You can construct a concrete instance of `LegacyGetServiceTokenServiceTokenPermissionArrayInput` via:
+//
+//	LegacyGetServiceTokenServiceTokenPermissionArray{ LegacyGetServiceTokenServiceTokenPermissionArgs{...} }
+type LegacyGetServiceTokenServiceTokenPermissionArrayInput interface {
+	pulumi.Input
+
+	ToLegacyGetServiceTokenServiceTokenPermissionArrayOutput() LegacyGetServiceTokenServiceTokenPermissionArrayOutput
+	ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Context) LegacyGetServiceTokenServiceTokenPermissionArrayOutput
+}
+
+type LegacyGetServiceTokenServiceTokenPermissionArray []LegacyGetServiceTokenServiceTokenPermissionInput
+
+func (LegacyGetServiceTokenServiceTokenPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (i LegacyGetServiceTokenServiceTokenPermissionArray) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutput() LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
+	return i.ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i LegacyGetServiceTokenServiceTokenPermissionArray) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetServiceTokenServiceTokenPermissionArrayOutput)
+}
+
+type LegacyGetServiceTokenServiceTokenPermissionOutput struct{ *pulumi.OutputState }
+
+func (LegacyGetServiceTokenServiceTokenPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ToLegacyGetServiceTokenServiceTokenPermissionOutput() LegacyGetServiceTokenServiceTokenPermissionOutput {
+	return o
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionOutput {
+	return o
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
+	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
+	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) int { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+type LegacyGetServiceTokenServiceTokenPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (LegacyGetServiceTokenServiceTokenPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionArrayOutput) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutput() LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
+	return o
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionArrayOutput) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
+	return o
+}
+
+func (o LegacyGetServiceTokenServiceTokenPermissionArrayOutput) Index(i pulumi.IntInput) LegacyGetServiceTokenServiceTokenPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyGetServiceTokenServiceTokenPermission {
+		return vs[0].([]LegacyGetServiceTokenServiceTokenPermission)[vs[1].(int)]
+	}).(LegacyGetServiceTokenServiceTokenPermissionOutput)
+}
+
+type LegacyGroupGroupPermission struct {
+	AllProjects   bool   `pulumi:"allProjects"`
+	PermissionSet string `pulumi:"permissionSet"`
+	ProjectId     *int   `pulumi:"projectId"`
+}
+
+// LegacyGroupGroupPermissionInput is an input type that accepts LegacyGroupGroupPermissionArgs and LegacyGroupGroupPermissionOutput values.
+// You can construct a concrete instance of `LegacyGroupGroupPermissionInput` via:
+//
+//	LegacyGroupGroupPermissionArgs{...}
+type LegacyGroupGroupPermissionInput interface {
+	pulumi.Input
+
+	ToLegacyGroupGroupPermissionOutput() LegacyGroupGroupPermissionOutput
+	ToLegacyGroupGroupPermissionOutputWithContext(context.Context) LegacyGroupGroupPermissionOutput
+}
+
+type LegacyGroupGroupPermissionArgs struct {
+	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
+	ProjectId     pulumi.IntPtrInput `pulumi:"projectId"`
+}
+
+func (LegacyGroupGroupPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyGroupGroupPermission)(nil)).Elem()
+}
+
+func (i LegacyGroupGroupPermissionArgs) ToLegacyGroupGroupPermissionOutput() LegacyGroupGroupPermissionOutput {
+	return i.ToLegacyGroupGroupPermissionOutputWithContext(context.Background())
+}
+
+func (i LegacyGroupGroupPermissionArgs) ToLegacyGroupGroupPermissionOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyGroupGroupPermissionOutput)
+}
+
+// LegacyGroupGroupPermissionArrayInput is an input type that accepts LegacyGroupGroupPermissionArray and LegacyGroupGroupPermissionArrayOutput values.
+// You can construct a concrete instance of `LegacyGroupGroupPermissionArrayInput` via:
+//
+//	LegacyGroupGroupPermissionArray{ LegacyGroupGroupPermissionArgs{...} }
+type LegacyGroupGroupPermissionArrayInput interface {
+	pulumi.Input
+
+	ToLegacyGroupGroupPermissionArrayOutput() LegacyGroupGroupPermissionArrayOutput
+	ToLegacyGroupGroupPermissionArrayOutputWithContext(context.Context) LegacyGroupGroupPermissionArrayOutput
+}
+
+type LegacyGroupGroupPermissionArray []LegacyGroupGroupPermissionInput
+
+func (LegacyGroupGroupPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyGroupGroupPermission)(nil)).Elem()
+}
+
+func (i LegacyGroupGroupPermissionArray) ToLegacyGroupGroupPermissionArrayOutput() LegacyGroupGroupPermissionArrayOutput {
+	return i.ToLegacyGroupGroupPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i LegacyGroupGroupPermissionArray) ToLegacyGroupGroupPermissionArrayOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyGroupGroupPermissionArrayOutput)
+}
+
+type LegacyGroupGroupPermissionOutput struct{ *pulumi.OutputState }
+
+func (LegacyGroupGroupPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyGroupGroupPermission)(nil)).Elem()
+}
+
+func (o LegacyGroupGroupPermissionOutput) ToLegacyGroupGroupPermissionOutput() LegacyGroupGroupPermissionOutput {
+	return o
+}
+
+func (o LegacyGroupGroupPermissionOutput) ToLegacyGroupGroupPermissionOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionOutput {
+	return o
+}
+
+func (o LegacyGroupGroupPermissionOutput) AllProjects() pulumi.BoolOutput {
+	return o.ApplyT(func(v LegacyGroupGroupPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
+}
+
+func (o LegacyGroupGroupPermissionOutput) PermissionSet() pulumi.StringOutput {
+	return o.ApplyT(func(v LegacyGroupGroupPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
+}
+
+func (o LegacyGroupGroupPermissionOutput) ProjectId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LegacyGroupGroupPermission) *int { return v.ProjectId }).(pulumi.IntPtrOutput)
+}
+
+type LegacyGroupGroupPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (LegacyGroupGroupPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyGroupGroupPermission)(nil)).Elem()
+}
+
+func (o LegacyGroupGroupPermissionArrayOutput) ToLegacyGroupGroupPermissionArrayOutput() LegacyGroupGroupPermissionArrayOutput {
+	return o
+}
+
+func (o LegacyGroupGroupPermissionArrayOutput) ToLegacyGroupGroupPermissionArrayOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionArrayOutput {
+	return o
+}
+
+func (o LegacyGroupGroupPermissionArrayOutput) Index(i pulumi.IntInput) LegacyGroupGroupPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyGroupGroupPermission {
+		return vs[0].([]LegacyGroupGroupPermission)[vs[1].(int)]
+	}).(LegacyGroupGroupPermissionOutput)
+}
+
+type LegacyServiceTokenServiceTokenPermission struct {
+	AllProjects   bool   `pulumi:"allProjects"`
+	PermissionSet string `pulumi:"permissionSet"`
+	ProjectId     *int   `pulumi:"projectId"`
+}
+
+// LegacyServiceTokenServiceTokenPermissionInput is an input type that accepts LegacyServiceTokenServiceTokenPermissionArgs and LegacyServiceTokenServiceTokenPermissionOutput values.
+// You can construct a concrete instance of `LegacyServiceTokenServiceTokenPermissionInput` via:
+//
+//	LegacyServiceTokenServiceTokenPermissionArgs{...}
+type LegacyServiceTokenServiceTokenPermissionInput interface {
+	pulumi.Input
+
+	ToLegacyServiceTokenServiceTokenPermissionOutput() LegacyServiceTokenServiceTokenPermissionOutput
+	ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(context.Context) LegacyServiceTokenServiceTokenPermissionOutput
+}
+
+type LegacyServiceTokenServiceTokenPermissionArgs struct {
+	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
+	ProjectId     pulumi.IntPtrInput `pulumi:"projectId"`
+}
+
+func (LegacyServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (i LegacyServiceTokenServiceTokenPermissionArgs) ToLegacyServiceTokenServiceTokenPermissionOutput() LegacyServiceTokenServiceTokenPermissionOutput {
+	return i.ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(context.Background())
+}
+
+func (i LegacyServiceTokenServiceTokenPermissionArgs) ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyServiceTokenServiceTokenPermissionOutput)
+}
+
+// LegacyServiceTokenServiceTokenPermissionArrayInput is an input type that accepts LegacyServiceTokenServiceTokenPermissionArray and LegacyServiceTokenServiceTokenPermissionArrayOutput values.
+// You can construct a concrete instance of `LegacyServiceTokenServiceTokenPermissionArrayInput` via:
+//
+//	LegacyServiceTokenServiceTokenPermissionArray{ LegacyServiceTokenServiceTokenPermissionArgs{...} }
+type LegacyServiceTokenServiceTokenPermissionArrayInput interface {
+	pulumi.Input
+
+	ToLegacyServiceTokenServiceTokenPermissionArrayOutput() LegacyServiceTokenServiceTokenPermissionArrayOutput
+	ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Context) LegacyServiceTokenServiceTokenPermissionArrayOutput
+}
+
+type LegacyServiceTokenServiceTokenPermissionArray []LegacyServiceTokenServiceTokenPermissionInput
+
+func (LegacyServiceTokenServiceTokenPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (i LegacyServiceTokenServiceTokenPermissionArray) ToLegacyServiceTokenServiceTokenPermissionArrayOutput() LegacyServiceTokenServiceTokenPermissionArrayOutput {
+	return i.ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i LegacyServiceTokenServiceTokenPermissionArray) ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyServiceTokenServiceTokenPermissionArrayOutput)
+}
+
+type LegacyServiceTokenServiceTokenPermissionOutput struct{ *pulumi.OutputState }
+
+func (LegacyServiceTokenServiceTokenPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionOutput) ToLegacyServiceTokenServiceTokenPermissionOutput() LegacyServiceTokenServiceTokenPermissionOutput {
+	return o
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionOutput) ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionOutput {
+	return o
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
+	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
+	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) *int { return v.ProjectId }).(pulumi.IntPtrOutput)
+}
+
+type LegacyServiceTokenServiceTokenPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (LegacyServiceTokenServiceTokenPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionArrayOutput) ToLegacyServiceTokenServiceTokenPermissionArrayOutput() LegacyServiceTokenServiceTokenPermissionArrayOutput {
+	return o
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionArrayOutput) ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionArrayOutput {
+	return o
+}
+
+func (o LegacyServiceTokenServiceTokenPermissionArrayOutput) Index(i pulumi.IntInput) LegacyServiceTokenServiceTokenPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyServiceTokenServiceTokenPermission {
+		return vs[0].([]LegacyServiceTokenServiceTokenPermission)[vs[1].(int)]
+	}).(LegacyServiceTokenServiceTokenPermissionOutput)
+}
+
 type ServiceTokenServiceTokenPermission struct {
 	// Whether or not to apply this permission to all projects for this service token
 	AllProjects bool `pulumi:"allProjects"`
@@ -452,6 +770,12 @@ func (o GetServiceTokenServiceTokenPermissionArrayOutput) Index(i pulumi.IntInpu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupPermissionInput)(nil)).Elem(), GroupGroupPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupPermissionArrayInput)(nil)).Elem(), GroupGroupPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermissionInput)(nil)).Elem(), LegacyGetServiceTokenServiceTokenPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), LegacyGetServiceTokenServiceTokenPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGroupGroupPermissionInput)(nil)).Elem(), LegacyGroupGroupPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGroupGroupPermissionArrayInput)(nil)).Elem(), LegacyGroupGroupPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyServiceTokenServiceTokenPermissionInput)(nil)).Elem(), LegacyServiceTokenServiceTokenPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), LegacyServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenPermissionInput)(nil)).Elem(), ServiceTokenServiceTokenPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), ServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupUsersUserInput)(nil)).Elem(), GetGroupUsersUserArgs{})
@@ -460,6 +784,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterOutputType(GroupGroupPermissionOutput{})
 	pulumi.RegisterOutputType(GroupGroupPermissionArrayOutput{})
+	pulumi.RegisterOutputType(LegacyGetServiceTokenServiceTokenPermissionOutput{})
+	pulumi.RegisterOutputType(LegacyGetServiceTokenServiceTokenPermissionArrayOutput{})
+	pulumi.RegisterOutputType(LegacyGroupGroupPermissionOutput{})
+	pulumi.RegisterOutputType(LegacyGroupGroupPermissionArrayOutput{})
+	pulumi.RegisterOutputType(LegacyServiceTokenServiceTokenPermissionOutput{})
+	pulumi.RegisterOutputType(LegacyServiceTokenServiceTokenPermissionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenPermissionOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupUsersUserOutput{})

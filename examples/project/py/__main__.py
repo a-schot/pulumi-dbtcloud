@@ -3,6 +3,6 @@
 import pulumi
 import aschot_pulumi_dbtcloud as dbtcloud
 
-project = dbtcloud.Project("project", name="project")
+project = dbtcloud.Project("py-project")
 
-pulumi.export(project)
+pulumi.export("project_name", project.name)
