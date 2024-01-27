@@ -34,7 +34,7 @@ export class LegacyEnvironmentVariable extends pulumi.CustomResource {
 
     /**
      * Map from environment names to respective variable value, a special key `project` should be set for the project default
-     * variable value
+     * variable value. This field is not set as sensitive so take precautions when using secret environment variables.
      */
     public readonly environmentValues!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -85,7 +85,7 @@ export class LegacyEnvironmentVariable extends pulumi.CustomResource {
 export interface LegacyEnvironmentVariableState {
     /**
      * Map from environment names to respective variable value, a special key `project` should be set for the project default
-     * variable value
+     * variable value. This field is not set as sensitive so take precautions when using secret environment variables.
      */
     environmentValues?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -104,7 +104,7 @@ export interface LegacyEnvironmentVariableState {
 export interface LegacyEnvironmentVariableArgs {
     /**
      * Map from environment names to respective variable value, a special key `project` should be set for the project default
-     * variable value
+     * variable value. This field is not set as sensitive so take precautions when using secret environment variables.
      */
     environmentValues: pulumi.Input<{[key: string]: any}>;
     /**

@@ -20,7 +20,7 @@ class LegacyEnvironmentVariableArgs:
         """
         The set of arguments for constructing a LegacyEnvironmentVariable resource.
         :param pulumi.Input[Mapping[str, Any]] environment_values: Map from environment names to respective variable value, a special key `project` should be set for the project default
-               variable value
+               variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         :param pulumi.Input[int] project_id: Project for the variable to be created in
         :param pulumi.Input[str] name: Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
         """
@@ -34,7 +34,7 @@ class LegacyEnvironmentVariableArgs:
     def environment_values(self) -> pulumi.Input[Mapping[str, Any]]:
         """
         Map from environment names to respective variable value, a special key `project` should be set for the project default
-        variable value
+        variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         """
         return pulumi.get(self, "environment_values")
 
@@ -76,7 +76,7 @@ class _LegacyEnvironmentVariableState:
         """
         Input properties used for looking up and filtering LegacyEnvironmentVariable resources.
         :param pulumi.Input[Mapping[str, Any]] environment_values: Map from environment names to respective variable value, a special key `project` should be set for the project default
-               variable value
+               variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         :param pulumi.Input[str] name: Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
         :param pulumi.Input[int] project_id: Project for the variable to be created in
         """
@@ -92,7 +92,7 @@ class _LegacyEnvironmentVariableState:
     def environment_values(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Map from environment names to respective variable value, a special key `project` should be set for the project default
-        variable value
+        variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         """
         return pulumi.get(self, "environment_values")
 
@@ -139,7 +139,7 @@ class LegacyEnvironmentVariable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] environment_values: Map from environment names to respective variable value, a special key `project` should be set for the project default
-               variable value
+               variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         :param pulumi.Input[str] name: Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
         :param pulumi.Input[int] project_id: Project for the variable to be created in
         """
@@ -206,7 +206,7 @@ class LegacyEnvironmentVariable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] environment_values: Map from environment names to respective variable value, a special key `project` should be set for the project default
-               variable value
+               variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         :param pulumi.Input[str] name: Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
         :param pulumi.Input[int] project_id: Project for the variable to be created in
         """
@@ -224,7 +224,7 @@ class LegacyEnvironmentVariable(pulumi.CustomResource):
     def environment_values(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Map from environment names to respective variable value, a special key `project` should be set for the project default
-        variable value
+        variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         """
         return pulumi.get(self, "environment_values")
 

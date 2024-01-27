@@ -16,7 +16,7 @@ type LegacyEnvironmentVariable struct {
 	pulumi.CustomResourceState
 
 	// Map from environment names to respective variable value, a special key `project` should be set for the project default
-	// variable value
+	// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues pulumi.MapOutput `pulumi:"environmentValues"`
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -61,7 +61,7 @@ func GetLegacyEnvironmentVariable(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LegacyEnvironmentVariable resources.
 type legacyEnvironmentVariableState struct {
 	// Map from environment names to respective variable value, a special key `project` should be set for the project default
-	// variable value
+	// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues map[string]interface{} `pulumi:"environmentValues"`
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name *string `pulumi:"name"`
@@ -71,7 +71,7 @@ type legacyEnvironmentVariableState struct {
 
 type LegacyEnvironmentVariableState struct {
 	// Map from environment names to respective variable value, a special key `project` should be set for the project default
-	// variable value
+	// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues pulumi.MapInput
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name pulumi.StringPtrInput
@@ -85,7 +85,7 @@ func (LegacyEnvironmentVariableState) ElementType() reflect.Type {
 
 type legacyEnvironmentVariableArgs struct {
 	// Map from environment names to respective variable value, a special key `project` should be set for the project default
-	// variable value
+	// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues map[string]interface{} `pulumi:"environmentValues"`
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name *string `pulumi:"name"`
@@ -96,7 +96,7 @@ type legacyEnvironmentVariableArgs struct {
 // The set of arguments for constructing a LegacyEnvironmentVariable resource.
 type LegacyEnvironmentVariableArgs struct {
 	// Map from environment names to respective variable value, a special key `project` should be set for the project default
-	// variable value
+	// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues pulumi.MapInput
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name pulumi.StringPtrInput
@@ -192,7 +192,7 @@ func (o LegacyEnvironmentVariableOutput) ToLegacyEnvironmentVariableOutputWithCo
 }
 
 // Map from environment names to respective variable value, a special key `project` should be set for the project default
-// variable value
+// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 func (o LegacyEnvironmentVariableOutput) EnvironmentValues() pulumi.MapOutput {
 	return o.ApplyT(func(v *LegacyEnvironmentVariable) pulumi.MapOutput { return v.EnvironmentValues }).(pulumi.MapOutput)
 }

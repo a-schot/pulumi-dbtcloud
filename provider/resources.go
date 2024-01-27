@@ -49,7 +49,7 @@ func Provider() tfbridge.ProviderInfo {
 		LogoURL:           "https://docs.getdbt.com/img/dbt-logo-light.svg",
 		PluginDownloadURL: "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
 		Description:       "A Pulumi package for creating and managing dbt Cloud resources.",
-		Keywords:          []string{"pulumi", "dbtcloud", "dbt", "cloud", "category/cloud", "category/database"},
+		Keywords:          []string{"pulumi", "dbtcloud", "dbt", "cloud", "category/cloud"},
 		License:           "Apache-2.0",
 		Homepage:          "https://www.pulumi.com",
 		Repository:        "https://github.com/a-schot/pulumi-dbtcloud",
@@ -101,52 +101,128 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigQueryCredential"),
 			},
 			"dbtcloud_bigquery_connection": {
-				Tok:  tfbridge.MakeResource(mainPkg, mainMod, "BigQueryConnection"),
-				Docs: &tfbridge.DocInfo{Markdown: []byte(``)},
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigQueryConnection"),
+				// Docs: &tfbridge.DocInfo{Markdown: []byte(``)},
 			},
 			"dbtcloud_extended_attributes": {
 				Tok:        tfbridge.MakeResource(mainPkg, mainMod, "ExtendedAttributes"),
 				CSharpName: "ExtendedAttributesDetails",
 			},
-			"dbtcloud_job":                               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job")},
-			"dbtcloud_project":                           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Project")},
-			"dbtcloud_project_connection":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectConnection")},
-			"dbtcloud_project_repository":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectRepository")},
-			"dbtcloud_project_artefacts":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectArtefacts")},
-			"dbtcloud_environment":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Environment")},
-			"dbtcloud_environment_variable":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariable")},
-			"dbtcloud_databricks_credential":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DatabricksCredential")},
-			"dbtcloud_snowflake_credential":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SnowflakeCredential")},
-			"dbtcloud_postgres_credential":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PostgresCredential")},
-			"dbtcloud_connection":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connection")},
-			"dbtcloud_repository":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Repository")},
-			"dbtcloud_group":                             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
-			"dbtcloud_service_token":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServiceToken")},
-			"dbtcloud_webhook":                           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook")},
-			"dbtcloud_notification":                      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Notification")},
-			"dbtcloud_user_groups":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserGroups")},
-			"dbtcloud_license_map":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LicenseMap")},
-			"dbtcloud_environment_variable_job_override": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariableJobOverride")},
-			"dbtcloud_fabric_connection":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricConnection")},
-			"dbtcloud_fabric_credential":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricCredential")},
+			"dbtcloud_job": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job"),
+			},
+			"dbtcloud_project": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Project"),
+			},
+			"dbtcloud_project_connection": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectConnection"),
+			},
+			"dbtcloud_project_repository": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectRepository"),
+			},
+			"dbtcloud_project_artefacts": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectArtefacts"),
+			},
+			"dbtcloud_environment": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Environment"),
+			},
+			"dbtcloud_environment_variable": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariable"),
+			},
+			"dbtcloud_databricks_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DatabricksCredential"),
+			},
+			"dbtcloud_snowflake_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SnowflakeCredential"),
+			},
+			"dbtcloud_postgres_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "PostgresCredential"),
+			},
+			"dbtcloud_connection": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connection"),
+			},
+			"dbtcloud_repository": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Repository"),
+			},
+			"dbtcloud_group": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group"),
+			},
+			"dbtcloud_service_token": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServiceToken"),
+			},
+			"dbtcloud_webhook": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook"),
+			},
+			"dbtcloud_notification": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Notification"),
+			},
+			"dbtcloud_user_groups": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserGroups"),
+			},
+			"dbtcloud_license_map": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LicenseMap"),
+			},
+			"dbtcloud_environment_variable_job_override": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariableJobOverride"),
+			},
+			"dbtcloud_fabric_connection": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricConnection"),
+			},
+			"dbtcloud_fabric_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricCredential"),
+			},
 			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
-			"dbt_cloud_job":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyJob")},
-			"dbt_cloud_project":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProject")},
-			"dbt_cloud_project_connection":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectConnection")},
-			"dbt_cloud_project_repository":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectRepository")},
-			"dbt_cloud_project_artefacts":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectArtefacts")},
-			"dbt_cloud_environment":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironment")},
-			"dbt_cloud_environment_variable":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironmentVariable")},
-			"dbt_cloud_databricks_credential": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyDatabricksCredential")},
-			"dbt_cloud_snowflake_credential":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacySnowflakeCredential")},
-			"dbt_cloud_bigquery_credential":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryCredential")},
-			"dbt_cloud_postgres_credential":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyPostgresCredential")},
-			"dbt_cloud_connection":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyConnection")},
-			"dbt_cloud_bigquery_connection":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryConnection")},
-			"dbt_cloud_repository":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyRepository")},
-			"dbt_cloud_group":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyGroup")},
-			"dbt_cloud_service_token":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyServiceToken")},
-			"dbt_cloud_webhook":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyWebhook")},
+			"dbt_cloud_job": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyJob"),
+			},
+			"dbt_cloud_project": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProject"),
+			},
+			"dbt_cloud_project_connection": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectConnection"),
+			},
+			"dbt_cloud_project_repository": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectRepository"),
+			},
+			"dbt_cloud_project_artefacts": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectArtefacts"),
+			},
+			"dbt_cloud_environment": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironment"),
+			},
+			"dbt_cloud_environment_variable": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironmentVariable"),
+			},
+			"dbt_cloud_databricks_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyDatabricksCredential"),
+			},
+			"dbt_cloud_snowflake_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacySnowflakeCredential"),
+			},
+			"dbt_cloud_bigquery_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryCredential"),
+			},
+			"dbt_cloud_postgres_credential": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyPostgresCredential"),
+			},
+			"dbt_cloud_connection": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyConnection"),
+			},
+			"dbt_cloud_bigquery_connection": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryConnection"),
+			},
+			"dbt_cloud_repository": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyRepository"),
+			},
+			"dbt_cloud_group": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyGroup"),
+			},
+			"dbt_cloud_service_token": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyServiceToken"),
+			},
+			"dbt_cloud_webhook": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyWebhook"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"dbtcloud_bigquery_credential": {
@@ -155,43 +231,115 @@ func Provider() tfbridge.ProviderInfo {
 			"dbtcloud_bigquery_connection": {
 				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBigQueryConnection"),
 			},
-			"dbtcloud_group":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup")},
-			"dbtcloud_job":                      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getJob")},
-			"dbtcloud_project":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProject")},
-			"dbtcloud_environment":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironment")},
-			"dbtcloud_environment_variable":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironmentVariable")},
-			"dbtcloud_snowflake_credential":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSnowflakeCredential")},
-			"dbtcloud_postgres_credential":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPostgresCredential")},
-			"dbtcloud_databricks_credential":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDatabricksCredential")},
-			"dbtcloud_connection":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnection")},
-			"dbtcloud_repository":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRepository")},
-			"dbtcloud_user":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
-			"dbtcloud_service_token":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServiceToken")},
-			"dbtcloud_webhook":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWebhook")},
-			"dbtcloud_privatelink_endpoint":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPrivatelinkEndpoint")},
-			"dbtcloud_notification":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotification")},
-			"dbtcloud_user_groups":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUserGroups")},
-			"dbtcloud_extended_attributes":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getExtendedAttributes")},
-			"dbtcloud_group_users":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
-			"dbtcloud_azure_dev_ops_project":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsProject")},
-			"dbtcloud_azure_dev_ops_repository": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsRepository")},
+			"dbtcloud_group": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup"),
+			},
+			"dbtcloud_job": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getJob"),
+			},
+			"dbtcloud_project": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProject"),
+			},
+			"dbtcloud_environment": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironment"),
+			},
+			"dbtcloud_environment_variable": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironmentVariable"),
+			},
+			"dbtcloud_snowflake_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSnowflakeCredential"),
+			},
+			"dbtcloud_postgres_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPostgresCredential"),
+			},
+			"dbtcloud_databricks_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDatabricksCredential"),
+			},
+			"dbtcloud_connection": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnection"),
+			},
+			"dbtcloud_repository": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRepository"),
+			},
+			"dbtcloud_user": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser"),
+			},
+			"dbtcloud_service_token": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServiceToken"),
+			},
+			"dbtcloud_webhook": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWebhook"),
+			},
+			"dbtcloud_privatelink_endpoint": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPrivatelinkEndpoint"),
+			},
+			"dbtcloud_notification": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotification"),
+			},
+			"dbtcloud_user_groups": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUserGroups"),
+			},
+			"dbtcloud_extended_attributes": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getExtendedAttributes"),
+			},
+			"dbtcloud_group_users": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers"),
+			},
+			"dbtcloud_azure_dev_ops_project": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsProject"),
+			},
+			"dbtcloud_azure_dev_ops_repository": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsRepository"),
+			},
 			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
-			"dbt_cloud_group":                 {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetGroup")},
-			"dbt_cloud_job":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetJob")},
-			"dbt_cloud_project":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetProject")},
-			"dbt_cloud_environment":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironment")},
-			"dbt_cloud_environment_variable":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironmentVariable")},
-			"dbt_cloud_snowflake_credential":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetSnowflakeCredential")},
-			"dbt_cloud_bigquery_credential":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryCredential")},
-			"dbt_cloud_postgres_credential":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPostgresCredential")},
-			"dbt_cloud_databricks_credential": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetDatabricksCredential")},
-			"dbt_cloud_connection":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetConnection")},
-			"dbt_cloud_bigquery_connection":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigQueryConnection")},
-			"dbt_cloud_repository":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetRepository")},
-			"dbt_cloud_user":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetUser")},
-			"dbt_cloud_service_token":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetServiceToken")},
-			"dbt_cloud_webhook":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetWebhook")},
-			"dbt_cloud_privatelink_endpoint":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPrivatelinkEndpoint")},
+			"dbt_cloud_group": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetGroup"),
+			},
+			"dbt_cloud_job": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetJob"),
+			},
+			"dbt_cloud_project": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetProject"),
+			},
+			"dbt_cloud_environment": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironment"),
+			},
+			"dbt_cloud_environment_variable": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironmentVariable"),
+			},
+			"dbt_cloud_snowflake_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetSnowflakeCredential"),
+			},
+			"dbt_cloud_bigquery_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryCredential"),
+			},
+			"dbt_cloud_postgres_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPostgresCredential"),
+			},
+			"dbt_cloud_databricks_credential": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetDatabricksCredential"),
+			},
+			"dbt_cloud_connection": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetConnection"),
+			},
+			"dbt_cloud_bigquery_connection": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigQueryConnection"),
+			},
+			"dbt_cloud_repository": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetRepository"),
+			},
+			"dbt_cloud_user": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetUser"),
+			},
+			"dbt_cloud_service_token": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetServiceToken"),
+			},
+			"dbt_cloud_webhook": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetWebhook"),
+			},
+			"dbt_cloud_privatelink_endpoint": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPrivatelinkEndpoint"),
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@aschot/pulumi-dbtcloud",

@@ -15,7 +15,7 @@ namespace ASchot.Pulumi.Dbtcloud
     {
         /// <summary>
         /// Map from environment names to respective variable value, a special key `project` should be set for the project default
-        /// variable value
+        /// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         /// </summary>
         [Output("environmentValues")]
         public Output<ImmutableDictionary<string, object>> EnvironmentValues { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace ASchot.Pulumi.Dbtcloud
 
         /// <summary>
         /// Map from environment names to respective variable value, a special key `project` should be set for the project default
-        /// variable value
+        /// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         /// </summary>
         public InputMap<object> EnvironmentValues
         {
@@ -117,7 +117,7 @@ namespace ASchot.Pulumi.Dbtcloud
 
         /// <summary>
         /// Map from environment names to respective variable value, a special key `project` should be set for the project default
-        /// variable value
+        /// variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         /// </summary>
         public InputMap<object> EnvironmentValues
         {

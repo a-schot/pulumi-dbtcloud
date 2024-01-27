@@ -7,8 +7,7 @@
         "dbtcloud",
         "dbt",
         "cloud",
-        "category/cloud",
-        "category/database"
+        "category/cloud"
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
@@ -1276,7 +1275,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default variable value\n"
+                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1298,11 +1297,12 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default variable value\n"
+                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n"
+                    "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "integer",
@@ -1321,11 +1321,12 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default variable value\n"
+                        "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n"
+                        "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "integer",
@@ -3181,7 +3182,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default\nvariable value\n"
+                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default\nvariable value. This field is not set as sensitive so take precautions when using secret environment variables.\n"
                 },
                 "name": {
                     "type": "string",
@@ -3203,11 +3204,12 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default\nvariable value\n"
+                    "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default\nvariable value. This field is not set as sensitive so take precautions when using secret environment variables.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n"
+                    "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "integer",
@@ -3226,11 +3228,12 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default\nvariable value\n"
+                        "description": "Map from environment names to respective variable value, a special key `project` should be set for the project default\nvariable value. This field is not set as sensitive so take precautions when using secret environment variables.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n"
+                        "description": "Name for the variable, must be unique within a project, must be prefixed with 'DBT_'\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "integer",
@@ -5581,7 +5584,7 @@
             }
         },
         "dbtcloud:index/userGroups:UserGroups": {
-            "description": "Assigns a set of dbt Cloud groups to a given User ID. \n\n\u003e If additional groups were assigned manually in dbt Cloud, they will be removed. The full list of groups need to be provided as config.\n\t\t\n\u003e This resource does not currently support deletion (e.g. a deleted resource will stay as-is in dbt Cloud).\nThis is intentional in order to prevent accidental deletion of all users groups assigned to a user.\nIf you would like a different behavior, please open an issue on GitHub. To remove all groups for a user, set \"group_ids\" to the empty set \"[]\".\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dbtcloud from \"@aschot/pulumi-dbtcloud\";\n\n// we can assign groups to users\nconst myUserGroups = new dbtcloud.UserGroups(\"myUserGroups\", {\n    userId: dbtcloud_user.my_user.id,\n    groupIds: [\n        1234,\n        dbtcloud_group.my_group.id,\n        local.my_group_id,\n    ],\n});\n// as Delete is not handled currently, by design, removing all groups from a user can be done with\nconst myOtherUserGroups = new dbtcloud.UserGroups(\"myOtherUserGroups\", {\n    userId: 123456,\n    groupIds: [],\n});\n```\n```python\nimport pulumi\nimport aschot_pulumi_dbtcloud as dbtcloud\n\n# we can assign groups to users\nmy_user_groups = dbtcloud.UserGroups(\"myUserGroups\",\n    user_id=dbtcloud_user[\"my_user\"][\"id\"],\n    group_ids=[\n        1234,\n        dbtcloud_group[\"my_group\"][\"id\"],\n        local[\"my_group_id\"],\n    ])\n# as Delete is not handled currently, by design, removing all groups from a user can be done with\nmy_other_user_groups = dbtcloud.UserGroups(\"myOtherUserGroups\",\n    user_id=123456,\n    group_ids=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dbtcloud = ASchot.Pulumi.Dbtcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // we can assign groups to users\n    var myUserGroups = new Dbtcloud.UserGroups(\"myUserGroups\", new()\n    {\n        UserId = dbtcloud_user.My_user.Id,\n        GroupIds = new[]\n        {\n            1234,\n            dbtcloud_group.My_group.Id,\n            local.My_group_id,\n        },\n    });\n\n    // as Delete is not handled currently, by design, removing all groups from a user can be done with\n    var myOtherUserGroups = new Dbtcloud.UserGroups(\"myOtherUserGroups\", new()\n    {\n        UserId = 123456,\n        GroupIds = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dbtcloud.NewUserGroups(ctx, \"myUserGroups\", \u0026dbtcloud.UserGroupsArgs{\n\t\t\tUserId: pulumi.Any(dbtcloud_user.My_user.Id),\n\t\t\tGroupIds: pulumi.IntArray{\n\t\t\t\tpulumi.Int(1234),\n\t\t\t\tdbtcloud_group.My_group.Id,\n\t\t\t\tlocal.My_group_id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dbtcloud.NewUserGroups(ctx, \"myOtherUserGroups\", \u0026dbtcloud.UserGroupsArgs{\n\t\t\tUserId:   pulumi.Int(123456),\n\t\t\tGroupIds: pulumi.IntArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dbtcloud.UserGroups;\nimport com.pulumi.dbtcloud.UserGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myUserGroups = new UserGroups(\"myUserGroups\", UserGroupsArgs.builder()        \n            .userId(dbtcloud_user.my_user().id())\n            .groupIds(            \n                1234,\n                dbtcloud_group.my_group().id(),\n                local.my_group_id())\n            .build());\n\n        var myOtherUserGroups = new UserGroups(\"myOtherUserGroups\", UserGroupsArgs.builder()        \n            .userId(123456)\n            .groupIds()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # we can assign groups to users\n  myUserGroups:\n    type: dbtcloud:UserGroups\n    properties:\n      userId: ${dbtcloud_user.my_user.id}\n      groupIds:\n        - 1234\n        - ${dbtcloud_group.my_group.id}\n        - ${local.my_group_id}\n  # as Delete is not handled currently, by design, removing all groups from a user can be done with\n  myOtherUserGroups:\n    type: dbtcloud:UserGroups\n    properties:\n      userId: 123456\n      groupIds: []\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport using the User ID The User ID can be retrieved from the dbt Cloud UI or with the data source dbtcloud_user\n\n```sh\n $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups \"user_id\"\n```\n\n\n\n```sh\n $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups 123456\n```\n\n ",
+            "description": "Assigns a set of dbt Cloud groups to a given User ID. \n\n\u003e If additional groups were assigned manually in dbt Cloud, they will be removed. The full list of groups need to be provided as config.\n\t\t\n\u003e This resource does not currently support deletion (e.g. a deleted resource will stay as-is in dbt Cloud).\nThis is intentional in order to prevent accidental deletion of all users groups assigned to a user.\nIf you would like a different behavior, please open an issue on GitHub. To remove all groups for a user, set \"group_ids\" to the empty set \"[]\".\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dbtcloud from \"@aschot/pulumi-dbtcloud\";\n\n// we can assign groups to users\nconst myUserGroups = new dbtcloud.UserGroups(\"myUserGroups\", {\n    userId: data.dbtcloud_user.my_user.id,\n    groupIds: [\n        1234,\n        dbtcloud_group.my_group.id,\n        local.my_group_id,\n    ],\n});\n// as Delete is not handled currently, by design, removing all groups from a user can be done with\nconst myOtherUserGroups = new dbtcloud.UserGroups(\"myOtherUserGroups\", {\n    userId: 123456,\n    groupIds: [],\n});\n```\n```python\nimport pulumi\nimport aschot_pulumi_dbtcloud as dbtcloud\n\n# we can assign groups to users\nmy_user_groups = dbtcloud.UserGroups(\"myUserGroups\",\n    user_id=data[\"dbtcloud_user\"][\"my_user\"][\"id\"],\n    group_ids=[\n        1234,\n        dbtcloud_group[\"my_group\"][\"id\"],\n        local[\"my_group_id\"],\n    ])\n# as Delete is not handled currently, by design, removing all groups from a user can be done with\nmy_other_user_groups = dbtcloud.UserGroups(\"myOtherUserGroups\",\n    user_id=123456,\n    group_ids=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dbtcloud = ASchot.Pulumi.Dbtcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // we can assign groups to users\n    var myUserGroups = new Dbtcloud.UserGroups(\"myUserGroups\", new()\n    {\n        UserId = data.Dbtcloud_user.My_user.Id,\n        GroupIds = new[]\n        {\n            1234,\n            dbtcloud_group.My_group.Id,\n            local.My_group_id,\n        },\n    });\n\n    // as Delete is not handled currently, by design, removing all groups from a user can be done with\n    var myOtherUserGroups = new Dbtcloud.UserGroups(\"myOtherUserGroups\", new()\n    {\n        UserId = 123456,\n        GroupIds = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dbtcloud.NewUserGroups(ctx, \"myUserGroups\", \u0026dbtcloud.UserGroupsArgs{\n\t\t\tUserId: pulumi.Any(data.Dbtcloud_user.My_user.Id),\n\t\t\tGroupIds: pulumi.IntArray{\n\t\t\t\tpulumi.Int(1234),\n\t\t\t\tdbtcloud_group.My_group.Id,\n\t\t\t\tlocal.My_group_id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dbtcloud.NewUserGroups(ctx, \"myOtherUserGroups\", \u0026dbtcloud.UserGroupsArgs{\n\t\t\tUserId:   pulumi.Int(123456),\n\t\t\tGroupIds: pulumi.IntArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dbtcloud.UserGroups;\nimport com.pulumi.dbtcloud.UserGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myUserGroups = new UserGroups(\"myUserGroups\", UserGroupsArgs.builder()        \n            .userId(data.dbtcloud_user().my_user().id())\n            .groupIds(            \n                1234,\n                dbtcloud_group.my_group().id(),\n                local.my_group_id())\n            .build());\n\n        var myOtherUserGroups = new UserGroups(\"myOtherUserGroups\", UserGroupsArgs.builder()        \n            .userId(123456)\n            .groupIds()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # we can assign groups to users\n  myUserGroups:\n    type: dbtcloud:UserGroups\n    properties:\n      userId: ${data.dbtcloud_user.my_user.id}\n      groupIds:\n        - 1234\n        - ${dbtcloud_group.my_group.id}\n        - ${local.my_group_id}\n  # as Delete is not handled currently, by design, removing all groups from a user can be done with\n  myOtherUserGroups:\n    type: dbtcloud:UserGroups\n    properties:\n      userId: 123456\n      groupIds: []\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport using the User ID The User ID can be retrieved from the dbt Cloud UI or with the data source dbtcloud_user\n\n```sh\n $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups \"user_id\"\n```\n\n\n\n```sh\n $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups 123456\n```\n\n ",
             "properties": {
                 "groupIds": {
                     "type": "array",

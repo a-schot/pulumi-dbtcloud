@@ -32,7 +32,7 @@ namespace ASchot.Pulumi.Dbtcloud
     ///     // we can assign groups to users
     ///     var myUserGroups = new Dbtcloud.UserGroups("myUserGroups", new()
     ///     {
-    ///         UserId = dbtcloud_user.My_user.Id,
+    ///         UserId = data.Dbtcloud_user.My_user.Id,
     ///         GroupIds = new[]
     ///         {
     ///             1234,

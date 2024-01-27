@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbtcloud.NewUserGroups(ctx, "myUserGroups", &dbtcloud.UserGroupsArgs{
-//				UserId: pulumi.Any(dbtcloud_user.My_user.Id),
+//				UserId: pulumi.Any(data.Dbtcloud_user.My_user.Id),
 //				GroupIds: pulumi.IntArray{
 //					pulumi.Int(1234),
 //					dbtcloud_group.My_group.Id,

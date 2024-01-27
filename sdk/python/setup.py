@@ -23,7 +23,7 @@ setup(name='aschot_pulumi_dbtcloud',
       description="A Pulumi package for creating and managing dbt Cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='pulumi dbtcloud dbt cloud category/cloud category/database',
+      keywords='pulumi dbtcloud dbt cloud category/cloud',
       url='https://www.pulumi.com',
       project_urls={
           'Repository': 'https://github.com/a-schot/pulumi-dbtcloud'

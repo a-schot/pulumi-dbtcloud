@@ -67,7 +67,7 @@ namespace ASchot.Pulumi.Dbtcloud
     public partial class EnvironmentVariable : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+        /// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         /// </summary>
         [Output("environmentValues")]
         public Output<ImmutableDictionary<string, object>> EnvironmentValues { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace ASchot.Pulumi.Dbtcloud
         private InputMap<object>? _environmentValues;
 
         /// <summary>
-        /// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+        /// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         /// </summary>
         public InputMap<object> EnvironmentValues
         {
@@ -167,7 +167,7 @@ namespace ASchot.Pulumi.Dbtcloud
         private InputMap<object>? _environmentValues;
 
         /// <summary>
-        /// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+        /// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
         /// </summary>
         public InputMap<object> EnvironmentValues
         {

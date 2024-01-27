@@ -70,7 +70,7 @@ import (
 type EnvironmentVariable struct {
 	pulumi.CustomResourceState
 
-	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues pulumi.MapOutput `pulumi:"environmentValues"`
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -114,7 +114,7 @@ func GetEnvironmentVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvironmentVariable resources.
 type environmentVariableState struct {
-	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues map[string]interface{} `pulumi:"environmentValues"`
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name *string `pulumi:"name"`
@@ -123,7 +123,7 @@ type environmentVariableState struct {
 }
 
 type EnvironmentVariableState struct {
-	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues pulumi.MapInput
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name pulumi.StringPtrInput
@@ -136,7 +136,7 @@ func (EnvironmentVariableState) ElementType() reflect.Type {
 }
 
 type environmentVariableArgs struct {
-	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues map[string]interface{} `pulumi:"environmentValues"`
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name *string `pulumi:"name"`
@@ -146,7 +146,7 @@ type environmentVariableArgs struct {
 
 // The set of arguments for constructing a EnvironmentVariable resource.
 type EnvironmentVariableArgs struct {
-	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+	// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 	EnvironmentValues pulumi.MapInput
 	// Name for the variable, must be unique within a project, must be prefixed with 'DBT_'
 	Name pulumi.StringPtrInput
@@ -241,7 +241,7 @@ func (o EnvironmentVariableOutput) ToEnvironmentVariableOutputWithContext(ctx co
 	return o
 }
 
-// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value
+// Map from environment names to respective variable value, a special key `project` should be set for the project default variable value. This field is not set as sensitive so take precautions when using secret environment variables.
 func (o EnvironmentVariableOutput) EnvironmentValues() pulumi.MapOutput {
 	return o.ApplyT(func(v *EnvironmentVariable) pulumi.MapOutput { return v.EnvironmentValues }).(pulumi.MapOutput)
 }

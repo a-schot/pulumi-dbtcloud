@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *
  * // we can assign groups to users
  * const myUserGroups = new dbtcloud.UserGroups("myUserGroups", {
- *     userId: dbtcloud_user.my_user.id,
+ *     userId: data.dbtcloud_user.my_user.id,
  *     groupIds: [
  *         1234,
  *         dbtcloud_group.my_group.id,
