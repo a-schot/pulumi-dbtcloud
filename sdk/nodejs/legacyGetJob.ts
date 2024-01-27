@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetJob(args: LegacyGetJobArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetJobResult> {
+    pulumi.log.warn("legacyGetJob is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetJob:LegacyGetJob", {
@@ -41,6 +43,7 @@ export interface LegacyGetJobResult {
     readonly triggers: {[key: string]: boolean};
     readonly triggersOnDraftPr: boolean;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetJobOutput(args: LegacyGetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetJobResult> {
     return pulumi.output(args).apply((a: any) => legacyGetJob(a, opts))
 }

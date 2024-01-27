@@ -10,6 +10,7 @@ using Pulumi;
 
 namespace ASchot.Pulumi.Dbtcloud
 {
+    [Obsolete(@"Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")]
     [DbtcloudResourceType("dbtcloud:index/legacyProject:LegacyProject")]
     public partial class LegacyProject : global::Pulumi.CustomResource
     {

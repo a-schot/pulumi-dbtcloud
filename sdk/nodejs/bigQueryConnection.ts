@@ -7,6 +7,50 @@ import * as utilities from "./utilities";
 /**
  * Resource to create BigQuery connections in dbt Cloud. Can be set to use OAuth for developers.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dbtcloud from "@aschot/pulumi-dbtcloud";
+ *
+ * // NOTE for customers using the LEGACY dbt_cloud provider:
+ * const myConnection = new dbtcloud.BigQueryConnection("myConnection", {
+ *     projectId: dbtcloud_project.dbt_project.id,
+ *     type: "bigquery",
+ *     isActive: true,
+ *     gcpProjectId: "my-gcp-project-id",
+ *     timeoutSeconds: 100,
+ *     privateKeyId: "my-private-key-id",
+ *     privateKey: "ABCDEFGHIJKL",
+ *     clientEmail: "my_client_email",
+ *     clientId: "my_client_di",
+ *     authUri: "my_auth_uri",
+ *     tokenUri: "my_token_uri",
+ *     authProviderX509CertUrl: "my_auth_provider_x509_cert_url",
+ *     clientX509CertUrl: "my_client_x509_cert_url",
+ *     retries: 3,
+ * });
+ * // it is also possible to set the connection to use OAuth by filling in `application_id` and `application_secret`
+ * const myConnectionWithOauth = new dbtcloud.BigQueryConnection("myConnectionWithOauth", {
+ *     projectId: dbtcloud_project.dbt_project.id,
+ *     type: "bigquery",
+ *     isActive: true,
+ *     gcpProjectId: "my-gcp-project-id",
+ *     timeoutSeconds: 100,
+ *     privateKeyId: "my-private-key-id",
+ *     privateKey: "ABCDEFGHIJKL",
+ *     clientEmail: "my_client_email",
+ *     clientId: "my_client_di",
+ *     authUri: "my_auth_uri",
+ *     tokenUri: "my_token_uri",
+ *     authProviderX509CertUrl: "my_auth_provider_x509_cert_url",
+ *     clientX509CertUrl: "my_client_x509_cert_url",
+ *     retries: 3,
+ *     applicationId: "oauth_application_id",
+ *     applicationSecret: "oauth_secret_id",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

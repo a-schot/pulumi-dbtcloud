@@ -105,8 +105,6 @@ class ProjectConnection(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_project_connection instead of dbtcloud_project_connection for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         dbt_project_connection = dbtcloud.ProjectConnection("dbtProjectConnection",
             project_id=dbtcloud_project["dbt_project"]["id"],
             connection_id=dbtcloud_connection["dbt_connection"]["connection_id"])
@@ -143,8 +141,6 @@ class ProjectConnection(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_project_connection instead of dbtcloud_project_connection for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         dbt_project_connection = dbtcloud.ProjectConnection("dbtProjectConnection",
             project_id=dbtcloud_project["dbt_project"]["id"],
             connection_id=dbtcloud_connection["dbt_connection"]["connection_id"])

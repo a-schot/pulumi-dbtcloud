@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dbtcloud from "@aschot/pulumi-dbtcloud";
  *
+ * // NOTE for customers using the LEGACY dbt_cloud provider:
  * const dbtProject = new dbtcloud.Project("dbtProject", {});
  * const dbtProjectWithSubdir = new dbtcloud.Project("dbtProjectWithSubdir", {dbtProjectSubdirectory: "/path"});
  * ```

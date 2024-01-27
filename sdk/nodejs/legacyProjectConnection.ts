@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
+ */
 export class LegacyProjectConnection extends pulumi.CustomResource {
     /**
      * Get an existing LegacyProjectConnection resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class LegacyProjectConnection extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LegacyProjectConnectionState, opts?: pulumi.CustomResourceOptions): LegacyProjectConnection {
+        pulumi.log.warn("LegacyProjectConnection is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         return new LegacyProjectConnection(name, <any>state, { ...opts, id: id });
     }
 
@@ -48,8 +52,11 @@ export class LegacyProjectConnection extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, args: LegacyProjectConnectionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, argsOrState?: LegacyProjectConnectionArgs | LegacyProjectConnectionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LegacyProjectConnection is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

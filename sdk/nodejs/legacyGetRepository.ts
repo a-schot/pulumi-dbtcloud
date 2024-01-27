@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetRepository(args: LegacyGetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetRepositoryResult> {
+    pulumi.log.warn("legacyGetRepository is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetRepository:LegacyGetRepository", {
@@ -42,6 +44,7 @@ export interface LegacyGetRepositoryResult {
     readonly repositoryCredentialsId: number;
     readonly repositoryId: number;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetRepositoryOutput(args: LegacyGetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetRepositoryResult> {
     return pulumi.output(args).apply((a: any) => legacyGetRepository(a, opts))
 }

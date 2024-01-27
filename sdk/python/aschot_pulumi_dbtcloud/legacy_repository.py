@@ -421,7 +421,12 @@ class _LegacyRepositoryState:
         pulumi.set(self, "repository_id", value)
 
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
+
 class LegacyRepository(pulumi.CustomResource):
+    warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -493,6 +498,7 @@ class LegacyRepository(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[int]] = None,
                  remote_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LegacyRepository is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

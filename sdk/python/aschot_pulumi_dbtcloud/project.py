@@ -106,6 +106,7 @@ class Project(pulumi.CustomResource):
         import pulumi
         import aschot_pulumi_dbtcloud as dbtcloud
 
+        # NOTE for customers using the LEGACY dbt_cloud provider:
         dbt_project = dbtcloud.Project("dbtProject")
         dbt_project_with_subdir = dbtcloud.Project("dbtProjectWithSubdir", dbt_project_subdirectory="/path")
         ```
@@ -140,6 +141,7 @@ class Project(pulumi.CustomResource):
         import pulumi
         import aschot_pulumi_dbtcloud as dbtcloud
 
+        # NOTE for customers using the LEGACY dbt_cloud provider:
         dbt_project = dbtcloud.Project("dbtProject")
         dbt_project_with_subdir = dbtcloud.Project("dbtProjectWithSubdir", dbt_project_subdirectory="/path")
         ```

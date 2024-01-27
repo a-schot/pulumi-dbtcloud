@@ -10,6 +10,7 @@ using Pulumi;
 
 namespace ASchot.Pulumi.Dbtcloud
 {
+    [Obsolete(@"Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")]
     public static class LegacyGetJob
     {
         public static Task<LegacyGetJobResult> InvokeAsync(LegacyGetJobArgs args, InvokeOptions? options = null)

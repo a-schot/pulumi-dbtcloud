@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_environment_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetEnvironmentResult:
     """
@@ -149,6 +151,7 @@ def legacy_get_environment(environment_id: Optional[int] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_environment is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['environmentId'] = environment_id
     __args__['projectId'] = project_id
@@ -177,4 +180,5 @@ def legacy_get_environment_output(environment_id: Optional[pulumi.Input[int]] = 
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_environment is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

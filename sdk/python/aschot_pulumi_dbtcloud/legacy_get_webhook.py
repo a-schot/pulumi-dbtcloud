@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_webhook_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetWebhookResult:
     """
@@ -130,6 +132,7 @@ def legacy_get_webhook(webhook_id: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_webhook is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['webhookId'] = webhook_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -154,4 +157,5 @@ def legacy_get_webhook_output(webhook_id: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_webhook is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

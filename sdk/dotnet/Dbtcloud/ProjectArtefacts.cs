@@ -22,8 +22,6 @@ namespace ASchot.Pulumi.Dbtcloud
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE for customers using the LEGACY dbt_cloud provider:
-    ///     // use dbt_cloud_project_artefacts instead of dbtcloud_project_artefacts for the legacy resource names
-    ///     // legacy names will be removed from 0.3 onwards
     ///     var myProjectArtefacts = new Dbtcloud.ProjectArtefacts("myProjectArtefacts", new()
     ///     {
     ///         ProjectId = dbtcloud_project.Dbt_project.Id,

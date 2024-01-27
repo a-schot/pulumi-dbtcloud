@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_job_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetJobResult:
     """
@@ -149,6 +151,7 @@ def legacy_get_job(job_id: Optional[int] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_job is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['jobId'] = job_id
     __args__['projectId'] = project_id
@@ -177,4 +180,5 @@ def legacy_get_job_output(job_id: Optional[pulumi.Input[int]] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_job is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

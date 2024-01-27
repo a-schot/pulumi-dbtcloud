@@ -12,9 +12,65 @@ namespace ASchot.Pulumi.Dbtcloud
 {
     public static class GetProject
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Dbtcloud = Pulumi.Dbtcloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testProject = Dbtcloud.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = @var.Dbt_cloud_project_id,
+        ///     });
+        /// 
+        ///     var anotherTestProject = Dbtcloud.GetProject.Invoke(new()
+        ///     {
+        ///         Name = "My other project name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("dbtcloud:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Dbtcloud = Pulumi.Dbtcloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testProject = Dbtcloud.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = @var.Dbt_cloud_project_id,
+        ///     });
+        /// 
+        ///     var anotherTestProject = Dbtcloud.GetProject.Invoke(new()
+        ///     {
+        ///         Name = "My other project name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("dbtcloud:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }

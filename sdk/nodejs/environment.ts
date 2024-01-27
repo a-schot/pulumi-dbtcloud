@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  * import * as dbtcloud from "@aschot/pulumi-dbtcloud";
  *
  * // NOTE for customers using the LEGACY dbt_cloud provider:
- * // use dbt_cloud_environment instead of dbtcloud_environment for the legacy resource names
- * // legacy names will be removed from 0.3 onwards
  * const ciEnvironment = new dbtcloud.Environment("ciEnvironment", {
  *     dbtVersion: "1.6.0-latest",
  *     projectId: dbtcloud_project.dbt_project.id,

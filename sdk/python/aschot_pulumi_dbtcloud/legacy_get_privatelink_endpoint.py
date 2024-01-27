@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_privatelink_endpoint_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetPrivatelinkEndpointResult:
     """
@@ -92,6 +94,7 @@ def legacy_get_privatelink_endpoint(name: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_privatelink_endpoint is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['name'] = name
     __args__['privateLinkEndpointUrl'] = private_link_endpoint_url
@@ -114,4 +117,5 @@ def legacy_get_privatelink_endpoint_output(name: Optional[pulumi.Input[Optional[
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_privatelink_endpoint is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

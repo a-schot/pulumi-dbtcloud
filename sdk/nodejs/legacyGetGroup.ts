@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetGroup(args: LegacyGetGroupArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetGroupResult> {
+    pulumi.log.warn("legacyGetGroup is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetGroup:LegacyGetGroup", {
@@ -33,6 +35,7 @@ export interface LegacyGetGroupResult {
     readonly name: string;
     readonly ssoMappingGroups: string[];
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetGroupOutput(args: LegacyGetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetGroupResult> {
     return pulumi.output(args).apply((a: any) => legacyGetGroup(a, opts))
 }

@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dbtcloud from "@pulumi/dbtcloud";
+ *
+ * const testProject = dbtcloud.getProject({
+ *     projectId: _var.dbt_cloud_project_id,
+ * });
+ * const anotherTestProject = dbtcloud.getProject({
+ *     name: "My other project name",
+ * });
+ * ```
+ */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
 
@@ -65,6 +80,21 @@ export interface GetProjectResult {
      */
     readonly state: number;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dbtcloud from "@pulumi/dbtcloud";
+ *
+ * const testProject = dbtcloud.getProject({
+ *     projectId: _var.dbt_cloud_project_id,
+ * });
+ * const anotherTestProject = dbtcloud.getProject({
+ *     name: "My other project name",
+ * });
+ * ```
+ */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))
 }

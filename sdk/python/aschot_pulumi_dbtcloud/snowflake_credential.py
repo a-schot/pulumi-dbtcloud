@@ -448,8 +448,6 @@ class SnowflakeCredential(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_snowflake_credential instead of dbtcloud_snowflake_credential for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         prod_credential = dbtcloud.SnowflakeCredential("prodCredential",
             project_id=data["dbtcloud_project"]["dbt_project"]["id"],
             auth_type="password",
@@ -500,8 +498,6 @@ class SnowflakeCredential(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_snowflake_credential instead of dbtcloud_snowflake_credential for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         prod_credential = dbtcloud.SnowflakeCredential("prodCredential",
             project_id=data["dbtcloud_project"]["dbt_project"]["id"],
             auth_type="password",

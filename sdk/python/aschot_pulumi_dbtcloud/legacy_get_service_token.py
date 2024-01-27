@@ -17,6 +17,8 @@ __all__ = [
     'legacy_get_service_token_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetServiceTokenResult:
     """
@@ -86,6 +88,7 @@ def legacy_get_service_token(service_token_id: Optional[int] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_service_token is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['serviceTokenId'] = service_token_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -105,4 +108,5 @@ def legacy_get_service_token_output(service_token_id: Optional[pulumi.Input[int]
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_service_token is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

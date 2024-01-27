@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  * import * as dbtcloud from "@aschot/pulumi-dbtcloud";
  *
  * // NOTE for customers using the LEGACY dbt_cloud provider:
- * // use dbt_cloud_bigquery_credential instead of dbtcloud_bigquery_credential for the legacy resource names
- * // legacy names will be removed from 0.3 onwards
  * const myCredential = new dbtcloud.BigQueryCredential("myCredential", {
  *     projectId: dbtcloud_project.dbt_project.id,
  *     dataset: "my_bq_dataset",

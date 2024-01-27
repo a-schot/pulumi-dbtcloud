@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  * import * as dbtcloud from "@aschot/pulumi-dbtcloud";
  *
  * // NOTE for customers using the LEGACY dbt_cloud provider:
- * // use dbt_cloud_postgres_credential instead of dbtcloud_postgres_credential for the legacy resource names
- * // legacy names will be removed from 0.3 onwards
  * const postgresProdCredential = new dbtcloud.PostgresCredential("postgresProdCredential", {
  *     isActive: true,
  *     projectId: dbtcloud_project.dbt_project.id,

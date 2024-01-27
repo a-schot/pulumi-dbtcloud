@@ -10,6 +10,7 @@ using Pulumi;
 
 namespace ASchot.Pulumi.Dbtcloud
 {
+    [Obsolete(@"Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")]
     public static class LegacyGetDatabricksCredential
     {
         public static Task<LegacyGetDatabricksCredentialResult> InvokeAsync(LegacyGetDatabricksCredentialArgs args, InvokeOptions? options = null)

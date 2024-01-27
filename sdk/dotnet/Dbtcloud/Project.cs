@@ -21,6 +21,7 @@ namespace ASchot.Pulumi.Dbtcloud
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // NOTE for customers using the LEGACY dbt_cloud provider:
     ///     var dbtProject = new Dbtcloud.Project("dbtProject");
     /// 
     ///     var dbtProjectWithSubdir = new Dbtcloud.Project("dbtProjectWithSubdir", new()

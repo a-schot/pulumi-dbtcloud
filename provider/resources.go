@@ -29,6 +29,9 @@ import (
 //go:embed cmd/pulumi-resource-dbtcloud/bridge-metadata.json
 var bridgeMetadata []byte
 
+const legacyMessage string = "Do not use! This resource is mapped from the legacy" +
+	" Terraform `dbt_cloud_`-prefixed resource/datasource"
+
 // all of the token components used below.
 const (
 	mainPkg = "dbtcloud"
@@ -102,7 +105,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"dbtcloud_bigquery_connection": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "BigQueryConnection"),
-				// Docs: &tfbridge.DocInfo{Markdown: []byte(``)},
 			},
 			"dbtcloud_extended_attributes": {
 				Tok:        tfbridge.MakeResource(mainPkg, mainMod, "ExtendedAttributes"),
@@ -166,62 +168,80 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnvironmentVariableJobOverride"),
 			},
 			"dbtcloud_fabric_connection": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricConnection"),
+				Tok:  tfbridge.MakeResource(mainPkg, mainMod, "FabricConnection"),
+				Docs: &tfbridge.DocInfo{Markdown: []byte(``)},
 			},
 			"dbtcloud_fabric_credential": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "FabricCredential"),
 			},
 			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
 			"dbt_cloud_job": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyJob"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyJob"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_project": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProject"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProject"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_project_connection": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectConnection"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectConnection"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_project_repository": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectRepository"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectRepository"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_project_artefacts": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectArtefacts"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectArtefacts"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_environment": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironment"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironment"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_environment_variable": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironmentVariable"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironmentVariable"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_databricks_credential": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyDatabricksCredential"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyDatabricksCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_snowflake_credential": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacySnowflakeCredential"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacySnowflakeCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_bigquery_credential": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryCredential"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_postgres_credential": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyPostgresCredential"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyPostgresCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_connection": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyConnection"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyConnection"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_bigquery_connection": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryConnection"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryConnection"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_repository": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyRepository"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyRepository"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_group": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyGroup"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyGroup"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_service_token": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyServiceToken"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyServiceToken"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_webhook": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LegacyWebhook"),
+				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyWebhook"),
+				DeprecationMessage: legacyMessage,
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
@@ -293,52 +313,68 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
 			"dbt_cloud_group": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetGroup"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetGroup"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_job": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetJob"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetJob"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_project": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetProject"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetProject"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_environment": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironment"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironment"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_environment_variable": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironmentVariable"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironmentVariable"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_snowflake_credential": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetSnowflakeCredential"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetSnowflakeCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_bigquery_credential": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryCredential"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_postgres_credential": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPostgresCredential"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPostgresCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_databricks_credential": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetDatabricksCredential"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetDatabricksCredential"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_connection": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetConnection"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetConnection"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_bigquery_connection": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigQueryConnection"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigQueryConnection"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_repository": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetRepository"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetRepository"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_user": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetUser"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetUser"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_service_token": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetServiceToken"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetServiceToken"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_webhook": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetWebhook"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetWebhook"),
+				DeprecationMessage: legacyMessage,
 			},
 			"dbt_cloud_privatelink_endpoint": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPrivatelinkEndpoint"),
+				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPrivatelinkEndpoint"),
+				DeprecationMessage: legacyMessage,
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{

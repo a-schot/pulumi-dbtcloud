@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetPostgresCredential(args: LegacyGetPostgresCredentialArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetPostgresCredentialResult> {
+    pulumi.log.warn("legacyGetPostgresCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetPostgresCredential:LegacyGetPostgresCredential", {
@@ -36,6 +38,7 @@ export interface LegacyGetPostgresCredentialResult {
     readonly projectId: number;
     readonly username: string;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetPostgresCredentialOutput(args: LegacyGetPostgresCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetPostgresCredentialResult> {
     return pulumi.output(args).apply((a: any) => legacyGetPostgresCredential(a, opts))
 }

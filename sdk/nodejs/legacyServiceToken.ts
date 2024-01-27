@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
+ */
 export class LegacyServiceToken extends pulumi.CustomResource {
     /**
      * Get an existing LegacyServiceToken resource's state with the given name, ID, and optional extra
@@ -17,6 +20,7 @@ export class LegacyServiceToken extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LegacyServiceTokenState, opts?: pulumi.CustomResourceOptions): LegacyServiceToken {
+        pulumi.log.warn("LegacyServiceToken is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         return new LegacyServiceToken(name, <any>state, { ...opts, id: id });
     }
 
@@ -62,8 +66,11 @@ export class LegacyServiceToken extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, args?: LegacyServiceTokenArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, argsOrState?: LegacyServiceTokenArgs | LegacyServiceTokenState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LegacyServiceToken is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

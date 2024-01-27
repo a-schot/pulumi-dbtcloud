@@ -22,8 +22,6 @@ namespace ASchot.Pulumi.Dbtcloud
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE for customers using the LEGACY dbt_cloud provider:
-    ///     // use dbt_cloud_service_token instead of dbtcloud_service_token for the legacy resource names
-    ///     // legacy names will be removed from 0.3 onwards
     ///     var testServiceToken = new Dbtcloud.ServiceToken("testServiceToken", new()
     ///     {
     ///         ServiceTokenPermissions = new[]

@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
+ */
 export class LegacyJob extends pulumi.CustomResource {
     /**
      * Get an existing LegacyJob resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class LegacyJob extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LegacyJobState, opts?: pulumi.CustomResourceOptions): LegacyJob {
+        pulumi.log.warn("LegacyJob is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         return new LegacyJob(name, <any>state, { ...opts, id: id });
     }
 
@@ -130,8 +134,11 @@ export class LegacyJob extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, args: LegacyJobArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, argsOrState?: LegacyJobArgs | LegacyJobState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LegacyJob is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -28,8 +28,6 @@ namespace ASchot.Pulumi.Dbtcloud
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE for customers using the LEGACY dbt_cloud provider:
-    ///     // use dbt_cloud_job instead of dbtcloud_job for the legacy resource names
-    ///     // legacy names will be removed from 0.3 onwards
     ///     // a job that has github_webhook and git_provider_webhook 
     ///     // set to false will be categorized as a "Deploy Job"
     ///     var dailyJob = new Dbtcloud.Job("dailyJob", new()

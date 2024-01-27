@@ -202,8 +202,6 @@ class Group(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_group instead of dbtcloud_group for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         tf_group1 = dbtcloud.Group("tfGroup1", group_permissions=[
             dbtcloud.GroupGroupPermissionArgs(
                 permission_set="member",
@@ -252,8 +250,6 @@ class Group(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_group instead of dbtcloud_group for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         tf_group1 = dbtcloud.Group("tfGroup1", group_permissions=[
             dbtcloud.GroupGroupPermissionArgs(
                 permission_set="member",

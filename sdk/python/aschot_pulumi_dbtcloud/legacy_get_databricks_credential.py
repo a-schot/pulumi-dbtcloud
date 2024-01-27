@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_databricks_credential_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetDatabricksCredentialResult:
     """
@@ -113,6 +115,7 @@ def legacy_get_databricks_credential(credential_id: Optional[int] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_databricks_credential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['credentialId'] = credential_id
     __args__['projectId'] = project_id
@@ -137,4 +140,5 @@ def legacy_get_databricks_credential_output(credential_id: Optional[pulumi.Input
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_databricks_credential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

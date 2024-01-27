@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetEnvironment(args: LegacyGetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetEnvironmentResult> {
+    pulumi.log.warn("legacyGetEnvironment is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetEnvironment:LegacyGetEnvironment", {
@@ -41,6 +43,7 @@ export interface LegacyGetEnvironmentResult {
     readonly type: string;
     readonly useCustomBranch: boolean;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetEnvironmentOutput(args: LegacyGetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetEnvironmentResult> {
     return pulumi.output(args).apply((a: any) => legacyGetEnvironment(a, opts))
 }

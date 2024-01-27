@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_repository_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetRepositoryResult:
     """
@@ -141,6 +143,7 @@ def legacy_get_repository(fetch_deploy_key: Optional[bool] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_repository is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['fetchDeployKey'] = fetch_deploy_key
     __args__['projectId'] = project_id
@@ -170,4 +173,5 @@ def legacy_get_repository_output(fetch_deploy_key: Optional[pulumi.Input[Optiona
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_repository is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

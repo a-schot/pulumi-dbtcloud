@@ -11,6 +11,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dbtcloud.LookupProject(ctx, &dbtcloud.LookupProjectArgs{
+//				ProjectId: pulumi.IntRef(_var.Dbt_cloud_project_id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dbtcloud.LookupProject(ctx, &dbtcloud.LookupProjectArgs{
+//				Name: pulumi.StringRef("My other project name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult

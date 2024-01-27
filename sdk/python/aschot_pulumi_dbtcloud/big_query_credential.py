@@ -186,8 +186,6 @@ class BigQueryCredential(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_bigquery_credential instead of dbtcloud_bigquery_credential for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         my_credential = dbtcloud.BigQueryCredential("myCredential",
             project_id=dbtcloud_project["dbt_project"]["id"],
             dataset="my_bq_dataset",
@@ -225,8 +223,6 @@ class BigQueryCredential(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_bigquery_credential instead of dbtcloud_bigquery_credential for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         my_credential = dbtcloud.BigQueryCredential("myCredential",
             project_id=dbtcloud_project["dbt_project"]["id"],
             dataset="my_bq_dataset",

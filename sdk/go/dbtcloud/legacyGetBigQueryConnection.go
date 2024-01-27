@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
 func LegacyGetBigQueryConnection(ctx *pulumi.Context, args *LegacyGetBigQueryConnectionArgs, opts ...pulumi.InvokeOption) (*LegacyGetBigQueryConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LegacyGetBigQueryConnectionResult

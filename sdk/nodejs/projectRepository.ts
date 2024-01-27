@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  * import * as dbtcloud from "@aschot/pulumi-dbtcloud";
  *
  * // NOTE for customers using the LEGACY dbt_cloud provider:
- * // use dbt_cloud_project_repository instead of dbtcloud_project_repository for the legacy resource names
- * // legacy names will be removed from 0.3 onwards
  * const dbtProjectRepository = new dbtcloud.ProjectRepository("dbtProjectRepository", {
  *     projectId: dbtcloud_project.dbt_project.id,
  *     repositoryId: dbtcloud_repository.dbt_repository.repository_id,

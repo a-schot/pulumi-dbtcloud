@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_big_query_connection_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetBigQueryConnectionResult:
     """
@@ -266,6 +268,7 @@ def legacy_get_big_query_connection(connection_id: Optional[int] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_big_query_connection is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['connectionId'] = connection_id
     __args__['projectId'] = project_id
@@ -307,4 +310,5 @@ def legacy_get_big_query_connection_output(connection_id: Optional[pulumi.Input[
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_big_query_connection is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

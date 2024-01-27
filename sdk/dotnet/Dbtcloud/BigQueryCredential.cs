@@ -22,8 +22,6 @@ namespace ASchot.Pulumi.Dbtcloud
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE for customers using the LEGACY dbt_cloud provider:
-    ///     // use dbt_cloud_bigquery_credential instead of dbtcloud_bigquery_credential for the legacy resource names
-    ///     // legacy names will be removed from 0.3 onwards
     ///     var myCredential = new Dbtcloud.BigQueryCredential("myCredential", new()
     ///     {
     ///         ProjectId = dbtcloud_project.Dbt_project.Id,

@@ -16,6 +16,8 @@ __all__ = [
     'legacy_get_environment_variable_output',
 ]
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
 @pulumi.output_type
 class LegacyGetEnvironmentVariableResult:
     """
@@ -77,6 +79,7 @@ def legacy_get_environment_variable(name: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_environment_variable is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     __args__ = dict()
     __args__['name'] = name
     __args__['projectId'] = project_id
@@ -97,4 +100,5 @@ def legacy_get_environment_variable_output(name: Optional[pulumi.Input[str]] = N
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""legacy_get_environment_variable is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
     ...

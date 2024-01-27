@@ -262,7 +262,12 @@ class _LegacyDatabricksCredentialState:
         pulumi.set(self, "token", value)
 
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
+
 class LegacyDatabricksCredential(pulumi.CustomResource):
+    warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -318,6 +323,7 @@ class LegacyDatabricksCredential(pulumi.CustomResource):
                  target_name: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LegacyDatabricksCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

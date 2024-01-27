@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
+ */
 export class LegacyEnvironment extends pulumi.CustomResource {
     /**
      * Get an existing LegacyEnvironment resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class LegacyEnvironment extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LegacyEnvironmentState, opts?: pulumi.CustomResourceOptions): LegacyEnvironment {
+        pulumi.log.warn("LegacyEnvironment is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         return new LegacyEnvironment(name, <any>state, { ...opts, id: id });
     }
 
@@ -87,8 +91,11 @@ export class LegacyEnvironment extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, args: LegacyEnvironmentArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, argsOrState?: LegacyEnvironmentArgs | LegacyEnvironmentState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LegacyEnvironment is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

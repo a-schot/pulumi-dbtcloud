@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
+ */
 export class LegacyDatabricksCredential extends pulumi.CustomResource {
     /**
      * Get an existing LegacyDatabricksCredential resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class LegacyDatabricksCredential extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LegacyDatabricksCredentialState, opts?: pulumi.CustomResourceOptions): LegacyDatabricksCredential {
+        pulumi.log.warn("LegacyDatabricksCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         return new LegacyDatabricksCredential(name, <any>state, { ...opts, id: id });
     }
 
@@ -72,8 +76,11 @@ export class LegacyDatabricksCredential extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, args: LegacyDatabricksCredentialArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, argsOrState?: LegacyDatabricksCredentialArgs | LegacyDatabricksCredentialState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LegacyDatabricksCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -15,62 +15,10 @@ import * as utilities from "./utilities";
  * value of `id`  or use the `http` provider to retrieve it automatically like in the example below.
  *
  * ## Example Usage
- * ### repo cloned via the GitHub integration, manually entering the `github_installation_id`
- * resource "dbtcloud_repository" "github_repo" {
- *   project_id             = dbtcloud_project.dbt_project.id
- *   remote_url             = "git@github.com:<github_org>/<github_repo>.git"
- *   github_installation_id = 9876
- *   git_clone_strategy     = "github_app"
- * }
- *
- * ### repo cloned via the GitHub integration, with auto-retrieval of the `github_installation_id`
- * # here, we assume that `token` and `host_url` are respectively accessible via `var.dbt_token` and `var.dbt_host_url`
- * # NOTE: the following requires connecting via a user token and can't be retrieved with a service token
- * data "http" "github_installations_response" {
- *   url = format("%s/v2/integrations/github/installations/", var.dbt_host_url)
- *   request_headers = {
- *     Authorization = format("Bearer %s", var.dbt_token)
- *   }
- * }
- *
- * locals {
- *   github_installation_id = jsondecode(data.http.github_installations_response.response_body)[0].id
- * }
- *
- * resource "dbtcloud_repository" "github_repo_other" {
- *   project_id             = dbtcloud_project.dbt_project.id
- *   remote_url             = "git@github.com:<github_org>/<github_repo>.git"
- *   github_installation_id = local.github_installation_id
- *   git_clone_strategy     = "github_app"
- * }
- *
- * ### repo cloned via the GitLab integration
- * # as of 15 Sept 2023 this resource requires using a user token and can't be set with a service token - CC-791
- * resource "dbtcloud_repository" "gitlab_repo" {
- *   project_id         = dbtcloud_project.dbt_project.id
- *   remote_url         = "<gitlab-group>/<gitlab-project>"
- *   gitlab_project_id  = 8765
- *   git_clone_strategy = "deploy_token"
- * }
- *
- * ### repo cloned via the deploy token strategy
- * resource "dbtcloud_repository" "deploy_repo" {
- *   project_id         = dbtcloud_project.dbt_project.id
- *   remote_url         = "git://github.com/<github_org>/<github_repo>.git"
- *   git_clone_strategy = "deploy_key"
- * }
  *
  * ## Import
  *
- * Import using a project ID and repository ID found in the URL or via the API.
- *
- * ```sh
- *  $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id"
- * ```
- *
- * ```sh
- *  $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789
- * ```
+ * Import using a project ID and repository ID found in the URL or via the API. <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" <break>```<break><break> <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 <break>```<break><break>
  */
 export class Repository extends pulumi.CustomResource {
     /**

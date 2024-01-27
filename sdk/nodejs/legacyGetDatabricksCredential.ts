@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetDatabricksCredential(args: LegacyGetDatabricksCredentialArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetDatabricksCredentialResult> {
+    pulumi.log.warn("legacyGetDatabricksCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetDatabricksCredential:LegacyGetDatabricksCredential", {
@@ -37,6 +39,7 @@ export interface LegacyGetDatabricksCredentialResult {
     readonly schema: string;
     readonly targetName: string;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetDatabricksCredentialOutput(args: LegacyGetDatabricksCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetDatabricksCredentialResult> {
     return pulumi.output(args).apply((a: any) => legacyGetDatabricksCredential(a, opts))
 }

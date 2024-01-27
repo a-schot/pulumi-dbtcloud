@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetServiceToken(args: LegacyGetServiceTokenArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetServiceTokenResult> {
+    pulumi.log.warn("legacyGetServiceToken is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetServiceToken:LegacyGetServiceToken", {
@@ -34,6 +36,7 @@ export interface LegacyGetServiceTokenResult {
     readonly serviceTokenPermissions: outputs.LegacyGetServiceTokenServiceTokenPermission[];
     readonly uid: string;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetServiceTokenOutput(args: LegacyGetServiceTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetServiceTokenResult> {
     return pulumi.output(args).apply((a: any) => legacyGetServiceToken(a, opts))
 }

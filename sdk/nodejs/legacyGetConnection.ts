@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetConnection(args: LegacyGetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetConnectionResult> {
+    pulumi.log.warn("legacyGetConnection is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetConnection:LegacyGetConnection", {
@@ -42,6 +44,7 @@ export interface LegacyGetConnectionResult {
     readonly type: string;
     readonly warehouse: string;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetConnectionOutput(args: LegacyGetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetConnectionResult> {
     return pulumi.output(args).apply((a: any) => legacyGetConnection(a, opts))
 }

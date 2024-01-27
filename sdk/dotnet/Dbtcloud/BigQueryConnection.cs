@@ -13,6 +13,59 @@ namespace ASchot.Pulumi.Dbtcloud
     /// <summary>
     /// Resource to create BigQuery connections in dbt Cloud. Can be set to use OAuth for developers.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Dbtcloud = ASchot.Pulumi.Dbtcloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // NOTE for customers using the LEGACY dbt_cloud provider:
+    ///     var myConnection = new Dbtcloud.BigQueryConnection("myConnection", new()
+    ///     {
+    ///         ProjectId = dbtcloud_project.Dbt_project.Id,
+    ///         Type = "bigquery",
+    ///         IsActive = true,
+    ///         GcpProjectId = "my-gcp-project-id",
+    ///         TimeoutSeconds = 100,
+    ///         PrivateKeyId = "my-private-key-id",
+    ///         PrivateKey = "ABCDEFGHIJKL",
+    ///         ClientEmail = "my_client_email",
+    ///         ClientId = "my_client_di",
+    ///         AuthUri = "my_auth_uri",
+    ///         TokenUri = "my_token_uri",
+    ///         AuthProviderX509CertUrl = "my_auth_provider_x509_cert_url",
+    ///         ClientX509CertUrl = "my_client_x509_cert_url",
+    ///         Retries = 3,
+    ///     });
+    /// 
+    ///     // it is also possible to set the connection to use OAuth by filling in `application_id` and `application_secret`
+    ///     var myConnectionWithOauth = new Dbtcloud.BigQueryConnection("myConnectionWithOauth", new()
+    ///     {
+    ///         ProjectId = dbtcloud_project.Dbt_project.Id,
+    ///         Type = "bigquery",
+    ///         IsActive = true,
+    ///         GcpProjectId = "my-gcp-project-id",
+    ///         TimeoutSeconds = 100,
+    ///         PrivateKeyId = "my-private-key-id",
+    ///         PrivateKey = "ABCDEFGHIJKL",
+    ///         ClientEmail = "my_client_email",
+    ///         ClientId = "my_client_di",
+    ///         AuthUri = "my_auth_uri",
+    ///         TokenUri = "my_token_uri",
+    ///         AuthProviderX509CertUrl = "my_auth_provider_x509_cert_url",
+    ///         ClientX509CertUrl = "my_client_x509_cert_url",
+    ///         Retries = 3,
+    ///         ApplicationId = "oauth_application_id",
+    ///         ApplicationSecret = "oauth_secret_id",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

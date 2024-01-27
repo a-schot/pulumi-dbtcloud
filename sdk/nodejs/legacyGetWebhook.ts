@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetWebhook(args: LegacyGetWebhookArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetWebhookResult> {
+    pulumi.log.warn("legacyGetWebhook is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetWebhook:LegacyGetWebhook", {
@@ -37,6 +39,7 @@ export interface LegacyGetWebhookResult {
     readonly name: string;
     readonly webhookId: string;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetWebhookOutput(args: LegacyGetWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetWebhookResult> {
     return pulumi.output(args).apply((a: any) => legacyGetWebhook(a, opts))
 }

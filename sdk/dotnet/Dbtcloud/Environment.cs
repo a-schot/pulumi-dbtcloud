@@ -22,8 +22,6 @@ namespace ASchot.Pulumi.Dbtcloud
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE for customers using the LEGACY dbt_cloud provider:
-    ///     // use dbt_cloud_environment instead of dbtcloud_environment for the legacy resource names
-    ///     // legacy names will be removed from 0.3 onwards
     ///     var ciEnvironment = new Dbtcloud.Environment("ciEnvironment", new()
     ///     {
     ///         DbtVersion = "1.6.0-latest",

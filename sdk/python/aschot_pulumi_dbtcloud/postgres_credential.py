@@ -317,8 +317,6 @@ class PostgresCredential(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_postgres_credential instead of dbtcloud_postgres_credential for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         postgres_prod_credential = dbtcloud.PostgresCredential("postgresProdCredential",
             is_active=True,
             project_id=dbtcloud_project["dbt_project"]["id"],
@@ -366,8 +364,6 @@ class PostgresCredential(pulumi.CustomResource):
         import aschot_pulumi_dbtcloud as dbtcloud
 
         # NOTE for customers using the LEGACY dbt_cloud provider:
-        # use dbt_cloud_postgres_credential instead of dbtcloud_postgres_credential for the legacy resource names
-        # legacy names will be removed from 0.3 onwards
         postgres_prod_credential = dbtcloud.PostgresCredential("postgresProdCredential",
             is_active=True,
             project_id=dbtcloud_project["dbt_project"]["id"],

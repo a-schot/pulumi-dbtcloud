@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetBigqueryCredential(args: LegacyGetBigqueryCredentialArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetBigqueryCredentialResult> {
+    pulumi.log.warn("legacyGetBigqueryCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetBigqueryCredential:LegacyGetBigqueryCredential", {
@@ -35,6 +37,7 @@ export interface LegacyGetBigqueryCredentialResult {
     readonly numThreads: number;
     readonly projectId: number;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetBigqueryCredentialOutput(args: LegacyGetBigqueryCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetBigqueryCredentialResult> {
     return pulumi.output(args).apply((a: any) => legacyGetBigqueryCredential(a, opts))
 }

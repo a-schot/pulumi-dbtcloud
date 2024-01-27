@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetSnowflakeCredential(args: LegacyGetSnowflakeCredentialArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetSnowflakeCredentialResult> {
+    pulumi.log.warn("legacyGetSnowflakeCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetSnowflakeCredential:LegacyGetSnowflakeCredential", {
@@ -37,6 +39,7 @@ export interface LegacyGetSnowflakeCredentialResult {
     readonly schema: string;
     readonly user: string;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetSnowflakeCredentialOutput(args: LegacyGetSnowflakeCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetSnowflakeCredentialResult> {
     return pulumi.output(args).apply((a: any) => legacyGetSnowflakeCredential(a, opts))
 }

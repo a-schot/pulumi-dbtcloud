@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetUser(args: LegacyGetUserArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetUserResult> {
+    pulumi.log.warn("legacyGetUser is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dbtcloud:index/legacyGetUser:LegacyGetUser", {
@@ -26,6 +28,7 @@ export interface LegacyGetUserResult {
     readonly email: string;
     readonly id: number;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetUserOutput(args: LegacyGetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetUserResult> {
     return pulumi.output(args).apply((a: any) => legacyGetUser(a, opts))
 }

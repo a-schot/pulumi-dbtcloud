@@ -132,7 +132,16 @@ def get_project(name: Optional[str] = None,
                 project_id: Optional[int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dbtcloud as dbtcloud
+
+    test_project = dbtcloud.get_project(project_id=var["dbt_cloud_project_id"])
+    another_test_project = dbtcloud.get_project(name="My other project name")
+    ```
+
 
     :param str name: Given name for project
     :param int project_id: ID of the project to represent
@@ -159,7 +168,16 @@ def get_project_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                        project_id: Optional[pulumi.Input[Optional[int]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dbtcloud as dbtcloud
+
+    test_project = dbtcloud.get_project(project_id=var["dbt_cloud_project_id"])
+    another_test_project = dbtcloud.get_project(name="My other project name")
+    ```
+
 
     :param str name: Given name for project
     :param int project_id: ID of the project to represent

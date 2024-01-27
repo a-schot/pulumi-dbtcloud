@@ -22,8 +22,6 @@ namespace ASchot.Pulumi.Dbtcloud
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE for customers using the LEGACY dbt_cloud provider:
-    ///     // use dbt_cloud_snowflake_credential instead of dbtcloud_snowflake_credential for the legacy resource names
-    ///     // legacy names will be removed from 0.3 onwards
     ///     var prodCredential = new Dbtcloud.SnowflakeCredential("prodCredential", new()
     ///     {
     ///         ProjectId = data.Dbtcloud_project.Dbt_project.Id,

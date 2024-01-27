@@ -21,6 +21,7 @@ namespace ASchot.Pulumi.Dbtcloud
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // NOTE for customers using the LEGACY dbt_cloud provider:
     ///     var testWebhook = new Dbtcloud.Webhook("testWebhook", new()
     ///     {
     ///         ClientUrl = "http://localhost/nothing",

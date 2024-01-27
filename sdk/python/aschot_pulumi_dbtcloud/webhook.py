@@ -300,6 +300,7 @@ class Webhook(pulumi.CustomResource):
         import pulumi
         import aschot_pulumi_dbtcloud as dbtcloud
 
+        # NOTE for customers using the LEGACY dbt_cloud provider:
         test_webhook = dbtcloud.Webhook("testWebhook",
             client_url="http://localhost/nothing",
             description="Test webhook",
@@ -347,6 +348,7 @@ class Webhook(pulumi.CustomResource):
         import pulumi
         import aschot_pulumi_dbtcloud as dbtcloud
 
+        # NOTE for customers using the LEGACY dbt_cloud provider:
         test_webhook = dbtcloud.Webhook("testWebhook",
             client_url="http://localhost/nothing",
             description="Test webhook",

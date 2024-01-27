@@ -422,7 +422,12 @@ class _LegacySnowflakeCredentialState:
         pulumi.set(self, "warehouse", value)
 
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
+
 class LegacySnowflakeCredential(pulumi.CustomResource):
+    warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -493,6 +498,7 @@ class LegacySnowflakeCredential(pulumi.CustomResource):
                  user: Optional[pulumi.Input[str]] = None,
                  warehouse: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LegacySnowflakeCredential is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

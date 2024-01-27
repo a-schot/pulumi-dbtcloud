@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetPrivatelinkEndpoint(args?: LegacyGetPrivatelinkEndpointArgs, opts?: pulumi.InvokeOptions): Promise<LegacyGetPrivatelinkEndpointResult> {
+    pulumi.log.warn("legacyGetPrivatelinkEndpoint is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +35,7 @@ export interface LegacyGetPrivatelinkEndpointResult {
     readonly state: number;
     readonly type: string;
 }
+/** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
 export function legacyGetPrivatelinkEndpointOutput(args?: LegacyGetPrivatelinkEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<LegacyGetPrivatelinkEndpointResult> {
     return pulumi.output(args).apply((a: any) => legacyGetPrivatelinkEndpoint(a, opts))
 }

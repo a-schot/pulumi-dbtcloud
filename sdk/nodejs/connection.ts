@@ -17,8 +17,6 @@ import * as utilities from "./utilities";
  * import * as dbtcloud from "@aschot/pulumi-dbtcloud";
  *
  * // NOTE for customers using the LEGACY dbt_cloud provider:
- * // use dbt_cloud_connection instead of dbtcloud_connection for the legacy resource names
- * // legacy names will be removed from 0.3 onwards
  * const databricks = new dbtcloud.Connection("databricks", {
  *     projectId: dbtcloud_project.dbt_project.id,
  *     type: "adapter",

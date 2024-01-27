@@ -735,7 +735,12 @@ class _LegacyJobState:
         pulumi.set(self, "triggers_on_draft_pr", value)
 
 
+warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
+
 class LegacyJob(pulumi.CustomResource):
+    warnings.warn("""Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -838,6 +843,7 @@ class LegacyJob(pulumi.CustomResource):
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  triggers_on_draft_pr: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""LegacyJob is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

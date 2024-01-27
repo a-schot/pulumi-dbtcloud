@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
 func LegacyGetEnvironment(ctx *pulumi.Context, args *LegacyGetEnvironmentArgs, opts ...pulumi.InvokeOption) (*LegacyGetEnvironmentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LegacyGetEnvironmentResult

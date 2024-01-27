@@ -14,6 +14,66 @@ import (
 
 // Resource to create BigQuery connections in dbt Cloud. Can be set to use OAuth for developers.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dbtcloud.NewBigQueryConnection(ctx, "myConnection", &dbtcloud.BigQueryConnectionArgs{
+//				ProjectId:               pulumi.Any(dbtcloud_project.Dbt_project.Id),
+//				Type:                    pulumi.String("bigquery"),
+//				IsActive:                pulumi.Bool(true),
+//				GcpProjectId:            pulumi.String("my-gcp-project-id"),
+//				TimeoutSeconds:          pulumi.Int(100),
+//				PrivateKeyId:            pulumi.String("my-private-key-id"),
+//				PrivateKey:              pulumi.String("ABCDEFGHIJKL"),
+//				ClientEmail:             pulumi.String("my_client_email"),
+//				ClientId:                pulumi.String("my_client_di"),
+//				AuthUri:                 pulumi.String("my_auth_uri"),
+//				TokenUri:                pulumi.String("my_token_uri"),
+//				AuthProviderX509CertUrl: pulumi.String("my_auth_provider_x509_cert_url"),
+//				ClientX509CertUrl:       pulumi.String("my_client_x509_cert_url"),
+//				Retries:                 pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dbtcloud.NewBigQueryConnection(ctx, "myConnectionWithOauth", &dbtcloud.BigQueryConnectionArgs{
+//				ProjectId:               pulumi.Any(dbtcloud_project.Dbt_project.Id),
+//				Type:                    pulumi.String("bigquery"),
+//				IsActive:                pulumi.Bool(true),
+//				GcpProjectId:            pulumi.String("my-gcp-project-id"),
+//				TimeoutSeconds:          pulumi.Int(100),
+//				PrivateKeyId:            pulumi.String("my-private-key-id"),
+//				PrivateKey:              pulumi.String("ABCDEFGHIJKL"),
+//				ClientEmail:             pulumi.String("my_client_email"),
+//				ClientId:                pulumi.String("my_client_di"),
+//				AuthUri:                 pulumi.String("my_auth_uri"),
+//				TokenUri:                pulumi.String("my_token_uri"),
+//				AuthProviderX509CertUrl: pulumi.String("my_auth_provider_x509_cert_url"),
+//				ClientX509CertUrl:       pulumi.String("my_client_x509_cert_url"),
+//				Retries:                 pulumi.Int(3),
+//				ApplicationId:           pulumi.String("oauth_application_id"),
+//				ApplicationSecret:       pulumi.String("oauth_secret_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource
+ */
 export class LegacyEnvironmentVariable extends pulumi.CustomResource {
     /**
      * Get an existing LegacyEnvironmentVariable resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class LegacyEnvironmentVariable extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LegacyEnvironmentVariableState, opts?: pulumi.CustomResourceOptions): LegacyEnvironmentVariable {
+        pulumi.log.warn("LegacyEnvironmentVariable is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         return new LegacyEnvironmentVariable(name, <any>state, { ...opts, id: id });
     }
 
@@ -53,8 +57,11 @@ export class LegacyEnvironmentVariable extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, args: LegacyEnvironmentVariableArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
     constructor(name: string, argsOrState?: LegacyEnvironmentVariableArgs | LegacyEnvironmentVariableState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LegacyEnvironmentVariable is deprecated: Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
