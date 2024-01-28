@@ -5,7 +5,7 @@ on:
       - v*.*.*
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.ASCHOT_GITHUB_TOKEN }}
   DOTNETVERSION: |
     6.0.x
     3.1.301
