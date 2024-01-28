@@ -5,24 +5,24 @@ on:
       - v*.*.*
 
 env:
-  GITHUB_TOKEN: ${{ secrets.ASCHOT_GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   DOTNETVERSION: |
     6.0.x
-    3.1.301
+    3.1.x
   GOVERSION: 1.21.x
-  JAVAVERSION: "11"
   NODEVERSION: 20.x
+  PYTHONVERSION: "3.9"
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_REGISTRY_URL: https://registry.npmjs.org
+  PUBLISH_NPM: false
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
+  PUBLISH_NUGET: false
   PYPI_USERNAME: __token__
   PYPI_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
   PYPI_REPOSITORY_URL: "https://test.pypi.org/"
-  SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
-  SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
-  SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  PUBLISH_PYPI: true
 
 jobs:
   publish_binary:
@@ -36,7 +36,7 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v4
       with:
-        go-version: ${{matrix.goversion}}
+        go-version: ${{ env.GOVERSION }}
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -48,22 +48,85 @@ jobs:
       with:
         args: -p 3 release --clean
         version: latest
-    strategy:
-      fail-fast: true
-      matrix:
-        goversion:
-        - 1.21.x
+
   publish_sdk:
     name: Publish SDKs
     runs-on: ubuntu-latest
     needs: publish_binary
-    steps:
-    - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.13
-      with:
-        sdk: python
     strategy:
       fail-fast: true
+      matrix:
+        language:
+          - nodejs
+          - python
+          - dotnet
+          - go
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GOVERSION }}
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/action-install-pulumi-cli@v2.0.0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODEVERSION }}
+          registry-url: ${{env.NPM_REGISTRY_URL}}
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNETVERSION }}
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHONVERSION }}
+      - name: Generate SDK
+        run: make ${{ matrix.language }}_sdk
+      - name: Check worktree clean
+        run: |
+          git update-index -q --refresh
+          if ! git diff-files --quiet; then
+              >&2 echo "error: working tree is not clean, aborting!"
+              git status
+              git diff
+              exit 1
+          fi
+      - name: Compress SDK folder
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.language }}-sdk.tar.gz
+          path: ${{ github.workspace }}/sdk/${{ matrix.language }}.tar.gz
+      - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' }}
+        name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: ${{ env.PYPI_USERNAME }}
+          password: ${{ env.PYPI_PASSWORD }}
+          repository-url: ${{ env.PYPI_REPOSITORY_URL }}
+          packages-dir: ${{ github.workspace }}/sdk/python/bin/dist
+      - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          access: "public"
+          token: ${{ env.NPM_TOKEN }}
+          package: ${{ github.workspace }}/sdk/nodejs/bin/package.json
+      - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
+        name: publish nuget package
+        run: |
+          dotnet nuget push ${{ github.workspace }}/sdk/dotnet/bin/Debug/*.nupkg -s ${{ env.NUGET_FEED_URL }} -k ${{ env.NUGET_PUBLISH_KEY }}
+          echo "done publishing packages"
+
   tag_sdk:
     name: Tag SDK
     needs: publish_sdk
@@ -72,7 +135,7 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v3
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:
         repo: pulumi/pulumictl
     - name: Add SDK version tag
