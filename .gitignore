@@ -12,6 +12,7 @@ venv/
 
 **/command-output/
 coverage_output/
+*.sln
 
 .idea/
 .vscode/
