@@ -26,7 +26,7 @@ env:
 
 jobs:
   publish_binary:
-    name: publish/
+    name: Publish binary
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
@@ -46,7 +46,7 @@ jobs:
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v2
       with:
-        args: -p 3 release --rm-dist
+        args: -p 3 release --clean
         version: latest
     strategy:
       fail-fast: true
@@ -64,3 +64,17 @@ jobs:
         sdk: python
     strategy:
       fail-fast: true
+  tag_sdk:
+    name: Tag SDK
+    needs: publish_sdk
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Add SDK version tag
+      run: git tag "sdk/v$(pulumictl get version --language generic)" && git push origin
+        "sdk/v$(pulumictl get version --language generic)"
