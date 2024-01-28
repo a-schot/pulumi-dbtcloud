@@ -1,0 +1,66 @@
+name: release
+on:
+  push:
+    tags:
+      - v*.*.*
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOTNETVERSION: |
+    6.0.x
+    3.1.301
+  GOVERSION: 1.21.x
+  JAVAVERSION: "11"
+  NODEVERSION: 20.x
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_REGISTRY_URL: https://registry.npmjs.org
+  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  NUGET_FEED_URL: https://api.nuget.org/v3/index.json
+  PYPI_USERNAME: __token__
+  PYPI_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+  PYPI_REPOSITORY_URL: "https://test.pypi.org/"
+  SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
+  SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
+  SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+
+jobs:
+  publish_binary:
+    name: publish/
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+    - name: Install Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: ${{matrix.goversion}}
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Set PreRelease Version
+      run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
+    - name: Run GoReleaser
+      uses: goreleaser/goreleaser-action@v2
+      with:
+        args: -p 3 release --rm-dist
+        version: latest
+    strategy:
+      fail-fast: true
+      matrix:
+        goversion:
+        - 1.21.x
+  publish_sdk:
+    name: Publish SDKs
+    runs-on: ubuntu-latest
+    needs: publish_binary
+    steps:
+    - name: Publish SDKs
+      uses: pulumi/pulumi-package-publisher@v0.0.13
+      with:
+        sdk: python
+    strategy:
+      fail-fast: true
