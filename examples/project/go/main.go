@@ -7,7 +7,9 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		project, err := dbtcloud.NewProject(ctx, "go-project", nil)
+		project, err := dbtcloud.NewProject(ctx, "go-project", &dbtcloud.ProjectArgs{
+			Name: pulumi.String("go-project"),
+		})
 		if err != nil {
 			return err
 		}
