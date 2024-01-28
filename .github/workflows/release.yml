@@ -21,7 +21,7 @@ env:
   PUBLISH_NUGET: false
   PYPI_USERNAME: __token__
   PYPI_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
-  PYPI_REPOSITORY_URL: "https://test.pypi.org/"
+  PYPI_REPOSITORY_URL: "https://test.pypi.org/legacy/"
   PUBLISH_PYPI: true
 
 jobs:
@@ -89,8 +89,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHONVERSION }}
-      - name: Generate SDK
-        run: make ${{ matrix.language }}_sdk
+      - name: Build SDK
+        run: make build_${{ matrix.language }}
       - name: Check worktree clean
         run: |
           git update-index -q --refresh
