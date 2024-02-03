@@ -8,6 +8,11 @@ layout: package
 
 This package is available for several languages/platforms:
 
+- JavaScript/TypeScript: [`@aschot/pulumi-dbtcloud`](https://www.npmjs.com/package/@aschot/pulumi-dbtcloud)
+- Python: [`aschot-pulumi-dbtcloud`](https://pypi.org/project/aschot-pulumi-dbtcloud/)
+- Go: [`github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud`](https://pkg.go.dev/github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud)
+- .NET: [`ASchot.Pulumi.Dbtcloud`](https://www.nuget.org/packages/ASchot.Pulumi.Dbtcloud)
+
 ### Node.js (JavaScript/TypeScript)
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
@@ -27,7 +32,7 @@ yarn add @achot/pulumi_dbtcloud
 To use from Python, install using `pip`:
 
 ```bash
-pip install aschot_pulumi_dbtcloud
+pip install aschot-pulumi-dbtcloud
 ```
 
 ### Go
