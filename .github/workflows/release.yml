@@ -6,23 +6,23 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PYTHONVERSION: "3.9"
+  GOVERSION: 1.21.x
+  NODEVERSION: 20.x
   DOTNETVERSION: |
     6.0.x
     3.1.x
-  GOVERSION: 1.21.x
-  NODEVERSION: 20.x
-  PYTHONVERSION: "3.9"
+  PYPI_USERNAME: __token__
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  PYPI_REPOSITORY_URL: "https://test.pypi.org/legacy/"
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_REGISTRY_URL: https://registry.npmjs.org
-  PUBLISH_NPM: false
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
-  PUBLISH_NUGET: false
-  PYPI_USERNAME: __token__
-  PYPI_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
-  PYPI_REPOSITORY_URL: "https://test.pypi.org/legacy/"
   PUBLISH_PYPI: true
+  PUBLISH_NPM: true
+  PUBLISH_NUGET: true
 
 jobs:
   publish_binary:
