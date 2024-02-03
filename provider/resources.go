@@ -49,7 +49,6 @@ func Provider() tfbridge.ProviderInfo {
 		Name:              "dbtcloud",
 		DisplayName:       "dbt Cloud",
 		Publisher:         "a-schot",
-		LogoURL:           "https://drive.usercontent.google.com/download?id=161Q-cnyIorAonWrV_YcvRpJBWAt44q0g&authuser=0",
 		PluginDownloadURL: "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
 		Description:       "A Pulumi package for creating and managing dbt Cloud resources.",
 		Keywords:          []string{"pulumi", "dbtcloud", "dbt", "cloud", "category/cloud"},

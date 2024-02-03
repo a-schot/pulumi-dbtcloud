@@ -25,7 +25,7 @@ yarn add @achot/pulumi_dbtcloud
 To use from Python, install using `pip`:
 
 ```bash
-pip install aschot_pulumi_dbtcloud
+pip install aschot-pulumi-dbtcloud
 ```
 
 ### Go
