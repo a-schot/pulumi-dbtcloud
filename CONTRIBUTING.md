@@ -30,7 +30,10 @@ You must generate and check in the SDKs on each pull request containing a code c
 
 The examples and integration tests in this repository will create and destroy real
 cloud resources while running. Before running these tests, make sure that you have
-configured access to your cloud provider with Pulumi.
+configured access the dbt Cloud provider with Pulumi using the environment variables. After configuring the connection, run the tests by running `make test` in the project root.
 
-_TODO: Add any steps you need to take to run integration tests here_
-
+| Option     | Environment Variable   | Required/Optional | Default                                                      | Description                             | 
+|------------|------------------------|-------------------|--------------------------------------------------------------|-----------------------------------------|
+| `token`    | `DBT_CLOUD_TOKEN`      | Required          |                                                              | The API token for your dbt Cloud user   |
+| `accountId`| `DBT_CLOUD_ACCOUNT_ID` | Required          |                                                              | The ID for your dbt Cloud account       |
+| `hostUrl`  | `DBT_CLOUD_HOST_URL`   | Optional          | [https://cloud.getdbt.com/api](https://cloud.getdbt.com/api) | The host URL for your dbt Cloud account |

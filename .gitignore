@@ -26,3 +26,5 @@ provider/**/schema-embed.json
 **/version.txt
 **/nuget
 **/dist
+
+**/go.work*
