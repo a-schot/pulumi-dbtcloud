@@ -2,7 +2,7 @@
 
 The dbt Cloud Resource Provider lets you manage dbt Cloud resources.
 
-## Installing
+## Installation
 
 This package is available for several languages/platforms:
 
@@ -44,14 +44,12 @@ To use from .NET, install using `dotnet add package`:
 dotnet add package ASchot.Pulumi.Dbtcloud
 ```
 
-## Configuration
+## Configuration Options
 
-The following configuration points are available for the dbt Cloud provider:
+Use `pulumi config set dbtcloud:<option> (--secret)`.
 
-- (required) `dbtcloud:accountId` - The Account ID for your dbt Cloud (can be set using environment variable: `DBT_CLOUD_ACCOUNT_ID`)
-- (required) `dbtcloud:token` - The API Key for your dbt Cloud (can be set using environment variable: `DBT_CLOUD_TOKEN`)
-- (optional) `dbtcloud:hostUrl` - The host URL for your dbt Cloud (can be set using environment variable: `DBT_CLOUD_HOST_URL`). Defaults to: [https://cloud.getdbt.com/api](https://cloud.getdbt.com/api)
-
-<!-- ## Reference -->
-<!--  -->
-<!-- For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/dbtcloud/api-docs/). -->
+| Option     | Environment Variable   | Required/Optional | Default                                                      | Description                             | 
+|------------|------------------------|-------------------|--------------------------------------------------------------|-----------------------------------------|
+| `token`    | `DBT_CLOUD_TOKEN`      | Required          |                                                              | The API token for your dbt Cloud user   |
+| `accountId`| `DBT_CLOUD_ACCOUNT_ID` | Required          |                                                              | The ID for your dbt Cloud account       |
+| `hostUrl`  | `DBT_CLOUD_HOST_URL`   | Optional          | [https://cloud.getdbt.com/api](https://cloud.getdbt.com/api) | The host URL for your dbt Cloud account |
