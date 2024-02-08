@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -65,9 +67,15 @@ export class LegacyJob extends pulumi.CustomResource {
      */
     public readonly generateDocs!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag for whether the job is marked active or deleted
+     * Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the
+     * `triggers` config.
      */
     public readonly isActive!: pulumi.Output<boolean | undefined>;
+    /**
+     * Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job
+     * chaining').
+     */
+    public readonly jobCompletionTriggerCondition!: pulumi.Output<outputs.LegacyJobJobCompletionTriggerCondition | undefined>;
     /**
      * Job name
      */
@@ -81,7 +89,9 @@ export class LegacyJob extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<number>;
     /**
-     * Flag for whether the job should run generate sources
+     * Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a
+     * step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will
+     * still allow the following steps to run.
      */
     public readonly runGenerateSources!: pulumi.Output<boolean | undefined>;
     /**
@@ -117,9 +127,10 @@ export class LegacyJob extends pulumi.CustomResource {
      */
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and
+     * Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and
      * `custom_branch_only`. <br>`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to
-     * only trigger a job on a PR to the custom branch of the environment.
+     * only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to
+     * `false`.
      */
     public readonly triggers!: pulumi.Output<{[key: string]: boolean}>;
     /**
@@ -151,6 +162,7 @@ export class LegacyJob extends pulumi.CustomResource {
             resourceInputs["executeSteps"] = state ? state.executeSteps : undefined;
             resourceInputs["generateDocs"] = state ? state.generateDocs : undefined;
             resourceInputs["isActive"] = state ? state.isActive : undefined;
+            resourceInputs["jobCompletionTriggerCondition"] = state ? state.jobCompletionTriggerCondition : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["numThreads"] = state ? state.numThreads : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -187,6 +199,7 @@ export class LegacyJob extends pulumi.CustomResource {
             resourceInputs["executeSteps"] = args ? args.executeSteps : undefined;
             resourceInputs["generateDocs"] = args ? args.generateDocs : undefined;
             resourceInputs["isActive"] = args ? args.isActive : undefined;
+            resourceInputs["jobCompletionTriggerCondition"] = args ? args.jobCompletionTriggerCondition : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["numThreads"] = args ? args.numThreads : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -240,9 +253,15 @@ export interface LegacyJobState {
      */
     generateDocs?: pulumi.Input<boolean>;
     /**
-     * Flag for whether the job is marked active or deleted
+     * Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the
+     * `triggers` config.
      */
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job
+     * chaining').
+     */
+    jobCompletionTriggerCondition?: pulumi.Input<inputs.LegacyJobJobCompletionTriggerCondition>;
     /**
      * Job name
      */
@@ -256,7 +275,9 @@ export interface LegacyJobState {
      */
     projectId?: pulumi.Input<number>;
     /**
-     * Flag for whether the job should run generate sources
+     * Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a
+     * step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will
+     * still allow the following steps to run.
      */
     runGenerateSources?: pulumi.Input<boolean>;
     /**
@@ -292,9 +313,10 @@ export interface LegacyJobState {
      */
     timeoutSeconds?: pulumi.Input<number>;
     /**
-     * Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and
+     * Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and
      * `custom_branch_only`. <br>`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to
-     * only trigger a job on a PR to the custom branch of the environment.
+     * only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to
+     * `false`.
      */
     triggers?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**
@@ -336,9 +358,15 @@ export interface LegacyJobArgs {
      */
     generateDocs?: pulumi.Input<boolean>;
     /**
-     * Flag for whether the job is marked active or deleted
+     * Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the
+     * `triggers` config.
      */
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job
+     * chaining').
+     */
+    jobCompletionTriggerCondition?: pulumi.Input<inputs.LegacyJobJobCompletionTriggerCondition>;
     /**
      * Job name
      */
@@ -352,7 +380,9 @@ export interface LegacyJobArgs {
      */
     projectId: pulumi.Input<number>;
     /**
-     * Flag for whether the job should run generate sources
+     * Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a
+     * step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will
+     * still allow the following steps to run.
      */
     runGenerateSources?: pulumi.Input<boolean>;
     /**
@@ -388,9 +418,10 @@ export interface LegacyJobArgs {
      */
     timeoutSeconds?: pulumi.Input<number>;
     /**
-     * Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and
+     * Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and
      * `custom_branch_only`. <br>`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to
-     * only trigger a job on a PR to the custom branch of the environment.
+     * only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to
+     * `false`.
      */
     triggers: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**

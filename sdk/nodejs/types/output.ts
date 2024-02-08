@@ -10,6 +10,12 @@ export interface GetGroupUsersUser {
     id: number;
 }
 
+export interface GetJobJobCompletionTriggerCondition {
+    jobId: number;
+    projectId: number;
+    statuses: string[];
+}
+
 export interface GetServiceTokenServiceTokenPermission {
     allProjects: boolean;
     permissionSet: string;
@@ -31,6 +37,27 @@ export interface GroupGroupPermission {
     projectId?: number;
 }
 
+export interface JobJobCompletionTriggerCondition {
+    /**
+     * The ID of the job that would trigger this job after completion.
+     */
+    jobId: number;
+    /**
+     * The ID of the project where the trigger job is running in.
+     */
+    projectId: number;
+    /**
+     * List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+     */
+    statuses: string[];
+}
+
+export interface LegacyGetJobJobCompletionTriggerCondition {
+    jobId: number;
+    projectId: number;
+    statuses: string[];
+}
+
 export interface LegacyGetServiceTokenServiceTokenPermission {
     allProjects: boolean;
     permissionSet: string;
@@ -41,6 +68,12 @@ export interface LegacyGroupGroupPermission {
     allProjects: boolean;
     permissionSet: string;
     projectId?: number;
+}
+
+export interface LegacyJobJobCompletionTriggerCondition {
+    jobId: number;
+    projectId: number;
+    statuses: string[];
 }
 
 export interface LegacyServiceTokenServiceTokenPermission {

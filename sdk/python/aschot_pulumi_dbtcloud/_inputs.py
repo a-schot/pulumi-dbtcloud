@@ -11,7 +11,9 @@ from . import _utilities
 
 __all__ = [
     'GroupGroupPermissionArgs',
+    'JobJobCompletionTriggerConditionArgs',
     'LegacyGroupGroupPermissionArgs',
+    'LegacyJobJobCompletionTriggerConditionArgs',
     'LegacyServiceTokenServiceTokenPermissionArgs',
     'ServiceTokenServiceTokenPermissionArgs',
 ]
@@ -70,6 +72,58 @@ class GroupGroupPermissionArgs:
 
 
 @pulumi.input_type
+class JobJobCompletionTriggerConditionArgs:
+    def __init__(__self__, *,
+                 job_id: pulumi.Input[int],
+                 project_id: pulumi.Input[int],
+                 statuses: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[int] job_id: The ID of the job that would trigger this job after completion.
+        :param pulumi.Input[int] project_id: The ID of the project where the trigger job is running in.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+        """
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the job that would trigger this job after completion.
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the project where the trigger job is running in.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "statuses", value)
+
+
+@pulumi.input_type
 class LegacyGroupGroupPermissionArgs:
     def __init__(__self__, *,
                  all_projects: pulumi.Input[bool],
@@ -106,6 +160,44 @@ class LegacyGroupGroupPermissionArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "project_id", value)
+
+
+@pulumi.input_type
+class LegacyJobJobCompletionTriggerConditionArgs:
+    def __init__(__self__, *,
+                 job_id: pulumi.Input[int],
+                 project_id: pulumi.Input[int],
+                 statuses: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "statuses", value)
 
 
 @pulumi.input_type

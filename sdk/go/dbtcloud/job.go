@@ -18,6 +18,11 @@ import (
 // Those improvements include modifications to deferral which was historically set at the job level and will now be set at the environment level.
 // Deferral can still be set to "self" by setting `selfDeferring` to `true` but with the new approach, deferral to other runs need to be done with `deferringEnvironmentId` instead of `deferringJobId`.
 //
+// > As of beginning of February 2024, job chaining with `jobCompletionTriggerCondition` is in private beta and not available to all users.
+// <br/>
+// <br/>
+// This notice will be removed once the feature is generally available.
+//
 // ## Example Usage
 //
 // ```go
@@ -32,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dbtcloud.NewJob(ctx, "dailyJob", &dbtcloud.JobArgs{
+//			dailyJob, err := dbtcloud.NewJob(ctx, "dailyJob", &dbtcloud.JobArgs{
 //				EnvironmentId: pulumi.Any(dbtcloud_environment.Prod_environment.Environment_id),
 //				ExecuteSteps: pulumi.StringArray{
 //					pulumi.String("dbt build"),
@@ -96,6 +101,42 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = dbtcloud.NewJob(ctx, "downstreamJob", &dbtcloud.JobArgs{
+//				EnvironmentId: pulumi.Any(dbtcloud_environment.Project2_prod_environment.Environment_id),
+//				ExecuteSteps: pulumi.StringArray{
+//					pulumi.String("dbt build -s +my_model"),
+//				},
+//				GenerateDocs:       pulumi.Bool(true),
+//				NumThreads:         pulumi.Int(32),
+//				ProjectId:          pulumi.Any(dbtcloud_project.Dbt_project2.Id),
+//				RunGenerateSources: pulumi.Bool(true),
+//				Triggers: pulumi.BoolMap{
+//					"custom_branch_only":   pulumi.Bool(false),
+//					"github_webhook":       pulumi.Bool(false),
+//					"git_provider_webhook": pulumi.Bool(false),
+//					"schedule":             pulumi.Bool(false),
+//				},
+//				ScheduleDays: pulumi.IntArray{
+//					pulumi.Int(0),
+//					pulumi.Int(1),
+//					pulumi.Int(2),
+//					pulumi.Int(3),
+//					pulumi.Int(4),
+//					pulumi.Int(5),
+//					pulumi.Int(6),
+//				},
+//				ScheduleType: pulumi.String("days_of_week"),
+//				JobCompletionTriggerCondition: &dbtcloud.JobJobCompletionTriggerConditionArgs{
+//					JobId:     dailyJob.ID(),
+//					ProjectId: pulumi.Any(dbtcloud_project.Dbt_project.Id),
+//					Statuses: pulumi.StringArray{
+//						pulumi.String("success"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -134,15 +175,17 @@ type Job struct {
 	ExecuteSteps pulumi.StringArrayOutput `pulumi:"executeSteps"`
 	// Flag for whether the job should generate documentation
 	GenerateDocs pulumi.BoolPtrOutput `pulumi:"generateDocs"`
-	// Flag for whether the job is marked active or deleted
+	// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
 	IsActive pulumi.BoolPtrOutput `pulumi:"isActive"`
+	// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+	JobCompletionTriggerCondition JobJobCompletionTriggerConditionPtrOutput `pulumi:"jobCompletionTriggerCondition"`
 	// Job name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of threads to use in the job
 	NumThreads pulumi.IntPtrOutput `pulumi:"numThreads"`
-	// Project ID to create the job in
+	// The ID of the project where the trigger job is running in.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
-	// Flag for whether the job should run generate sources
+	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources pulumi.BoolPtrOutput `pulumi:"runGenerateSources"`
 	// Custom cron expression for schedule
 	ScheduleCron pulumi.StringPtrOutput `pulumi:"scheduleCron"`
@@ -160,7 +203,7 @@ type Job struct {
 	TargetName pulumi.StringPtrOutput `pulumi:"targetName"`
 	// Number of seconds to allow the job to run before timing out
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
-	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
 	Triggers pulumi.BoolMapOutput `pulumi:"triggers"`
 	// Whether the CI job should be automatically triggered on draft PRs
 	TriggersOnDraftPr pulumi.BoolPtrOutput `pulumi:"triggersOnDraftPr"`
@@ -222,15 +265,17 @@ type jobState struct {
 	ExecuteSteps []string `pulumi:"executeSteps"`
 	// Flag for whether the job should generate documentation
 	GenerateDocs *bool `pulumi:"generateDocs"`
-	// Flag for whether the job is marked active or deleted
+	// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
 	IsActive *bool `pulumi:"isActive"`
+	// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+	JobCompletionTriggerCondition *JobJobCompletionTriggerCondition `pulumi:"jobCompletionTriggerCondition"`
 	// Job name
 	Name *string `pulumi:"name"`
 	// Number of threads to use in the job
 	NumThreads *int `pulumi:"numThreads"`
-	// Project ID to create the job in
+	// The ID of the project where the trigger job is running in.
 	ProjectId *int `pulumi:"projectId"`
-	// Flag for whether the job should run generate sources
+	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources *bool `pulumi:"runGenerateSources"`
 	// Custom cron expression for schedule
 	ScheduleCron *string `pulumi:"scheduleCron"`
@@ -248,7 +293,7 @@ type jobState struct {
 	TargetName *string `pulumi:"targetName"`
 	// Number of seconds to allow the job to run before timing out
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
 	Triggers map[string]bool `pulumi:"triggers"`
 	// Whether the CI job should be automatically triggered on draft PRs
 	TriggersOnDraftPr *bool `pulumi:"triggersOnDraftPr"`
@@ -269,15 +314,17 @@ type JobState struct {
 	ExecuteSteps pulumi.StringArrayInput
 	// Flag for whether the job should generate documentation
 	GenerateDocs pulumi.BoolPtrInput
-	// Flag for whether the job is marked active or deleted
+	// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
 	IsActive pulumi.BoolPtrInput
+	// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+	JobCompletionTriggerCondition JobJobCompletionTriggerConditionPtrInput
 	// Job name
 	Name pulumi.StringPtrInput
 	// Number of threads to use in the job
 	NumThreads pulumi.IntPtrInput
-	// Project ID to create the job in
+	// The ID of the project where the trigger job is running in.
 	ProjectId pulumi.IntPtrInput
-	// Flag for whether the job should run generate sources
+	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources pulumi.BoolPtrInput
 	// Custom cron expression for schedule
 	ScheduleCron pulumi.StringPtrInput
@@ -295,7 +342,7 @@ type JobState struct {
 	TargetName pulumi.StringPtrInput
 	// Number of seconds to allow the job to run before timing out
 	TimeoutSeconds pulumi.IntPtrInput
-	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
 	Triggers pulumi.BoolMapInput
 	// Whether the CI job should be automatically triggered on draft PRs
 	TriggersOnDraftPr pulumi.BoolPtrInput
@@ -320,15 +367,17 @@ type jobArgs struct {
 	ExecuteSteps []string `pulumi:"executeSteps"`
 	// Flag for whether the job should generate documentation
 	GenerateDocs *bool `pulumi:"generateDocs"`
-	// Flag for whether the job is marked active or deleted
+	// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
 	IsActive *bool `pulumi:"isActive"`
+	// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+	JobCompletionTriggerCondition *JobJobCompletionTriggerCondition `pulumi:"jobCompletionTriggerCondition"`
 	// Job name
 	Name *string `pulumi:"name"`
 	// Number of threads to use in the job
 	NumThreads *int `pulumi:"numThreads"`
-	// Project ID to create the job in
+	// The ID of the project where the trigger job is running in.
 	ProjectId int `pulumi:"projectId"`
-	// Flag for whether the job should run generate sources
+	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources *bool `pulumi:"runGenerateSources"`
 	// Custom cron expression for schedule
 	ScheduleCron *string `pulumi:"scheduleCron"`
@@ -346,7 +395,7 @@ type jobArgs struct {
 	TargetName *string `pulumi:"targetName"`
 	// Number of seconds to allow the job to run before timing out
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
 	Triggers map[string]bool `pulumi:"triggers"`
 	// Whether the CI job should be automatically triggered on draft PRs
 	TriggersOnDraftPr *bool `pulumi:"triggersOnDraftPr"`
@@ -368,15 +417,17 @@ type JobArgs struct {
 	ExecuteSteps pulumi.StringArrayInput
 	// Flag for whether the job should generate documentation
 	GenerateDocs pulumi.BoolPtrInput
-	// Flag for whether the job is marked active or deleted
+	// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
 	IsActive pulumi.BoolPtrInput
+	// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+	JobCompletionTriggerCondition JobJobCompletionTriggerConditionPtrInput
 	// Job name
 	Name pulumi.StringPtrInput
 	// Number of threads to use in the job
 	NumThreads pulumi.IntPtrInput
-	// Project ID to create the job in
+	// The ID of the project where the trigger job is running in.
 	ProjectId pulumi.IntInput
-	// Flag for whether the job should run generate sources
+	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources pulumi.BoolPtrInput
 	// Custom cron expression for schedule
 	ScheduleCron pulumi.StringPtrInput
@@ -394,7 +445,7 @@ type JobArgs struct {
 	TargetName pulumi.StringPtrInput
 	// Number of seconds to allow the job to run before timing out
 	TimeoutSeconds pulumi.IntPtrInput
-	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+	// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
 	Triggers pulumi.BoolMapInput
 	// Whether the CI job should be automatically triggered on draft PRs
 	TriggersOnDraftPr pulumi.BoolPtrInput
@@ -522,9 +573,14 @@ func (o JobOutput) GenerateDocs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.GenerateDocs }).(pulumi.BoolPtrOutput)
 }
 
-// Flag for whether the job is marked active or deleted
+// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
 func (o JobOutput) IsActive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.IsActive }).(pulumi.BoolPtrOutput)
+}
+
+// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+func (o JobOutput) JobCompletionTriggerCondition() JobJobCompletionTriggerConditionPtrOutput {
+	return o.ApplyT(func(v *Job) JobJobCompletionTriggerConditionPtrOutput { return v.JobCompletionTriggerCondition }).(JobJobCompletionTriggerConditionPtrOutput)
 }
 
 // Job name
@@ -537,12 +593,12 @@ func (o JobOutput) NumThreads() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.NumThreads }).(pulumi.IntPtrOutput)
 }
 
-// Project ID to create the job in
+// The ID of the project where the trigger job is running in.
 func (o JobOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
 }
 
-// Flag for whether the job should run generate sources
+// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 func (o JobOutput) RunGenerateSources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.RunGenerateSources }).(pulumi.BoolPtrOutput)
 }
@@ -587,7 +643,7 @@ func (o JobOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+// Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
 func (o JobOutput) Triggers() pulumi.BoolMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolMapOutput { return v.Triggers }).(pulumi.BoolMapOutput)
 }

@@ -57,10 +57,18 @@ namespace ASchot.Pulumi.Dbtcloud
         public Output<bool?> GenerateDocs { get; private set; } = null!;
 
         /// <summary>
-        /// Flag for whether the job is marked active or deleted
+        /// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the
+        /// `triggers` config.
         /// </summary>
         [Output("isActive")]
         public Output<bool?> IsActive { get; private set; } = null!;
+
+        /// <summary>
+        /// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job
+        /// chaining').
+        /// </summary>
+        [Output("jobCompletionTriggerCondition")]
+        public Output<Outputs.LegacyJobJobCompletionTriggerCondition?> CompletionTriggerCondition { get; private set; } = null!;
 
         /// <summary>
         /// Job name
@@ -81,7 +89,9 @@ namespace ASchot.Pulumi.Dbtcloud
         public Output<int> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Flag for whether the job should run generate sources
+        /// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a
+        /// step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will
+        /// still allow the following steps to run.
         /// </summary>
         [Output("runGenerateSources")]
         public Output<bool?> RunGenerateSources { get; private set; } = null!;
@@ -135,9 +145,10 @@ namespace ASchot.Pulumi.Dbtcloud
         public Output<int?> TimeoutSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and
+        /// Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and
         /// `custom_branch_only`. &lt;br&gt;`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to
-        /// only trigger a job on a PR to the custom branch of the environment.
+        /// only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to
+        /// `false`.
         /// </summary>
         [Output("triggers")]
         public Output<ImmutableDictionary<string, bool>> Triggers { get; private set; } = null!;
@@ -244,10 +255,18 @@ namespace ASchot.Pulumi.Dbtcloud
         public Input<bool>? GenerateDocs { get; set; }
 
         /// <summary>
-        /// Flag for whether the job is marked active or deleted
+        /// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the
+        /// `triggers` config.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
+
+        /// <summary>
+        /// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job
+        /// chaining').
+        /// </summary>
+        [Input("jobCompletionTriggerCondition")]
+        public Input<Inputs.LegacyJobJobCompletionTriggerConditionArgs>? CompletionTriggerCondition { get; set; }
 
         /// <summary>
         /// Job name
@@ -268,7 +287,9 @@ namespace ASchot.Pulumi.Dbtcloud
         public Input<int> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Flag for whether the job should run generate sources
+        /// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a
+        /// step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will
+        /// still allow the following steps to run.
         /// </summary>
         [Input("runGenerateSources")]
         public Input<bool>? RunGenerateSources { get; set; }
@@ -337,9 +358,10 @@ namespace ASchot.Pulumi.Dbtcloud
         private InputMap<bool>? _triggers;
 
         /// <summary>
-        /// Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and
+        /// Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and
         /// `custom_branch_only`. &lt;br&gt;`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to
-        /// only trigger a job on a PR to the custom branch of the environment.
+        /// only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to
+        /// `false`.
         /// </summary>
         public InputMap<bool> Triggers
         {
@@ -410,10 +432,18 @@ namespace ASchot.Pulumi.Dbtcloud
         public Input<bool>? GenerateDocs { get; set; }
 
         /// <summary>
-        /// Flag for whether the job is marked active or deleted
+        /// Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the
+        /// `triggers` config.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
+
+        /// <summary>
+        /// Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job
+        /// chaining').
+        /// </summary>
+        [Input("jobCompletionTriggerCondition")]
+        public Input<Inputs.LegacyJobJobCompletionTriggerConditionGetArgs>? CompletionTriggerCondition { get; set; }
 
         /// <summary>
         /// Job name
@@ -434,7 +464,9 @@ namespace ASchot.Pulumi.Dbtcloud
         public Input<int>? ProjectId { get; set; }
 
         /// <summary>
-        /// Flag for whether the job should run generate sources
+        /// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a
+        /// step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will
+        /// still allow the following steps to run.
         /// </summary>
         [Input("runGenerateSources")]
         public Input<bool>? RunGenerateSources { get; set; }
@@ -503,9 +535,10 @@ namespace ASchot.Pulumi.Dbtcloud
         private InputMap<bool>? _triggers;
 
         /// <summary>
-        /// Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and
+        /// Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and
         /// `custom_branch_only`. &lt;br&gt;`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to
-        /// only trigger a job on a PR to the custom branch of the environment.
+        /// only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to
+        /// `false`.
         /// </summary>
         public InputMap<bool> Triggers
         {

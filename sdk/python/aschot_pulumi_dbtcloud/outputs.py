@@ -11,11 +11,15 @@ from . import _utilities
 
 __all__ = [
     'GroupGroupPermission',
+    'JobJobCompletionTriggerCondition',
+    'LegacyGetJobJobCompletionTriggerConditionResult',
     'LegacyGetServiceTokenServiceTokenPermissionResult',
     'LegacyGroupGroupPermission',
+    'LegacyJobJobCompletionTriggerCondition',
     'LegacyServiceTokenServiceTokenPermission',
     'ServiceTokenServiceTokenPermission',
     'GetGroupUsersUserResult',
+    'GetJobJobCompletionTriggerConditionResult',
     'GetServiceTokenServiceTokenPermissionResult',
 ]
 
@@ -79,6 +83,91 @@ class GroupGroupPermission(dict):
         Project ID to apply this permission to for this group
         """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class JobJobCompletionTriggerCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobCompletionTriggerCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobCompletionTriggerCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobCompletionTriggerCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_id: int,
+                 project_id: int,
+                 statuses: Sequence[str]):
+        """
+        :param int job_id: The ID of the job that would trigger this job after completion.
+        :param int project_id: The ID of the project where the trigger job is running in.
+        :param Sequence[str] statuses: List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+        """
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> int:
+        """
+        The ID of the job that would trigger this job after completion.
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> int:
+        """
+        The ID of the project where the trigger job is running in.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Sequence[str]:
+        """
+        List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+        """
+        return pulumi.get(self, "statuses")
+
+
+@pulumi.output_type
+class LegacyGetJobJobCompletionTriggerConditionResult(dict):
+    def __init__(__self__, *,
+                 job_id: int,
+                 project_id: int,
+                 statuses: Sequence[str]):
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> int:
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> int:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Sequence[str]:
+        return pulumi.get(self, "statuses")
 
 
 @pulumi.output_type
@@ -153,6 +242,51 @@ class LegacyGroupGroupPermission(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[int]:
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class LegacyJobJobCompletionTriggerCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LegacyJobJobCompletionTriggerCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LegacyJobJobCompletionTriggerCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LegacyJobJobCompletionTriggerCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_id: int,
+                 project_id: int,
+                 statuses: Sequence[str]):
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> int:
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> int:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Sequence[str]:
+        return pulumi.get(self, "statuses")
 
 
 @pulumi.output_type
@@ -282,6 +416,32 @@ class GetGroupUsersUserResult(dict):
     @pulumi.getter
     def id(self) -> int:
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobCompletionTriggerConditionResult(dict):
+    def __init__(__self__, *,
+                 job_id: int,
+                 project_id: int,
+                 statuses: Sequence[str]):
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> int:
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> int:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Sequence[str]:
+        return pulumi.get(self, "statuses")
 
 
 @pulumi.output_type

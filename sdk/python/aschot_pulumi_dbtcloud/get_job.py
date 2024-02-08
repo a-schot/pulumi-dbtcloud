@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetJobResult',
@@ -21,7 +22,7 @@ class GetJobResult:
     """
     A collection of values returned by getJob.
     """
-    def __init__(__self__, deferring_environment_id=None, deferring_job_id=None, description=None, environment_id=None, id=None, job_id=None, name=None, project_id=None, self_deferring=None, timeout_seconds=None, triggers=None, triggers_on_draft_pr=None):
+    def __init__(__self__, deferring_environment_id=None, deferring_job_id=None, description=None, environment_id=None, id=None, job_completion_trigger_conditions=None, job_id=None, name=None, project_id=None, self_deferring=None, timeout_seconds=None, triggers=None, triggers_on_draft_pr=None):
         if deferring_environment_id and not isinstance(deferring_environment_id, int):
             raise TypeError("Expected argument 'deferring_environment_id' to be a int")
         pulumi.set(__self__, "deferring_environment_id", deferring_environment_id)
@@ -37,6 +38,9 @@ class GetJobResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if job_completion_trigger_conditions and not isinstance(job_completion_trigger_conditions, list):
+            raise TypeError("Expected argument 'job_completion_trigger_conditions' to be a list")
+        pulumi.set(__self__, "job_completion_trigger_conditions", job_completion_trigger_conditions)
         if job_id and not isinstance(job_id, int):
             raise TypeError("Expected argument 'job_id' to be a int")
         pulumi.set(__self__, "job_id", job_id)
@@ -98,6 +102,14 @@ class GetJobResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="jobCompletionTriggerConditions")
+    def job_completion_trigger_conditions(self) -> Sequence['outputs.GetJobJobCompletionTriggerConditionResult']:
+        """
+        Which other job should trigger this job when it finishes, and on which conditions.
+        """
+        return pulumi.get(self, "job_completion_trigger_conditions")
 
     @property
     @pulumi.getter(name="jobId")
@@ -167,6 +179,7 @@ class AwaitableGetJobResult(GetJobResult):
             description=self.description,
             environment_id=self.environment_id,
             id=self.id,
+            job_completion_trigger_conditions=self.job_completion_trigger_conditions,
             job_id=self.job_id,
             name=self.name,
             project_id=self.project_id,
@@ -181,9 +194,6 @@ def get_job(job_id: Optional[int] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param int job_id: ID of the job
-    :param int project_id: ID of the project the job is in
     """
     __args__ = dict()
     __args__['jobId'] = job_id
@@ -197,6 +207,7 @@ def get_job(job_id: Optional[int] = None,
         description=pulumi.get(__ret__, 'description'),
         environment_id=pulumi.get(__ret__, 'environment_id'),
         id=pulumi.get(__ret__, 'id'),
+        job_completion_trigger_conditions=pulumi.get(__ret__, 'job_completion_trigger_conditions'),
         job_id=pulumi.get(__ret__, 'job_id'),
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
@@ -212,8 +223,5 @@ def get_job_output(job_id: Optional[pulumi.Input[int]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param int job_id: ID of the job
-    :param int project_id: ID of the project the job is in
     """
     ...

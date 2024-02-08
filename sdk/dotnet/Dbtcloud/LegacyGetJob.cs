@@ -61,6 +61,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.LegacyGetJobJobCompletionTriggerConditionResult> CompletionTriggerCondition;
         public readonly int JobId;
         public readonly string Name;
         public readonly int ProjectId;
@@ -81,6 +82,8 @@ namespace ASchot.Pulumi.Dbtcloud
 
             string id,
 
+            ImmutableArray<Outputs.LegacyGetJobJobCompletionTriggerConditionResult> jobCompletionTriggerConditions,
+
             int jobId,
 
             string name,
@@ -100,6 +103,7 @@ namespace ASchot.Pulumi.Dbtcloud
             Description = description;
             EnvironmentId = environmentId;
             Id = id;
+            CompletionTriggerCondition = jobCompletionTriggerConditions;
             JobId = jobId;
             Name = name;
             ProjectId = projectId;

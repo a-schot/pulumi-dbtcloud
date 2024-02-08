@@ -20,10 +20,31 @@ export interface GroupGroupPermission {
     projectId?: pulumi.Input<number>;
 }
 
+export interface JobJobCompletionTriggerCondition {
+    /**
+     * The ID of the job that would trigger this job after completion.
+     */
+    jobId: pulumi.Input<number>;
+    /**
+     * The ID of the project where the trigger job is running in.
+     */
+    projectId: pulumi.Input<number>;
+    /**
+     * List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+     */
+    statuses: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface LegacyGroupGroupPermission {
     allProjects: pulumi.Input<boolean>;
     permissionSet: pulumi.Input<string>;
     projectId?: pulumi.Input<number>;
+}
+
+export interface LegacyJobJobCompletionTriggerCondition {
+    jobId: pulumi.Input<number>;
+    projectId: pulumi.Input<number>;
+    statuses: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface LegacyServiceTokenServiceTokenPermission {

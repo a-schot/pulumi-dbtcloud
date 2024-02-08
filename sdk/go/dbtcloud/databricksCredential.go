@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbtcloud.NewDatabricksCredential(ctx, "myDatabricksCred", &dbtcloud.DatabricksCredentialArgs{
 //				ProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),
-//				AdapterId:   pulumi.Int(123),
+//				AdapterId:   pulumi.Any(dbtcloud_connection.My_databricks_connection.Adapter_id),
 //				TargetName:  pulumi.String("prod"),
 //				Token:       pulumi.String("abcdefgh"),
 //				Schema:      pulumi.String("my_schema"),
@@ -39,7 +39,7 @@ import (
 //			}
 //			_, err = dbtcloud.NewDatabricksCredential(ctx, "mySparkCred", &dbtcloud.DatabricksCredentialArgs{
 //				ProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),
-//				AdapterId:   pulumi.Int(456),
+//				AdapterId:   pulumi.Any(dbtcloud_connection.My_databricks_connection.Adapter_id),
 //				TargetName:  pulumi.String("prod"),
 //				Token:       pulumi.String("abcdefgh"),
 //				Schema:      pulumi.String("my_schema"),

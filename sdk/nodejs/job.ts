@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,6 +12,11 @@ import * as utilities from "./utilities";
  * <br/>
  * Those improvements include modifications to deferral which was historically set at the job level and will now be set at the environment level.
  * Deferral can still be set to "self" by setting `selfDeferring` to `true` but with the new approach, deferral to other runs need to be done with `deferringEnvironmentId` instead of `deferringJobId`.
+ *
+ * > As of beginning of February 2024, job chaining with `jobCompletionTriggerCondition` is in private beta and not available to all users.
+ * <br/>
+ * <br/>
+ * This notice will be removed once the feature is generally available.
  *
  * ## Example Usage
  *
@@ -73,6 +80,37 @@ import * as utilities from "./utilities";
  *         6,
  *     ],
  *     scheduleType: "days_of_week",
+ * });
+ * // a job that is set to be triggered after another job finishes
+ * // this is sometimes referred as 'job chaining'
+ * const downstreamJob = new dbtcloud.Job("downstreamJob", {
+ *     environmentId: dbtcloud_environment.project2_prod_environment.environment_id,
+ *     executeSteps: ["dbt build -s +my_model"],
+ *     generateDocs: true,
+ *     numThreads: 32,
+ *     projectId: dbtcloud_project.dbt_project2.id,
+ *     runGenerateSources: true,
+ *     triggers: {
+ *         custom_branch_only: false,
+ *         github_webhook: false,
+ *         git_provider_webhook: false,
+ *         schedule: false,
+ *     },
+ *     scheduleDays: [
+ *         0,
+ *         1,
+ *         2,
+ *         3,
+ *         4,
+ *         5,
+ *         6,
+ *     ],
+ *     scheduleType: "days_of_week",
+ *     jobCompletionTriggerCondition: {
+ *         jobId: dailyJob.id,
+ *         projectId: dbtcloud_project.dbt_project.id,
+ *         statuses: ["success"],
+ *     },
  * });
  * ```
  *
@@ -145,9 +183,13 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly generateDocs!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag for whether the job is marked active or deleted
+     * Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
      */
     public readonly isActive!: pulumi.Output<boolean | undefined>;
+    /**
+     * Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+     */
+    public readonly jobCompletionTriggerCondition!: pulumi.Output<outputs.JobJobCompletionTriggerCondition | undefined>;
     /**
      * Job name
      */
@@ -157,11 +199,11 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly numThreads!: pulumi.Output<number | undefined>;
     /**
-     * Project ID to create the job in
+     * The ID of the project where the trigger job is running in.
      */
     public readonly projectId!: pulumi.Output<number>;
     /**
-     * Flag for whether the job should run generate sources
+     * Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
      */
     public readonly runGenerateSources!: pulumi.Output<boolean | undefined>;
     /**
@@ -197,7 +239,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+     * Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
      */
     public readonly triggers!: pulumi.Output<{[key: string]: boolean}>;
     /**
@@ -226,6 +268,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["executeSteps"] = state ? state.executeSteps : undefined;
             resourceInputs["generateDocs"] = state ? state.generateDocs : undefined;
             resourceInputs["isActive"] = state ? state.isActive : undefined;
+            resourceInputs["jobCompletionTriggerCondition"] = state ? state.jobCompletionTriggerCondition : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["numThreads"] = state ? state.numThreads : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -262,6 +305,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["executeSteps"] = args ? args.executeSteps : undefined;
             resourceInputs["generateDocs"] = args ? args.generateDocs : undefined;
             resourceInputs["isActive"] = args ? args.isActive : undefined;
+            resourceInputs["jobCompletionTriggerCondition"] = args ? args.jobCompletionTriggerCondition : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["numThreads"] = args ? args.numThreads : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -315,9 +359,13 @@ export interface JobState {
      */
     generateDocs?: pulumi.Input<boolean>;
     /**
-     * Flag for whether the job is marked active or deleted
+     * Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
      */
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+     */
+    jobCompletionTriggerCondition?: pulumi.Input<inputs.JobJobCompletionTriggerCondition>;
     /**
      * Job name
      */
@@ -327,11 +375,11 @@ export interface JobState {
      */
     numThreads?: pulumi.Input<number>;
     /**
-     * Project ID to create the job in
+     * The ID of the project where the trigger job is running in.
      */
     projectId?: pulumi.Input<number>;
     /**
-     * Flag for whether the job should run generate sources
+     * Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
      */
     runGenerateSources?: pulumi.Input<boolean>;
     /**
@@ -367,7 +415,7 @@ export interface JobState {
      */
     timeoutSeconds?: pulumi.Input<number>;
     /**
-     * Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+     * Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
      */
     triggers?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**
@@ -409,9 +457,13 @@ export interface JobArgs {
      */
     generateDocs?: pulumi.Input<boolean>;
     /**
-     * Flag for whether the job is marked active or deleted
+     * Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.
      */
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
+     */
+    jobCompletionTriggerCondition?: pulumi.Input<inputs.JobJobCompletionTriggerCondition>;
     /**
      * Job name
      */
@@ -421,11 +473,11 @@ export interface JobArgs {
      */
     numThreads?: pulumi.Input<number>;
     /**
-     * Project ID to create the job in
+     * The ID of the project where the trigger job is running in.
      */
     projectId: pulumi.Input<number>;
     /**
-     * Flag for whether the job should run generate sources
+     * Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
      */
     runGenerateSources?: pulumi.Input<boolean>;
     /**
@@ -461,7 +513,7 @@ export interface JobArgs {
      */
     timeoutSeconds?: pulumi.Input<number>;
     /**
-     * Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.
+     * Flags for which types of triggers to use, possible values are `githubWebhook`, `gitProviderWebhook`, `schedule` and `customBranchOnly`. \n\n`customBranchOnly` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
      */
     triggers: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**

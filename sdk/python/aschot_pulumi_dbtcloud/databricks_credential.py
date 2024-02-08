@@ -286,7 +286,7 @@ class DatabricksCredential(pulumi.CustomResource):
         # when using the Databricks adapter
         my_databricks_cred = dbtcloud.DatabricksCredential("myDatabricksCred",
             project_id=dbtcloud_project["dbt_project"]["id"],
-            adapter_id=123,
+            adapter_id=dbtcloud_connection["my_databricks_connection"]["adapter_id"],
             target_name="prod",
             token="abcdefgh",
             schema="my_schema",
@@ -294,7 +294,7 @@ class DatabricksCredential(pulumi.CustomResource):
         # when using the Spark adapter
         my_spark_cred = dbtcloud.DatabricksCredential("mySparkCred",
             project_id=dbtcloud_project["dbt_project"]["id"],
-            adapter_id=456,
+            adapter_id=dbtcloud_connection["my_databricks_connection"]["adapter_id"],
             target_name="prod",
             token="abcdefgh",
             schema="my_schema",
@@ -340,7 +340,7 @@ class DatabricksCredential(pulumi.CustomResource):
         # when using the Databricks adapter
         my_databricks_cred = dbtcloud.DatabricksCredential("myDatabricksCred",
             project_id=dbtcloud_project["dbt_project"]["id"],
-            adapter_id=123,
+            adapter_id=dbtcloud_connection["my_databricks_connection"]["adapter_id"],
             target_name="prod",
             token="abcdefgh",
             schema="my_schema",
@@ -348,7 +348,7 @@ class DatabricksCredential(pulumi.CustomResource):
         # when using the Spark adapter
         my_spark_cred = dbtcloud.DatabricksCredential("mySparkCred",
             project_id=dbtcloud_project["dbt_project"]["id"],
-            adapter_id=456,
+            adapter_id=dbtcloud_connection["my_databricks_connection"]["adapter_id"],
             target_name="prod",
             token="abcdefgh",
             schema="my_schema",

@@ -26,7 +26,7 @@ namespace ASchot.Pulumi.Dbtcloud
     ///     var myDatabricksCred = new Dbtcloud.DatabricksCredential("myDatabricksCred", new()
     ///     {
     ///         ProjectId = dbtcloud_project.Dbt_project.Id,
-    ///         AdapterId = 123,
+    ///         AdapterId = dbtcloud_connection.My_databricks_connection.Adapter_id,
     ///         TargetName = "prod",
     ///         Token = "abcdefgh",
     ///         Schema = "my_schema",
@@ -37,7 +37,7 @@ namespace ASchot.Pulumi.Dbtcloud
     ///     var mySparkCred = new Dbtcloud.DatabricksCredential("mySparkCred", new()
     ///     {
     ///         ProjectId = dbtcloud_project.Dbt_project.Id,
-    ///         AdapterId = 456,
+    ///         AdapterId = dbtcloud_connection.My_databricks_connection.Adapter_id,
     ///         TargetName = "prod",
     ///         Token = "abcdefgh",
     ///         Schema = "my_schema",

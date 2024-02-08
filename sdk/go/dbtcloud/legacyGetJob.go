@@ -35,14 +35,15 @@ type LegacyGetJobResult struct {
 	Description            string `pulumi:"description"`
 	EnvironmentId          int    `pulumi:"environmentId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string          `pulumi:"id"`
-	JobId             int             `pulumi:"jobId"`
-	Name              string          `pulumi:"name"`
-	ProjectId         int             `pulumi:"projectId"`
-	SelfDeferring     bool            `pulumi:"selfDeferring"`
-	TimeoutSeconds    int             `pulumi:"timeoutSeconds"`
-	Triggers          map[string]bool `pulumi:"triggers"`
-	TriggersOnDraftPr bool            `pulumi:"triggersOnDraftPr"`
+	Id                             string                                      `pulumi:"id"`
+	JobCompletionTriggerConditions []LegacyGetJobJobCompletionTriggerCondition `pulumi:"jobCompletionTriggerConditions"`
+	JobId                          int                                         `pulumi:"jobId"`
+	Name                           string                                      `pulumi:"name"`
+	ProjectId                      int                                         `pulumi:"projectId"`
+	SelfDeferring                  bool                                        `pulumi:"selfDeferring"`
+	TimeoutSeconds                 int                                         `pulumi:"timeoutSeconds"`
+	Triggers                       map[string]bool                             `pulumi:"triggers"`
+	TriggersOnDraftPr              bool                                        `pulumi:"triggersOnDraftPr"`
 }
 
 func LegacyGetJobOutput(ctx *pulumi.Context, args LegacyGetJobOutputArgs, opts ...pulumi.InvokeOption) LegacyGetJobResultOutput {
@@ -102,6 +103,12 @@ func (o LegacyGetJobResultOutput) EnvironmentId() pulumi.IntOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LegacyGetJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LegacyGetJobResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LegacyGetJobResultOutput) JobCompletionTriggerConditions() LegacyGetJobJobCompletionTriggerConditionArrayOutput {
+	return o.ApplyT(func(v LegacyGetJobResult) []LegacyGetJobJobCompletionTriggerCondition {
+		return v.JobCompletionTriggerConditions
+	}).(LegacyGetJobJobCompletionTriggerConditionArrayOutput)
 }
 
 func (o LegacyGetJobResultOutput) JobId() pulumi.IntOutput {

@@ -23,9 +23,7 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getJob.
 type LookupJobArgs struct {
-	// ID of the job
-	JobId int `pulumi:"jobId"`
-	// ID of the project the job is in
+	JobId     int `pulumi:"jobId"`
 	ProjectId int `pulumi:"projectId"`
 }
 
@@ -41,6 +39,8 @@ type LookupJobResult struct {
 	EnvironmentId int `pulumi:"environmentId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Which other job should trigger this job when it finishes, and on which conditions.
+	JobCompletionTriggerConditions []GetJobJobCompletionTriggerCondition `pulumi:"jobCompletionTriggerConditions"`
 	// ID of the job
 	JobId int `pulumi:"jobId"`
 	// Given name for the job
@@ -72,9 +72,7 @@ func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getJob.
 type LookupJobOutputArgs struct {
-	// ID of the job
-	JobId pulumi.IntInput `pulumi:"jobId"`
-	// ID of the project the job is in
+	JobId     pulumi.IntInput `pulumi:"jobId"`
 	ProjectId pulumi.IntInput `pulumi:"projectId"`
 }
 
@@ -120,6 +118,11 @@ func (o LookupJobResultOutput) EnvironmentId() pulumi.IntOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Which other job should trigger this job when it finishes, and on which conditions.
+func (o LookupJobResultOutput) JobCompletionTriggerConditions() GetJobJobCompletionTriggerConditionArrayOutput {
+	return o.ApplyT(func(v LookupJobResult) []GetJobJobCompletionTriggerCondition { return v.JobCompletionTriggerConditions }).(GetJobJobCompletionTriggerConditionArrayOutput)
 }
 
 // ID of the job

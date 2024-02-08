@@ -128,6 +128,287 @@ func (o GroupGroupPermissionArrayOutput) Index(i pulumi.IntInput) GroupGroupPerm
 	}).(GroupGroupPermissionOutput)
 }
 
+type JobJobCompletionTriggerCondition struct {
+	// The ID of the job that would trigger this job after completion.
+	JobId int `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId int `pulumi:"projectId"`
+	// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+	Statuses []string `pulumi:"statuses"`
+}
+
+// JobJobCompletionTriggerConditionInput is an input type that accepts JobJobCompletionTriggerConditionArgs and JobJobCompletionTriggerConditionOutput values.
+// You can construct a concrete instance of `JobJobCompletionTriggerConditionInput` via:
+//
+//	JobJobCompletionTriggerConditionArgs{...}
+type JobJobCompletionTriggerConditionInput interface {
+	pulumi.Input
+
+	ToJobJobCompletionTriggerConditionOutput() JobJobCompletionTriggerConditionOutput
+	ToJobJobCompletionTriggerConditionOutputWithContext(context.Context) JobJobCompletionTriggerConditionOutput
+}
+
+type JobJobCompletionTriggerConditionArgs struct {
+	// The ID of the job that would trigger this job after completion.
+	JobId pulumi.IntInput `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
+	// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
+}
+
+func (JobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i JobJobCompletionTriggerConditionArgs) ToJobJobCompletionTriggerConditionOutput() JobJobCompletionTriggerConditionOutput {
+	return i.ToJobJobCompletionTriggerConditionOutputWithContext(context.Background())
+}
+
+func (i JobJobCompletionTriggerConditionArgs) ToJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) JobJobCompletionTriggerConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobCompletionTriggerConditionOutput)
+}
+
+func (i JobJobCompletionTriggerConditionArgs) ToJobJobCompletionTriggerConditionPtrOutput() JobJobCompletionTriggerConditionPtrOutput {
+	return i.ToJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobCompletionTriggerConditionArgs) ToJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) JobJobCompletionTriggerConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobCompletionTriggerConditionOutput).ToJobJobCompletionTriggerConditionPtrOutputWithContext(ctx)
+}
+
+// JobJobCompletionTriggerConditionPtrInput is an input type that accepts JobJobCompletionTriggerConditionArgs, JobJobCompletionTriggerConditionPtr and JobJobCompletionTriggerConditionPtrOutput values.
+// You can construct a concrete instance of `JobJobCompletionTriggerConditionPtrInput` via:
+//
+//	        JobJobCompletionTriggerConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobCompletionTriggerConditionPtrInput interface {
+	pulumi.Input
+
+	ToJobJobCompletionTriggerConditionPtrOutput() JobJobCompletionTriggerConditionPtrOutput
+	ToJobJobCompletionTriggerConditionPtrOutputWithContext(context.Context) JobJobCompletionTriggerConditionPtrOutput
+}
+
+type jobJobCompletionTriggerConditionPtrType JobJobCompletionTriggerConditionArgs
+
+func JobJobCompletionTriggerConditionPtr(v *JobJobCompletionTriggerConditionArgs) JobJobCompletionTriggerConditionPtrInput {
+	return (*jobJobCompletionTriggerConditionPtrType)(v)
+}
+
+func (*jobJobCompletionTriggerConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i *jobJobCompletionTriggerConditionPtrType) ToJobJobCompletionTriggerConditionPtrOutput() JobJobCompletionTriggerConditionPtrOutput {
+	return i.ToJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobCompletionTriggerConditionPtrType) ToJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) JobJobCompletionTriggerConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobCompletionTriggerConditionPtrOutput)
+}
+
+type JobJobCompletionTriggerConditionOutput struct{ *pulumi.OutputState }
+
+func (JobJobCompletionTriggerConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o JobJobCompletionTriggerConditionOutput) ToJobJobCompletionTriggerConditionOutput() JobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o JobJobCompletionTriggerConditionOutput) ToJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) JobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o JobJobCompletionTriggerConditionOutput) ToJobJobCompletionTriggerConditionPtrOutput() JobJobCompletionTriggerConditionPtrOutput {
+	return o.ToJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobCompletionTriggerConditionOutput) ToJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) JobJobCompletionTriggerConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobCompletionTriggerCondition) *JobJobCompletionTriggerCondition {
+		return &v
+	}).(JobJobCompletionTriggerConditionPtrOutput)
+}
+
+// The ID of the job that would trigger this job after completion.
+func (o JobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v JobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
+}
+
+// The ID of the project where the trigger job is running in.
+func (o JobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v JobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+func (o JobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+type JobJobCompletionTriggerConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobCompletionTriggerConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o JobJobCompletionTriggerConditionPtrOutput) ToJobJobCompletionTriggerConditionPtrOutput() JobJobCompletionTriggerConditionPtrOutput {
+	return o
+}
+
+func (o JobJobCompletionTriggerConditionPtrOutput) ToJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) JobJobCompletionTriggerConditionPtrOutput {
+	return o
+}
+
+func (o JobJobCompletionTriggerConditionPtrOutput) Elem() JobJobCompletionTriggerConditionOutput {
+	return o.ApplyT(func(v *JobJobCompletionTriggerCondition) JobJobCompletionTriggerCondition {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobCompletionTriggerCondition
+		return ret
+	}).(JobJobCompletionTriggerConditionOutput)
+}
+
+// The ID of the job that would trigger this job after completion.
+func (o JobJobCompletionTriggerConditionPtrOutput) JobId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobJobCompletionTriggerCondition) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the project where the trigger job is running in.
+func (o JobJobCompletionTriggerConditionPtrOutput) ProjectId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobJobCompletionTriggerCondition) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.IntPtrOutput)
+}
+
+// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+func (o JobJobCompletionTriggerConditionPtrOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobJobCompletionTriggerCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(pulumi.StringArrayOutput)
+}
+
+type LegacyGetJobJobCompletionTriggerCondition struct {
+	JobId     int      `pulumi:"jobId"`
+	ProjectId int      `pulumi:"projectId"`
+	Statuses  []string `pulumi:"statuses"`
+}
+
+// LegacyGetJobJobCompletionTriggerConditionInput is an input type that accepts LegacyGetJobJobCompletionTriggerConditionArgs and LegacyGetJobJobCompletionTriggerConditionOutput values.
+// You can construct a concrete instance of `LegacyGetJobJobCompletionTriggerConditionInput` via:
+//
+//	LegacyGetJobJobCompletionTriggerConditionArgs{...}
+type LegacyGetJobJobCompletionTriggerConditionInput interface {
+	pulumi.Input
+
+	ToLegacyGetJobJobCompletionTriggerConditionOutput() LegacyGetJobJobCompletionTriggerConditionOutput
+	ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(context.Context) LegacyGetJobJobCompletionTriggerConditionOutput
+}
+
+type LegacyGetJobJobCompletionTriggerConditionArgs struct {
+	JobId     pulumi.IntInput         `pulumi:"jobId"`
+	ProjectId pulumi.IntInput         `pulumi:"projectId"`
+	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
+}
+
+func (LegacyGetJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i LegacyGetJobJobCompletionTriggerConditionArgs) ToLegacyGetJobJobCompletionTriggerConditionOutput() LegacyGetJobJobCompletionTriggerConditionOutput {
+	return i.ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(context.Background())
+}
+
+func (i LegacyGetJobJobCompletionTriggerConditionArgs) ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetJobJobCompletionTriggerConditionOutput)
+}
+
+// LegacyGetJobJobCompletionTriggerConditionArrayInput is an input type that accepts LegacyGetJobJobCompletionTriggerConditionArray and LegacyGetJobJobCompletionTriggerConditionArrayOutput values.
+// You can construct a concrete instance of `LegacyGetJobJobCompletionTriggerConditionArrayInput` via:
+//
+//	LegacyGetJobJobCompletionTriggerConditionArray{ LegacyGetJobJobCompletionTriggerConditionArgs{...} }
+type LegacyGetJobJobCompletionTriggerConditionArrayInput interface {
+	pulumi.Input
+
+	ToLegacyGetJobJobCompletionTriggerConditionArrayOutput() LegacyGetJobJobCompletionTriggerConditionArrayOutput
+	ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(context.Context) LegacyGetJobJobCompletionTriggerConditionArrayOutput
+}
+
+type LegacyGetJobJobCompletionTriggerConditionArray []LegacyGetJobJobCompletionTriggerConditionInput
+
+func (LegacyGetJobJobCompletionTriggerConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i LegacyGetJobJobCompletionTriggerConditionArray) ToLegacyGetJobJobCompletionTriggerConditionArrayOutput() LegacyGetJobJobCompletionTriggerConditionArrayOutput {
+	return i.ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(context.Background())
+}
+
+func (i LegacyGetJobJobCompletionTriggerConditionArray) ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetJobJobCompletionTriggerConditionArrayOutput)
+}
+
+type LegacyGetJobJobCompletionTriggerConditionOutput struct{ *pulumi.OutputState }
+
+func (LegacyGetJobJobCompletionTriggerConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionOutput) ToLegacyGetJobJobCompletionTriggerConditionOutput() LegacyGetJobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionOutput) ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+type LegacyGetJobJobCompletionTriggerConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (LegacyGetJobJobCompletionTriggerConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionArrayOutput) ToLegacyGetJobJobCompletionTriggerConditionArrayOutput() LegacyGetJobJobCompletionTriggerConditionArrayOutput {
+	return o
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionArrayOutput) ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionArrayOutput {
+	return o
+}
+
+func (o LegacyGetJobJobCompletionTriggerConditionArrayOutput) Index(i pulumi.IntInput) LegacyGetJobJobCompletionTriggerConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyGetJobJobCompletionTriggerCondition {
+		return vs[0].([]LegacyGetJobJobCompletionTriggerCondition)[vs[1].(int)]
+	}).(LegacyGetJobJobCompletionTriggerConditionOutput)
+}
+
 type LegacyGetServiceTokenServiceTokenPermission struct {
 	AllProjects   bool   `pulumi:"allProjects"`
 	PermissionSet string `pulumi:"permissionSet"`
@@ -338,6 +619,169 @@ func (o LegacyGroupGroupPermissionArrayOutput) Index(i pulumi.IntInput) LegacyGr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyGroupGroupPermission {
 		return vs[0].([]LegacyGroupGroupPermission)[vs[1].(int)]
 	}).(LegacyGroupGroupPermissionOutput)
+}
+
+type LegacyJobJobCompletionTriggerCondition struct {
+	JobId     int      `pulumi:"jobId"`
+	ProjectId int      `pulumi:"projectId"`
+	Statuses  []string `pulumi:"statuses"`
+}
+
+// LegacyJobJobCompletionTriggerConditionInput is an input type that accepts LegacyJobJobCompletionTriggerConditionArgs and LegacyJobJobCompletionTriggerConditionOutput values.
+// You can construct a concrete instance of `LegacyJobJobCompletionTriggerConditionInput` via:
+//
+//	LegacyJobJobCompletionTriggerConditionArgs{...}
+type LegacyJobJobCompletionTriggerConditionInput interface {
+	pulumi.Input
+
+	ToLegacyJobJobCompletionTriggerConditionOutput() LegacyJobJobCompletionTriggerConditionOutput
+	ToLegacyJobJobCompletionTriggerConditionOutputWithContext(context.Context) LegacyJobJobCompletionTriggerConditionOutput
+}
+
+type LegacyJobJobCompletionTriggerConditionArgs struct {
+	JobId     pulumi.IntInput         `pulumi:"jobId"`
+	ProjectId pulumi.IntInput         `pulumi:"projectId"`
+	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
+}
+
+func (LegacyJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionOutput() LegacyJobJobCompletionTriggerConditionOutput {
+	return i.ToLegacyJobJobCompletionTriggerConditionOutputWithContext(context.Background())
+}
+
+func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyJobJobCompletionTriggerConditionOutput)
+}
+
+func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return i.ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
+}
+
+func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyJobJobCompletionTriggerConditionOutput).ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx)
+}
+
+// LegacyJobJobCompletionTriggerConditionPtrInput is an input type that accepts LegacyJobJobCompletionTriggerConditionArgs, LegacyJobJobCompletionTriggerConditionPtr and LegacyJobJobCompletionTriggerConditionPtrOutput values.
+// You can construct a concrete instance of `LegacyJobJobCompletionTriggerConditionPtrInput` via:
+//
+//	        LegacyJobJobCompletionTriggerConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LegacyJobJobCompletionTriggerConditionPtrInput interface {
+	pulumi.Input
+
+	ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput
+	ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput
+}
+
+type legacyJobJobCompletionTriggerConditionPtrType LegacyJobJobCompletionTriggerConditionArgs
+
+func LegacyJobJobCompletionTriggerConditionPtr(v *LegacyJobJobCompletionTriggerConditionArgs) LegacyJobJobCompletionTriggerConditionPtrInput {
+	return (*legacyJobJobCompletionTriggerConditionPtrType)(v)
+}
+
+func (*legacyJobJobCompletionTriggerConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i *legacyJobJobCompletionTriggerConditionPtrType) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return i.ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *legacyJobJobCompletionTriggerConditionPtrType) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LegacyJobJobCompletionTriggerConditionPtrOutput)
+}
+
+type LegacyJobJobCompletionTriggerConditionOutput struct{ *pulumi.OutputState }
+
+func (LegacyJobJobCompletionTriggerConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionOutput() LegacyJobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return o.ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
+}
+
+func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LegacyJobJobCompletionTriggerCondition) *LegacyJobJobCompletionTriggerCondition {
+		return &v
+	}).(LegacyJobJobCompletionTriggerConditionPtrOutput)
+}
+
+func (o LegacyJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
+}
+
+func (o LegacyJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+func (o LegacyJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+type LegacyJobJobCompletionTriggerConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (LegacyJobJobCompletionTriggerConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return o
+}
+
+func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
+	return o
+}
+
+func (o LegacyJobJobCompletionTriggerConditionPtrOutput) Elem() LegacyJobJobCompletionTriggerConditionOutput {
+	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) LegacyJobJobCompletionTriggerCondition {
+		if v != nil {
+			return *v
+		}
+		var ret LegacyJobJobCompletionTriggerCondition
+		return ret
+	}).(LegacyJobJobCompletionTriggerConditionOutput)
+}
+
+func (o LegacyJobJobCompletionTriggerConditionPtrOutput) JobId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ProjectId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o LegacyJobJobCompletionTriggerConditionPtrOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(pulumi.StringArrayOutput)
 }
 
 type LegacyServiceTokenServiceTokenPermission struct {
@@ -661,6 +1105,112 @@ func (o GetGroupUsersUserArrayOutput) Index(i pulumi.IntInput) GetGroupUsersUser
 	}).(GetGroupUsersUserOutput)
 }
 
+type GetJobJobCompletionTriggerCondition struct {
+	JobId     int      `pulumi:"jobId"`
+	ProjectId int      `pulumi:"projectId"`
+	Statuses  []string `pulumi:"statuses"`
+}
+
+// GetJobJobCompletionTriggerConditionInput is an input type that accepts GetJobJobCompletionTriggerConditionArgs and GetJobJobCompletionTriggerConditionOutput values.
+// You can construct a concrete instance of `GetJobJobCompletionTriggerConditionInput` via:
+//
+//	GetJobJobCompletionTriggerConditionArgs{...}
+type GetJobJobCompletionTriggerConditionInput interface {
+	pulumi.Input
+
+	ToGetJobJobCompletionTriggerConditionOutput() GetJobJobCompletionTriggerConditionOutput
+	ToGetJobJobCompletionTriggerConditionOutputWithContext(context.Context) GetJobJobCompletionTriggerConditionOutput
+}
+
+type GetJobJobCompletionTriggerConditionArgs struct {
+	JobId     pulumi.IntInput         `pulumi:"jobId"`
+	ProjectId pulumi.IntInput         `pulumi:"projectId"`
+	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
+}
+
+func (GetJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i GetJobJobCompletionTriggerConditionArgs) ToGetJobJobCompletionTriggerConditionOutput() GetJobJobCompletionTriggerConditionOutput {
+	return i.ToGetJobJobCompletionTriggerConditionOutputWithContext(context.Background())
+}
+
+func (i GetJobJobCompletionTriggerConditionArgs) ToGetJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) GetJobJobCompletionTriggerConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobCompletionTriggerConditionOutput)
+}
+
+// GetJobJobCompletionTriggerConditionArrayInput is an input type that accepts GetJobJobCompletionTriggerConditionArray and GetJobJobCompletionTriggerConditionArrayOutput values.
+// You can construct a concrete instance of `GetJobJobCompletionTriggerConditionArrayInput` via:
+//
+//	GetJobJobCompletionTriggerConditionArray{ GetJobJobCompletionTriggerConditionArgs{...} }
+type GetJobJobCompletionTriggerConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobCompletionTriggerConditionArrayOutput() GetJobJobCompletionTriggerConditionArrayOutput
+	ToGetJobJobCompletionTriggerConditionArrayOutputWithContext(context.Context) GetJobJobCompletionTriggerConditionArrayOutput
+}
+
+type GetJobJobCompletionTriggerConditionArray []GetJobJobCompletionTriggerConditionInput
+
+func (GetJobJobCompletionTriggerConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (i GetJobJobCompletionTriggerConditionArray) ToGetJobJobCompletionTriggerConditionArrayOutput() GetJobJobCompletionTriggerConditionArrayOutput {
+	return i.ToGetJobJobCompletionTriggerConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobCompletionTriggerConditionArray) ToGetJobJobCompletionTriggerConditionArrayOutputWithContext(ctx context.Context) GetJobJobCompletionTriggerConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobCompletionTriggerConditionArrayOutput)
+}
+
+type GetJobJobCompletionTriggerConditionOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobCompletionTriggerConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o GetJobJobCompletionTriggerConditionOutput) ToGetJobJobCompletionTriggerConditionOutput() GetJobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o GetJobJobCompletionTriggerConditionOutput) ToGetJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) GetJobJobCompletionTriggerConditionOutput {
+	return o
+}
+
+func (o GetJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
+}
+
+func (o GetJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+func (o GetJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobCompletionTriggerConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobCompletionTriggerConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobCompletionTriggerCondition)(nil)).Elem()
+}
+
+func (o GetJobJobCompletionTriggerConditionArrayOutput) ToGetJobJobCompletionTriggerConditionArrayOutput() GetJobJobCompletionTriggerConditionArrayOutput {
+	return o
+}
+
+func (o GetJobJobCompletionTriggerConditionArrayOutput) ToGetJobJobCompletionTriggerConditionArrayOutputWithContext(ctx context.Context) GetJobJobCompletionTriggerConditionArrayOutput {
+	return o
+}
+
+func (o GetJobJobCompletionTriggerConditionArrayOutput) Index(i pulumi.IntInput) GetJobJobCompletionTriggerConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobCompletionTriggerCondition {
+		return vs[0].([]GetJobJobCompletionTriggerCondition)[vs[1].(int)]
+	}).(GetJobJobCompletionTriggerConditionOutput)
+}
+
 type GetServiceTokenServiceTokenPermission struct {
 	AllProjects   bool   `pulumi:"allProjects"`
 	PermissionSet string `pulumi:"permissionSet"`
@@ -770,30 +1320,46 @@ func (o GetServiceTokenServiceTokenPermissionArrayOutput) Index(i pulumi.IntInpu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupPermissionInput)(nil)).Elem(), GroupGroupPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupPermissionArrayInput)(nil)).Elem(), GroupGroupPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobCompletionTriggerConditionInput)(nil)).Elem(), JobJobCompletionTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobCompletionTriggerConditionPtrInput)(nil)).Elem(), JobJobCompletionTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetJobJobCompletionTriggerConditionInput)(nil)).Elem(), LegacyGetJobJobCompletionTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetJobJobCompletionTriggerConditionArrayInput)(nil)).Elem(), LegacyGetJobJobCompletionTriggerConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermissionInput)(nil)).Elem(), LegacyGetServiceTokenServiceTokenPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), LegacyGetServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGroupGroupPermissionInput)(nil)).Elem(), LegacyGroupGroupPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGroupGroupPermissionArrayInput)(nil)).Elem(), LegacyGroupGroupPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyJobJobCompletionTriggerConditionInput)(nil)).Elem(), LegacyJobJobCompletionTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyJobJobCompletionTriggerConditionPtrInput)(nil)).Elem(), LegacyJobJobCompletionTriggerConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyServiceTokenServiceTokenPermissionInput)(nil)).Elem(), LegacyServiceTokenServiceTokenPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), LegacyServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenPermissionInput)(nil)).Elem(), ServiceTokenServiceTokenPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), ServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupUsersUserInput)(nil)).Elem(), GetGroupUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupUsersUserArrayInput)(nil)).Elem(), GetGroupUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobCompletionTriggerConditionInput)(nil)).Elem(), GetJobJobCompletionTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobCompletionTriggerConditionArrayInput)(nil)).Elem(), GetJobJobCompletionTriggerConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenPermissionInput)(nil)).Elem(), GetServiceTokenServiceTokenPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), GetServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterOutputType(GroupGroupPermissionOutput{})
 	pulumi.RegisterOutputType(GroupGroupPermissionArrayOutput{})
+	pulumi.RegisterOutputType(JobJobCompletionTriggerConditionOutput{})
+	pulumi.RegisterOutputType(JobJobCompletionTriggerConditionPtrOutput{})
+	pulumi.RegisterOutputType(LegacyGetJobJobCompletionTriggerConditionOutput{})
+	pulumi.RegisterOutputType(LegacyGetJobJobCompletionTriggerConditionArrayOutput{})
 	pulumi.RegisterOutputType(LegacyGetServiceTokenServiceTokenPermissionOutput{})
 	pulumi.RegisterOutputType(LegacyGetServiceTokenServiceTokenPermissionArrayOutput{})
 	pulumi.RegisterOutputType(LegacyGroupGroupPermissionOutput{})
 	pulumi.RegisterOutputType(LegacyGroupGroupPermissionArrayOutput{})
+	pulumi.RegisterOutputType(LegacyJobJobCompletionTriggerConditionOutput{})
+	pulumi.RegisterOutputType(LegacyJobJobCompletionTriggerConditionPtrOutput{})
 	pulumi.RegisterOutputType(LegacyServiceTokenServiceTokenPermissionOutput{})
 	pulumi.RegisterOutputType(LegacyServiceTokenServiceTokenPermissionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenPermissionOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupUsersUserOutput{})
 	pulumi.RegisterOutputType(GetGroupUsersUserArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobCompletionTriggerConditionOutput{})
+	pulumi.RegisterOutputType(GetJobJobCompletionTriggerConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTokenServiceTokenPermissionOutput{})
 	pulumi.RegisterOutputType(GetServiceTokenServiceTokenPermissionArrayOutput{})
 }

@@ -36,6 +36,16 @@
                     "execute_steps": {
                         "maxItemsOne": false
                     },
+                    "job_completion_trigger_condition": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "statuses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "schedule_days": {
                         "maxItemsOne": false
                     },
@@ -130,6 +140,16 @@
                 "fields": {
                     "execute_steps": {
                         "maxItemsOne": false
+                    },
+                    "job_completion_trigger_condition": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "statuses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "schedule_days": {
                         "maxItemsOne": false
@@ -238,7 +258,19 @@
                 }
             },
             "dbt_cloud_job": {
-                "current": "dbtcloud:index/legacyGetJob:LegacyGetJob"
+                "current": "dbtcloud:index/legacyGetJob:LegacyGetJob",
+                "fields": {
+                    "job_completion_trigger_condition": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "statuses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "dbt_cloud_postgres_credential": {
                 "current": "dbtcloud:index/legacyGetPostgresCredential:LegacyGetPostgresCredential"
@@ -321,7 +353,19 @@
                 }
             },
             "dbtcloud_job": {
-                "current": "dbtcloud:index/getJob:getJob"
+                "current": "dbtcloud:index/getJob:getJob",
+                "fields": {
+                    "job_completion_trigger_condition": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "statuses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "dbtcloud_notification": {
                 "current": "dbtcloud:index/getNotification:getNotification",
@@ -475,6 +519,14 @@
                 "permissionSet": "permission_set",
                 "projectId": "project_id"
             },
+            "dbtcloud:index/JobJobCompletionTriggerCondition:JobJobCompletionTriggerCondition": {
+                "jobId": "job_id",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/LegacyGetJobJobCompletionTriggerCondition:LegacyGetJobJobCompletionTriggerCondition": {
+                "jobId": "job_id",
+                "projectId": "project_id"
+            },
             "dbtcloud:index/LegacyGetServiceTokenServiceTokenPermission:LegacyGetServiceTokenServiceTokenPermission": {
                 "allProjects": "all_projects",
                 "permissionSet": "permission_set",
@@ -483,6 +535,10 @@
             "dbtcloud:index/LegacyGroupGroupPermission:LegacyGroupGroupPermission": {
                 "allProjects": "all_projects",
                 "permissionSet": "permission_set",
+                "projectId": "project_id"
+            },
+            "dbtcloud:index/LegacyJobJobCompletionTriggerCondition:LegacyJobJobCompletionTriggerCondition": {
+                "jobId": "job_id",
                 "projectId": "project_id"
             },
             "dbtcloud:index/LegacyServiceTokenServiceTokenPermission:LegacyServiceTokenServiceTokenPermission": {
@@ -669,11 +725,16 @@
                 "deferringEnvironmentId": "deferring_environment_id",
                 "deferringJobId": "deferring_job_id",
                 "environmentId": "environment_id",
+                "jobCompletionTriggerConditions": "job_completion_trigger_condition",
                 "jobId": "job_id",
                 "projectId": "project_id",
                 "selfDeferring": "self_deferring",
                 "timeoutSeconds": "timeout_seconds",
                 "triggersOnDraftPr": "triggers_on_draft_pr"
+            },
+            "dbtcloud:index/getJobJobCompletionTriggerCondition:getJobJobCompletionTriggerCondition": {
+                "jobId": "job_id",
+                "projectId": "project_id"
             },
             "dbtcloud:index/getNotification:getNotification": {
                 "externalEmail": "external_email",
@@ -756,6 +817,7 @@
                 "executeSteps": "execute_steps",
                 "generateDocs": "generate_docs",
                 "isActive": "is_active",
+                "jobCompletionTriggerCondition": "job_completion_trigger_condition",
                 "numThreads": "num_threads",
                 "projectId": "project_id",
                 "runGenerateSources": "run_generate_sources",
@@ -901,6 +963,7 @@
                 "deferringEnvironmentId": "deferring_environment_id",
                 "deferringJobId": "deferring_job_id",
                 "environmentId": "environment_id",
+                "jobCompletionTriggerConditions": "job_completion_trigger_condition",
                 "jobId": "job_id",
                 "projectId": "project_id",
                 "selfDeferring": "self_deferring",
@@ -970,6 +1033,7 @@
                 "executeSteps": "execute_steps",
                 "generateDocs": "generate_docs",
                 "isActive": "is_active",
+                "jobCompletionTriggerCondition": "job_completion_trigger_condition",
                 "numThreads": "num_threads",
                 "projectId": "project_id",
                 "runGenerateSources": "run_generate_sources",

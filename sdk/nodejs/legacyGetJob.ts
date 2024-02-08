@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /** @deprecated Do not use! This resource is mapped from the legacy Terraform `dbt_cloud_`-prefixed resource/datasource */
@@ -35,6 +37,7 @@ export interface LegacyGetJobResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly jobCompletionTriggerConditions: outputs.LegacyGetJobJobCompletionTriggerCondition[];
     readonly jobId: number;
     readonly name: string;
     readonly projectId: number;

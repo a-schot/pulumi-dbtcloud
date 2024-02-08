@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
@@ -17,13 +19,7 @@ export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<G
  * A collection of arguments for invoking getJob.
  */
 export interface GetJobArgs {
-    /**
-     * ID of the job
-     */
     jobId: number;
-    /**
-     * ID of the project the job is in
-     */
     projectId: number;
 }
 
@@ -51,6 +47,10 @@ export interface GetJobResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Which other job should trigger this job when it finishes, and on which conditions.
+     */
+    readonly jobCompletionTriggerConditions: outputs.GetJobJobCompletionTriggerCondition[];
     /**
      * ID of the job
      */
@@ -88,12 +88,6 @@ export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getJob.
  */
 export interface GetJobOutputArgs {
-    /**
-     * ID of the job
-     */
     jobId: pulumi.Input<number>;
-    /**
-     * ID of the project the job is in
-     */
     projectId: pulumi.Input<number>;
 }

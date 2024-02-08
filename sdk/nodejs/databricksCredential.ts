@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * // when using the Databricks adapter
  * const myDatabricksCred = new dbtcloud.DatabricksCredential("myDatabricksCred", {
  *     projectId: dbtcloud_project.dbt_project.id,
- *     adapterId: 123,
+ *     adapterId: dbtcloud_connection.my_databricks_connection.adapter_id,
  *     targetName: "prod",
  *     token: "abcdefgh",
  *     schema: "my_schema",
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * // when using the Spark adapter
  * const mySparkCred = new dbtcloud.DatabricksCredential("mySparkCred", {
  *     projectId: dbtcloud_project.dbt_project.id,
- *     adapterId: 456,
+ *     adapterId: dbtcloud_connection.my_databricks_connection.adapter_id,
  *     targetName: "prod",
  *     token: "abcdefgh",
  *     schema: "my_schema",

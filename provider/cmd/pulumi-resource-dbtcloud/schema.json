@@ -113,6 +113,58 @@
                 "permissionSet"
             ]
         },
+        "dbtcloud:index/JobJobCompletionTriggerCondition:JobJobCompletionTriggerCondition": {
+            "properties": {
+                "jobId": {
+                    "type": "integer",
+                    "description": "The ID of the job that would trigger this job after completion.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The ID of the project where the trigger job is running in.\n"
+                },
+                "statuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId",
+                "projectId",
+                "statuses"
+            ]
+        },
+        "dbtcloud:index/LegacyGetJobJobCompletionTriggerCondition:LegacyGetJobJobCompletionTriggerCondition": {
+            "properties": {
+                "jobId": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "statuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId",
+                "projectId",
+                "statuses"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "dbtcloud:index/LegacyGetServiceTokenServiceTokenPermission:LegacyGetServiceTokenServiceTokenPermission": {
             "properties": {
                 "allProjects": {
@@ -153,6 +205,28 @@
             "required": [
                 "allProjects",
                 "permissionSet"
+            ]
+        },
+        "dbtcloud:index/LegacyJobJobCompletionTriggerCondition:LegacyJobJobCompletionTriggerCondition": {
+            "properties": {
+                "jobId": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "statuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId",
+                "projectId",
+                "statuses"
             ]
         },
         "dbtcloud:index/LegacyServiceTokenServiceTokenPermission:LegacyServiceTokenServiceTokenPermission": {
@@ -207,6 +281,33 @@
             "required": [
                 "email",
                 "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "dbtcloud:index/getJobJobCompletionTriggerCondition:getJobJobCompletionTriggerCondition": {
+            "properties": {
+                "jobId": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "statuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId",
+                "projectId",
+                "statuses"
             ],
             "language": {
                 "nodejs": {
@@ -987,7 +1088,7 @@
             }
         },
         "dbtcloud:index/databricksCredential:DatabricksCredential": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dbtcloud from \"@aschot/pulumi-dbtcloud\";\n\n// NOTE for customers using the LEGACY dbt_cloud provider:\n// when using the Databricks adapter\nconst myDatabricksCred = new dbtcloud.DatabricksCredential(\"myDatabricksCred\", {\n    projectId: dbtcloud_project.dbt_project.id,\n    adapterId: 123,\n    targetName: \"prod\",\n    token: \"abcdefgh\",\n    schema: \"my_schema\",\n    adapterType: \"databricks\",\n});\n// when using the Spark adapter\nconst mySparkCred = new dbtcloud.DatabricksCredential(\"mySparkCred\", {\n    projectId: dbtcloud_project.dbt_project.id,\n    adapterId: 456,\n    targetName: \"prod\",\n    token: \"abcdefgh\",\n    schema: \"my_schema\",\n    adapterType: \"spark\",\n});\n```\n```python\nimport pulumi\nimport aschot_pulumi_dbtcloud as dbtcloud\n\n# NOTE for customers using the LEGACY dbt_cloud provider:\n# when using the Databricks adapter\nmy_databricks_cred = dbtcloud.DatabricksCredential(\"myDatabricksCred\",\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    adapter_id=123,\n    target_name=\"prod\",\n    token=\"abcdefgh\",\n    schema=\"my_schema\",\n    adapter_type=\"databricks\")\n# when using the Spark adapter\nmy_spark_cred = dbtcloud.DatabricksCredential(\"mySparkCred\",\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    adapter_id=456,\n    target_name=\"prod\",\n    token=\"abcdefgh\",\n    schema=\"my_schema\",\n    adapter_type=\"spark\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dbtcloud = ASchot.Pulumi.Dbtcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // NOTE for customers using the LEGACY dbt_cloud provider:\n    // when using the Databricks adapter\n    var myDatabricksCred = new Dbtcloud.DatabricksCredential(\"myDatabricksCred\", new()\n    {\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        AdapterId = 123,\n        TargetName = \"prod\",\n        Token = \"abcdefgh\",\n        Schema = \"my_schema\",\n        AdapterType = \"databricks\",\n    });\n\n    // when using the Spark adapter\n    var mySparkCred = new Dbtcloud.DatabricksCredential(\"mySparkCred\", new()\n    {\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        AdapterId = 456,\n        TargetName = \"prod\",\n        Token = \"abcdefgh\",\n        Schema = \"my_schema\",\n        AdapterType = \"spark\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dbtcloud.NewDatabricksCredential(ctx, \"myDatabricksCred\", \u0026dbtcloud.DatabricksCredentialArgs{\n\t\t\tProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tAdapterId:   pulumi.Int(123),\n\t\t\tTargetName:  pulumi.String(\"prod\"),\n\t\t\tToken:       pulumi.String(\"abcdefgh\"),\n\t\t\tSchema:      pulumi.String(\"my_schema\"),\n\t\t\tAdapterType: pulumi.String(\"databricks\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dbtcloud.NewDatabricksCredential(ctx, \"mySparkCred\", \u0026dbtcloud.DatabricksCredentialArgs{\n\t\t\tProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tAdapterId:   pulumi.Int(456),\n\t\t\tTargetName:  pulumi.String(\"prod\"),\n\t\t\tToken:       pulumi.String(\"abcdefgh\"),\n\t\t\tSchema:      pulumi.String(\"my_schema\"),\n\t\t\tAdapterType: pulumi.String(\"spark\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dbtcloud.DatabricksCredential;\nimport com.pulumi.dbtcloud.DatabricksCredentialArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDatabricksCred = new DatabricksCredential(\"myDatabricksCred\", DatabricksCredentialArgs.builder()        \n            .projectId(dbtcloud_project.dbt_project().id())\n            .adapterId(123)\n            .targetName(\"prod\")\n            .token(\"abcdefgh\")\n            .schema(\"my_schema\")\n            .adapterType(\"databricks\")\n            .build());\n\n        var mySparkCred = new DatabricksCredential(\"mySparkCred\", DatabricksCredentialArgs.builder()        \n            .projectId(dbtcloud_project.dbt_project().id())\n            .adapterId(456)\n            .targetName(\"prod\")\n            .token(\"abcdefgh\")\n            .schema(\"my_schema\")\n            .adapterType(\"spark\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # NOTE for customers using the LEGACY dbt_cloud provider:\n  # when using the Databricks adapter\n  myDatabricksCred:\n    type: dbtcloud:DatabricksCredential\n    properties:\n      projectId: ${dbtcloud_project.dbt_project.id}\n      adapterId: 123\n      targetName: prod\n      token: abcdefgh\n      schema: my_schema\n      adapterType: databricks\n  # when using the Spark adapter\n  mySparkCred:\n    type: dbtcloud:DatabricksCredential\n    properties:\n      projectId: ${dbtcloud_project.dbt_project.id}\n      adapterId: 456\n      targetName: prod\n      token: abcdefgh\n      schema: my_schema\n      adapterType: spark\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport using a project ID and credential ID found in the URL or via the API.\n\n```sh\n $ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential \"project_id:credential_id\"\n```\n\n\n\n```sh\n $ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential 12345:6789\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dbtcloud from \"@aschot/pulumi-dbtcloud\";\n\n// NOTE for customers using the LEGACY dbt_cloud provider:\n// when using the Databricks adapter\nconst myDatabricksCred = new dbtcloud.DatabricksCredential(\"myDatabricksCred\", {\n    projectId: dbtcloud_project.dbt_project.id,\n    adapterId: dbtcloud_connection.my_databricks_connection.adapter_id,\n    targetName: \"prod\",\n    token: \"abcdefgh\",\n    schema: \"my_schema\",\n    adapterType: \"databricks\",\n});\n// when using the Spark adapter\nconst mySparkCred = new dbtcloud.DatabricksCredential(\"mySparkCred\", {\n    projectId: dbtcloud_project.dbt_project.id,\n    adapterId: dbtcloud_connection.my_databricks_connection.adapter_id,\n    targetName: \"prod\",\n    token: \"abcdefgh\",\n    schema: \"my_schema\",\n    adapterType: \"spark\",\n});\n```\n```python\nimport pulumi\nimport aschot_pulumi_dbtcloud as dbtcloud\n\n# NOTE for customers using the LEGACY dbt_cloud provider:\n# when using the Databricks adapter\nmy_databricks_cred = dbtcloud.DatabricksCredential(\"myDatabricksCred\",\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    adapter_id=dbtcloud_connection[\"my_databricks_connection\"][\"adapter_id\"],\n    target_name=\"prod\",\n    token=\"abcdefgh\",\n    schema=\"my_schema\",\n    adapter_type=\"databricks\")\n# when using the Spark adapter\nmy_spark_cred = dbtcloud.DatabricksCredential(\"mySparkCred\",\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    adapter_id=dbtcloud_connection[\"my_databricks_connection\"][\"adapter_id\"],\n    target_name=\"prod\",\n    token=\"abcdefgh\",\n    schema=\"my_schema\",\n    adapter_type=\"spark\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dbtcloud = ASchot.Pulumi.Dbtcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // NOTE for customers using the LEGACY dbt_cloud provider:\n    // when using the Databricks adapter\n    var myDatabricksCred = new Dbtcloud.DatabricksCredential(\"myDatabricksCred\", new()\n    {\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        AdapterId = dbtcloud_connection.My_databricks_connection.Adapter_id,\n        TargetName = \"prod\",\n        Token = \"abcdefgh\",\n        Schema = \"my_schema\",\n        AdapterType = \"databricks\",\n    });\n\n    // when using the Spark adapter\n    var mySparkCred = new Dbtcloud.DatabricksCredential(\"mySparkCred\", new()\n    {\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        AdapterId = dbtcloud_connection.My_databricks_connection.Adapter_id,\n        TargetName = \"prod\",\n        Token = \"abcdefgh\",\n        Schema = \"my_schema\",\n        AdapterType = \"spark\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dbtcloud.NewDatabricksCredential(ctx, \"myDatabricksCred\", \u0026dbtcloud.DatabricksCredentialArgs{\n\t\t\tProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tAdapterId:   pulumi.Any(dbtcloud_connection.My_databricks_connection.Adapter_id),\n\t\t\tTargetName:  pulumi.String(\"prod\"),\n\t\t\tToken:       pulumi.String(\"abcdefgh\"),\n\t\t\tSchema:      pulumi.String(\"my_schema\"),\n\t\t\tAdapterType: pulumi.String(\"databricks\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dbtcloud.NewDatabricksCredential(ctx, \"mySparkCred\", \u0026dbtcloud.DatabricksCredentialArgs{\n\t\t\tProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tAdapterId:   pulumi.Any(dbtcloud_connection.My_databricks_connection.Adapter_id),\n\t\t\tTargetName:  pulumi.String(\"prod\"),\n\t\t\tToken:       pulumi.String(\"abcdefgh\"),\n\t\t\tSchema:      pulumi.String(\"my_schema\"),\n\t\t\tAdapterType: pulumi.String(\"spark\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dbtcloud.DatabricksCredential;\nimport com.pulumi.dbtcloud.DatabricksCredentialArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myDatabricksCred = new DatabricksCredential(\"myDatabricksCred\", DatabricksCredentialArgs.builder()        \n            .projectId(dbtcloud_project.dbt_project().id())\n            .adapterId(dbtcloud_connection.my_databricks_connection().adapter_id())\n            .targetName(\"prod\")\n            .token(\"abcdefgh\")\n            .schema(\"my_schema\")\n            .adapterType(\"databricks\")\n            .build());\n\n        var mySparkCred = new DatabricksCredential(\"mySparkCred\", DatabricksCredentialArgs.builder()        \n            .projectId(dbtcloud_project.dbt_project().id())\n            .adapterId(dbtcloud_connection.my_databricks_connection().adapter_id())\n            .targetName(\"prod\")\n            .token(\"abcdefgh\")\n            .schema(\"my_schema\")\n            .adapterType(\"spark\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # NOTE for customers using the LEGACY dbt_cloud provider:\n  # when using the Databricks adapter\n  myDatabricksCred:\n    type: dbtcloud:DatabricksCredential\n    properties:\n      projectId: ${dbtcloud_project.dbt_project.id}\n      adapterId: ${dbtcloud_connection.my_databricks_connection.adapter_id}\n      targetName: prod\n      token: abcdefgh\n      schema: my_schema\n      adapterType: databricks\n  # when using the Spark adapter\n  mySparkCred:\n    type: dbtcloud:DatabricksCredential\n    properties:\n      projectId: ${dbtcloud_project.dbt_project.id}\n      adapterId: ${dbtcloud_connection.my_databricks_connection.adapter_id}\n      targetName: prod\n      token: abcdefgh\n      schema: my_schema\n      adapterType: spark\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport using a project ID and credential ID found in the URL or via the API.\n\n```sh\n $ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential \"project_id:credential_id\"\n```\n\n\n\n```sh\n $ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential 12345:6789\n```\n\n ",
             "properties": {
                 "adapterId": {
                     "type": "integer",
@@ -1875,7 +1976,7 @@
             }
         },
         "dbtcloud:index/job:Job": {
-            "description": "\u003e As of October 2023, CI improvements have been rolled out to dbt Cloud with minor impacts to some jobs:  [more info](https://docs.getdbt.com/docs/dbt-versions/release-notes/june-2023/ci-updates-phase1-rn). \n\u003cbr/\u003e\n\u003cbr/\u003e\nThose improvements include modifications to deferral which was historically set at the job level and will now be set at the environment level. \nDeferral can still be set to \"self\" by setting `self_deferring` to `true` but with the new approach, deferral to other runs need to be done with `deferring_environment_id` instead of `deferring_job_id`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dbtcloud from \"@aschot/pulumi-dbtcloud\";\n\n// NOTE for customers using the LEGACY dbt_cloud provider:\n// a job that has github_webhook and git_provider_webhook \n// set to false will be categorized as a \"Deploy Job\"\nconst dailyJob = new dbtcloud.Job(\"dailyJob\", {\n    environmentId: dbtcloud_environment.prod_environment.environment_id,\n    executeSteps: [\"dbt build\"],\n    generateDocs: true,\n    isActive: true,\n    numThreads: 64,\n    projectId: dbtcloud_project.dbt_project.id,\n    runGenerateSources: true,\n    targetName: \"default\",\n    triggers: {\n        custom_branch_only: false,\n        github_webhook: false,\n        git_provider_webhook: false,\n        schedule: true,\n    },\n    scheduleDays: [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    scheduleType: \"days_of_week\",\n    scheduleHours: [0],\n});\n// a job that has github_webhook and git_provider_webhook set \n// to true will be categorized as a \"Continuous Integration Job\"\nconst ciJob = new dbtcloud.Job(\"ciJob\", {\n    environmentId: dbtcloud_environment.ci_environment.environment_id,\n    executeSteps: [\"dbt build -s state:modified+ --fail-fast\"],\n    generateDocs: false,\n    deferringEnvironmentId: dbtcloud_environment.prod_environment.environment_id,\n    numThreads: 32,\n    projectId: dbtcloud_project.dbt_project.id,\n    runGenerateSources: false,\n    triggers: {\n        custom_branch_only: true,\n        github_webhook: true,\n        git_provider_webhook: true,\n        schedule: false,\n    },\n    scheduleDays: [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    scheduleType: \"days_of_week\",\n});\n```\n```python\nimport pulumi\nimport aschot_pulumi_dbtcloud as dbtcloud\n\n# NOTE for customers using the LEGACY dbt_cloud provider:\n# a job that has github_webhook and git_provider_webhook \n# set to false will be categorized as a \"Deploy Job\"\ndaily_job = dbtcloud.Job(\"dailyJob\",\n    environment_id=dbtcloud_environment[\"prod_environment\"][\"environment_id\"],\n    execute_steps=[\"dbt build\"],\n    generate_docs=True,\n    is_active=True,\n    num_threads=64,\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    run_generate_sources=True,\n    target_name=\"default\",\n    triggers={\n        \"custom_branch_only\": False,\n        \"github_webhook\": False,\n        \"git_provider_webhook\": False,\n        \"schedule\": True,\n    },\n    schedule_days=[\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    schedule_type=\"days_of_week\",\n    schedule_hours=[0])\n# a job that has github_webhook and git_provider_webhook set \n# to true will be categorized as a \"Continuous Integration Job\"\nci_job = dbtcloud.Job(\"ciJob\",\n    environment_id=dbtcloud_environment[\"ci_environment\"][\"environment_id\"],\n    execute_steps=[\"dbt build -s state:modified+ --fail-fast\"],\n    generate_docs=False,\n    deferring_environment_id=dbtcloud_environment[\"prod_environment\"][\"environment_id\"],\n    num_threads=32,\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    run_generate_sources=False,\n    triggers={\n        \"custom_branch_only\": True,\n        \"github_webhook\": True,\n        \"git_provider_webhook\": True,\n        \"schedule\": False,\n    },\n    schedule_days=[\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    schedule_type=\"days_of_week\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dbtcloud = ASchot.Pulumi.Dbtcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // NOTE for customers using the LEGACY dbt_cloud provider:\n    // a job that has github_webhook and git_provider_webhook \n    // set to false will be categorized as a \"Deploy Job\"\n    var dailyJob = new Dbtcloud.Job(\"dailyJob\", new()\n    {\n        EnvironmentId = dbtcloud_environment.Prod_environment.Environment_id,\n        ExecuteSteps = new[]\n        {\n            \"dbt build\",\n        },\n        GenerateDocs = true,\n        IsActive = true,\n        NumThreads = 64,\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        RunGenerateSources = true,\n        TargetName = \"default\",\n        Triggers = \n        {\n            { \"custom_branch_only\", false },\n            { \"github_webhook\", false },\n            { \"git_provider_webhook\", false },\n            { \"schedule\", true },\n        },\n        ScheduleDays = new[]\n        {\n            0,\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n        },\n        ScheduleType = \"days_of_week\",\n        ScheduleHours = new[]\n        {\n            0,\n        },\n    });\n\n    // a job that has github_webhook and git_provider_webhook set \n    // to true will be categorized as a \"Continuous Integration Job\"\n    var ciJob = new Dbtcloud.Job(\"ciJob\", new()\n    {\n        EnvironmentId = dbtcloud_environment.Ci_environment.Environment_id,\n        ExecuteSteps = new[]\n        {\n            \"dbt build -s state:modified+ --fail-fast\",\n        },\n        GenerateDocs = false,\n        DeferringEnvironmentId = dbtcloud_environment.Prod_environment.Environment_id,\n        NumThreads = 32,\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        RunGenerateSources = false,\n        Triggers = \n        {\n            { \"custom_branch_only\", true },\n            { \"github_webhook\", true },\n            { \"git_provider_webhook\", true },\n            { \"schedule\", false },\n        },\n        ScheduleDays = new[]\n        {\n            0,\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n        },\n        ScheduleType = \"days_of_week\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dbtcloud.NewJob(ctx, \"dailyJob\", \u0026dbtcloud.JobArgs{\n\t\t\tEnvironmentId: pulumi.Any(dbtcloud_environment.Prod_environment.Environment_id),\n\t\t\tExecuteSteps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dbt build\"),\n\t\t\t},\n\t\t\tGenerateDocs:       pulumi.Bool(true),\n\t\t\tIsActive:           pulumi.Bool(true),\n\t\t\tNumThreads:         pulumi.Int(64),\n\t\t\tProjectId:          pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tRunGenerateSources: pulumi.Bool(true),\n\t\t\tTargetName:         pulumi.String(\"default\"),\n\t\t\tTriggers: pulumi.BoolMap{\n\t\t\t\t\"custom_branch_only\":   pulumi.Bool(false),\n\t\t\t\t\"github_webhook\":       pulumi.Bool(false),\n\t\t\t\t\"git_provider_webhook\": pulumi.Bool(false),\n\t\t\t\t\"schedule\":             pulumi.Bool(true),\n\t\t\t},\n\t\t\tScheduleDays: pulumi.IntArray{\n\t\t\t\tpulumi.Int(0),\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t\tpulumi.Int(3),\n\t\t\t\tpulumi.Int(4),\n\t\t\t\tpulumi.Int(5),\n\t\t\t\tpulumi.Int(6),\n\t\t\t},\n\t\t\tScheduleType: pulumi.String(\"days_of_week\"),\n\t\t\tScheduleHours: pulumi.IntArray{\n\t\t\t\tpulumi.Int(0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dbtcloud.NewJob(ctx, \"ciJob\", \u0026dbtcloud.JobArgs{\n\t\t\tEnvironmentId: pulumi.Any(dbtcloud_environment.Ci_environment.Environment_id),\n\t\t\tExecuteSteps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dbt build -s state:modified+ --fail-fast\"),\n\t\t\t},\n\t\t\tGenerateDocs:           pulumi.Bool(false),\n\t\t\tDeferringEnvironmentId: pulumi.Any(dbtcloud_environment.Prod_environment.Environment_id),\n\t\t\tNumThreads:             pulumi.Int(32),\n\t\t\tProjectId:              pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tRunGenerateSources:     pulumi.Bool(false),\n\t\t\tTriggers: pulumi.BoolMap{\n\t\t\t\t\"custom_branch_only\":   pulumi.Bool(true),\n\t\t\t\t\"github_webhook\":       pulumi.Bool(true),\n\t\t\t\t\"git_provider_webhook\": pulumi.Bool(true),\n\t\t\t\t\"schedule\":             pulumi.Bool(false),\n\t\t\t},\n\t\t\tScheduleDays: pulumi.IntArray{\n\t\t\t\tpulumi.Int(0),\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t\tpulumi.Int(3),\n\t\t\t\tpulumi.Int(4),\n\t\t\t\tpulumi.Int(5),\n\t\t\t\tpulumi.Int(6),\n\t\t\t},\n\t\t\tScheduleType: pulumi.String(\"days_of_week\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dbtcloud.Job;\nimport com.pulumi.dbtcloud.JobArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dailyJob = new Job(\"dailyJob\", JobArgs.builder()        \n            .environmentId(dbtcloud_environment.prod_environment().environment_id())\n            .executeSteps(\"dbt build\")\n            .generateDocs(true)\n            .isActive(true)\n            .numThreads(64)\n            .projectId(dbtcloud_project.dbt_project().id())\n            .runGenerateSources(true)\n            .targetName(\"default\")\n            .triggers(Map.ofEntries(\n                Map.entry(\"custom_branch_only\", false),\n                Map.entry(\"github_webhook\", false),\n                Map.entry(\"git_provider_webhook\", false),\n                Map.entry(\"schedule\", true)\n            ))\n            .scheduleDays(            \n                0,\n                1,\n                2,\n                3,\n                4,\n                5,\n                6)\n            .scheduleType(\"days_of_week\")\n            .scheduleHours(0)\n            .build());\n\n        var ciJob = new Job(\"ciJob\", JobArgs.builder()        \n            .environmentId(dbtcloud_environment.ci_environment().environment_id())\n            .executeSteps(\"dbt build -s state:modified+ --fail-fast\")\n            .generateDocs(false)\n            .deferringEnvironmentId(dbtcloud_environment.prod_environment().environment_id())\n            .numThreads(32)\n            .projectId(dbtcloud_project.dbt_project().id())\n            .runGenerateSources(false)\n            .triggers(Map.ofEntries(\n                Map.entry(\"custom_branch_only\", true),\n                Map.entry(\"github_webhook\", true),\n                Map.entry(\"git_provider_webhook\", true),\n                Map.entry(\"schedule\", false)\n            ))\n            .scheduleDays(            \n                0,\n                1,\n                2,\n                3,\n                4,\n                5,\n                6)\n            .scheduleType(\"days_of_week\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # NOTE for customers using the LEGACY dbt_cloud provider:\n  # a job that has github_webhook and git_provider_webhook \n  # set to false will be categorized as a \"Deploy Job\"\n  dailyJob:\n    type: dbtcloud:Job\n    properties:\n      environmentId: ${dbtcloud_environment.prod_environment.environment_id}\n      executeSteps:\n        - dbt build\n      generateDocs: true\n      isActive: true\n      numThreads: 64\n      projectId: ${dbtcloud_project.dbt_project.id}\n      runGenerateSources: true\n      targetName: default\n      triggers:\n        custom_branch_only: false\n        github_webhook: false\n        git_provider_webhook: false\n        schedule: true\n      # this is the default that gets set up when modifying jobs in the UI\n      scheduleDays:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n        - 6\n      scheduleType: days_of_week\n      scheduleHours:\n        - 0\n  # a job that has github_webhook and git_provider_webhook set \n  # to true will be categorized as a \"Continuous Integration Job\"\n  ciJob:\n    type: dbtcloud:Job\n    properties:\n      environmentId: ${dbtcloud_environment.ci_environment.environment_id}\n      executeSteps:\n        - dbt build -s state:modified+ --fail-fast\n      generateDocs: false\n      deferringEnvironmentId: ${dbtcloud_environment.prod_environment.environment_id}\n      numThreads: 32\n      projectId: ${dbtcloud_project.dbt_project.id}\n      runGenerateSources: false\n      triggers:\n        custom_branch_only: true\n        github_webhook: true\n        git_provider_webhook: true\n        schedule: false\n      # this is the default that gets set up when modifying jobs in the UI\n      #   # this is not going to be used when schedule is set to false\n      scheduleDays:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n        - 6\n      scheduleType: days_of_week\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport using a job ID found in the URL or via the API.\n\n```sh\n $ pulumi import dbtcloud:index/job:Job test_job \"job_id\"\n```\n\n\n\n```sh\n $ pulumi import dbtcloud:index/job:Job test_job 12345\n```\n\n ",
+            "description": "\u003e As of October 2023, CI improvements have been rolled out to dbt Cloud with minor impacts to some jobs:  [more info](https://docs.getdbt.com/docs/dbt-versions/release-notes/june-2023/ci-updates-phase1-rn). \n\u003cbr/\u003e\n\u003cbr/\u003e\nThose improvements include modifications to deferral which was historically set at the job level and will now be set at the environment level. \nDeferral can still be set to \"self\" by setting `self_deferring` to `true` but with the new approach, deferral to other runs need to be done with `deferring_environment_id` instead of `deferring_job_id`.\n\n\n\u003e As of beginning of February 2024, job chaining with `job_completion_trigger_condition` is in private beta and not available to all users.\n\u003cbr/\u003e\n\u003cbr/\u003e\nThis notice will be removed once the feature is generally available.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dbtcloud from \"@aschot/pulumi-dbtcloud\";\n\n// NOTE for customers using the LEGACY dbt_cloud provider:\n// a job that has github_webhook and git_provider_webhook \n// set to false will be categorized as a \"Deploy Job\"\nconst dailyJob = new dbtcloud.Job(\"dailyJob\", {\n    environmentId: dbtcloud_environment.prod_environment.environment_id,\n    executeSteps: [\"dbt build\"],\n    generateDocs: true,\n    isActive: true,\n    numThreads: 64,\n    projectId: dbtcloud_project.dbt_project.id,\n    runGenerateSources: true,\n    targetName: \"default\",\n    triggers: {\n        custom_branch_only: false,\n        github_webhook: false,\n        git_provider_webhook: false,\n        schedule: true,\n    },\n    scheduleDays: [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    scheduleType: \"days_of_week\",\n    scheduleHours: [0],\n});\n// a job that has github_webhook and git_provider_webhook set \n// to true will be categorized as a \"Continuous Integration Job\"\nconst ciJob = new dbtcloud.Job(\"ciJob\", {\n    environmentId: dbtcloud_environment.ci_environment.environment_id,\n    executeSteps: [\"dbt build -s state:modified+ --fail-fast\"],\n    generateDocs: false,\n    deferringEnvironmentId: dbtcloud_environment.prod_environment.environment_id,\n    numThreads: 32,\n    projectId: dbtcloud_project.dbt_project.id,\n    runGenerateSources: false,\n    triggers: {\n        custom_branch_only: true,\n        github_webhook: true,\n        git_provider_webhook: true,\n        schedule: false,\n    },\n    scheduleDays: [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    scheduleType: \"days_of_week\",\n});\n// a job that is set to be triggered after another job finishes\n// this is sometimes referred as 'job chaining'\nconst downstreamJob = new dbtcloud.Job(\"downstreamJob\", {\n    environmentId: dbtcloud_environment.project2_prod_environment.environment_id,\n    executeSteps: [\"dbt build -s +my_model\"],\n    generateDocs: true,\n    numThreads: 32,\n    projectId: dbtcloud_project.dbt_project2.id,\n    runGenerateSources: true,\n    triggers: {\n        custom_branch_only: false,\n        github_webhook: false,\n        git_provider_webhook: false,\n        schedule: false,\n    },\n    scheduleDays: [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    scheduleType: \"days_of_week\",\n    jobCompletionTriggerCondition: {\n        jobId: dailyJob.id,\n        projectId: dbtcloud_project.dbt_project.id,\n        statuses: [\"success\"],\n    },\n});\n```\n```python\nimport pulumi\nimport aschot_pulumi_dbtcloud as dbtcloud\n\n# NOTE for customers using the LEGACY dbt_cloud provider:\n# a job that has github_webhook and git_provider_webhook \n# set to false will be categorized as a \"Deploy Job\"\ndaily_job = dbtcloud.Job(\"dailyJob\",\n    environment_id=dbtcloud_environment[\"prod_environment\"][\"environment_id\"],\n    execute_steps=[\"dbt build\"],\n    generate_docs=True,\n    is_active=True,\n    num_threads=64,\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    run_generate_sources=True,\n    target_name=\"default\",\n    triggers={\n        \"custom_branch_only\": False,\n        \"github_webhook\": False,\n        \"git_provider_webhook\": False,\n        \"schedule\": True,\n    },\n    schedule_days=[\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    schedule_type=\"days_of_week\",\n    schedule_hours=[0])\n# a job that has github_webhook and git_provider_webhook set \n# to true will be categorized as a \"Continuous Integration Job\"\nci_job = dbtcloud.Job(\"ciJob\",\n    environment_id=dbtcloud_environment[\"ci_environment\"][\"environment_id\"],\n    execute_steps=[\"dbt build -s state:modified+ --fail-fast\"],\n    generate_docs=False,\n    deferring_environment_id=dbtcloud_environment[\"prod_environment\"][\"environment_id\"],\n    num_threads=32,\n    project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n    run_generate_sources=False,\n    triggers={\n        \"custom_branch_only\": True,\n        \"github_webhook\": True,\n        \"git_provider_webhook\": True,\n        \"schedule\": False,\n    },\n    schedule_days=[\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    schedule_type=\"days_of_week\")\n# a job that is set to be triggered after another job finishes\n# this is sometimes referred as 'job chaining'\ndownstream_job = dbtcloud.Job(\"downstreamJob\",\n    environment_id=dbtcloud_environment[\"project2_prod_environment\"][\"environment_id\"],\n    execute_steps=[\"dbt build -s +my_model\"],\n    generate_docs=True,\n    num_threads=32,\n    project_id=dbtcloud_project[\"dbt_project2\"][\"id\"],\n    run_generate_sources=True,\n    triggers={\n        \"custom_branch_only\": False,\n        \"github_webhook\": False,\n        \"git_provider_webhook\": False,\n        \"schedule\": False,\n    },\n    schedule_days=[\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n    ],\n    schedule_type=\"days_of_week\",\n    job_completion_trigger_condition=dbtcloud.JobJobCompletionTriggerConditionArgs(\n        job_id=daily_job.id,\n        project_id=dbtcloud_project[\"dbt_project\"][\"id\"],\n        statuses=[\"success\"],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dbtcloud = ASchot.Pulumi.Dbtcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // NOTE for customers using the LEGACY dbt_cloud provider:\n    // a job that has github_webhook and git_provider_webhook \n    // set to false will be categorized as a \"Deploy Job\"\n    var dailyJob = new Dbtcloud.Job(\"dailyJob\", new()\n    {\n        EnvironmentId = dbtcloud_environment.Prod_environment.Environment_id,\n        ExecuteSteps = new[]\n        {\n            \"dbt build\",\n        },\n        GenerateDocs = true,\n        IsActive = true,\n        NumThreads = 64,\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        RunGenerateSources = true,\n        TargetName = \"default\",\n        Triggers = \n        {\n            { \"custom_branch_only\", false },\n            { \"github_webhook\", false },\n            { \"git_provider_webhook\", false },\n            { \"schedule\", true },\n        },\n        ScheduleDays = new[]\n        {\n            0,\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n        },\n        ScheduleType = \"days_of_week\",\n        ScheduleHours = new[]\n        {\n            0,\n        },\n    });\n\n    // a job that has github_webhook and git_provider_webhook set \n    // to true will be categorized as a \"Continuous Integration Job\"\n    var ciJob = new Dbtcloud.Job(\"ciJob\", new()\n    {\n        EnvironmentId = dbtcloud_environment.Ci_environment.Environment_id,\n        ExecuteSteps = new[]\n        {\n            \"dbt build -s state:modified+ --fail-fast\",\n        },\n        GenerateDocs = false,\n        DeferringEnvironmentId = dbtcloud_environment.Prod_environment.Environment_id,\n        NumThreads = 32,\n        ProjectId = dbtcloud_project.Dbt_project.Id,\n        RunGenerateSources = false,\n        Triggers = \n        {\n            { \"custom_branch_only\", true },\n            { \"github_webhook\", true },\n            { \"git_provider_webhook\", true },\n            { \"schedule\", false },\n        },\n        ScheduleDays = new[]\n        {\n            0,\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n        },\n        ScheduleType = \"days_of_week\",\n    });\n\n    // a job that is set to be triggered after another job finishes\n    // this is sometimes referred as 'job chaining'\n    var downstreamJob = new Dbtcloud.Job(\"downstreamJob\", new()\n    {\n        EnvironmentId = dbtcloud_environment.Project2_prod_environment.Environment_id,\n        ExecuteSteps = new[]\n        {\n            \"dbt build -s +my_model\",\n        },\n        GenerateDocs = true,\n        NumThreads = 32,\n        ProjectId = dbtcloud_project.Dbt_project2.Id,\n        RunGenerateSources = true,\n        Triggers = \n        {\n            { \"custom_branch_only\", false },\n            { \"github_webhook\", false },\n            { \"git_provider_webhook\", false },\n            { \"schedule\", false },\n        },\n        ScheduleDays = new[]\n        {\n            0,\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n        },\n        ScheduleType = \"days_of_week\",\n        CompletionTriggerCondition = new Dbtcloud.Inputs.JobJobCompletionTriggerConditionArgs\n        {\n            JobId = dailyJob.Id,\n            ProjectId = dbtcloud_project.Dbt_project.Id,\n            Statuses = new[]\n            {\n                \"success\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/a-schot/pulumi-dbtcloud/sdk/go/dbtcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdailyJob, err := dbtcloud.NewJob(ctx, \"dailyJob\", \u0026dbtcloud.JobArgs{\n\t\t\tEnvironmentId: pulumi.Any(dbtcloud_environment.Prod_environment.Environment_id),\n\t\t\tExecuteSteps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dbt build\"),\n\t\t\t},\n\t\t\tGenerateDocs:       pulumi.Bool(true),\n\t\t\tIsActive:           pulumi.Bool(true),\n\t\t\tNumThreads:         pulumi.Int(64),\n\t\t\tProjectId:          pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tRunGenerateSources: pulumi.Bool(true),\n\t\t\tTargetName:         pulumi.String(\"default\"),\n\t\t\tTriggers: pulumi.BoolMap{\n\t\t\t\t\"custom_branch_only\":   pulumi.Bool(false),\n\t\t\t\t\"github_webhook\":       pulumi.Bool(false),\n\t\t\t\t\"git_provider_webhook\": pulumi.Bool(false),\n\t\t\t\t\"schedule\":             pulumi.Bool(true),\n\t\t\t},\n\t\t\tScheduleDays: pulumi.IntArray{\n\t\t\t\tpulumi.Int(0),\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t\tpulumi.Int(3),\n\t\t\t\tpulumi.Int(4),\n\t\t\t\tpulumi.Int(5),\n\t\t\t\tpulumi.Int(6),\n\t\t\t},\n\t\t\tScheduleType: pulumi.String(\"days_of_week\"),\n\t\t\tScheduleHours: pulumi.IntArray{\n\t\t\t\tpulumi.Int(0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dbtcloud.NewJob(ctx, \"ciJob\", \u0026dbtcloud.JobArgs{\n\t\t\tEnvironmentId: pulumi.Any(dbtcloud_environment.Ci_environment.Environment_id),\n\t\t\tExecuteSteps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dbt build -s state:modified+ --fail-fast\"),\n\t\t\t},\n\t\t\tGenerateDocs:           pulumi.Bool(false),\n\t\t\tDeferringEnvironmentId: pulumi.Any(dbtcloud_environment.Prod_environment.Environment_id),\n\t\t\tNumThreads:             pulumi.Int(32),\n\t\t\tProjectId:              pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\tRunGenerateSources:     pulumi.Bool(false),\n\t\t\tTriggers: pulumi.BoolMap{\n\t\t\t\t\"custom_branch_only\":   pulumi.Bool(true),\n\t\t\t\t\"github_webhook\":       pulumi.Bool(true),\n\t\t\t\t\"git_provider_webhook\": pulumi.Bool(true),\n\t\t\t\t\"schedule\":             pulumi.Bool(false),\n\t\t\t},\n\t\t\tScheduleDays: pulumi.IntArray{\n\t\t\t\tpulumi.Int(0),\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t\tpulumi.Int(3),\n\t\t\t\tpulumi.Int(4),\n\t\t\t\tpulumi.Int(5),\n\t\t\t\tpulumi.Int(6),\n\t\t\t},\n\t\t\tScheduleType: pulumi.String(\"days_of_week\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dbtcloud.NewJob(ctx, \"downstreamJob\", \u0026dbtcloud.JobArgs{\n\t\t\tEnvironmentId: pulumi.Any(dbtcloud_environment.Project2_prod_environment.Environment_id),\n\t\t\tExecuteSteps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dbt build -s +my_model\"),\n\t\t\t},\n\t\t\tGenerateDocs:       pulumi.Bool(true),\n\t\t\tNumThreads:         pulumi.Int(32),\n\t\t\tProjectId:          pulumi.Any(dbtcloud_project.Dbt_project2.Id),\n\t\t\tRunGenerateSources: pulumi.Bool(true),\n\t\t\tTriggers: pulumi.BoolMap{\n\t\t\t\t\"custom_branch_only\":   pulumi.Bool(false),\n\t\t\t\t\"github_webhook\":       pulumi.Bool(false),\n\t\t\t\t\"git_provider_webhook\": pulumi.Bool(false),\n\t\t\t\t\"schedule\":             pulumi.Bool(false),\n\t\t\t},\n\t\t\tScheduleDays: pulumi.IntArray{\n\t\t\t\tpulumi.Int(0),\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t\tpulumi.Int(3),\n\t\t\t\tpulumi.Int(4),\n\t\t\t\tpulumi.Int(5),\n\t\t\t\tpulumi.Int(6),\n\t\t\t},\n\t\t\tScheduleType: pulumi.String(\"days_of_week\"),\n\t\t\tJobCompletionTriggerCondition: \u0026dbtcloud.JobJobCompletionTriggerConditionArgs{\n\t\t\t\tJobId:     dailyJob.ID(),\n\t\t\t\tProjectId: pulumi.Any(dbtcloud_project.Dbt_project.Id),\n\t\t\t\tStatuses: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"success\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dbtcloud.Job;\nimport com.pulumi.dbtcloud.JobArgs;\nimport com.pulumi.dbtcloud.inputs.JobJobCompletionTriggerConditionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dailyJob = new Job(\"dailyJob\", JobArgs.builder()        \n            .environmentId(dbtcloud_environment.prod_environment().environment_id())\n            .executeSteps(\"dbt build\")\n            .generateDocs(true)\n            .isActive(true)\n            .numThreads(64)\n            .projectId(dbtcloud_project.dbt_project().id())\n            .runGenerateSources(true)\n            .targetName(\"default\")\n            .triggers(Map.ofEntries(\n                Map.entry(\"custom_branch_only\", false),\n                Map.entry(\"github_webhook\", false),\n                Map.entry(\"git_provider_webhook\", false),\n                Map.entry(\"schedule\", true)\n            ))\n            .scheduleDays(            \n                0,\n                1,\n                2,\n                3,\n                4,\n                5,\n                6)\n            .scheduleType(\"days_of_week\")\n            .scheduleHours(0)\n            .build());\n\n        var ciJob = new Job(\"ciJob\", JobArgs.builder()        \n            .environmentId(dbtcloud_environment.ci_environment().environment_id())\n            .executeSteps(\"dbt build -s state:modified+ --fail-fast\")\n            .generateDocs(false)\n            .deferringEnvironmentId(dbtcloud_environment.prod_environment().environment_id())\n            .numThreads(32)\n            .projectId(dbtcloud_project.dbt_project().id())\n            .runGenerateSources(false)\n            .triggers(Map.ofEntries(\n                Map.entry(\"custom_branch_only\", true),\n                Map.entry(\"github_webhook\", true),\n                Map.entry(\"git_provider_webhook\", true),\n                Map.entry(\"schedule\", false)\n            ))\n            .scheduleDays(            \n                0,\n                1,\n                2,\n                3,\n                4,\n                5,\n                6)\n            .scheduleType(\"days_of_week\")\n            .build());\n\n        var downstreamJob = new Job(\"downstreamJob\", JobArgs.builder()        \n            .environmentId(dbtcloud_environment.project2_prod_environment().environment_id())\n            .executeSteps(\"dbt build -s +my_model\")\n            .generateDocs(true)\n            .numThreads(32)\n            .projectId(dbtcloud_project.dbt_project2().id())\n            .runGenerateSources(true)\n            .triggers(Map.ofEntries(\n                Map.entry(\"custom_branch_only\", false),\n                Map.entry(\"github_webhook\", false),\n                Map.entry(\"git_provider_webhook\", false),\n                Map.entry(\"schedule\", false)\n            ))\n            .scheduleDays(            \n                0,\n                1,\n                2,\n                3,\n                4,\n                5,\n                6)\n            .scheduleType(\"days_of_week\")\n            .jobCompletionTriggerCondition(JobJobCompletionTriggerConditionArgs.builder()\n                .jobId(dailyJob.id())\n                .projectId(dbtcloud_project.dbt_project().id())\n                .statuses(\"success\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # NOTE for customers using the LEGACY dbt_cloud provider:\n  # a job that has github_webhook and git_provider_webhook \n  # set to false will be categorized as a \"Deploy Job\"\n  dailyJob:\n    type: dbtcloud:Job\n    properties:\n      environmentId: ${dbtcloud_environment.prod_environment.environment_id}\n      executeSteps:\n        - dbt build\n      generateDocs: true\n      isActive: true\n      numThreads: 64\n      projectId: ${dbtcloud_project.dbt_project.id}\n      runGenerateSources: true\n      targetName: default\n      triggers:\n        custom_branch_only: false\n        github_webhook: false\n        git_provider_webhook: false\n        schedule: true\n      # this is the default that gets set up when modifying jobs in the UI\n      scheduleDays:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n        - 6\n      scheduleType: days_of_week\n      scheduleHours:\n        - 0\n  # a job that has github_webhook and git_provider_webhook set \n  # to true will be categorized as a \"Continuous Integration Job\"\n  ciJob:\n    type: dbtcloud:Job\n    properties:\n      environmentId: ${dbtcloud_environment.ci_environment.environment_id}\n      executeSteps:\n        - dbt build -s state:modified+ --fail-fast\n      generateDocs: false\n      deferringEnvironmentId: ${dbtcloud_environment.prod_environment.environment_id}\n      numThreads: 32\n      projectId: ${dbtcloud_project.dbt_project.id}\n      runGenerateSources: false\n      triggers:\n        custom_branch_only: true\n        github_webhook: true\n        git_provider_webhook: true\n        schedule: false\n      # this is the default that gets set up when modifying jobs in the UI\n      #   # this is not going to be used when schedule is set to false\n      scheduleDays:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n        - 6\n      scheduleType: days_of_week\n  # a job that is set to be triggered after another job finishes\n  # this is sometimes referred as 'job chaining'\n  downstreamJob:\n    type: dbtcloud:Job\n    properties:\n      environmentId: ${dbtcloud_environment.project2_prod_environment.environment_id}\n      executeSteps:\n        - dbt build -s +my_model\n      generateDocs: true\n      numThreads: 32\n      projectId: ${dbtcloud_project.dbt_project2.id}\n      runGenerateSources: true\n      triggers:\n        custom_branch_only: false\n        github_webhook: false\n        git_provider_webhook: false\n        schedule: false\n      scheduleDays:\n        - 0\n        - 1\n        - 2\n        - 3\n        - 4\n        - 5\n        - 6\n      scheduleType: days_of_week\n      jobCompletionTriggerCondition:\n        jobId: ${dailyJob.id}\n        projectId: ${dbtcloud_project.dbt_project.id}\n        statuses:\n          - success\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport using a job ID found in the URL or via the API.\n\n```sh\n $ pulumi import dbtcloud:index/job:Job test_job \"job_id\"\n```\n\n\n\n```sh\n $ pulumi import dbtcloud:index/job:Job test_job 12345\n```\n\n ",
             "properties": {
                 "dbtVersion": {
                     "type": "string",
@@ -1910,7 +2011,16 @@
                 },
                 "isActive": {
                     "type": "boolean",
-                    "description": "Flag for whether the job is marked active or deleted\n"
+                    "description": "Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.\n"
+                },
+                "jobCompletionTriggerCondition": {
+                    "$ref": "#/types/dbtcloud:index/JobJobCompletionTriggerCondition:JobJobCompletionTriggerCondition",
+                    "description": "Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').\n",
+                    "language": {
+                        "csharp": {
+                            "name": "CompletionTriggerCondition"
+                        }
+                    }
                 },
                 "name": {
                     "type": "string",
@@ -1922,11 +2032,11 @@
                 },
                 "projectId": {
                     "type": "integer",
-                    "description": "Project ID to create the job in\n"
+                    "description": "The ID of the project where the trigger job is running in.\n"
                 },
                 "runGenerateSources": {
                     "type": "boolean",
-                    "description": "Flag for whether the job should run generate sources\n"
+                    "description": "Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.\n"
                 },
                 "scheduleCron": {
                     "type": "string",
@@ -1971,7 +2081,7 @@
                     "additionalProperties": {
                         "type": "boolean"
                     },
-                    "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and `custom_branch_only`. \\n\\n`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.\n"
+                    "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and `custom_branch_only`. \\n\\n`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.\n"
                 },
                 "triggersOnDraftPr": {
                     "type": "boolean",
@@ -2019,7 +2129,16 @@
                 },
                 "isActive": {
                     "type": "boolean",
-                    "description": "Flag for whether the job is marked active or deleted\n"
+                    "description": "Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.\n"
+                },
+                "jobCompletionTriggerCondition": {
+                    "$ref": "#/types/dbtcloud:index/JobJobCompletionTriggerCondition:JobJobCompletionTriggerCondition",
+                    "description": "Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').\n",
+                    "language": {
+                        "csharp": {
+                            "name": "CompletionTriggerCondition"
+                        }
+                    }
                 },
                 "name": {
                     "type": "string",
@@ -2031,11 +2150,11 @@
                 },
                 "projectId": {
                     "type": "integer",
-                    "description": "Project ID to create the job in\n"
+                    "description": "The ID of the project where the trigger job is running in.\n"
                 },
                 "runGenerateSources": {
                     "type": "boolean",
-                    "description": "Flag for whether the job should run generate sources\n"
+                    "description": "Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.\n"
                 },
                 "scheduleCron": {
                     "type": "string",
@@ -2080,7 +2199,7 @@
                     "additionalProperties": {
                         "type": "boolean"
                     },
-                    "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and `custom_branch_only`. \\n\\n`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.\n"
+                    "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and `custom_branch_only`. \\n\\n`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.\n"
                 },
                 "triggersOnDraftPr": {
                     "type": "boolean",
@@ -2129,7 +2248,16 @@
                     },
                     "isActive": {
                         "type": "boolean",
-                        "description": "Flag for whether the job is marked active or deleted\n"
+                        "description": "Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check  the `triggers` config.\n"
+                    },
+                    "jobCompletionTriggerCondition": {
+                        "$ref": "#/types/dbtcloud:index/JobJobCompletionTriggerCondition:JobJobCompletionTriggerCondition",
+                        "description": "Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').\n",
+                        "language": {
+                            "csharp": {
+                                "name": "CompletionTriggerCondition"
+                            }
+                        }
                     },
                     "name": {
                         "type": "string",
@@ -2141,11 +2269,11 @@
                     },
                     "projectId": {
                         "type": "integer",
-                        "description": "Project ID to create the job in\n"
+                        "description": "The ID of the project where the trigger job is running in.\n"
                     },
                     "runGenerateSources": {
                         "type": "boolean",
-                        "description": "Flag for whether the job should run generate sources\n"
+                        "description": "Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.\n"
                     },
                     "scheduleCron": {
                         "type": "string",
@@ -2190,7 +2318,7 @@
                         "additionalProperties": {
                             "type": "boolean"
                         },
-                        "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and `custom_branch_only`. \\n\\n`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment.\n"
+                        "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and `custom_branch_only`. \\n\\n`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.\n"
                     },
                     "triggersOnDraftPr": {
                         "type": "boolean",
@@ -3374,7 +3502,16 @@
                 },
                 "isActive": {
                     "type": "boolean",
-                    "description": "Flag for whether the job is marked active or deleted\n"
+                    "description": "Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the\n`triggers` config.\n"
+                },
+                "jobCompletionTriggerCondition": {
+                    "$ref": "#/types/dbtcloud:index/LegacyJobJobCompletionTriggerCondition:LegacyJobJobCompletionTriggerCondition",
+                    "description": "Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job\nchaining').\n",
+                    "language": {
+                        "csharp": {
+                            "name": "CompletionTriggerCondition"
+                        }
+                    }
                 },
                 "name": {
                     "type": "string",
@@ -3390,7 +3527,7 @@
                 },
                 "runGenerateSources": {
                     "type": "boolean",
-                    "description": "Flag for whether the job should run generate sources\n"
+                    "description": "Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a\nstep with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will\nstill allow the following steps to run.\n"
                 },
                 "scheduleCron": {
                     "type": "string",
@@ -3435,7 +3572,7 @@
                     "additionalProperties": {
                         "type": "boolean"
                     },
-                    "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and\n`custom_branch_only`. \u003cbr\u003e`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to\nonly trigger a job on a PR to the custom branch of the environment.\n"
+                    "description": "Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and\n`custom_branch_only`. \u003cbr\u003e`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to\nonly trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to\n`false`.\n"
                 },
                 "triggersOnDraftPr": {
                     "type": "boolean",
@@ -3483,7 +3620,16 @@
                 },
                 "isActive": {
                     "type": "boolean",
-                    "description": "Flag for whether the job is marked active or deleted\n"
+                    "description": "Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the\n`triggers` config.\n"
+                },
+                "jobCompletionTriggerCondition": {
+                    "$ref": "#/types/dbtcloud:index/LegacyJobJobCompletionTriggerCondition:LegacyJobJobCompletionTriggerCondition",
+                    "description": "Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job\nchaining').\n",
+                    "language": {
+                        "csharp": {
+                            "name": "CompletionTriggerCondition"
+                        }
+                    }
                 },
                 "name": {
                     "type": "string",
@@ -3499,7 +3645,7 @@
                 },
                 "runGenerateSources": {
                     "type": "boolean",
-                    "description": "Flag for whether the job should run generate sources\n"
+                    "description": "Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a\nstep with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will\nstill allow the following steps to run.\n"
                 },
                 "scheduleCron": {
                     "type": "string",
@@ -3544,7 +3690,7 @@
                     "additionalProperties": {
                         "type": "boolean"
                     },
-                    "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and\n`custom_branch_only`. \u003cbr\u003e`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to\nonly trigger a job on a PR to the custom branch of the environment.\n"
+                    "description": "Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and\n`custom_branch_only`. \u003cbr\u003e`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to\nonly trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to\n`false`.\n"
                 },
                 "triggersOnDraftPr": {
                     "type": "boolean",
@@ -3593,7 +3739,16 @@
                     },
                     "isActive": {
                         "type": "boolean",
-                        "description": "Flag for whether the job is marked active or deleted\n"
+                        "description": "Flag for whether the job is marked active or deleted. To create/keep a job in a 'deactivated' state, check the\n`triggers` config.\n"
+                    },
+                    "jobCompletionTriggerCondition": {
+                        "$ref": "#/types/dbtcloud:index/LegacyJobJobCompletionTriggerCondition:LegacyJobJobCompletionTriggerCondition",
+                        "description": "Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job\nchaining').\n",
+                        "language": {
+                            "csharp": {
+                                "name": "CompletionTriggerCondition"
+                            }
+                        }
                     },
                     "name": {
                         "type": "string",
@@ -3609,7 +3764,7 @@
                     },
                     "runGenerateSources": {
                         "type": "boolean",
-                        "description": "Flag for whether the job should run generate sources\n"
+                        "description": "Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a\nstep with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will\nstill allow the following steps to run.\n"
                     },
                     "scheduleCron": {
                         "type": "string",
@@ -3654,7 +3809,7 @@
                         "additionalProperties": {
                             "type": "boolean"
                         },
-                        "description": "Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and\n`custom_branch_only`. \u003cbr\u003e`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to\nonly trigger a job on a PR to the custom branch of the environment.\n"
+                        "description": "Flags for which types of triggers to use, the values are `github_webhook`, `git_provider_webhook`, `schedule` and\n`custom_branch_only`. \u003cbr\u003e`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to\nonly trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to\n`false`.\n"
                     },
                     "triggersOnDraftPr": {
                         "type": "boolean",
@@ -6576,12 +6731,10 @@
                 "description": "A collection of arguments for invoking getJob.\n",
                 "properties": {
                     "jobId": {
-                        "type": "integer",
-                        "description": "ID of the job\n"
+                        "type": "integer"
                     },
                     "projectId": {
-                        "type": "integer",
-                        "description": "ID of the project the job is in\n"
+                        "type": "integer"
                     }
                 },
                 "type": "object",
@@ -6612,6 +6765,18 @@
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "jobCompletionTriggerConditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dbtcloud:index/getJobJobCompletionTriggerCondition:getJobJobCompletionTriggerCondition"
+                        },
+                        "description": "Which other job should trigger this job when it finishes, and on which conditions.\n",
+                        "language": {
+                            "csharp": {
+                                "name": "CompletionTriggerCondition"
+                            }
+                        }
                     },
                     "jobId": {
                         "type": "integer",
@@ -6651,6 +6816,7 @@
                     "deferringJobId",
                     "description",
                     "environmentId",
+                    "jobCompletionTriggerConditions",
                     "jobId",
                     "name",
                     "projectId",
@@ -7806,6 +7972,17 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
+                    "jobCompletionTriggerConditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dbtcloud:index/LegacyGetJobJobCompletionTriggerCondition:LegacyGetJobJobCompletionTriggerCondition"
+                        },
+                        "language": {
+                            "csharp": {
+                                "name": "CompletionTriggerCondition"
+                            }
+                        }
+                    },
                     "jobId": {
                         "type": "integer"
                     },
@@ -7837,6 +8014,7 @@
                     "deferringJobId",
                     "description",
                     "environmentId",
+                    "jobCompletionTriggerConditions",
                     "jobId",
                     "name",
                     "projectId",

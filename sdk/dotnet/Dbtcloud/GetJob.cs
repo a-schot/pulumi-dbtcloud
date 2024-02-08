@@ -22,15 +22,9 @@ namespace ASchot.Pulumi.Dbtcloud
 
     public sealed class GetJobArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the job
-        /// </summary>
         [Input("jobId", required: true)]
         public int JobId { get; set; }
 
-        /// <summary>
-        /// ID of the project the job is in
-        /// </summary>
         [Input("projectId", required: true)]
         public int ProjectId { get; set; }
 
@@ -42,15 +36,9 @@ namespace ASchot.Pulumi.Dbtcloud
 
     public sealed class GetJobInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the job
-        /// </summary>
         [Input("jobId", required: true)]
         public Input<int> JobId { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the project the job is in
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<int> ProjectId { get; set; } = null!;
 
@@ -84,6 +72,10 @@ namespace ASchot.Pulumi.Dbtcloud
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Which other job should trigger this job when it finishes, and on which conditions.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetJobJobCompletionTriggerConditionResult> CompletionTriggerCondition;
         /// <summary>
         /// ID of the job
         /// </summary>
@@ -125,6 +117,8 @@ namespace ASchot.Pulumi.Dbtcloud
 
             string id,
 
+            ImmutableArray<Outputs.GetJobJobCompletionTriggerConditionResult> jobCompletionTriggerConditions,
+
             int jobId,
 
             string name,
@@ -144,6 +138,7 @@ namespace ASchot.Pulumi.Dbtcloud
             Description = description;
             EnvironmentId = environmentId;
             Id = id;
+            CompletionTriggerCondition = jobCompletionTriggerConditions;
             JobId = jobId;
             Name = name;
             ProjectId = projectId;
