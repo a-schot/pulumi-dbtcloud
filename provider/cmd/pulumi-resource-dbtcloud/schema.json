@@ -141,16 +141,19 @@
         "dbtcloud:index/LegacyGetJobJobCompletionTriggerCondition:LegacyGetJobJobCompletionTriggerCondition": {
             "properties": {
                 "jobId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the job that would trigger this job after completion.\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the project where the trigger job is running in.\n"
                 },
                 "statuses": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of statuses to trigger the job on.\n"
                 }
             },
             "type": "object",
@@ -168,13 +171,16 @@
         "dbtcloud:index/LegacyGetServiceTokenServiceTokenPermission:LegacyGetServiceTokenServiceTokenPermission": {
             "properties": {
                 "allProjects": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether or not to apply this permission to all projects for this service token\n"
                 },
                 "permissionSet": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set of permissions to apply\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Project ID to apply this permission to for this service token\n"
                 }
             },
             "type": "object",
@@ -192,13 +198,16 @@
         "dbtcloud:index/LegacyGroupGroupPermission:LegacyGroupGroupPermission": {
             "properties": {
                 "allProjects": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether or not to apply this permission to all projects for this group\n"
                 },
                 "permissionSet": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set of permissions to apply\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Project ID to apply this permission to for this group\n"
                 }
             },
             "type": "object",
@@ -210,16 +219,19 @@
         "dbtcloud:index/LegacyJobJobCompletionTriggerCondition:LegacyJobJobCompletionTriggerCondition": {
             "properties": {
                 "jobId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the job that would trigger this job after completion.\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the project where the trigger job is running in.\n"
                 },
                 "statuses": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.\n"
                 }
             },
             "type": "object",
@@ -232,13 +244,16 @@
         "dbtcloud:index/LegacyServiceTokenServiceTokenPermission:LegacyServiceTokenServiceTokenPermission": {
             "properties": {
                 "allProjects": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether or not to apply this permission to all projects for this service token\n"
                 },
                 "permissionSet": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set of permissions to apply\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Project ID to apply this permission to for this service token\n"
                 }
             },
             "type": "object",
@@ -291,16 +306,19 @@
         "dbtcloud:index/getJobJobCompletionTriggerCondition:getJobJobCompletionTriggerCondition": {
             "properties": {
                 "jobId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the job that would trigger this job after completion.\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the project where the trigger job is running in.\n"
                 },
                 "statuses": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of statuses to trigger the job on.\n"
                 }
             },
             "type": "object",
@@ -318,13 +336,16 @@
         "dbtcloud:index/getServiceTokenServiceTokenPermission:getServiceTokenServiceTokenPermission": {
             "properties": {
                 "allProjects": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether or not to apply this permission to all projects for this service token\n"
                 },
                 "permissionSet": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set of permissions to apply\n"
                 },
                 "projectId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Project ID to apply this permission to for this service token\n"
                 }
             },
             "type": "object",
