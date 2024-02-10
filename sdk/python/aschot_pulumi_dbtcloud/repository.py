@@ -423,7 +423,7 @@ class Repository(pulumi.CustomResource):
 
         ## Import
 
-        Import using a project ID and repository ID found in the URL or via the API. <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" <break>```<break><break> <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 <break>```<break><break>
+        Import using a project ID and repository ID found in the URL or via the API.<break><break> ```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" <break>```<break><break> ```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -458,7 +458,7 @@ class Repository(pulumi.CustomResource):
 
         ## Import
 
-        Import using a project ID and repository ID found in the URL or via the API. <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" <break>```<break><break> <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 <break>```<break><break>
+        Import using a project ID and repository ID found in the URL or via the API.<break><break> ```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" <break>```<break><break> ```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.
