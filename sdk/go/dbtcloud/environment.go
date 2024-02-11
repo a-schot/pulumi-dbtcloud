@@ -64,15 +64,11 @@ import (
 // Import using a project ID and environment ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/environment:Environment prod_environment "project_id:environment_id"
-//
+// $ pulumi import dbtcloud:index/environment:Environment prod_environment "project_id:environment_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/environment:Environment prod_environment 12345:6789
-//
+// $ pulumi import dbtcloud:index/environment:Environment prod_environment 12345:6789
 // ```
 type Environment struct {
 	pulumi.CustomResourceState

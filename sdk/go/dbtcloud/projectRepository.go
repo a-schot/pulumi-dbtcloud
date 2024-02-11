@@ -44,15 +44,11 @@ import (
 // Import using a project ID and Connection ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/projectRepository:ProjectRepository my_project "project_id:repository_id"
-//
+// $ pulumi import dbtcloud:index/projectRepository:ProjectRepository my_project "project_id:repository_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/projectRepository:ProjectRepository my_project 12345:5678
-//
+// $ pulumi import dbtcloud:index/projectRepository:ProjectRepository my_project 12345:5678
 // ```
 type ProjectRepository struct {
 	pulumi.CustomResourceState
