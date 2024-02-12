@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Import using a project ID and repository ID found in the URL or via the API. <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" <break>```<break><break> <break><break>```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 <break>```<break><break>
+ * Import using a project ID and repository ID found in the URL or via the API.<break><break> ```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" <break>```<break><break> ```sh<break> $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 <break>```<break><break>
  */
 export class Repository extends pulumi.CustomResource {
     /**

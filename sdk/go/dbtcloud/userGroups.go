@@ -60,18 +60,16 @@ import (
 //
 // ## Import
 //
-// Import using the User ID The User ID can be retrieved from the dbt Cloud UI or with the data source dbtcloud_user
+// Import using the User ID
+//
+//	The User ID can be retrieved from the dbt Cloud UI or with the data source dbtcloud_user
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups "user_id"
-//
+// $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups "user_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups 123456
-//
+// $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups 123456
 // ```
 type UserGroups struct {
 	pulumi.CustomResourceState
