@@ -349,7 +349,7 @@ class FabricConnection(pulumi.CustomResource):
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
+        $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
         ```
 
         :param str resource_name: The name of the resource.
@@ -393,7 +393,7 @@ class FabricConnection(pulumi.CustomResource):
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
+        $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
         ```
 
         :param str resource_name: The name of the resource.

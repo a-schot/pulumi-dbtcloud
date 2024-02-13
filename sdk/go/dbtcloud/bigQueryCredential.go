@@ -49,9 +49,7 @@ import (
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
-//
+// $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
 // ```
 type BigQueryCredential struct {
 	pulumi.CustomResourceState

@@ -53,9 +53,7 @@ import (
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
-//
+// $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
 // ```
 type FabricConnection struct {
 	pulumi.CustomResourceState
