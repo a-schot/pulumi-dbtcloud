@@ -39,7 +39,7 @@ namespace ASchot.Pulumi.Dbtcloud
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
+    /// $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
     /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/bigQueryCredential:BigQueryCredential")]

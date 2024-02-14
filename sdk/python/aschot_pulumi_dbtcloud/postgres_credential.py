@@ -332,11 +332,11 @@ class PostgresCredential(pulumi.CustomResource):
         Import using a project ID and credential ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential "project_id:credential_id"
+        $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential "project_id:credential_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential 12345:6789
+        $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential 12345:6789
         ```
 
         :param str resource_name: The name of the resource.
@@ -379,11 +379,11 @@ class PostgresCredential(pulumi.CustomResource):
         Import using a project ID and credential ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential "project_id:credential_id"
+        $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential "project_id:credential_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential 12345:6789
+        $ pulumi import dbtcloud:index/postgresCredential:PostgresCredential my_credential 12345:6789
         ```
 
         :param str resource_name: The name of the resource.

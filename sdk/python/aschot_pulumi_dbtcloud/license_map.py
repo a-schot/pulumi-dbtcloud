@@ -124,11 +124,11 @@ class LicenseMap(pulumi.CustomResource):
         Import using a license map ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
+        $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
+        $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -168,11 +168,11 @@ class LicenseMap(pulumi.CustomResource):
         Import using a license map ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
+        $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
+        $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
         ```
 
         :param str resource_name: The name of the resource.
