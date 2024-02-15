@@ -24,11 +24,11 @@ import * as utilities from "./utilities";
  * Import using a project ID found in the URL or via the API.
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts "project_id"
+ * $ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts "project_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts 12345
+ * $ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts 12345
  * ```
  */
 export class ProjectArtefacts extends pulumi.CustomResource {

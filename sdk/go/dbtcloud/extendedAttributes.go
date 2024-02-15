@@ -72,15 +72,11 @@ import (
 // Import using a project ID and extended attribute ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes "project_id_id:extended_attributes_id"
-//
+// $ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes "project_id_id:extended_attributes_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes 12345:6789
-//
+// $ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes 12345:6789
 // ```
 type ExtendedAttributes struct {
 	pulumi.CustomResourceState

@@ -57,15 +57,11 @@ import (
 // Import using a project ID and environment variable name found in the URL and UI or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/environmentVariable:EnvironmentVariable test_environment_variable "project_id:environment_variable_name"
-//
+// $ pulumi import dbtcloud:index/environmentVariable:EnvironmentVariable test_environment_variable "project_id:environment_variable_name"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/environmentVariable:EnvironmentVariable test_environment_variable 12345:DBT_ENV_VAR
-//
+// $ pulumi import dbtcloud:index/environmentVariable:EnvironmentVariable test_environment_variable 12345:DBT_ENV_VAR
 // ```
 type EnvironmentVariable struct {
 	pulumi.CustomResourceState
