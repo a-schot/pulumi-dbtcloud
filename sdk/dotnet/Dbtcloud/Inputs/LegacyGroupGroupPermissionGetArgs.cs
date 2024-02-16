@@ -13,12 +13,21 @@ namespace ASchot.Pulumi.Dbtcloud.Inputs
 
     public sealed class LegacyGroupGroupPermissionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not to apply this permission to all projects for this group
+        /// </summary>
         [Input("allProjects", required: true)]
         public Input<bool> AllProjects { get; set; } = null!;
 
+        /// <summary>
+        /// Set of permissions to apply
+        /// </summary>
         [Input("permissionSet", required: true)]
         public Input<string> PermissionSet { get; set; } = null!;
 
+        /// <summary>
+        /// Project ID to apply this permission to for this group
+        /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }
 
