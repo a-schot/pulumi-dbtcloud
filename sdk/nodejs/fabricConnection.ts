@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
+ * $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
  * ```
  */
 export class FabricConnection extends pulumi.CustomResource {

@@ -156,11 +156,11 @@ namespace ASchot.Pulumi.Dbtcloud
     /// Import using a job ID found in the URL or via the API.
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/job:Job test_job "job_id"
+    /// $ pulumi import dbtcloud:index/job:Job test_job "job_id"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/job:Job test_job 12345
+    /// $ pulumi import dbtcloud:index/job:Job test_job 12345
     /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/job:Job")]

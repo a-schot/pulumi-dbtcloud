@@ -199,7 +199,7 @@ class BigQueryCredential(pulumi.CustomResource):
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
+        $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +236,7 @@ class BigQueryCredential(pulumi.CustomResource):
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
+        $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
         ```
 
         :param str resource_name: The name of the resource.

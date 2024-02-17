@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
+ * $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
  * ```
  */
 export class BigQueryCredential extends pulumi.CustomResource {
