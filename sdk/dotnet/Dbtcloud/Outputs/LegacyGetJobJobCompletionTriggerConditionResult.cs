@@ -14,8 +14,17 @@ namespace ASchot.Pulumi.Dbtcloud.Outputs
     [OutputType]
     public sealed class LegacyGetJobJobCompletionTriggerConditionResult
     {
+        /// <summary>
+        /// The ID of the job that would trigger this job after completion.
+        /// </summary>
         public readonly int JobId;
+        /// <summary>
+        /// The ID of the project where the trigger job is running in.
+        /// </summary>
         public readonly int ProjectId;
+        /// <summary>
+        /// List of statuses to trigger the job on.
+        /// </summary>
         public readonly ImmutableArray<string> Statuses;
 
         [OutputConstructor]

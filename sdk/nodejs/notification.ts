@@ -55,11 +55,11 @@ import * as utilities from "./utilities";
  * Import using a notification ID
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/notification:Notification my_notification "notification_id"
+ * $ pulumi import dbtcloud:index/notification:Notification my_notification "notification_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/notification:Notification my_notification 12345
+ * $ pulumi import dbtcloud:index/notification:Notification my_notification 12345
  * ```
  */
 export class Notification extends pulumi.CustomResource {

@@ -14,8 +14,17 @@ namespace ASchot.Pulumi.Dbtcloud.Outputs
     [OutputType]
     public sealed class LegacyServiceTokenServiceTokenPermission
     {
+        /// <summary>
+        /// Whether or not to apply this permission to all projects for this service token
+        /// </summary>
         public readonly bool AllProjects;
+        /// <summary>
+        /// Set of permissions to apply
+        /// </summary>
         public readonly string PermissionSet;
+        /// <summary>
+        /// Project ID to apply this permission to for this service token
+        /// </summary>
         public readonly int? ProjectId;
 
         [OutputConstructor]

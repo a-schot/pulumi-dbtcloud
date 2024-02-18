@@ -73,7 +73,7 @@ namespace ASchot.Pulumi.Dbtcloud
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
+    /// $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
     /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/bigQueryConnection:BigQueryConnection")]
