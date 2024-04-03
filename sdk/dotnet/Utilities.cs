@@ -53,7 +53,7 @@ namespace ASchot.Pulumi.Dbtcloud
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github::api.github.com/a-schot/pulumi-dbtcloud";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/a-schot/pulumi-dbtcloud";
             return dst;
         }
 

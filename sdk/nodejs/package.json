@@ -26,6 +26,6 @@
     "pulumi": {
         "resource": true,
         "name": "dbtcloud",
-        "server": "github::api.github.com/a-schot/pulumi-dbtcloud"
+        "server": "github://api.github.com/a-schot/pulumi-dbtcloud"
     }
 }
