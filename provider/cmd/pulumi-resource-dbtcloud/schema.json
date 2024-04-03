@@ -13,7 +13,8 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`dbtcloud` Terraform Provider](https://github.com/dbt-labs/terraform-provider-dbtcloud).",
     "repository": "https://github.com/a-schot/pulumi-dbtcloud",
-    "pluginDownloadURL": "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
+    "logoUrl": "https://raw.githubusercontent.com/a-schot/pulumi-dbtcloud/main/res/dbt-bit_tm.png",
+    "pluginDownloadURL": "github::api.github.com/a-schot/pulumi-dbtcloud",
     "publisher": "a-schot",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"

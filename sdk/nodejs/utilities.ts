@@ -53,7 +53,7 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion(), pluginDownloadURL: "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}" };
+    return { version: getVersion(), pluginDownloadURL: "github::api.github.com/a-schot/pulumi-dbtcloud" };
 }
 
 /** @internal */

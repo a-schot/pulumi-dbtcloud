@@ -133,7 +133,7 @@ namespace ASchot.Pulumi.Dbtcloud
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/a-schot/pulumi-dbtcloud/releases/download/v${VERSION}",
+                PluginDownloadURL = "github::api.github.com/a-schot/pulumi-dbtcloud",
                 AdditionalSecretOutputs =
                 {
                     "token",
