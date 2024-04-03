@@ -52,36 +52,6 @@ export interface JobJobCompletionTriggerCondition {
     statuses: string[];
 }
 
-export interface LegacyGetJobJobCompletionTriggerCondition {
-    jobId: number;
-    projectId: number;
-    statuses: string[];
-}
-
-export interface LegacyGetServiceTokenServiceTokenPermission {
-    allProjects: boolean;
-    permissionSet: string;
-    projectId: number;
-}
-
-export interface LegacyGroupGroupPermission {
-    allProjects: boolean;
-    permissionSet: string;
-    projectId?: number;
-}
-
-export interface LegacyJobJobCompletionTriggerCondition {
-    jobId: number;
-    projectId: number;
-    statuses: string[];
-}
-
-export interface LegacyServiceTokenServiceTokenPermission {
-    allProjects: boolean;
-    permissionSet: string;
-    projectId?: number;
-}
-
 export interface ServiceTokenServiceTokenPermission {
     /**
      * Whether or not to apply this permission to all projects for this service token

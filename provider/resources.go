@@ -180,96 +180,96 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
-			"dbt_cloud_job": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyJob"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"job_completion_trigger_condition": {
-						CSharpName: "CompletionTriggerCondition",
-					},
-				},
-			},
-			"dbt_cloud_project": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProject"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_project_connection": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectConnection"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_project_repository": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectRepository"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_project_artefacts": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectArtefacts"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_environment": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironment"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_environment_variable": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironmentVariable"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_databricks_credential": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyDatabricksCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_snowflake_credential": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacySnowflakeCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_bigquery_credential": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_postgres_credential": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyPostgresCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_connection": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyConnection"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_bigquery_connection": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryConnection"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_repository": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyRepository"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_group": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyGroup"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_service_token": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyServiceToken"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_webhook": {
-				Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyWebhook"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
+			// "dbt_cloud_job": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyJob"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// 	Fields: map[string]*tfbridge.SchemaInfo{
+			// 		"job_completion_trigger_condition": {
+			// 			CSharpName: "CompletionTriggerCondition",
+			// 		},
+			// 	},
+			// },
+			// "dbt_cloud_project": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProject"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_project_connection": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectConnection"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_project_repository": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectRepository"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_project_artefacts": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyProjectArtefacts"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_environment": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironment"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_environment_variable": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyEnvironmentVariable"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_databricks_credential": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyDatabricksCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_snowflake_credential": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacySnowflakeCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_bigquery_credential": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_postgres_credential": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyPostgresCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_connection": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyConnection"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_bigquery_connection": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyBigqueryConnection"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_repository": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyRepository"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_group": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyGroup"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_service_token": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyServiceToken"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_webhook": {
+			// 	Tok:                tfbridge.MakeResource(mainPkg, mainMod, "LegacyWebhook"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"dbtcloud_bigquery_credential": {
@@ -344,91 +344,91 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAzureDevOpsRepository"),
 			},
 			// legacy tokens will be removed in 0.3 for the dbt Cloud TF provider
-			"dbt_cloud_group": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetGroup"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_job": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetJob"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"job_completion_trigger_condition": {
-						CSharpName: "CompletionTriggerCondition",
-					},
-				},
-			},
-			"dbt_cloud_project": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetProject"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_environment": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironment"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_environment_variable": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironmentVariable"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_snowflake_credential": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetSnowflakeCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_bigquery_credential": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_postgres_credential": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPostgresCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_databricks_credential": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetDatabricksCredential"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_connection": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetConnection"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_bigquery_connection": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigQueryConnection"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_repository": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetRepository"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_user": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetUser"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_service_token": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetServiceToken"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_webhook": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetWebhook"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
-			"dbt_cloud_privatelink_endpoint": {
-				Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPrivatelinkEndpoint"),
-				DeprecationMessage: legacyMessage,
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
+			// "dbt_cloud_group": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetGroup"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_job": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetJob"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// 	Fields: map[string]*tfbridge.SchemaInfo{
+			// 		"job_completion_trigger_condition": {
+			// 			CSharpName: "CompletionTriggerCondition",
+			// 		},
+			// 	},
+			// },
+			// "dbt_cloud_project": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetProject"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_environment": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironment"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_environment_variable": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetEnvironmentVariable"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_snowflake_credential": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetSnowflakeCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_bigquery_credential": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigqueryCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_postgres_credential": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPostgresCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_databricks_credential": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetDatabricksCredential"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_connection": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetConnection"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_bigquery_connection": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetBigQueryConnection"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_repository": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetRepository"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_user": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetUser"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_service_token": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetServiceToken"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_webhook": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetWebhook"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
+			// "dbt_cloud_privatelink_endpoint": {
+			// 	Tok:                tfbridge.MakeDataSource(mainPkg, mainMod, "LegacyGetPrivatelinkEndpoint"),
+			// 	DeprecationMessage: legacyMessage,
+			// 	Docs:               &tfbridge.DocInfo{AllowMissing: true},
+			// },
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@aschot/pulumi-dbtcloud",
