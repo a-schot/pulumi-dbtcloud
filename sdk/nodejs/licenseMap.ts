@@ -33,11 +33,11 @@ import * as utilities from "./utilities";
  * Import using a license map ID found in the URL or via the API.
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
+ * $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
+ * $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
  * ```
  */
 export class LicenseMap extends pulumi.CustomResource {

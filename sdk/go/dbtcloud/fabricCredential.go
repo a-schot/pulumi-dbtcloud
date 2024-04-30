@@ -12,20 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // Import using a project ID and credential ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential "project_id:credential_id"
-//
+// $ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential "project_id:credential_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential 12345:6789
-//
+// $ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential 12345:6789
 // ```
 type FabricCredential struct {
 	pulumi.CustomResourceState

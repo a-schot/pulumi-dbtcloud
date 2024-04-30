@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewConnection(ctx, "databricks", &dbtcloud.ConnectionArgs{
 //				ProjectId: pulumi.Any(dbtcloud_project.Dbt_project.Id),
 //				Type:      pulumi.String("adapter"),
@@ -74,15 +75,11 @@ import (
 // Import using a project ID and connection ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/connection:Connection test_connection "project_id:connection_id"
-//
+// $ pulumi import dbtcloud:index/connection:Connection test_connection "project_id:connection_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/connection:Connection test_connection 12345:6789
-//
+// $ pulumi import dbtcloud:index/connection:Connection test_connection 12345:6789
 // ```
 type Connection struct {
 	pulumi.CustomResourceState

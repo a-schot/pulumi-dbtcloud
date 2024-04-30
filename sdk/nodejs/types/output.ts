@@ -11,14 +11,32 @@ export interface GetGroupUsersUser {
 }
 
 export interface GetJobJobCompletionTriggerCondition {
+    /**
+     * The ID of the job that would trigger this job after completion.
+     */
     jobId: number;
+    /**
+     * The ID of the project where the trigger job is running in.
+     */
     projectId: number;
+    /**
+     * List of statuses to trigger the job on.
+     */
     statuses: string[];
 }
 
 export interface GetServiceTokenServiceTokenPermission {
+    /**
+     * Whether or not to apply this permission to all projects for this service token
+     */
     allProjects: boolean;
+    /**
+     * Set of permissions to apply
+     */
     permissionSet: string;
+    /**
+     * Project ID to apply this permission to for this service token
+     */
     projectId: number;
 }
 
@@ -53,32 +71,77 @@ export interface JobJobCompletionTriggerCondition {
 }
 
 export interface LegacyGetJobJobCompletionTriggerCondition {
+    /**
+     * The ID of the job that would trigger this job after completion.
+     */
     jobId: number;
+    /**
+     * The ID of the project where the trigger job is running in.
+     */
     projectId: number;
+    /**
+     * List of statuses to trigger the job on.
+     */
     statuses: string[];
 }
 
 export interface LegacyGetServiceTokenServiceTokenPermission {
+    /**
+     * Whether or not to apply this permission to all projects for this service token
+     */
     allProjects: boolean;
+    /**
+     * Set of permissions to apply
+     */
     permissionSet: string;
+    /**
+     * Project ID to apply this permission to for this service token
+     */
     projectId: number;
 }
 
 export interface LegacyGroupGroupPermission {
+    /**
+     * Whether or not to apply this permission to all projects for this group
+     */
     allProjects: boolean;
+    /**
+     * Set of permissions to apply
+     */
     permissionSet: string;
+    /**
+     * Project ID to apply this permission to for this group
+     */
     projectId?: number;
 }
 
 export interface LegacyJobJobCompletionTriggerCondition {
+    /**
+     * The ID of the job that would trigger this job after completion.
+     */
     jobId: number;
+    /**
+     * The ID of the project where the trigger job is running in.
+     */
     projectId: number;
+    /**
+     * List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+     */
     statuses: string[];
 }
 
 export interface LegacyServiceTokenServiceTokenPermission {
+    /**
+     * Whether or not to apply this permission to all projects for this service token
+     */
     allProjects: boolean;
+    /**
+     * Set of permissions to apply
+     */
     permissionSet: string;
+    /**
+     * Project ID to apply this permission to for this service token
+     */
     projectId?: number;
 }
 

@@ -27,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewGroup(ctx, "tfGroup1", &dbtcloud.GroupArgs{
 //				GroupPermissions: dbtcloud.GroupGroupPermissionArray{
 //					&dbtcloud.GroupGroupPermissionArgs{
@@ -54,15 +55,11 @@ import (
 // Import using a group ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/group:Group test_group "group_id"
-//
+// $ pulumi import dbtcloud:index/group:Group test_group "group_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/group:Group test_group 12345
-//
+// $ pulumi import dbtcloud:index/group:Group test_group 12345
 // ```
 type Group struct {
 	pulumi.CustomResourceState

@@ -38,11 +38,11 @@ namespace ASchot.Pulumi.Dbtcloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection "project_id:connection_id"
+    /// $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection "project_id:connection_id"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
+    /// $ pulumi import dbtcloud:index/fabricConnection:FabricConnection my_connection 12345:6789
     /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/fabricConnection:FabricConnection")]

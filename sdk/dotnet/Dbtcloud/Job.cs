@@ -156,11 +156,11 @@ namespace ASchot.Pulumi.Dbtcloud
     /// Import using a job ID found in the URL or via the API.
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/job:Job test_job "job_id"
+    /// $ pulumi import dbtcloud:index/job:Job test_job "job_id"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/job:Job test_job 12345
+    /// $ pulumi import dbtcloud:index/job:Job test_job 12345
     /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/job:Job")]
@@ -233,7 +233,7 @@ namespace ASchot.Pulumi.Dbtcloud
         public Output<int?> NumThreads { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project where the trigger job is running in.
+        /// Project ID to create the job in
         /// </summary>
         [Output("projectId")]
         public Output<int> ProjectId { get; private set; } = null!;
@@ -424,7 +424,7 @@ namespace ASchot.Pulumi.Dbtcloud
         public Input<int>? NumThreads { get; set; }
 
         /// <summary>
-        /// The ID of the project where the trigger job is running in.
+        /// Project ID to create the job in
         /// </summary>
         [Input("projectId", required: true)]
         public Input<int> ProjectId { get; set; } = null!;
@@ -594,7 +594,7 @@ namespace ASchot.Pulumi.Dbtcloud
         public Input<int>? NumThreads { get; set; }
 
         /// <summary>
-        /// The ID of the project where the trigger job is running in.
+        /// Project ID to create the job in
         /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }

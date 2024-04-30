@@ -13,9 +13,7 @@ namespace ASchot.Pulumi.Dbtcloud
     public static class GetNotification
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -32,16 +30,12 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotificationResult> InvokeAsync(GetNotificationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotificationResult>("dbtcloud:index/getNotification:getNotification", args ?? new GetNotificationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -58,8 +52,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNotificationResult> Invoke(GetNotificationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotificationResult>("dbtcloud:index/getNotification:getNotification", args ?? new GetNotificationInvokeArgs(), options.WithDefaults());

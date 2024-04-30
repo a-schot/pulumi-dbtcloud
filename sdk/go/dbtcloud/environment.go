@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewEnvironment(ctx, "ciEnvironment", &dbtcloud.EnvironmentArgs{
 //				DbtVersion:   pulumi.String("1.6.0-latest"),
 //				ProjectId:    pulumi.Any(dbtcloud_project.Dbt_project.Id),
@@ -35,6 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// we can also set a deployment environment as being the production one
 //			_, err = dbtcloud.NewEnvironment(ctx, "prodEnvironment", &dbtcloud.EnvironmentArgs{
 //				DbtVersion:     pulumi.String("1.6.0-latest"),
 //				ProjectId:      pulumi.Any(dbtcloud_project.Dbt_project.Id),
@@ -45,6 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Creating a development environment
 //			_, err = dbtcloud.NewEnvironment(ctx, "devEnvironment", &dbtcloud.EnvironmentArgs{
 //				DbtVersion: pulumi.String("1.6.0-latest"),
 //				ProjectId:  pulumi.Any(dbtcloud_project.Dbt_project.Id),
@@ -64,15 +67,11 @@ import (
 // Import using a project ID and environment ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/environment:Environment prod_environment "project_id:environment_id"
-//
+// $ pulumi import dbtcloud:index/environment:Environment prod_environment "project_id:environment_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/environment:Environment prod_environment 12345:6789
-//
+// $ pulumi import dbtcloud:index/environment:Environment prod_environment 12345:6789
 // ```
 type Environment struct {
 	pulumi.CustomResourceState

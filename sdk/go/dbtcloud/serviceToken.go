@@ -25,6 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewServiceToken(ctx, "testServiceToken", &dbtcloud.ServiceTokenArgs{
 //				ServiceTokenPermissions: dbtcloud.ServiceTokenServiceTokenPermissionArray{
 //					&dbtcloud.ServiceTokenServiceTokenPermissionArgs{
@@ -52,15 +53,11 @@ import (
 // Import using a group ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token "service_token_id"
-//
+// $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token "service_token_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token 12345
-//
+// $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token 12345
 // ```
 type ServiceToken struct {
 	pulumi.CustomResourceState

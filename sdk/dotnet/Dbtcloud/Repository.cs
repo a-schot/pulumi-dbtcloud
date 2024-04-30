@@ -24,7 +24,15 @@ namespace ASchot.Pulumi.Dbtcloud
     /// 
     /// ## Import
     /// 
-    /// Import using a project ID and repository ID found in the URL or via the API. &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id" &lt;break&gt;```&lt;break&gt;&lt;break&gt; &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789 &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// Import using a project ID and repository ID found in the URL or via the API.
+    /// 
+    /// ```sh
+    /// $ pulumi import dbtcloud:index/repository:Repository test_repository "project_id:repository_id"
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import dbtcloud:index/repository:Repository test_repository 12345:6789
+    /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/repository:Repository")]
     public partial class Repository : global::Pulumi.CustomResource

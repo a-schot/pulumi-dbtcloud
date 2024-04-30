@@ -13,9 +13,7 @@ namespace ASchot.Pulumi.Dbtcloud
     public static class GetExtendedAttributes
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -33,16 +31,12 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetExtendedAttributesResult> InvokeAsync(GetExtendedAttributesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExtendedAttributesResult>("dbtcloud:index/getExtendedAttributes:getExtendedAttributes", args ?? new GetExtendedAttributesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -60,8 +54,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetExtendedAttributesResult> Invoke(GetExtendedAttributesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExtendedAttributesResult>("dbtcloud:index/getExtendedAttributes:getExtendedAttributes", args ?? new GetExtendedAttributesInvokeArgs(), options.WithDefaults());

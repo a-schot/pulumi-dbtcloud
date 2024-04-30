@@ -116,11 +116,11 @@ class Project(pulumi.CustomResource):
         Import using a project ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/project:Project test_project "project_id"
+        $ pulumi import dbtcloud:index/project:Project test_project "project_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/project:Project test_project 12345
+        $ pulumi import dbtcloud:index/project:Project test_project 12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -151,11 +151,11 @@ class Project(pulumi.CustomResource):
         Import using a project ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/project:Project test_project "project_id"
+        $ pulumi import dbtcloud:index/project:Project test_project "project_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/project:Project test_project 12345
+        $ pulumi import dbtcloud:index/project:Project test_project 12345
         ```
 
         :param str resource_name: The name of the resource.

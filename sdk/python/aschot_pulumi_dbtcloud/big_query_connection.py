@@ -893,11 +893,11 @@ class BigQueryConnection(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection "project_id:connection_id"
+        $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection "project_id:connection_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
+        $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
         ```
 
         :param str resource_name: The name of the resource.
@@ -981,11 +981,11 @@ class BigQueryConnection(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection "project_id:connection_id"
+        $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection "project_id:connection_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
+        $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
         ```
 
         :param str resource_name: The name of the resource.

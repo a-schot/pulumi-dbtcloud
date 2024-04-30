@@ -119,11 +119,11 @@ import * as utilities from "./utilities";
  * Import using a job ID found in the URL or via the API.
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/job:Job test_job "job_id"
+ * $ pulumi import dbtcloud:index/job:Job test_job "job_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/job:Job test_job 12345
+ * $ pulumi import dbtcloud:index/job:Job test_job 12345
  * ```
  */
 export class Job extends pulumi.CustomResource {
@@ -199,7 +199,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly numThreads!: pulumi.Output<number | undefined>;
     /**
-     * The ID of the project where the trigger job is running in.
+     * Project ID to create the job in
      */
     public readonly projectId!: pulumi.Output<number>;
     /**
@@ -375,7 +375,7 @@ export interface JobState {
      */
     numThreads?: pulumi.Input<number>;
     /**
-     * The ID of the project where the trigger job is running in.
+     * Project ID to create the job in
      */
     projectId?: pulumi.Input<number>;
     /**
@@ -473,7 +473,7 @@ export interface JobArgs {
      */
     numThreads?: pulumi.Input<number>;
     /**
-     * The ID of the project where the trigger job is running in.
+     * Project ID to create the job in
      */
     projectId: pulumi.Input<number>;
     /**

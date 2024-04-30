@@ -304,9 +304,12 @@ func (o JobJobCompletionTriggerConditionPtrOutput) Statuses() pulumi.StringArray
 }
 
 type LegacyGetJobJobCompletionTriggerCondition struct {
-	JobId     int      `pulumi:"jobId"`
-	ProjectId int      `pulumi:"projectId"`
-	Statuses  []string `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId int `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId int `pulumi:"projectId"`
+	// List of statuses to trigger the job on.
+	Statuses []string `pulumi:"statuses"`
 }
 
 // LegacyGetJobJobCompletionTriggerConditionInput is an input type that accepts LegacyGetJobJobCompletionTriggerConditionArgs and LegacyGetJobJobCompletionTriggerConditionOutput values.
@@ -321,9 +324,12 @@ type LegacyGetJobJobCompletionTriggerConditionInput interface {
 }
 
 type LegacyGetJobJobCompletionTriggerConditionArgs struct {
-	JobId     pulumi.IntInput         `pulumi:"jobId"`
-	ProjectId pulumi.IntInput         `pulumi:"projectId"`
-	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId pulumi.IntInput `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
+	// List of statuses to trigger the job on.
+	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
 }
 
 func (LegacyGetJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
@@ -377,14 +383,17 @@ func (o LegacyGetJobJobCompletionTriggerConditionOutput) ToLegacyGetJobJobComple
 	return o
 }
 
+// The ID of the job that would trigger this job after completion.
 func (o LegacyGetJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
 	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
 }
 
+// The ID of the project where the trigger job is running in.
 func (o LegacyGetJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
+// List of statuses to trigger the job on.
 func (o LegacyGetJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
 }
@@ -410,9 +419,12 @@ func (o LegacyGetJobJobCompletionTriggerConditionArrayOutput) Index(i pulumi.Int
 }
 
 type LegacyGetServiceTokenServiceTokenPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects bool `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     int    `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId int `pulumi:"projectId"`
 }
 
 // LegacyGetServiceTokenServiceTokenPermissionInput is an input type that accepts LegacyGetServiceTokenServiceTokenPermissionArgs and LegacyGetServiceTokenServiceTokenPermissionOutput values.
@@ -427,9 +439,12 @@ type LegacyGetServiceTokenServiceTokenPermissionInput interface {
 }
 
 type LegacyGetServiceTokenServiceTokenPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects pulumi.BoolInput `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntInput    `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
 }
 
 func (LegacyGetServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
@@ -483,14 +498,17 @@ func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ToLegacyGetServiceTok
 	return o
 }
 
+// Whether or not to apply this permission to all projects for this service token
 func (o LegacyGetServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
 	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
 }
 
+// Set of permissions to apply
 func (o LegacyGetServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
 	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
 }
 
+// Project ID to apply this permission to for this service token
 func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) int { return v.ProjectId }).(pulumi.IntOutput)
 }
@@ -516,9 +534,12 @@ func (o LegacyGetServiceTokenServiceTokenPermissionArrayOutput) Index(i pulumi.I
 }
 
 type LegacyGroupGroupPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this group
+	AllProjects bool `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     *int   `pulumi:"projectId"`
+	// Project ID to apply this permission to for this group
+	ProjectId *int `pulumi:"projectId"`
 }
 
 // LegacyGroupGroupPermissionInput is an input type that accepts LegacyGroupGroupPermissionArgs and LegacyGroupGroupPermissionOutput values.
@@ -533,9 +554,12 @@ type LegacyGroupGroupPermissionInput interface {
 }
 
 type LegacyGroupGroupPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this group
+	AllProjects pulumi.BoolInput `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntPtrInput `pulumi:"projectId"`
+	// Project ID to apply this permission to for this group
+	ProjectId pulumi.IntPtrInput `pulumi:"projectId"`
 }
 
 func (LegacyGroupGroupPermissionArgs) ElementType() reflect.Type {
@@ -589,14 +613,17 @@ func (o LegacyGroupGroupPermissionOutput) ToLegacyGroupGroupPermissionOutputWith
 	return o
 }
 
+// Whether or not to apply this permission to all projects for this group
 func (o LegacyGroupGroupPermissionOutput) AllProjects() pulumi.BoolOutput {
 	return o.ApplyT(func(v LegacyGroupGroupPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
 }
 
+// Set of permissions to apply
 func (o LegacyGroupGroupPermissionOutput) PermissionSet() pulumi.StringOutput {
 	return o.ApplyT(func(v LegacyGroupGroupPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
 }
 
+// Project ID to apply this permission to for this group
 func (o LegacyGroupGroupPermissionOutput) ProjectId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LegacyGroupGroupPermission) *int { return v.ProjectId }).(pulumi.IntPtrOutput)
 }
@@ -622,9 +649,12 @@ func (o LegacyGroupGroupPermissionArrayOutput) Index(i pulumi.IntInput) LegacyGr
 }
 
 type LegacyJobJobCompletionTriggerCondition struct {
-	JobId     int      `pulumi:"jobId"`
-	ProjectId int      `pulumi:"projectId"`
-	Statuses  []string `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId int `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId int `pulumi:"projectId"`
+	// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+	Statuses []string `pulumi:"statuses"`
 }
 
 // LegacyJobJobCompletionTriggerConditionInput is an input type that accepts LegacyJobJobCompletionTriggerConditionArgs and LegacyJobJobCompletionTriggerConditionOutput values.
@@ -639,9 +669,12 @@ type LegacyJobJobCompletionTriggerConditionInput interface {
 }
 
 type LegacyJobJobCompletionTriggerConditionArgs struct {
-	JobId     pulumi.IntInput         `pulumi:"jobId"`
-	ProjectId pulumi.IntInput         `pulumi:"projectId"`
-	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId pulumi.IntInput `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
+	// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
 }
 
 func (LegacyJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
@@ -721,14 +754,17 @@ func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTr
 	}).(LegacyJobJobCompletionTriggerConditionPtrOutput)
 }
 
+// The ID of the job that would trigger this job after completion.
 func (o LegacyJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
 	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
 }
 
+// The ID of the project where the trigger job is running in.
 func (o LegacyJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
+// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
 func (o LegacyJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
 }
@@ -757,6 +793,7 @@ func (o LegacyJobJobCompletionTriggerConditionPtrOutput) Elem() LegacyJobJobComp
 	}).(LegacyJobJobCompletionTriggerConditionOutput)
 }
 
+// The ID of the job that would trigger this job after completion.
 func (o LegacyJobJobCompletionTriggerConditionPtrOutput) JobId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) *int {
 		if v == nil {
@@ -766,6 +803,7 @@ func (o LegacyJobJobCompletionTriggerConditionPtrOutput) JobId() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The ID of the project where the trigger job is running in.
 func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ProjectId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) *int {
 		if v == nil {
@@ -775,6 +813,7 @@ func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ProjectId() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
 func (o LegacyJobJobCompletionTriggerConditionPtrOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) []string {
 		if v == nil {
@@ -785,9 +824,12 @@ func (o LegacyJobJobCompletionTriggerConditionPtrOutput) Statuses() pulumi.Strin
 }
 
 type LegacyServiceTokenServiceTokenPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects bool `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     *int   `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId *int `pulumi:"projectId"`
 }
 
 // LegacyServiceTokenServiceTokenPermissionInput is an input type that accepts LegacyServiceTokenServiceTokenPermissionArgs and LegacyServiceTokenServiceTokenPermissionOutput values.
@@ -802,9 +844,12 @@ type LegacyServiceTokenServiceTokenPermissionInput interface {
 }
 
 type LegacyServiceTokenServiceTokenPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects pulumi.BoolInput `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntPtrInput `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId pulumi.IntPtrInput `pulumi:"projectId"`
 }
 
 func (LegacyServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
@@ -858,14 +903,17 @@ func (o LegacyServiceTokenServiceTokenPermissionOutput) ToLegacyServiceTokenServ
 	return o
 }
 
+// Whether or not to apply this permission to all projects for this service token
 func (o LegacyServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
 	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
 }
 
+// Set of permissions to apply
 func (o LegacyServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
 	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
 }
 
+// Project ID to apply this permission to for this service token
 func (o LegacyServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) *int { return v.ProjectId }).(pulumi.IntPtrOutput)
 }
@@ -1106,9 +1154,12 @@ func (o GetGroupUsersUserArrayOutput) Index(i pulumi.IntInput) GetGroupUsersUser
 }
 
 type GetJobJobCompletionTriggerCondition struct {
-	JobId     int      `pulumi:"jobId"`
-	ProjectId int      `pulumi:"projectId"`
-	Statuses  []string `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId int `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId int `pulumi:"projectId"`
+	// List of statuses to trigger the job on.
+	Statuses []string `pulumi:"statuses"`
 }
 
 // GetJobJobCompletionTriggerConditionInput is an input type that accepts GetJobJobCompletionTriggerConditionArgs and GetJobJobCompletionTriggerConditionOutput values.
@@ -1123,9 +1174,12 @@ type GetJobJobCompletionTriggerConditionInput interface {
 }
 
 type GetJobJobCompletionTriggerConditionArgs struct {
-	JobId     pulumi.IntInput         `pulumi:"jobId"`
-	ProjectId pulumi.IntInput         `pulumi:"projectId"`
-	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId pulumi.IntInput `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
+	// List of statuses to trigger the job on.
+	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
 }
 
 func (GetJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
@@ -1179,14 +1233,17 @@ func (o GetJobJobCompletionTriggerConditionOutput) ToGetJobJobCompletionTriggerC
 	return o
 }
 
+// The ID of the job that would trigger this job after completion.
 func (o GetJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
 }
 
+// The ID of the project where the trigger job is running in.
 func (o GetJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
+// List of statuses to trigger the job on.
 func (o GetJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
 }
@@ -1212,9 +1269,12 @@ func (o GetJobJobCompletionTriggerConditionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetServiceTokenServiceTokenPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects bool `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     int    `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId int `pulumi:"projectId"`
 }
 
 // GetServiceTokenServiceTokenPermissionInput is an input type that accepts GetServiceTokenServiceTokenPermissionArgs and GetServiceTokenServiceTokenPermissionOutput values.
@@ -1229,9 +1289,12 @@ type GetServiceTokenServiceTokenPermissionInput interface {
 }
 
 type GetServiceTokenServiceTokenPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects pulumi.BoolInput `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntInput    `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
 }
 
 func (GetServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
@@ -1285,14 +1348,17 @@ func (o GetServiceTokenServiceTokenPermissionOutput) ToGetServiceTokenServiceTok
 	return o
 }
 
+// Whether or not to apply this permission to all projects for this service token
 func (o GetServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
 }
 
+// Set of permissions to apply
 func (o GetServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
 }
 
+// Project ID to apply this permission to for this service token
 func (o GetServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTokenServiceTokenPermission) int { return v.ProjectId }).(pulumi.IntOutput)
 }

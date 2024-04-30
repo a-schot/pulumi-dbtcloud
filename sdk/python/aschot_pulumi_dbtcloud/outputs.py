@@ -150,6 +150,11 @@ class LegacyGetJobJobCompletionTriggerConditionResult(dict):
                  job_id: int,
                  project_id: int,
                  statuses: Sequence[str]):
+        """
+        :param int job_id: The ID of the job that would trigger this job after completion.
+        :param int project_id: The ID of the project where the trigger job is running in.
+        :param Sequence[str] statuses: List of statuses to trigger the job on.
+        """
         pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "statuses", statuses)
@@ -157,16 +162,25 @@ class LegacyGetJobJobCompletionTriggerConditionResult(dict):
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> int:
+        """
+        The ID of the job that would trigger this job after completion.
+        """
         return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        The ID of the project where the trigger job is running in.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def statuses(self) -> Sequence[str]:
+        """
+        List of statuses to trigger the job on.
+        """
         return pulumi.get(self, "statuses")
 
 
@@ -176,6 +190,11 @@ class LegacyGetServiceTokenServiceTokenPermissionResult(dict):
                  all_projects: bool,
                  permission_set: str,
                  project_id: int):
+        """
+        :param bool all_projects: Whether or not to apply this permission to all projects for this service token
+        :param str permission_set: Set of permissions to apply
+        :param int project_id: Project ID to apply this permission to for this service token
+        """
         pulumi.set(__self__, "all_projects", all_projects)
         pulumi.set(__self__, "permission_set", permission_set)
         pulumi.set(__self__, "project_id", project_id)
@@ -183,16 +202,25 @@ class LegacyGetServiceTokenServiceTokenPermissionResult(dict):
     @property
     @pulumi.getter(name="allProjects")
     def all_projects(self) -> bool:
+        """
+        Whether or not to apply this permission to all projects for this service token
+        """
         return pulumi.get(self, "all_projects")
 
     @property
     @pulumi.getter(name="permissionSet")
     def permission_set(self) -> str:
+        """
+        Set of permissions to apply
+        """
         return pulumi.get(self, "permission_set")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        Project ID to apply this permission to for this service token
+        """
         return pulumi.get(self, "project_id")
 
 
@@ -223,6 +251,11 @@ class LegacyGroupGroupPermission(dict):
                  all_projects: bool,
                  permission_set: str,
                  project_id: Optional[int] = None):
+        """
+        :param bool all_projects: Whether or not to apply this permission to all projects for this group
+        :param str permission_set: Set of permissions to apply
+        :param int project_id: Project ID to apply this permission to for this group
+        """
         pulumi.set(__self__, "all_projects", all_projects)
         pulumi.set(__self__, "permission_set", permission_set)
         if project_id is not None:
@@ -231,16 +264,25 @@ class LegacyGroupGroupPermission(dict):
     @property
     @pulumi.getter(name="allProjects")
     def all_projects(self) -> bool:
+        """
+        Whether or not to apply this permission to all projects for this group
+        """
         return pulumi.get(self, "all_projects")
 
     @property
     @pulumi.getter(name="permissionSet")
     def permission_set(self) -> str:
+        """
+        Set of permissions to apply
+        """
         return pulumi.get(self, "permission_set")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[int]:
+        """
+        Project ID to apply this permission to for this group
+        """
         return pulumi.get(self, "project_id")
 
 
@@ -269,6 +311,11 @@ class LegacyJobJobCompletionTriggerCondition(dict):
                  job_id: int,
                  project_id: int,
                  statuses: Sequence[str]):
+        """
+        :param int job_id: The ID of the job that would trigger this job after completion.
+        :param int project_id: The ID of the project where the trigger job is running in.
+        :param Sequence[str] statuses: List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+        """
         pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "statuses", statuses)
@@ -276,16 +323,25 @@ class LegacyJobJobCompletionTriggerCondition(dict):
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> int:
+        """
+        The ID of the job that would trigger this job after completion.
+        """
         return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        The ID of the project where the trigger job is running in.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def statuses(self) -> Sequence[str]:
+        """
+        List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+        """
         return pulumi.get(self, "statuses")
 
 
@@ -316,6 +372,11 @@ class LegacyServiceTokenServiceTokenPermission(dict):
                  all_projects: bool,
                  permission_set: str,
                  project_id: Optional[int] = None):
+        """
+        :param bool all_projects: Whether or not to apply this permission to all projects for this service token
+        :param str permission_set: Set of permissions to apply
+        :param int project_id: Project ID to apply this permission to for this service token
+        """
         pulumi.set(__self__, "all_projects", all_projects)
         pulumi.set(__self__, "permission_set", permission_set)
         if project_id is not None:
@@ -324,16 +385,25 @@ class LegacyServiceTokenServiceTokenPermission(dict):
     @property
     @pulumi.getter(name="allProjects")
     def all_projects(self) -> bool:
+        """
+        Whether or not to apply this permission to all projects for this service token
+        """
         return pulumi.get(self, "all_projects")
 
     @property
     @pulumi.getter(name="permissionSet")
     def permission_set(self) -> str:
+        """
+        Set of permissions to apply
+        """
         return pulumi.get(self, "permission_set")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[int]:
+        """
+        Project ID to apply this permission to for this service token
+        """
         return pulumi.get(self, "project_id")
 
 
@@ -424,6 +494,11 @@ class GetJobJobCompletionTriggerConditionResult(dict):
                  job_id: int,
                  project_id: int,
                  statuses: Sequence[str]):
+        """
+        :param int job_id: The ID of the job that would trigger this job after completion.
+        :param int project_id: The ID of the project where the trigger job is running in.
+        :param Sequence[str] statuses: List of statuses to trigger the job on.
+        """
         pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "statuses", statuses)
@@ -431,16 +506,25 @@ class GetJobJobCompletionTriggerConditionResult(dict):
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> int:
+        """
+        The ID of the job that would trigger this job after completion.
+        """
         return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        The ID of the project where the trigger job is running in.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def statuses(self) -> Sequence[str]:
+        """
+        List of statuses to trigger the job on.
+        """
         return pulumi.get(self, "statuses")
 
 
@@ -450,6 +534,11 @@ class GetServiceTokenServiceTokenPermissionResult(dict):
                  all_projects: bool,
                  permission_set: str,
                  project_id: int):
+        """
+        :param bool all_projects: Whether or not to apply this permission to all projects for this service token
+        :param str permission_set: Set of permissions to apply
+        :param int project_id: Project ID to apply this permission to for this service token
+        """
         pulumi.set(__self__, "all_projects", all_projects)
         pulumi.set(__self__, "permission_set", permission_set)
         pulumi.set(__self__, "project_id", project_id)
@@ -457,16 +546,25 @@ class GetServiceTokenServiceTokenPermissionResult(dict):
     @property
     @pulumi.getter(name="allProjects")
     def all_projects(self) -> bool:
+        """
+        Whether or not to apply this permission to all projects for this service token
+        """
         return pulumi.get(self, "all_projects")
 
     @property
     @pulumi.getter(name="permissionSet")
     def permission_set(self) -> str:
+        """
+        Set of permissions to apply
+        """
         return pulumi.get(self, "permission_set")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        Project ID to apply this permission to for this service token
+        """
         return pulumi.get(self, "project_id")
 
 

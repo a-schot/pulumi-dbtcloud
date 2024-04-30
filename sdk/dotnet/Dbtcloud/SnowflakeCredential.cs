@@ -40,11 +40,11 @@ namespace ASchot.Pulumi.Dbtcloud
     /// Import using a project ID and credential ID found in the URL or via the API.
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential "project_id:credential_id"
+    /// $ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential "project_id:credential_id"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential 12345:6789
+    /// $ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential 12345:6789
     /// ```
     /// </summary>
     [DbtcloudResourceType("dbtcloud:index/snowflakeCredential:SnowflakeCredential")]

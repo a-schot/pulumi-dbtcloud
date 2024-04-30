@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewBigQueryCredential(ctx, "myCredential", &dbtcloud.BigQueryCredentialArgs{
 //				ProjectId:  pulumi.Any(dbtcloud_project.Dbt_project.Id),
 //				Dataset:    pulumi.String("my_bq_dataset"),
@@ -43,15 +44,11 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential "project_id:credential_id"
-//
+// $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential "project_id:credential_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
-//
+// $ pulumi import dbtcloud:index/bigQueryCredential:BigQueryCredential my_credential 12345:5678
 // ```
 type BigQueryCredential struct {
 	pulumi.CustomResourceState

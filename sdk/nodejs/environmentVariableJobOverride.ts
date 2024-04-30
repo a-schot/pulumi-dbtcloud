@@ -23,11 +23,11 @@ import * as utilities from "./utilities";
  * Import using a project ID, a job ID and the environment variable override ID
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/environmentVariableJobOverride:EnvironmentVariableJobOverride test_environment_variable_job_override "project_id:job_id:environment_variable_override_id"
+ * $ pulumi import dbtcloud:index/environmentVariableJobOverride:EnvironmentVariableJobOverride test_environment_variable_job_override "project_id:job_id:environment_variable_override_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/environmentVariableJobOverride:EnvironmentVariableJobOverride test_environment_variable_job_override 12345:678:123456
+ * $ pulumi import dbtcloud:index/environmentVariableJobOverride:EnvironmentVariableJobOverride test_environment_variable_job_override 12345:678:123456
  * ```
  */
 export class EnvironmentVariableJobOverride extends pulumi.CustomResource {

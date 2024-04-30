@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewSnowflakeCredential(ctx, "prodCredential", &dbtcloud.SnowflakeCredentialArgs{
 //				ProjectId:  pulumi.Any(data.Dbtcloud_project.Dbt_project.Id),
 //				AuthType:   pulumi.String("password"),
@@ -48,15 +49,11 @@ import (
 // Import using a project ID and credential ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential "project_id:credential_id"
-//
+// $ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential "project_id:credential_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential 12345:6789
-//
+// $ pulumi import dbtcloud:index/snowflakeCredential:SnowflakeCredential prod_snowflake_credential 12345:6789
 // ```
 type SnowflakeCredential struct {
 	pulumi.CustomResourceState

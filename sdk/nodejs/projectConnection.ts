@@ -23,11 +23,11 @@ import * as utilities from "./utilities";
  * Import using a project ID and Connection ID found in the URL or via the API.
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/projectConnection:ProjectConnection my_project "project_id:connection_id"
+ * $ pulumi import dbtcloud:index/projectConnection:ProjectConnection my_project "project_id:connection_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/projectConnection:ProjectConnection my_project 12345:5678
+ * $ pulumi import dbtcloud:index/projectConnection:ProjectConnection my_project 12345:5678
  * ```
  */
 export class ProjectConnection extends pulumi.CustomResource {

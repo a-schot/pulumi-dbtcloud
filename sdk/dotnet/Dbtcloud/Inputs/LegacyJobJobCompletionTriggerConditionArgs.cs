@@ -13,14 +13,24 @@ namespace ASchot.Pulumi.Dbtcloud.Inputs
 
     public sealed class LegacyJobJobCompletionTriggerConditionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the job that would trigger this job after completion.
+        /// </summary>
         [Input("jobId", required: true)]
         public Input<int> JobId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project where the trigger job is running in.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<int> ProjectId { get; set; } = null!;
 
         [Input("statuses", required: true)]
         private InputList<string>? _statuses;
+
+        /// <summary>
+        /// List of statuses to trigger the job on. Possible values are `success`, `error` and `canceled`.
+        /// </summary>
         public InputList<string> Statuses
         {
             get => _statuses ?? (_statuses = new InputList<string>());

@@ -15,9 +15,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// <summary>
         /// Returns a list of users assigned to a specific dbt Cloud group
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -34,8 +32,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupUsersResult> InvokeAsync(GetGroupUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupUsersResult>("dbtcloud:index/getGroupUsers:getGroupUsers", args ?? new GetGroupUsersArgs(), options.WithDefaults());
@@ -43,9 +39,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// <summary>
         /// Returns a list of users assigned to a specific dbt Cloud group
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -62,8 +56,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupUsersResult> Invoke(GetGroupUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupUsersResult>("dbtcloud:index/getGroupUsers:getGroupUsers", args ?? new GetGroupUsersInvokeArgs(), options.WithDefaults());

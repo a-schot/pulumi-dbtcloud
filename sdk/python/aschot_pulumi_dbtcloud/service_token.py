@@ -192,11 +192,11 @@ class ServiceToken(pulumi.CustomResource):
         Import using a group ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token "service_token_id"
+        $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token "service_token_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token 12345
+        $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token 12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -237,11 +237,11 @@ class ServiceToken(pulumi.CustomResource):
         Import using a group ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token "service_token_id"
+        $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token "service_token_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token 12345
+        $ pulumi import dbtcloud:index/serviceToken:ServiceToken test_service_token 12345
         ```
 
         :param str resource_name: The name of the resource.

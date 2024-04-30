@@ -43,7 +43,7 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[int] environment_id: Environment ID to create the job in
         :param pulumi.Input[Sequence[pulumi.Input[str]]] execute_steps: List of commands to execute for the job
-        :param pulumi.Input[int] project_id: The ID of the project where the trigger job is running in.
+        :param pulumi.Input[int] project_id: Project ID to create the job in
         :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] triggers: Flags for which types of triggers to use, possible values are `github_webhook`, `git_provider_webhook`, `schedule` and `custom_branch_only`. \\n\\n`custom_branch_only` is only relevant for CI jobs triggered automatically on PR creation to only trigger a job on a PR to the custom branch of the environment. To create a job in a 'deactivated' state, set all to `false`.
         :param pulumi.Input[str] dbt_version: Version number of dbt to use in this job, usually in the format 1.2.0-latest rather than core versions
         :param pulumi.Input[int] deferring_environment_id: Environment identifier that this job defers to (new deferring approach)
@@ -136,7 +136,7 @@ class JobArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[int]:
         """
-        The ID of the project where the trigger job is running in.
+        Project ID to create the job in
         """
         return pulumi.get(self, "project_id")
 
@@ -424,7 +424,7 @@ class _JobState:
         :param pulumi.Input['JobJobCompletionTriggerConditionArgs'] job_completion_trigger_condition: Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
         :param pulumi.Input[str] name: Job name
         :param pulumi.Input[int] num_threads: Number of threads to use in the job
-        :param pulumi.Input[int] project_id: The ID of the project where the trigger job is running in.
+        :param pulumi.Input[int] project_id: Project ID to create the job in
         :param pulumi.Input[bool] run_generate_sources: Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
         :param pulumi.Input[str] schedule_cron: Custom cron expression for schedule
         :param pulumi.Input[Sequence[pulumi.Input[int]]] schedule_days: List of days of week as numbers (0 = Sunday, 7 = Saturday) to execute the job at if running on a schedule
@@ -620,7 +620,7 @@ class _JobState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the project where the trigger job is running in.
+        Project ID to create the job in
         """
         return pulumi.get(self, "project_id")
 
@@ -900,11 +900,11 @@ class Job(pulumi.CustomResource):
         Import using a job ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/job:Job test_job "job_id"
+        $ pulumi import dbtcloud:index/job:Job test_job "job_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/job:Job test_job 12345
+        $ pulumi import dbtcloud:index/job:Job test_job 12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -920,7 +920,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobJobCompletionTriggerConditionArgs']] job_completion_trigger_condition: Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
         :param pulumi.Input[str] name: Job name
         :param pulumi.Input[int] num_threads: Number of threads to use in the job
-        :param pulumi.Input[int] project_id: The ID of the project where the trigger job is running in.
+        :param pulumi.Input[int] project_id: Project ID to create the job in
         :param pulumi.Input[bool] run_generate_sources: Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
         :param pulumi.Input[str] schedule_cron: Custom cron expression for schedule
         :param pulumi.Input[Sequence[pulumi.Input[int]]] schedule_days: List of days of week as numbers (0 = Sunday, 7 = Saturday) to execute the job at if running on a schedule
@@ -1049,11 +1049,11 @@ class Job(pulumi.CustomResource):
         Import using a job ID found in the URL or via the API.
 
         ```sh
-         $ pulumi import dbtcloud:index/job:Job test_job "job_id"
+        $ pulumi import dbtcloud:index/job:Job test_job "job_id"
         ```
 
         ```sh
-         $ pulumi import dbtcloud:index/job:Job test_job 12345
+        $ pulumi import dbtcloud:index/job:Job test_job 12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -1185,7 +1185,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobJobCompletionTriggerConditionArgs']] job_completion_trigger_condition: Which other job should trigger this job when it finishes, and on which conditions (sometimes referred as 'job chaining').
         :param pulumi.Input[str] name: Job name
         :param pulumi.Input[int] num_threads: Number of threads to use in the job
-        :param pulumi.Input[int] project_id: The ID of the project where the trigger job is running in.
+        :param pulumi.Input[int] project_id: Project ID to create the job in
         :param pulumi.Input[bool] run_generate_sources: Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
         :param pulumi.Input[str] schedule_cron: Custom cron expression for schedule
         :param pulumi.Input[Sequence[pulumi.Input[int]]] schedule_days: List of days of week as numbers (0 = Sunday, 7 = Saturday) to execute the job at if running on a schedule
@@ -1319,7 +1319,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[int]:
         """
-        The ID of the project where the trigger job is running in.
+        Project ID to create the job in
         """
         return pulumi.get(self, "project_id")
 
