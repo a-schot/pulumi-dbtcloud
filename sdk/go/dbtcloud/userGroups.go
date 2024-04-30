@@ -34,6 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// we can assign groups to users
 //			_, err := dbtcloud.NewUserGroups(ctx, "myUserGroups", &dbtcloud.UserGroupsArgs{
 //				UserId: pulumi.Any(data.Dbtcloud_user.My_user.Id),
 //				GroupIds: pulumi.IntArray{
@@ -45,6 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// as Delete is not handled currently, by design, removing all groups from a user can be done with
 //			_, err = dbtcloud.NewUserGroups(ctx, "myOtherUserGroups", &dbtcloud.UserGroupsArgs{
 //				UserId:   pulumi.Int(123456),
 //				GroupIds: pulumi.IntArray{},
@@ -60,18 +62,16 @@ import (
 //
 // ## Import
 //
-// Import using the User ID The User ID can be retrieved from the dbt Cloud UI or with the data source dbtcloud_user
+// # Import using the User ID
+//
+// The User ID can be retrieved from the dbt Cloud UI or with the data source dbtcloud_user
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups "user_id"
-//
+// $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups "user_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups 123456
-//
+// $ pulumi import dbtcloud:index/userGroups:UserGroups my_user_groups 123456
 // ```
 type UserGroups struct {
 	pulumi.CustomResourceState

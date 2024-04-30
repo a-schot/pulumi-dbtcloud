@@ -34,11 +34,11 @@ import * as utilities from "./utilities";
  * Import using a group ID found in the URL or via the API.
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/group:Group test_group "group_id"
+ * $ pulumi import dbtcloud:index/group:Group test_group "group_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/group:Group test_group 12345
+ * $ pulumi import dbtcloud:index/group:Group test_group 12345
  * ```
  */
 export class Group extends pulumi.CustomResource {

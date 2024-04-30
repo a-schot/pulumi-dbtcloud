@@ -45,40 +45,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "dbtcloud:index/job:Job":
 		r = &Job{}
-	case "dbtcloud:index/legacyBigqueryConnection:LegacyBigqueryConnection":
-		r = &LegacyBigqueryConnection{}
-	case "dbtcloud:index/legacyBigqueryCredential:LegacyBigqueryCredential":
-		r = &LegacyBigqueryCredential{}
-	case "dbtcloud:index/legacyConnection:LegacyConnection":
-		r = &LegacyConnection{}
-	case "dbtcloud:index/legacyDatabricksCredential:LegacyDatabricksCredential":
-		r = &LegacyDatabricksCredential{}
-	case "dbtcloud:index/legacyEnvironment:LegacyEnvironment":
-		r = &LegacyEnvironment{}
-	case "dbtcloud:index/legacyEnvironmentVariable:LegacyEnvironmentVariable":
-		r = &LegacyEnvironmentVariable{}
-	case "dbtcloud:index/legacyGroup:LegacyGroup":
-		r = &LegacyGroup{}
-	case "dbtcloud:index/legacyJob:LegacyJob":
-		r = &LegacyJob{}
-	case "dbtcloud:index/legacyPostgresCredential:LegacyPostgresCredential":
-		r = &LegacyPostgresCredential{}
-	case "dbtcloud:index/legacyProject:LegacyProject":
-		r = &LegacyProject{}
-	case "dbtcloud:index/legacyProjectArtefacts:LegacyProjectArtefacts":
-		r = &LegacyProjectArtefacts{}
-	case "dbtcloud:index/legacyProjectConnection:LegacyProjectConnection":
-		r = &LegacyProjectConnection{}
-	case "dbtcloud:index/legacyProjectRepository:LegacyProjectRepository":
-		r = &LegacyProjectRepository{}
-	case "dbtcloud:index/legacyRepository:LegacyRepository":
-		r = &LegacyRepository{}
-	case "dbtcloud:index/legacyServiceToken:LegacyServiceToken":
-		r = &LegacyServiceToken{}
-	case "dbtcloud:index/legacySnowflakeCredential:LegacySnowflakeCredential":
-		r = &LegacySnowflakeCredential{}
-	case "dbtcloud:index/legacyWebhook:LegacyWebhook":
-		r = &LegacyWebhook{}
 	case "dbtcloud:index/licenseMap:LicenseMap":
 		r = &LicenseMap{}
 	case "dbtcloud:index/notification:Notification":
@@ -192,91 +158,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"dbtcloud",
 		"index/job",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyBigqueryConnection",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyBigqueryCredential",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyConnection",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyDatabricksCredential",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyEnvironment",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyEnvironmentVariable",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyGroup",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyJob",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyPostgresCredential",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyProject",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyProjectArtefacts",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyProjectConnection",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyProjectRepository",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyRepository",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyServiceToken",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacySnowflakeCredential",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dbtcloud",
-		"index/legacyWebhook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

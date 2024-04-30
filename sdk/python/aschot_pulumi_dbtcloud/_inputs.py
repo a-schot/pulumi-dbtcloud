@@ -12,9 +12,6 @@ from . import _utilities
 __all__ = [
     'GroupGroupPermissionArgs',
     'JobJobCompletionTriggerConditionArgs',
-    'LegacyGroupGroupPermissionArgs',
-    'LegacyJobJobCompletionTriggerConditionArgs',
-    'LegacyServiceTokenServiceTokenPermissionArgs',
     'ServiceTokenServiceTokenPermissionArgs',
 ]
 
@@ -121,122 +118,6 @@ class JobJobCompletionTriggerConditionArgs:
     @statuses.setter
     def statuses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "statuses", value)
-
-
-@pulumi.input_type
-class LegacyGroupGroupPermissionArgs:
-    def __init__(__self__, *,
-                 all_projects: pulumi.Input[bool],
-                 permission_set: pulumi.Input[str],
-                 project_id: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "all_projects", all_projects)
-        pulumi.set(__self__, "permission_set", permission_set)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-
-    @property
-    @pulumi.getter(name="allProjects")
-    def all_projects(self) -> pulumi.Input[bool]:
-        return pulumi.get(self, "all_projects")
-
-    @all_projects.setter
-    def all_projects(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "all_projects", value)
-
-    @property
-    @pulumi.getter(name="permissionSet")
-    def permission_set(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "permission_set")
-
-    @permission_set.setter
-    def permission_set(self, value: pulumi.Input[str]):
-        pulumi.set(self, "permission_set", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "project_id", value)
-
-
-@pulumi.input_type
-class LegacyJobJobCompletionTriggerConditionArgs:
-    def __init__(__self__, *,
-                 job_id: pulumi.Input[int],
-                 project_id: pulumi.Input[int],
-                 statuses: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(__self__, "job_id", job_id)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "statuses", statuses)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[int]):
-        pulumi.set(self, "job_id", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[int]):
-        pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter
-    def statuses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "statuses")
-
-    @statuses.setter
-    def statuses(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "statuses", value)
-
-
-@pulumi.input_type
-class LegacyServiceTokenServiceTokenPermissionArgs:
-    def __init__(__self__, *,
-                 all_projects: pulumi.Input[bool],
-                 permission_set: pulumi.Input[str],
-                 project_id: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "all_projects", all_projects)
-        pulumi.set(__self__, "permission_set", permission_set)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-
-    @property
-    @pulumi.getter(name="allProjects")
-    def all_projects(self) -> pulumi.Input[bool]:
-        return pulumi.get(self, "all_projects")
-
-    @all_projects.setter
-    def all_projects(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "all_projects", value)
-
-    @property
-    @pulumi.getter(name="permissionSet")
-    def permission_set(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "permission_set")
-
-    @permission_set.setter
-    def permission_set(self, value: pulumi.Input[str]):
-        pulumi.set(self, "permission_set", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type

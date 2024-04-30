@@ -22,9 +22,15 @@ namespace ASchot.Pulumi.Dbtcloud
 
     public sealed class GetJobArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// ID of the job
+        /// </summary>
         [Input("jobId", required: true)]
         public int JobId { get; set; }
 
+        /// <summary>
+        /// ID of the project the job is in
+        /// </summary>
         [Input("projectId", required: true)]
         public int ProjectId { get; set; }
 
@@ -36,9 +42,15 @@ namespace ASchot.Pulumi.Dbtcloud
 
     public sealed class GetJobInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// ID of the job
+        /// </summary>
         [Input("jobId", required: true)]
         public Input<int> JobId { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the project the job is in
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<int> ProjectId { get; set; } = null!;
 

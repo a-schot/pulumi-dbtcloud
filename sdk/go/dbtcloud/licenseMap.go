@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Developer license group mapping
 //			_, err := dbtcloud.NewLicenseMap(ctx, "devLicenseMap", &dbtcloud.LicenseMapArgs{
 //				LicenseType: pulumi.String("developer"),
 //				SsoLicenseMappingGroups: pulumi.StringArray{
@@ -35,6 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Read-only license mapping
 //			_, err = dbtcloud.NewLicenseMap(ctx, "readOnlyLicenseMap", &dbtcloud.LicenseMapArgs{
 //				LicenseType: pulumi.String("read_only"),
 //				SsoLicenseMappingGroups: pulumi.StringArray{
@@ -44,6 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// IT license mapping
 //			_, err = dbtcloud.NewLicenseMap(ctx, "itLicenseMap", &dbtcloud.LicenseMapArgs{
 //				LicenseType: pulumi.String("it"),
 //				SsoLicenseMappingGroups: pulumi.StringArray{
@@ -64,15 +67,11 @@ import (
 // Import using a license map ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
-//
+// $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map "license_map_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
-//
+// $ pulumi import dbtcloud:index/licenseMap:LicenseMap test_license_map 12345
 // ```
 type LicenseMap struct {
 	pulumi.CustomResourceState

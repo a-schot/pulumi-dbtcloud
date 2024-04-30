@@ -13,9 +13,7 @@ namespace ASchot.Pulumi.Dbtcloud
     public static class GetPrivatelinkEndpoint
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -43,16 +41,12 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivatelinkEndpointResult> InvokeAsync(GetPrivatelinkEndpointArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivatelinkEndpointResult>("dbtcloud:index/getPrivatelinkEndpoint:getPrivatelinkEndpoint", args ?? new GetPrivatelinkEndpointArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -80,8 +74,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivatelinkEndpointResult> Invoke(GetPrivatelinkEndpointInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivatelinkEndpointResult>("dbtcloud:index/getPrivatelinkEndpoint:getPrivatelinkEndpoint", args ?? new GetPrivatelinkEndpointInvokeArgs(), options.WithDefaults());

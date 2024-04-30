@@ -303,593 +303,6 @@ func (o JobJobCompletionTriggerConditionPtrOutput) Statuses() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-type LegacyGetJobJobCompletionTriggerCondition struct {
-	JobId     int      `pulumi:"jobId"`
-	ProjectId int      `pulumi:"projectId"`
-	Statuses  []string `pulumi:"statuses"`
-}
-
-// LegacyGetJobJobCompletionTriggerConditionInput is an input type that accepts LegacyGetJobJobCompletionTriggerConditionArgs and LegacyGetJobJobCompletionTriggerConditionOutput values.
-// You can construct a concrete instance of `LegacyGetJobJobCompletionTriggerConditionInput` via:
-//
-//	LegacyGetJobJobCompletionTriggerConditionArgs{...}
-type LegacyGetJobJobCompletionTriggerConditionInput interface {
-	pulumi.Input
-
-	ToLegacyGetJobJobCompletionTriggerConditionOutput() LegacyGetJobJobCompletionTriggerConditionOutput
-	ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(context.Context) LegacyGetJobJobCompletionTriggerConditionOutput
-}
-
-type LegacyGetJobJobCompletionTriggerConditionArgs struct {
-	JobId     pulumi.IntInput         `pulumi:"jobId"`
-	ProjectId pulumi.IntInput         `pulumi:"projectId"`
-	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
-}
-
-func (LegacyGetJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (i LegacyGetJobJobCompletionTriggerConditionArgs) ToLegacyGetJobJobCompletionTriggerConditionOutput() LegacyGetJobJobCompletionTriggerConditionOutput {
-	return i.ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(context.Background())
-}
-
-func (i LegacyGetJobJobCompletionTriggerConditionArgs) ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetJobJobCompletionTriggerConditionOutput)
-}
-
-// LegacyGetJobJobCompletionTriggerConditionArrayInput is an input type that accepts LegacyGetJobJobCompletionTriggerConditionArray and LegacyGetJobJobCompletionTriggerConditionArrayOutput values.
-// You can construct a concrete instance of `LegacyGetJobJobCompletionTriggerConditionArrayInput` via:
-//
-//	LegacyGetJobJobCompletionTriggerConditionArray{ LegacyGetJobJobCompletionTriggerConditionArgs{...} }
-type LegacyGetJobJobCompletionTriggerConditionArrayInput interface {
-	pulumi.Input
-
-	ToLegacyGetJobJobCompletionTriggerConditionArrayOutput() LegacyGetJobJobCompletionTriggerConditionArrayOutput
-	ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(context.Context) LegacyGetJobJobCompletionTriggerConditionArrayOutput
-}
-
-type LegacyGetJobJobCompletionTriggerConditionArray []LegacyGetJobJobCompletionTriggerConditionInput
-
-func (LegacyGetJobJobCompletionTriggerConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (i LegacyGetJobJobCompletionTriggerConditionArray) ToLegacyGetJobJobCompletionTriggerConditionArrayOutput() LegacyGetJobJobCompletionTriggerConditionArrayOutput {
-	return i.ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(context.Background())
-}
-
-func (i LegacyGetJobJobCompletionTriggerConditionArray) ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetJobJobCompletionTriggerConditionArrayOutput)
-}
-
-type LegacyGetJobJobCompletionTriggerConditionOutput struct{ *pulumi.OutputState }
-
-func (LegacyGetJobJobCompletionTriggerConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionOutput) ToLegacyGetJobJobCompletionTriggerConditionOutput() LegacyGetJobJobCompletionTriggerConditionOutput {
-	return o
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionOutput) ToLegacyGetJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionOutput {
-	return o
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
-	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
-	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LegacyGetJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
-}
-
-type LegacyGetJobJobCompletionTriggerConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (LegacyGetJobJobCompletionTriggerConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyGetJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionArrayOutput) ToLegacyGetJobJobCompletionTriggerConditionArrayOutput() LegacyGetJobJobCompletionTriggerConditionArrayOutput {
-	return o
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionArrayOutput) ToLegacyGetJobJobCompletionTriggerConditionArrayOutputWithContext(ctx context.Context) LegacyGetJobJobCompletionTriggerConditionArrayOutput {
-	return o
-}
-
-func (o LegacyGetJobJobCompletionTriggerConditionArrayOutput) Index(i pulumi.IntInput) LegacyGetJobJobCompletionTriggerConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyGetJobJobCompletionTriggerCondition {
-		return vs[0].([]LegacyGetJobJobCompletionTriggerCondition)[vs[1].(int)]
-	}).(LegacyGetJobJobCompletionTriggerConditionOutput)
-}
-
-type LegacyGetServiceTokenServiceTokenPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
-	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     int    `pulumi:"projectId"`
-}
-
-// LegacyGetServiceTokenServiceTokenPermissionInput is an input type that accepts LegacyGetServiceTokenServiceTokenPermissionArgs and LegacyGetServiceTokenServiceTokenPermissionOutput values.
-// You can construct a concrete instance of `LegacyGetServiceTokenServiceTokenPermissionInput` via:
-//
-//	LegacyGetServiceTokenServiceTokenPermissionArgs{...}
-type LegacyGetServiceTokenServiceTokenPermissionInput interface {
-	pulumi.Input
-
-	ToLegacyGetServiceTokenServiceTokenPermissionOutput() LegacyGetServiceTokenServiceTokenPermissionOutput
-	ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(context.Context) LegacyGetServiceTokenServiceTokenPermissionOutput
-}
-
-type LegacyGetServiceTokenServiceTokenPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
-	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntInput    `pulumi:"projectId"`
-}
-
-func (LegacyGetServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (i LegacyGetServiceTokenServiceTokenPermissionArgs) ToLegacyGetServiceTokenServiceTokenPermissionOutput() LegacyGetServiceTokenServiceTokenPermissionOutput {
-	return i.ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(context.Background())
-}
-
-func (i LegacyGetServiceTokenServiceTokenPermissionArgs) ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetServiceTokenServiceTokenPermissionOutput)
-}
-
-// LegacyGetServiceTokenServiceTokenPermissionArrayInput is an input type that accepts LegacyGetServiceTokenServiceTokenPermissionArray and LegacyGetServiceTokenServiceTokenPermissionArrayOutput values.
-// You can construct a concrete instance of `LegacyGetServiceTokenServiceTokenPermissionArrayInput` via:
-//
-//	LegacyGetServiceTokenServiceTokenPermissionArray{ LegacyGetServiceTokenServiceTokenPermissionArgs{...} }
-type LegacyGetServiceTokenServiceTokenPermissionArrayInput interface {
-	pulumi.Input
-
-	ToLegacyGetServiceTokenServiceTokenPermissionArrayOutput() LegacyGetServiceTokenServiceTokenPermissionArrayOutput
-	ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Context) LegacyGetServiceTokenServiceTokenPermissionArrayOutput
-}
-
-type LegacyGetServiceTokenServiceTokenPermissionArray []LegacyGetServiceTokenServiceTokenPermissionInput
-
-func (LegacyGetServiceTokenServiceTokenPermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (i LegacyGetServiceTokenServiceTokenPermissionArray) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutput() LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
-	return i.ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Background())
-}
-
-func (i LegacyGetServiceTokenServiceTokenPermissionArray) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyGetServiceTokenServiceTokenPermissionArrayOutput)
-}
-
-type LegacyGetServiceTokenServiceTokenPermissionOutput struct{ *pulumi.OutputState }
-
-func (LegacyGetServiceTokenServiceTokenPermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ToLegacyGetServiceTokenServiceTokenPermissionOutput() LegacyGetServiceTokenServiceTokenPermissionOutput {
-	return o
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ToLegacyGetServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionOutput {
-	return o
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
-	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
-	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntOutput {
-	return o.ApplyT(func(v LegacyGetServiceTokenServiceTokenPermission) int { return v.ProjectId }).(pulumi.IntOutput)
-}
-
-type LegacyGetServiceTokenServiceTokenPermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (LegacyGetServiceTokenServiceTokenPermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyGetServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionArrayOutput) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutput() LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
-	return o
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionArrayOutput) ToLegacyGetServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyGetServiceTokenServiceTokenPermissionArrayOutput {
-	return o
-}
-
-func (o LegacyGetServiceTokenServiceTokenPermissionArrayOutput) Index(i pulumi.IntInput) LegacyGetServiceTokenServiceTokenPermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyGetServiceTokenServiceTokenPermission {
-		return vs[0].([]LegacyGetServiceTokenServiceTokenPermission)[vs[1].(int)]
-	}).(LegacyGetServiceTokenServiceTokenPermissionOutput)
-}
-
-type LegacyGroupGroupPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
-	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     *int   `pulumi:"projectId"`
-}
-
-// LegacyGroupGroupPermissionInput is an input type that accepts LegacyGroupGroupPermissionArgs and LegacyGroupGroupPermissionOutput values.
-// You can construct a concrete instance of `LegacyGroupGroupPermissionInput` via:
-//
-//	LegacyGroupGroupPermissionArgs{...}
-type LegacyGroupGroupPermissionInput interface {
-	pulumi.Input
-
-	ToLegacyGroupGroupPermissionOutput() LegacyGroupGroupPermissionOutput
-	ToLegacyGroupGroupPermissionOutputWithContext(context.Context) LegacyGroupGroupPermissionOutput
-}
-
-type LegacyGroupGroupPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
-	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntPtrInput `pulumi:"projectId"`
-}
-
-func (LegacyGroupGroupPermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyGroupGroupPermission)(nil)).Elem()
-}
-
-func (i LegacyGroupGroupPermissionArgs) ToLegacyGroupGroupPermissionOutput() LegacyGroupGroupPermissionOutput {
-	return i.ToLegacyGroupGroupPermissionOutputWithContext(context.Background())
-}
-
-func (i LegacyGroupGroupPermissionArgs) ToLegacyGroupGroupPermissionOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyGroupGroupPermissionOutput)
-}
-
-// LegacyGroupGroupPermissionArrayInput is an input type that accepts LegacyGroupGroupPermissionArray and LegacyGroupGroupPermissionArrayOutput values.
-// You can construct a concrete instance of `LegacyGroupGroupPermissionArrayInput` via:
-//
-//	LegacyGroupGroupPermissionArray{ LegacyGroupGroupPermissionArgs{...} }
-type LegacyGroupGroupPermissionArrayInput interface {
-	pulumi.Input
-
-	ToLegacyGroupGroupPermissionArrayOutput() LegacyGroupGroupPermissionArrayOutput
-	ToLegacyGroupGroupPermissionArrayOutputWithContext(context.Context) LegacyGroupGroupPermissionArrayOutput
-}
-
-type LegacyGroupGroupPermissionArray []LegacyGroupGroupPermissionInput
-
-func (LegacyGroupGroupPermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyGroupGroupPermission)(nil)).Elem()
-}
-
-func (i LegacyGroupGroupPermissionArray) ToLegacyGroupGroupPermissionArrayOutput() LegacyGroupGroupPermissionArrayOutput {
-	return i.ToLegacyGroupGroupPermissionArrayOutputWithContext(context.Background())
-}
-
-func (i LegacyGroupGroupPermissionArray) ToLegacyGroupGroupPermissionArrayOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyGroupGroupPermissionArrayOutput)
-}
-
-type LegacyGroupGroupPermissionOutput struct{ *pulumi.OutputState }
-
-func (LegacyGroupGroupPermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyGroupGroupPermission)(nil)).Elem()
-}
-
-func (o LegacyGroupGroupPermissionOutput) ToLegacyGroupGroupPermissionOutput() LegacyGroupGroupPermissionOutput {
-	return o
-}
-
-func (o LegacyGroupGroupPermissionOutput) ToLegacyGroupGroupPermissionOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionOutput {
-	return o
-}
-
-func (o LegacyGroupGroupPermissionOutput) AllProjects() pulumi.BoolOutput {
-	return o.ApplyT(func(v LegacyGroupGroupPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
-}
-
-func (o LegacyGroupGroupPermissionOutput) PermissionSet() pulumi.StringOutput {
-	return o.ApplyT(func(v LegacyGroupGroupPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
-}
-
-func (o LegacyGroupGroupPermissionOutput) ProjectId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LegacyGroupGroupPermission) *int { return v.ProjectId }).(pulumi.IntPtrOutput)
-}
-
-type LegacyGroupGroupPermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (LegacyGroupGroupPermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyGroupGroupPermission)(nil)).Elem()
-}
-
-func (o LegacyGroupGroupPermissionArrayOutput) ToLegacyGroupGroupPermissionArrayOutput() LegacyGroupGroupPermissionArrayOutput {
-	return o
-}
-
-func (o LegacyGroupGroupPermissionArrayOutput) ToLegacyGroupGroupPermissionArrayOutputWithContext(ctx context.Context) LegacyGroupGroupPermissionArrayOutput {
-	return o
-}
-
-func (o LegacyGroupGroupPermissionArrayOutput) Index(i pulumi.IntInput) LegacyGroupGroupPermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyGroupGroupPermission {
-		return vs[0].([]LegacyGroupGroupPermission)[vs[1].(int)]
-	}).(LegacyGroupGroupPermissionOutput)
-}
-
-type LegacyJobJobCompletionTriggerCondition struct {
-	JobId     int      `pulumi:"jobId"`
-	ProjectId int      `pulumi:"projectId"`
-	Statuses  []string `pulumi:"statuses"`
-}
-
-// LegacyJobJobCompletionTriggerConditionInput is an input type that accepts LegacyJobJobCompletionTriggerConditionArgs and LegacyJobJobCompletionTriggerConditionOutput values.
-// You can construct a concrete instance of `LegacyJobJobCompletionTriggerConditionInput` via:
-//
-//	LegacyJobJobCompletionTriggerConditionArgs{...}
-type LegacyJobJobCompletionTriggerConditionInput interface {
-	pulumi.Input
-
-	ToLegacyJobJobCompletionTriggerConditionOutput() LegacyJobJobCompletionTriggerConditionOutput
-	ToLegacyJobJobCompletionTriggerConditionOutputWithContext(context.Context) LegacyJobJobCompletionTriggerConditionOutput
-}
-
-type LegacyJobJobCompletionTriggerConditionArgs struct {
-	JobId     pulumi.IntInput         `pulumi:"jobId"`
-	ProjectId pulumi.IntInput         `pulumi:"projectId"`
-	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
-}
-
-func (LegacyJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionOutput() LegacyJobJobCompletionTriggerConditionOutput {
-	return i.ToLegacyJobJobCompletionTriggerConditionOutputWithContext(context.Background())
-}
-
-func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyJobJobCompletionTriggerConditionOutput)
-}
-
-func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return i.ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
-}
-
-func (i LegacyJobJobCompletionTriggerConditionArgs) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyJobJobCompletionTriggerConditionOutput).ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx)
-}
-
-// LegacyJobJobCompletionTriggerConditionPtrInput is an input type that accepts LegacyJobJobCompletionTriggerConditionArgs, LegacyJobJobCompletionTriggerConditionPtr and LegacyJobJobCompletionTriggerConditionPtrOutput values.
-// You can construct a concrete instance of `LegacyJobJobCompletionTriggerConditionPtrInput` via:
-//
-//	        LegacyJobJobCompletionTriggerConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type LegacyJobJobCompletionTriggerConditionPtrInput interface {
-	pulumi.Input
-
-	ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput
-	ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput
-}
-
-type legacyJobJobCompletionTriggerConditionPtrType LegacyJobJobCompletionTriggerConditionArgs
-
-func LegacyJobJobCompletionTriggerConditionPtr(v *LegacyJobJobCompletionTriggerConditionArgs) LegacyJobJobCompletionTriggerConditionPtrInput {
-	return (*legacyJobJobCompletionTriggerConditionPtrType)(v)
-}
-
-func (*legacyJobJobCompletionTriggerConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (i *legacyJobJobCompletionTriggerConditionPtrType) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return i.ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *legacyJobJobCompletionTriggerConditionPtrType) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyJobJobCompletionTriggerConditionPtrOutput)
-}
-
-type LegacyJobJobCompletionTriggerConditionOutput struct{ *pulumi.OutputState }
-
-func (LegacyJobJobCompletionTriggerConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionOutput() LegacyJobJobCompletionTriggerConditionOutput {
-	return o
-}
-
-func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionOutput {
-	return o
-}
-
-func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return o.ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(context.Background())
-}
-
-func (o LegacyJobJobCompletionTriggerConditionOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LegacyJobJobCompletionTriggerCondition) *LegacyJobJobCompletionTriggerCondition {
-		return &v
-	}).(LegacyJobJobCompletionTriggerConditionPtrOutput)
-}
-
-func (o LegacyJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
-	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
-}
-
-func (o LegacyJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
-	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
-}
-
-func (o LegacyJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LegacyJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
-}
-
-type LegacyJobJobCompletionTriggerConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (LegacyJobJobCompletionTriggerConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LegacyJobJobCompletionTriggerCondition)(nil)).Elem()
-}
-
-func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutput() LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return o
-}
-
-func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ToLegacyJobJobCompletionTriggerConditionPtrOutputWithContext(ctx context.Context) LegacyJobJobCompletionTriggerConditionPtrOutput {
-	return o
-}
-
-func (o LegacyJobJobCompletionTriggerConditionPtrOutput) Elem() LegacyJobJobCompletionTriggerConditionOutput {
-	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) LegacyJobJobCompletionTriggerCondition {
-		if v != nil {
-			return *v
-		}
-		var ret LegacyJobJobCompletionTriggerCondition
-		return ret
-	}).(LegacyJobJobCompletionTriggerConditionOutput)
-}
-
-func (o LegacyJobJobCompletionTriggerConditionPtrOutput) JobId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.JobId
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o LegacyJobJobCompletionTriggerConditionPtrOutput) ProjectId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectId
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o LegacyJobJobCompletionTriggerConditionPtrOutput) Statuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LegacyJobJobCompletionTriggerCondition) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Statuses
-	}).(pulumi.StringArrayOutput)
-}
-
-type LegacyServiceTokenServiceTokenPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
-	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     *int   `pulumi:"projectId"`
-}
-
-// LegacyServiceTokenServiceTokenPermissionInput is an input type that accepts LegacyServiceTokenServiceTokenPermissionArgs and LegacyServiceTokenServiceTokenPermissionOutput values.
-// You can construct a concrete instance of `LegacyServiceTokenServiceTokenPermissionInput` via:
-//
-//	LegacyServiceTokenServiceTokenPermissionArgs{...}
-type LegacyServiceTokenServiceTokenPermissionInput interface {
-	pulumi.Input
-
-	ToLegacyServiceTokenServiceTokenPermissionOutput() LegacyServiceTokenServiceTokenPermissionOutput
-	ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(context.Context) LegacyServiceTokenServiceTokenPermissionOutput
-}
-
-type LegacyServiceTokenServiceTokenPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
-	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntPtrInput `pulumi:"projectId"`
-}
-
-func (LegacyServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (i LegacyServiceTokenServiceTokenPermissionArgs) ToLegacyServiceTokenServiceTokenPermissionOutput() LegacyServiceTokenServiceTokenPermissionOutput {
-	return i.ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(context.Background())
-}
-
-func (i LegacyServiceTokenServiceTokenPermissionArgs) ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyServiceTokenServiceTokenPermissionOutput)
-}
-
-// LegacyServiceTokenServiceTokenPermissionArrayInput is an input type that accepts LegacyServiceTokenServiceTokenPermissionArray and LegacyServiceTokenServiceTokenPermissionArrayOutput values.
-// You can construct a concrete instance of `LegacyServiceTokenServiceTokenPermissionArrayInput` via:
-//
-//	LegacyServiceTokenServiceTokenPermissionArray{ LegacyServiceTokenServiceTokenPermissionArgs{...} }
-type LegacyServiceTokenServiceTokenPermissionArrayInput interface {
-	pulumi.Input
-
-	ToLegacyServiceTokenServiceTokenPermissionArrayOutput() LegacyServiceTokenServiceTokenPermissionArrayOutput
-	ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Context) LegacyServiceTokenServiceTokenPermissionArrayOutput
-}
-
-type LegacyServiceTokenServiceTokenPermissionArray []LegacyServiceTokenServiceTokenPermissionInput
-
-func (LegacyServiceTokenServiceTokenPermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (i LegacyServiceTokenServiceTokenPermissionArray) ToLegacyServiceTokenServiceTokenPermissionArrayOutput() LegacyServiceTokenServiceTokenPermissionArrayOutput {
-	return i.ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(context.Background())
-}
-
-func (i LegacyServiceTokenServiceTokenPermissionArray) ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LegacyServiceTokenServiceTokenPermissionArrayOutput)
-}
-
-type LegacyServiceTokenServiceTokenPermissionOutput struct{ *pulumi.OutputState }
-
-func (LegacyServiceTokenServiceTokenPermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionOutput) ToLegacyServiceTokenServiceTokenPermissionOutput() LegacyServiceTokenServiceTokenPermissionOutput {
-	return o
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionOutput) ToLegacyServiceTokenServiceTokenPermissionOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionOutput {
-	return o
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
-	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
-	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LegacyServiceTokenServiceTokenPermission) *int { return v.ProjectId }).(pulumi.IntPtrOutput)
-}
-
-type LegacyServiceTokenServiceTokenPermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (LegacyServiceTokenServiceTokenPermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LegacyServiceTokenServiceTokenPermission)(nil)).Elem()
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionArrayOutput) ToLegacyServiceTokenServiceTokenPermissionArrayOutput() LegacyServiceTokenServiceTokenPermissionArrayOutput {
-	return o
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionArrayOutput) ToLegacyServiceTokenServiceTokenPermissionArrayOutputWithContext(ctx context.Context) LegacyServiceTokenServiceTokenPermissionArrayOutput {
-	return o
-}
-
-func (o LegacyServiceTokenServiceTokenPermissionArrayOutput) Index(i pulumi.IntInput) LegacyServiceTokenServiceTokenPermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LegacyServiceTokenServiceTokenPermission {
-		return vs[0].([]LegacyServiceTokenServiceTokenPermission)[vs[1].(int)]
-	}).(LegacyServiceTokenServiceTokenPermissionOutput)
-}
-
 type ServiceTokenServiceTokenPermission struct {
 	// Whether or not to apply this permission to all projects for this service token
 	AllProjects bool `pulumi:"allProjects"`
@@ -1106,9 +519,12 @@ func (o GetGroupUsersUserArrayOutput) Index(i pulumi.IntInput) GetGroupUsersUser
 }
 
 type GetJobJobCompletionTriggerCondition struct {
-	JobId     int      `pulumi:"jobId"`
-	ProjectId int      `pulumi:"projectId"`
-	Statuses  []string `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId int `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId int `pulumi:"projectId"`
+	// List of statuses to trigger the job on.
+	Statuses []string `pulumi:"statuses"`
 }
 
 // GetJobJobCompletionTriggerConditionInput is an input type that accepts GetJobJobCompletionTriggerConditionArgs and GetJobJobCompletionTriggerConditionOutput values.
@@ -1123,9 +539,12 @@ type GetJobJobCompletionTriggerConditionInput interface {
 }
 
 type GetJobJobCompletionTriggerConditionArgs struct {
-	JobId     pulumi.IntInput         `pulumi:"jobId"`
-	ProjectId pulumi.IntInput         `pulumi:"projectId"`
-	Statuses  pulumi.StringArrayInput `pulumi:"statuses"`
+	// The ID of the job that would trigger this job after completion.
+	JobId pulumi.IntInput `pulumi:"jobId"`
+	// The ID of the project where the trigger job is running in.
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
+	// List of statuses to trigger the job on.
+	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
 }
 
 func (GetJobJobCompletionTriggerConditionArgs) ElementType() reflect.Type {
@@ -1179,14 +598,17 @@ func (o GetJobJobCompletionTriggerConditionOutput) ToGetJobJobCompletionTriggerC
 	return o
 }
 
+// The ID of the job that would trigger this job after completion.
 func (o GetJobJobCompletionTriggerConditionOutput) JobId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) int { return v.JobId }).(pulumi.IntOutput)
 }
 
+// The ID of the project where the trigger job is running in.
 func (o GetJobJobCompletionTriggerConditionOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
+// List of statuses to trigger the job on.
 func (o GetJobJobCompletionTriggerConditionOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobJobCompletionTriggerCondition) []string { return v.Statuses }).(pulumi.StringArrayOutput)
 }
@@ -1212,9 +634,12 @@ func (o GetJobJobCompletionTriggerConditionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetServiceTokenServiceTokenPermission struct {
-	AllProjects   bool   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects bool `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet string `pulumi:"permissionSet"`
-	ProjectId     int    `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId int `pulumi:"projectId"`
 }
 
 // GetServiceTokenServiceTokenPermissionInput is an input type that accepts GetServiceTokenServiceTokenPermissionArgs and GetServiceTokenServiceTokenPermissionOutput values.
@@ -1229,9 +654,12 @@ type GetServiceTokenServiceTokenPermissionInput interface {
 }
 
 type GetServiceTokenServiceTokenPermissionArgs struct {
-	AllProjects   pulumi.BoolInput   `pulumi:"allProjects"`
+	// Whether or not to apply this permission to all projects for this service token
+	AllProjects pulumi.BoolInput `pulumi:"allProjects"`
+	// Set of permissions to apply
 	PermissionSet pulumi.StringInput `pulumi:"permissionSet"`
-	ProjectId     pulumi.IntInput    `pulumi:"projectId"`
+	// Project ID to apply this permission to for this service token
+	ProjectId pulumi.IntInput `pulumi:"projectId"`
 }
 
 func (GetServiceTokenServiceTokenPermissionArgs) ElementType() reflect.Type {
@@ -1285,14 +713,17 @@ func (o GetServiceTokenServiceTokenPermissionOutput) ToGetServiceTokenServiceTok
 	return o
 }
 
+// Whether or not to apply this permission to all projects for this service token
 func (o GetServiceTokenServiceTokenPermissionOutput) AllProjects() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTokenServiceTokenPermission) bool { return v.AllProjects }).(pulumi.BoolOutput)
 }
 
+// Set of permissions to apply
 func (o GetServiceTokenServiceTokenPermissionOutput) PermissionSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTokenServiceTokenPermission) string { return v.PermissionSet }).(pulumi.StringOutput)
 }
 
+// Project ID to apply this permission to for this service token
 func (o GetServiceTokenServiceTokenPermissionOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTokenServiceTokenPermission) int { return v.ProjectId }).(pulumi.IntOutput)
 }
@@ -1322,16 +753,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupPermissionArrayInput)(nil)).Elem(), GroupGroupPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobCompletionTriggerConditionInput)(nil)).Elem(), JobJobCompletionTriggerConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobCompletionTriggerConditionPtrInput)(nil)).Elem(), JobJobCompletionTriggerConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetJobJobCompletionTriggerConditionInput)(nil)).Elem(), LegacyGetJobJobCompletionTriggerConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetJobJobCompletionTriggerConditionArrayInput)(nil)).Elem(), LegacyGetJobJobCompletionTriggerConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermissionInput)(nil)).Elem(), LegacyGetServiceTokenServiceTokenPermissionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGetServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), LegacyGetServiceTokenServiceTokenPermissionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGroupGroupPermissionInput)(nil)).Elem(), LegacyGroupGroupPermissionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyGroupGroupPermissionArrayInput)(nil)).Elem(), LegacyGroupGroupPermissionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyJobJobCompletionTriggerConditionInput)(nil)).Elem(), LegacyJobJobCompletionTriggerConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyJobJobCompletionTriggerConditionPtrInput)(nil)).Elem(), LegacyJobJobCompletionTriggerConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyServiceTokenServiceTokenPermissionInput)(nil)).Elem(), LegacyServiceTokenServiceTokenPermissionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LegacyServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), LegacyServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenPermissionInput)(nil)).Elem(), ServiceTokenServiceTokenPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenPermissionArrayInput)(nil)).Elem(), ServiceTokenServiceTokenPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupUsersUserInput)(nil)).Elem(), GetGroupUsersUserArgs{})
@@ -1344,16 +765,6 @@ func init() {
 	pulumi.RegisterOutputType(GroupGroupPermissionArrayOutput{})
 	pulumi.RegisterOutputType(JobJobCompletionTriggerConditionOutput{})
 	pulumi.RegisterOutputType(JobJobCompletionTriggerConditionPtrOutput{})
-	pulumi.RegisterOutputType(LegacyGetJobJobCompletionTriggerConditionOutput{})
-	pulumi.RegisterOutputType(LegacyGetJobJobCompletionTriggerConditionArrayOutput{})
-	pulumi.RegisterOutputType(LegacyGetServiceTokenServiceTokenPermissionOutput{})
-	pulumi.RegisterOutputType(LegacyGetServiceTokenServiceTokenPermissionArrayOutput{})
-	pulumi.RegisterOutputType(LegacyGroupGroupPermissionOutput{})
-	pulumi.RegisterOutputType(LegacyGroupGroupPermissionArrayOutput{})
-	pulumi.RegisterOutputType(LegacyJobJobCompletionTriggerConditionOutput{})
-	pulumi.RegisterOutputType(LegacyJobJobCompletionTriggerConditionPtrOutput{})
-	pulumi.RegisterOutputType(LegacyServiceTokenServiceTokenPermissionOutput{})
-	pulumi.RegisterOutputType(LegacyServiceTokenServiceTokenPermissionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenPermissionOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupUsersUserOutput{})

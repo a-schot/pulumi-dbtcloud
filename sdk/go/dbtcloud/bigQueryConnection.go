@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewBigQueryConnection(ctx, "myConnection", &dbtcloud.BigQueryConnectionArgs{
 //				ProjectId:               pulumi.Any(dbtcloud_project.Dbt_project.Id),
 //				Type:                    pulumi.String("bigquery"),
@@ -47,6 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// it is also possible to set the connection to use OAuth by filling in `application_id` and `application_secret`
 //			_, err = dbtcloud.NewBigQueryConnection(ctx, "myConnectionWithOauth", &dbtcloud.BigQueryConnectionArgs{
 //				ProjectId:               pulumi.Any(dbtcloud_project.Dbt_project.Id),
 //				Type:                    pulumi.String("bigquery"),
@@ -77,15 +79,11 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection "project_id:connection_id"
-//
+// $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection "project_id:connection_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
-//
+// $ pulumi import dbtcloud:index/bigQueryConnection:BigQueryConnection my_connection 12345:6789
 // ```
 type BigQueryConnection struct {
 	pulumi.CustomResourceState

@@ -5,16 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
  * ## Import
  *
  * Import using a project ID and credential ID found in the URL or via the API.
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential "project_id:credential_id"
+ * $ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential "project_id:credential_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential 12345:6789
+ * $ pulumi import dbtcloud:index/fabricCredential:FabricCredential my_fabric_credential 12345:6789
  * ```
  */
 export class FabricCredential extends pulumi.CustomResource {

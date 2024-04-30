@@ -37,6 +37,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
+//			// a job that has github_webhook and git_provider_webhook
+//			// set to false will be categorized as a "Deploy Job"
 //			dailyJob, err := dbtcloud.NewJob(ctx, "dailyJob", &dbtcloud.JobArgs{
 //				EnvironmentId: pulumi.Any(dbtcloud_environment.Prod_environment.Environment_id),
 //				ExecuteSteps: pulumi.StringArray{
@@ -71,6 +74,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// a job that has github_webhook and git_provider_webhook set
+//			// to true will be categorized as a "Continuous Integration Job"
 //			_, err = dbtcloud.NewJob(ctx, "ciJob", &dbtcloud.JobArgs{
 //				EnvironmentId: pulumi.Any(dbtcloud_environment.Ci_environment.Environment_id),
 //				ExecuteSteps: pulumi.StringArray{
@@ -101,6 +106,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// a job that is set to be triggered after another job finishes
+//			// this is sometimes referred as 'job chaining'
 //			_, err = dbtcloud.NewJob(ctx, "downstreamJob", &dbtcloud.JobArgs{
 //				EnvironmentId: pulumi.Any(dbtcloud_environment.Project2_prod_environment.Environment_id),
 //				ExecuteSteps: pulumi.StringArray{
@@ -148,15 +155,11 @@ import (
 // Import using a job ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/job:Job test_job "job_id"
-//
+// $ pulumi import dbtcloud:index/job:Job test_job "job_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/job:Job test_job 12345
-//
+// $ pulumi import dbtcloud:index/job:Job test_job 12345
 // ```
 type Job struct {
 	pulumi.CustomResourceState
@@ -183,7 +186,7 @@ type Job struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of threads to use in the job
 	NumThreads pulumi.IntPtrOutput `pulumi:"numThreads"`
-	// The ID of the project where the trigger job is running in.
+	// Project ID to create the job in
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources pulumi.BoolPtrOutput `pulumi:"runGenerateSources"`
@@ -273,7 +276,7 @@ type jobState struct {
 	Name *string `pulumi:"name"`
 	// Number of threads to use in the job
 	NumThreads *int `pulumi:"numThreads"`
-	// The ID of the project where the trigger job is running in.
+	// Project ID to create the job in
 	ProjectId *int `pulumi:"projectId"`
 	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources *bool `pulumi:"runGenerateSources"`
@@ -322,7 +325,7 @@ type JobState struct {
 	Name pulumi.StringPtrInput
 	// Number of threads to use in the job
 	NumThreads pulumi.IntPtrInput
-	// The ID of the project where the trigger job is running in.
+	// Project ID to create the job in
 	ProjectId pulumi.IntPtrInput
 	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources pulumi.BoolPtrInput
@@ -375,7 +378,7 @@ type jobArgs struct {
 	Name *string `pulumi:"name"`
 	// Number of threads to use in the job
 	NumThreads *int `pulumi:"numThreads"`
-	// The ID of the project where the trigger job is running in.
+	// Project ID to create the job in
 	ProjectId int `pulumi:"projectId"`
 	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources *bool `pulumi:"runGenerateSources"`
@@ -425,7 +428,7 @@ type JobArgs struct {
 	Name pulumi.StringPtrInput
 	// Number of threads to use in the job
 	NumThreads pulumi.IntPtrInput
-	// The ID of the project where the trigger job is running in.
+	// Project ID to create the job in
 	ProjectId pulumi.IntInput
 	// Flag for whether the job should add a `dbt source freshness` step to the job. The difference between manually adding a step with `dbt source freshness` in the job steps or using this flag is that with this flag, a failed freshness will still allow the following steps to run.
 	RunGenerateSources pulumi.BoolPtrInput
@@ -593,7 +596,7 @@ func (o JobOutput) NumThreads() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.NumThreads }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the project where the trigger job is running in.
+// Project ID to create the job in
 func (o JobOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
 }

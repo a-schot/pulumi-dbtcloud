@@ -18,9 +18,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 		
         /// This data source requires connecting with a user token and doesn't work with a service token.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -38,8 +36,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAzureDevOpsRepositoryResult> InvokeAsync(GetAzureDevOpsRepositoryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureDevOpsRepositoryResult>("dbtcloud:index/getAzureDevOpsRepository:getAzureDevOpsRepository", args ?? new GetAzureDevOpsRepositoryArgs(), options.WithDefaults());
@@ -50,9 +46,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 		
         /// This data source requires connecting with a user token and doesn't work with a service token.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -70,8 +64,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAzureDevOpsRepositoryResult> Invoke(GetAzureDevOpsRepositoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureDevOpsRepositoryResult>("dbtcloud:index/getAzureDevOpsRepository:getAzureDevOpsRepository", args ?? new GetAzureDevOpsRepositoryInvokeArgs(), options.WithDefaults());

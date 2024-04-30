@@ -23,7 +23,9 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getJob.
 type LookupJobArgs struct {
-	JobId     int `pulumi:"jobId"`
+	// ID of the job
+	JobId int `pulumi:"jobId"`
+	// ID of the project the job is in
 	ProjectId int `pulumi:"projectId"`
 }
 
@@ -72,7 +74,9 @@ func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getJob.
 type LookupJobOutputArgs struct {
-	JobId     pulumi.IntInput `pulumi:"jobId"`
+	// ID of the job
+	JobId pulumi.IntInput `pulumi:"jobId"`
+	// ID of the project the job is in
 	ProjectId pulumi.IntInput `pulumi:"projectId"`
 }
 

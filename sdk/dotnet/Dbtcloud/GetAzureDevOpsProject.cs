@@ -18,9 +18,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 		
         /// This data source requires connecting with a user token and doesn't work with a service token.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -37,8 +35,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAzureDevOpsProjectResult> InvokeAsync(GetAzureDevOpsProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureDevOpsProjectResult>("dbtcloud:index/getAzureDevOpsProject:getAzureDevOpsProject", args ?? new GetAzureDevOpsProjectArgs(), options.WithDefaults());
@@ -49,9 +45,7 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 		
         /// This data source requires connecting with a user token and doesn't work with a service token.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -68,8 +62,6 @@ namespace ASchot.Pulumi.Dbtcloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAzureDevOpsProjectResult> Invoke(GetAzureDevOpsProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureDevOpsProjectResult>("dbtcloud:index/getAzureDevOpsProject:getAzureDevOpsProject", args ?? new GetAzureDevOpsProjectInvokeArgs(), options.WithDefaults());

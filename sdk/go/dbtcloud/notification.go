@@ -26,6 +26,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// dbt Cloud allows us to create internal and external notifications
+//			// an internal notification will send emails to the user mentioned in `user_id`
+//			//
+//			// NOTE: If internal notification settings already exist for a user, currently you MUST import
+//			// those first into the state file before you can create a new internal notification for that user.
+//			// Failure to do so, will result in the user losing access to existing notifications and dbt
+//			// support will need to be contacted to restore access.
+//			// cmd: terraform import dbtcloud_notification.prod_job_internal_notification <user_id>
 //			_, err := dbtcloud.NewNotification(ctx, "prodJobInternalNotification", &dbtcloud.NotificationArgs{
 //				UserId: pulumi.Int(100),
 //				OnSuccesses: pulumi.IntArray{
@@ -39,6 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// we can also send "external" email notifications to emails to related to dbt Cloud users
 //			_, err = dbtcloud.NewNotification(ctx, "prodJobExternalNotification", &dbtcloud.NotificationArgs{
 //				UserId: pulumi.Int(100),
 //				OnFailures: pulumi.IntArray{
@@ -54,6 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// and finally, we can set up Slack notifications
 //			_, err = dbtcloud.NewNotification(ctx, "prodJobSlackNotifications", &dbtcloud.NotificationArgs{
 //				UserId: pulumi.Int(100),
 //				OnFailures: pulumi.IntArray{
@@ -81,15 +91,11 @@ import (
 // # Import using a notification ID
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/notification:Notification my_notification "notification_id"
-//
+// $ pulumi import dbtcloud:index/notification:Notification my_notification "notification_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/notification:Notification my_notification 12345
-//
+// $ pulumi import dbtcloud:index/notification:Notification my_notification 12345
 // ```
 type Notification struct {
 	pulumi.CustomResourceState

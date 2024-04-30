@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
 //			_, err := dbtcloud.NewProjectArtefacts(ctx, "myProjectArtefacts", &dbtcloud.ProjectArtefactsArgs{
 //				ProjectId:      pulumi.Any(dbtcloud_project.Dbt_project.Id),
 //				DocsJobId:      pulumi.Any(dbtcloud_job.Prod_job.Id),
@@ -45,15 +46,11 @@ import (
 // Import using a project ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts "project_id"
-//
+// $ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts "project_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts 12345
-//
+// $ pulumi import dbtcloud:index/projectArtefacts:ProjectArtefacts my_artefacts 12345
 // ```
 type ProjectArtefacts struct {
 	pulumi.CustomResourceState

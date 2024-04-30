@@ -26,6 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE for customers using the LEGACY dbt_cloud provider:
+//			// when using the Databricks adapter
 //			_, err := dbtcloud.NewDatabricksCredential(ctx, "myDatabricksCred", &dbtcloud.DatabricksCredentialArgs{
 //				ProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),
 //				AdapterId:   pulumi.Any(dbtcloud_connection.My_databricks_connection.Adapter_id),
@@ -37,6 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// when using the Spark adapter
 //			_, err = dbtcloud.NewDatabricksCredential(ctx, "mySparkCred", &dbtcloud.DatabricksCredentialArgs{
 //				ProjectId:   pulumi.Any(dbtcloud_project.Dbt_project.Id),
 //				AdapterId:   pulumi.Any(dbtcloud_connection.My_databricks_connection.Adapter_id),
@@ -59,15 +62,11 @@ import (
 // Import using a project ID and credential ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential "project_id:credential_id"
-//
+// $ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential "project_id:credential_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential 12345:6789
-//
+// $ pulumi import dbtcloud:index/databricksCredential:DatabricksCredential my_databricks_credential 12345:6789
 // ```
 type DatabricksCredential struct {
 	pulumi.CustomResourceState

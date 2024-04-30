@@ -42,6 +42,8 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
+//			// extended_attributes can be set as a raw JSON string or encoded with Terraform's `jsonencode()` function
+//			// we recommend using `jsonencode()` to avoid Terraform reporting changes due to whitespaces or keys ordering
 //			myAttributes, err := dbtcloud.NewExtendedAttributes(ctx, "myAttributes", &dbtcloud.ExtendedAttributesArgs{
 //				ExtendedAttributes: pulumi.String(json0),
 //				ProjectId:          pulumi.Any(_var.Dbt_project.Id),
@@ -72,15 +74,11 @@ import (
 // Import using a project ID and extended attribute ID found in the URL or via the API.
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes "project_id_id:extended_attributes_id"
-//
+// $ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes "project_id_id:extended_attributes_id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes 12345:6789
-//
+// $ pulumi import dbtcloud:index/extendedAttributes:ExtendedAttributes test_extended_attributes 12345:6789
 // ```
 type ExtendedAttributes struct {
 	pulumi.CustomResourceState

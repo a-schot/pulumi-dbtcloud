@@ -31,11 +31,11 @@ import * as utilities from "./utilities";
  * Import using a job ID found in the URL or via the API.
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/webhook:Webhook test_webhook "job_id"
+ * $ pulumi import dbtcloud:index/webhook:Webhook test_webhook "job_id"
  * ```
  *
  * ```sh
- *  $ pulumi import dbtcloud:index/webhook:Webhook test_webhook wsu_abcdefg
+ * $ pulumi import dbtcloud:index/webhook:Webhook test_webhook wsu_abcdefg
  * ```
  */
 export class Webhook extends pulumi.CustomResource {

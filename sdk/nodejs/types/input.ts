@@ -35,24 +35,6 @@ export interface JobJobCompletionTriggerCondition {
     statuses: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface LegacyGroupGroupPermission {
-    allProjects: pulumi.Input<boolean>;
-    permissionSet: pulumi.Input<string>;
-    projectId?: pulumi.Input<number>;
-}
-
-export interface LegacyJobJobCompletionTriggerCondition {
-    jobId: pulumi.Input<number>;
-    projectId: pulumi.Input<number>;
-    statuses: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface LegacyServiceTokenServiceTokenPermission {
-    allProjects: pulumi.Input<boolean>;
-    permissionSet: pulumi.Input<string>;
-    projectId?: pulumi.Input<number>;
-}
-
 export interface ServiceTokenServiceTokenPermission {
     /**
      * Whether or not to apply this permission to all projects for this service token

@@ -194,6 +194,9 @@ def get_job(job_id: Optional[int] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param int job_id: ID of the job
+    :param int project_id: ID of the project the job is in
     """
     __args__ = dict()
     __args__['jobId'] = job_id
@@ -223,5 +226,8 @@ def get_job_output(job_id: Optional[pulumi.Input[int]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param int job_id: ID of the job
+    :param int project_id: ID of the project the job is in
     """
     ...
